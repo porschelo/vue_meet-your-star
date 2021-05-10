@@ -1,34 +1,27 @@
 <template>
     <div id="app">
-        <div id="nav">
-            <!-- 等同a標籤但不會重新載頁面，動態切換路徑跟內容 -->
-            <router-link to="/">Home</router-link>
-            <router-link to="/about">About</router-link>
-        </div>
-        <!-- router渲染的標籤 -->
+        <my-header></my-header>
         <router-view />
+        <my-footer></my-footer>
+        <!-- router渲染的標籤 -->
     </div>
 </template>
 
+<script>
+import myHeader from './components/myHeader';
+import myFooter from './components/myFooter';
+export default {
+    name: 'App',
+    components: {
+        myHeader,
+        myFooter,
+    },
+};
+</script>
+
 <style lang="scss">
+@import './scss/_reset.scss';
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-}
-
-#nav {
-    padding: 30px;
-
-    a {
-        font-weight: bold;
-        color: #2c3e50;
-
-        &.router-link-exact-active {
-            color: #42b983;
-        }
-    }
+    background-color: rgb(48, 48, 48);
 }
 </style>

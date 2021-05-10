@@ -1,7 +1,7 @@
 <template>
     <div class="home">
-        <seection1></seection1>
-        <seection2></seection2>
+        <section1></section1>
+        <section2></section2>
     </div>
 </template>
 
@@ -18,3 +18,6 @@ export default {
     },
 };
 </script>
+<style lang="scss">
+@import '../../scss/commons.scss';
+</style>
