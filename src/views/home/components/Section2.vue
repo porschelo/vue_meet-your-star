@@ -9,7 +9,7 @@
             </p>
         </div>
         <div class="monster">
-            <span class="monster-box">
+            <span class="monster-box first">
                 <img
                     class="monster-item"
                     src="/images/index/monster/m1-pisces.svg"
@@ -35,9 +35,9 @@
                     src="/images/index/monster/m4-gemini.svg"
                     alt=""
             /></span>
-            <span class="monster-box">
+            <span class="monster-box scorpio">
                 <img
-                    class="scorpio monster-item"
+                    class="monster-item"
                     src="/images/index/monster/m5-scorpio.svg"
                     alt=""
             /></span>
@@ -86,52 +86,60 @@ export default {};
     }
 
     .monster {
-        max-width: 670px;
+        width: 100%;
+        position: relative;
         // width: 100%;
         margin: 0 auto;
         margin-bottom: 250px;
+        text-align: center;
         @include pad {
             max-width: 380px;
+            width: 100%;
             margin: 0 auto;
         }
         @include mobile {
             max-width: 251px;
         }
-        .scorpio {
-            max-width: 160px;
-            @include pad {
-                display: none;
-            }
-        }
-        .first {
-            @include pad {
-                display: none;
-            }
-        }
+
         img {
-            max-width: 120px;
-            @include pad {
-                width: 100%;
-            }
-            @include mobile {
-                max-width: 80px;
-            }
+            width: 100%;
+
             transition: 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         .monster-box {
             display: inline-block;
             position: relative;
+            width: 160px;
+
+            @include mobile {
+                width: 80px;
+            }
             &:hover {
                 .monster-item {
                     transform: translateY(-100px);
                     animation: all 0.6s;
                 }
             }
+            &.scorpio {
+                width: 220px;
+                @include pad {
+                    display: none;
+                }
+                img {
+                    width: 220px;
+                }
+            }
+            &.first {
+                max-width: 160px;
+                @include pad {
+                    display: none;
+                }
+            }
         }
     }
 
     .left-monster {
-        width: 180px;
+        width: 220px;
         position: absolute;
         top: 50%;
         left: whForPC(-80);
@@ -144,7 +152,7 @@ export default {};
         }
     }
     .right-monster {
-        width: 160px;
+        width: 180px;
         position: absolute;
         bottom: 10%;
         right: whForPC(-80);
