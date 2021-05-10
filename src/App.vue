@@ -22,6 +22,5 @@ export default {
 <style lang="scss">
 @import './scss/_reset.scss';
 #app {
-    background-color: rgb(48, 48, 48);
 }
 </style>
