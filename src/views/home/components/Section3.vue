@@ -20,6 +20,7 @@ export default {};
 <style lang="scss">
 @import '../../../scss/commons.scss';
 .i-scetion3 {
+    margin: 50px 0 300px;
     position: relative;
     .cloudBg {
         position: relative;

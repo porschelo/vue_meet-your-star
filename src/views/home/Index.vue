@@ -5,6 +5,7 @@
         <section2></section2>
         <section3></section3>
         <section4></section4>
+        <section5></section5>
     </div>
 </template>
 
@@ -14,6 +15,7 @@ import Section1 from '@/views/home/components/Section1';
 import Section2 from '@/views/home/components/Section2';
 import Section3 from '@/views/home/components/Section3';
 import Section4 from '@/views/home/components/Section4';
+import Section5 from '@/views/home/components/Section5';
 
 export default {
     name: 'Home',
@@ -22,6 +24,7 @@ export default {
         Section2,
         Section3,
         Section4,
+        Section5,
     },
 };
 </script>

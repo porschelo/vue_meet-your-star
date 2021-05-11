@@ -8,7 +8,7 @@
                 :key="`meteor-${n}`"
                 :class="`meteor-${n}`"
             ></div>
-            <!-- for迴圈都要寫key 類似索引值 效能比較好 -->
+            <!-- for迴圈都要寫key 類似索引值 效能比較好 n從1開始-->
         </div>
         <!-- 流星   end-->
         <div class="i-section1-star">
@@ -38,10 +38,13 @@ export default {};
 <style lang="scss">
 @import '../../../scss/var.scss';
 @import '../../../scss/commons.scss';
+@import '../../../scss/mixins.scss';
+
 .i-section1 {
     width: 100%;
     height: 100%;
     padding-bottom: 10%;
+    margin-bottom: 10%;
     overflow: hidden;
     position: relative;
     // 流星
@@ -120,14 +123,17 @@ export default {};
             }
         }
     }
+    //hover星座
     &-star {
         width: 1920px;
-        height: 1040px;
+        height: 1050px;
         position: absolute;
+        margin-top: 130px;
 
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+
         & .opacity {
             opacity: 0.2;
             transition: 1s cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -146,8 +152,8 @@ export default {};
         .star2 {
             position: absolute;
             top: 0;
-            margin-top: whForPC(450);
-            left: whForPC(150);
+            margin-top: whForPC(230);
+            left: whForPC(580);
         }
         .star3 {
             position: absolute;
@@ -158,26 +164,26 @@ export default {};
         .star4 {
             position: absolute;
             top: 0;
-            margin-top: whForPC(720);
-            left: whForPC(570);
+            margin-top: whForPC(600);
+            left: whForPC(670);
         }
         .star5 {
             position: absolute;
             top: 0;
-            margin-top: whForPC(480);
+            margin-top: whForPC(460);
             left: whForPC(400);
         }
         .star6 {
             position: absolute;
             top: 0;
-            margin-top: whForPC(460);
-            left: whForPC(1240);
+            margin-top: whForPC(360);
+            left: whForPC(1140);
         }
         .star7 {
             position: absolute;
             top: 0;
-            margin-top: whForPC(190);
-            left: whForPC(1100);
+            margin-top: whForPC(170);
+            left: whForPC(1000);
         }
         .star8 {
             position: absolute;
@@ -188,25 +194,25 @@ export default {};
         .star9 {
             position: absolute;
             top: 0;
-            margin-top: whForPC(130);
-            left: whForPC(1420);
+            margin-top: whForPC(180);
+            left: whForPC(1380);
         }
         .star10 {
             position: absolute;
             top: 0;
-            margin-top: whForPC(735);
-            left: whForPC(1500);
+            margin-top: whForPC(575);
+            left: whForPC(1330);
         }
         .star11 {
             position: absolute;
             top: 0;
-            margin-top: whForPC(300);
-            left: whForPC(1640);
+            margin-top: whForPC(320);
+            left: whForPC(1540);
         }
         .star12 {
             position: absolute;
             top: 0;
-            margin-top: whForPC(400);
+            margin-top: whForPC(350);
             left: whForPC(760);
         }
     }
@@ -222,9 +228,10 @@ export default {};
     }
     .ufo {
         position: absolute;
-        bottom: 20%;
+        bottom: 10%;
         right: 0;
         a {
+            width: 100%;
             text-decoration: none;
             display: block;
             color: rgb(245, 243, 243);
@@ -246,6 +253,24 @@ export default {};
             font-size: 16px;
             line-height: 90px;
             padding-left: 12%;
+        }
+    }
+    @include pad {
+        .ufo {
+            img {
+                width: 40px;
+            }
+            .cloud {
+                height: 50px;
+                width: 70px;
+                background-size: 68px;
+            }
+            .cloud p {
+                color: #000;
+                font-size: 12px;
+                line-height: 60px;
+                padding-left: 6%;
+            }
         }
     }
 }

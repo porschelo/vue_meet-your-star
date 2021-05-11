@@ -92,18 +92,10 @@ export default {};
         margin: 0 auto;
         margin-bottom: 250px;
         text-align: center;
-        @include pad {
-            max-width: 380px;
-            width: 100%;
-            margin: 0 auto;
-        }
-        @include mobile {
-            max-width: 251px;
-        }
+        //行內元素才可以用 要轉inline-block
 
         img {
             width: 100%;
-
             transition: 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         .monster-box {
@@ -112,26 +104,26 @@ export default {};
             width: 160px;
 
             @include mobile {
-                width: 80px;
+                width: 100px;
+                .monster-box {
+                    width: 120px;
+                }
             }
             &:hover {
                 .monster-item {
                     transform: translateY(-100px);
-                    animation: all 0.6s;
+                    transition: 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
                 }
             }
             &.scorpio {
                 width: 220px;
-                @include pad {
+                @include index-bigPad {
                     display: none;
-                }
-                img {
-                    width: 220px;
                 }
             }
             &.first {
                 max-width: 160px;
-                @include pad {
+                @include index-bigPad {
                     display: none;
                 }
             }
@@ -141,10 +133,17 @@ export default {};
     .left-monster {
         width: 220px;
         position: absolute;
-        top: 50%;
+        top: 30%;
         left: whForPC(-80);
+        animation: all 0.6s;
         @include md {
             display: none;
+        }
+        &:hover {
+            img {
+                transform: translateX(-70px);
+                transition: 0.8s cubic-bezier(0.28, 1.44, 0.7, -0.25);
+            }
         }
         img {
             position: relative;
@@ -158,6 +157,12 @@ export default {};
         right: whForPC(-80);
         @include md {
             display: none;
+        }
+        &:hover {
+            img {
+                transform: translateX(80px);
+                transition: 1s cubic-bezier(1, 0.25, 0.21, 0.87);
+            }
         }
         img {
             position: relative;

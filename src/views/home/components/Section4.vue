@@ -66,46 +66,48 @@ export default {};
 
 .i-section4 {
     position: relative;
-    text-align: right;
+    text-align: right; //只對inline-block有用
+    padding: 200px 0 150px;
 
-    //只對inline-block有用
+    //此區塊做定位且稱寬高
     .i-section4-earth {
         position: relative;
-        display: inline-block;
-        //變成行內元素
+        display: inline-block; //變成行內元素
         right: 0;
-        width: whForPC(750);
+        width: whForPC(850);
 
         .icon_capricorn {
-            width: whForPC(225, 750);
+            width: whForPC(225, 850);
             position: absolute;
-            margin-top: whForPC(-90, 750);
-            left: whForPC(120, 750);
+            margin-top: whForPC(-120, 850);
+            left: whForPC(120, 850);
         }
         .icon_Taurus {
-            width: whForPC(225, 750);
+            width: whForPC(225, 850);
             position: absolute;
-            margin-top: whForPC(100, 750);
-            left: whForPC(-240, 750);
+            margin-top: whForPC(90, 850);
+            left: whForPC(-290, 850);
         }
         .icon_virgo {
-            width: whForPC(225, 750);
+            width: whForPC(225, 850);
             position: absolute;
-            margin-top: whForPC(340, 750);
-            left: whForPC(-280, 750);
+            margin-top: whForPC(340, 850);
+            left: whForPC(-380, 850);
         }
         .planet {
             width: 100%;
             position: relative;
             visibility: hidden;
+
+            //讓圖片撐滿
             img {
                 width: 100%;
             }
             &.earth {
-                width: whForPC(1737, 750);
+                visibility: visible;
+                width: whForPC(1737, 850);
                 transform: translate(-47.7%, -52%) rotate(-20deg);
                 position: absolute;
-                visibility: visible;
                 top: 50%;
                 left: 50%;
             }
@@ -113,7 +115,8 @@ export default {};
                 position: relative;
                 visibility: visible;
                 .planet-monst-capricorn {
-                    width: whForPC(190, 750);
+                    filter: drop-shadow(13px 10px 7px rgba(0, 0, 0, 0.4));
+                    width: whForPC(230, 850);
                     position: absolute;
                     left: 35%;
                     top: 0;
@@ -122,8 +125,11 @@ export default {};
             }
             &.taurus {
                 position: absolute;
+                top: 0;
+
                 .planet-monst-taurus {
-                    width: whForPC(190, 750);
+                    filter: drop-shadow(13px 10px 7px rgba(0, 0, 0, 0.4));
+                    width: whForPC(230, 850);
                     position: absolute;
                     left: 35%;
                     top: 0;
@@ -132,8 +138,11 @@ export default {};
             }
             &.virgo {
                 position: absolute;
+                top: 0;
+
                 .planet-monst-irgo {
-                    width: whForPC(190, 750);
+                    filter: drop-shadow(13px 10px 7px rgba(0, 0, 0, 0.4));
+                    width: whForPC(230, 850);
                     position: absolute;
                     left: 35%;
                     top: 0;
@@ -142,26 +151,52 @@ export default {};
             }
         }
     }
-    @include mobile {
+}
+
+@include rwd1260 {
+    .i-section4-earth {
+        img {
+            width: 180px;
+        }
+    }
+}
+
+@include md {
+    .i-section4 {
+        .i-section4-earth {
+            width: whForPC(1200);
+            margin-right: -100px;
+        }
+        img {
+            width: 160px;
+        }
+    }
+}
+
+@include mobile {
+    .i-section4 {
         .i-section4-earth {
             //變成行內元素
-            width: wh(300);
-            margin-right: wh(-70);
+            width: wh(400);
+            margin-right: wh(-120);
+            img {
+                width: 130px;
+            }
 
             .icon_capricorn {
-                width: wh(225);
-                margin-top: wh(-90);
-                left: wh(120);
+                width: wh(250);
+                margin-top: wh(-130);
+                left: wh(-10);
             }
             .icon_Taurus {
-                width: wh(225);
-                margin-top: wh(100);
-                left: wh(-240);
+                width: wh(250);
+                margin-top: wh(-75);
+                left: wh(-80);
             }
             .icon_virgo {
-                width: wh(225);
-                margin-top: wh(340);
-                left: wh(-280);
+                width: wh(250);
+                margin-top: wh(-20);
+                left: wh(-160);
             }
             .planet {
                 &.earth {
@@ -172,26 +207,26 @@ export default {};
                 }
                 &.capricorn {
                     .planet-monst-capricorn {
-                        width: wh(190);
-                        left: 35%;
-                        top: 0;
-                        margin-top: 30%;
+                        width: wh(120);
+                        left: 25%;
+
+                        margin-top: 25%;
                     }
                 }
                 &.taurus {
                     .planet-monst-taurus {
-                        width: wh(190);
-                        left: 35%;
-                        top: 0;
-                        margin-top: 30%;
+                        width: wh(120);
+                        left: 25%;
+
+                        margin-top: 25%;
                     }
                 }
                 &.virgo {
                     .planet-monst-irgo {
-                        width: wh(190);
-                        left: 35%;
-                        top: 0;
-                        margin-top: 30%;
+                        width: wh(120);
+                        left: 25%;
+
+                        margin-top: 25%;
                     }
                 }
             }

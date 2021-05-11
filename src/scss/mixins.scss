@@ -18,8 +18,19 @@
     }
 }
 
+@mixin rwd1260 {
+    @media (max-width: 1260px) {
+        @content;
+    }
+}
+
 @mixin md {
     @media (max-width: 992px) {
+        @content;
+    }
+}
+@mixin index-bigPad {
+    @media (max-width: 860px) {
         @content;
     }
 }
