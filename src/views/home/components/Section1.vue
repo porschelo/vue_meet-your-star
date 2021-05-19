@@ -255,21 +255,23 @@ export default {};
             padding-left: 12%;
         }
     }
-    @include pad {
+    @include index-pad {
         .ufo {
-            img {
-                width: 40px;
-            }
-            .cloud {
-                height: 50px;
-                width: 70px;
-                background-size: 68px;
-            }
-            .cloud p {
-                color: #000;
-                font-size: 12px;
-                line-height: 60px;
-                padding-left: 6%;
+            a {
+                img {
+                    width: 40px;
+                }
+                .cloud {
+                    height: 50px;
+                    width: 70px;
+                    background-size: 68px;
+                }
+                .cloud p {
+                    color: #000;
+                    font-size: 12px;
+                    line-height: 60px;
+                    padding-left: 6%;
+                }
             }
         }
     }

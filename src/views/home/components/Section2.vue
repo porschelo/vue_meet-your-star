@@ -103,7 +103,7 @@ export default {};
             position: relative;
             width: 160px;
 
-            @include mobile {
+            @include index-mobile {
                 width: 100px;
                 .monster-box {
                     width: 120px;
@@ -136,7 +136,7 @@ export default {};
         top: 30%;
         left: whForPC(-80);
         animation: all 0.6s;
-        @include md {
+        @include index-md {
             display: none;
         }
         &:hover {
@@ -155,7 +155,7 @@ export default {};
         position: absolute;
         bottom: 10%;
         right: whForPC(-80);
-        @include md {
+        @include index-md {
             display: none;
         }
         &:hover {

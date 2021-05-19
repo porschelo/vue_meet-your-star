@@ -6,6 +6,10 @@
         <section3></section3>
         <section4></section4>
         <section5></section5>
+        <section6></section6>
+        <section7></section7>
+        <section8></section8>
+        <section9></section9>
     </div>
 </template>
 
@@ -16,6 +20,10 @@ import Section2 from '@/views/home/components/Section2';
 import Section3 from '@/views/home/components/Section3';
 import Section4 from '@/views/home/components/Section4';
 import Section5 from '@/views/home/components/Section5';
+import Section6 from '@/views/home/components/Section6';
+import Section7 from '@/views/home/components/Section7';
+import Section8 from '@/views/home/components/Section8';
+import Section9 from '@/views/home/components/Section9';
 
 export default {
     name: 'Home',
@@ -25,6 +33,10 @@ export default {
         Section3,
         Section4,
         Section5,
+        Section6,
+        Section7,
+        Section8,
+        Section9,
     },
 };
 </script>

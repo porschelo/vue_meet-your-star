@@ -24,7 +24,7 @@
     }
 }
 
-@mixin md {
+@mixin index-md {
     @media (max-width: 992px) {
         @content;
     }
@@ -34,12 +34,12 @@
         @content;
     }
 }
-@mixin pad {
+@mixin index-pad {
     @media (max-width: 768px) {
         @content;
     }
 }
-@mixin mobile {
+@mixin index-mobile {
     @media (max-width: 640px) {
         @content;
     }

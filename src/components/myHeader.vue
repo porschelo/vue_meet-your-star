@@ -90,7 +90,8 @@ header {
     z-index: 999;
     width: 100%;
     height: 240px * 0.7;
-    background-color: rgba(255, 255, 255, 0.3);
+    // background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(19, 59, 82, 0.8);
     .navbar {
         display: flex;
         justify-content: space-between;
@@ -155,7 +156,7 @@ header {
             z-index: 1000;
             .closebtn {
                 position: absolute;
-                top: 34px;
+                top: 30px;
                 right: 68px;
                 color: #fff;
                 font-size: 85px;
