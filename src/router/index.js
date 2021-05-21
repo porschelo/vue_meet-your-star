@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/home/Index.vue'; //component的自訂名稱
+import Product from '../views/products/product.vue'; //component的自訂名稱
 
 // 動態載入（延遲）
 // route level code-splitting
@@ -15,6 +16,11 @@ const routes = [
         path: '/',
         name: 'Home',
         component: Home,
+    },
+    {
+        path: '/product',
+        name: 'Product',
+        component: Product,
     },
 ];
 

@@ -10,6 +10,7 @@
         <section7></section7>
         <section8></section8>
         <section9></section9>
+        <back-btn></back-btn>
     </div>
 </template>
 
@@ -24,7 +25,7 @@ import Section6 from '@/views/home/components/Section6';
 import Section7 from '@/views/home/components/Section7';
 import Section8 from '@/views/home/components/Section8';
 import Section9 from '@/views/home/components/Section9';
-
+import BackBtn from '@/components/backBtn.vue';
 export default {
     name: 'Home',
     components: {
@@ -37,6 +38,7 @@ export default {
         Section7,
         Section8,
         Section9,
+        BackBtn,
     },
 };
 </script>
