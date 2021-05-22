@@ -7,21 +7,151 @@
         />
         <div class="cloudBg">
             <div class="cloudGroup">
-                <img class="m1" src="/images/index/cloud/cloud1.svg" alt="" />
-                <img class="m2" src="/images/index/cloud/cloud2.svg" alt="" />
-                <img class="m3" src="/images/index/cloud/cloud3.svg" alt="" />
-                <img class="m4" src="/images/index/cloud/cloud4.svg" alt="" />
-                <img class="m5" src="/images/index/cloud/cloud5.svg" alt="" />
-                <img class="m6" src="/images/index/cloud/cloud6.svg" alt="" />
-                <img class="m7" src="/images/index/cloud/cloud7.svg" alt="" />
+                <img
+                    class="m1"
+                    ref="m1"
+                    src="/images/index/cloud/cloud1.svg"
+                    alt=""
+                />
+                <img
+                    class="m2"
+                    ref="m2"
+                    src="/images/index/cloud/cloud2.svg"
+                    alt=""
+                />
+                <img
+                    class="m3"
+                    ref="m3"
+                    src="/images/index/cloud/cloud3.svg"
+                    alt=""
+                />
+                <img
+                    class="m4"
+                    ref="m4"
+                    src="/images/index/cloud/cloud4.svg"
+                    alt=""
+                />
+                <img
+                    class="m5"
+                    ref="m5"
+                    src="/images/index/cloud/cloud5.svg"
+                    alt=""
+                />
+                <img
+                    class="m6"
+                    ref="m6"
+                    src="/images/index/cloud/cloud6.svg"
+                    alt=""
+                />
+                <img
+                    class="m7"
+                    ref="m7"
+                    src="/images/index/cloud/cloud7.svg"
+                    alt=""
+                />
             </div>
         </div>
     </div>
 </template>
 <script>
-// import ScrollTrigger from 'gsap/ScrollTrigger';
+import { gsap, ScrollTrigger } from 'gsap/all';
+gsap.registerPlugin(ScrollTrigger);
 
-export default {};
+export default {
+    data() {
+        return {};
+    },
+    methods: {
+        scrollTriggrt() {
+            gsap.to(this.$refs.m1, {
+                x: '30%',
+                scrollTrigger: {
+                    trigger: this.$refs.m1,
+                    start: '-10% center',
+                    end: 'top 50px',
+                    scrub: true,
+                    // markers: true,
+                    id: 'scrub',
+                },
+            });
+            gsap.to(this.$refs.m2, {
+                x: '40%',
+                scrollTrigger: {
+                    trigger: this.$refs.m1,
+                    start: 'top center',
+                    end: '300px 50px',
+                    scrub: true,
+                    // markers: true,
+                    id: 'scrub',
+                },
+            });
+            gsap.to(this.$refs.m3, {
+                x: '35%',
+                scrollTrigger: {
+                    trigger: this.$refs.m1,
+                    start: '18% center',
+                    end: '35% 50px',
+                    scrub: true,
+                    // markers: true,
+                    id: 'scrub',
+                },
+            });
+
+            gsap.to(this.$refs.m4, {
+                x: '-35%',
+                scrollTrigger: {
+                    trigger: this.$refs.m1,
+                    start: '30% center',
+                    end: '60% 50px',
+                    scrub: true,
+                    // markers: true,
+                    id: 'scrub',
+                },
+            });
+
+            gsap.to(this.$refs.m5, {
+                x: '35%',
+                scrollTrigger: {
+                    trigger: this.$refs.m5,
+                    start: '27% center',
+                    end: '43% 50px',
+                    scrub: true,
+                    // markers: true,
+                    id: 'scrub',
+                },
+            });
+
+            gsap.to(this.$refs.m6, {
+                x: '32%',
+                scrollTrigger: {
+                    trigger: this.$refs.m6,
+                    start: '28% center',
+                    end: '60% 50px',
+                    scrub: true,
+                    // markers: true,
+                    id: 'scrub',
+                },
+            });
+
+            gsap.to(this.$refs.m7, {
+                x: '-35%',
+                scrollTrigger: {
+                    trigger: this.$refs.m7,
+                    start: '45% center',
+                    end: '66% 150px',
+                    scrub: true,
+                    // markers: true,
+                    id: 'scrub',
+                },
+            });
+        },
+    },
+    computed: {},
+    mounted() {
+        this.scrollTriggrt();
+    },
+    destroyed() {},
+};
 </script>
 <style lang="scss">
 @import '../../../scss/commons.scss';

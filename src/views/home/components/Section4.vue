@@ -1,29 +1,40 @@
 <template>
     <div class="i-section4">
         <div class="i-section4-earth">
-            <a class="icon_capricorn" href="">
+            <a
+                @click="changePlanet($event, 1)"
+                class="icon_capricorn"
+                href="#1"
+            >
                 <img
                     src="/images/index/planet/土象/planet_icon_capricorn.svg"
                     alt=""
                 />
             </a>
-            <a class="icon_Taurus" href="">
+            <a @click="changePlanet($event, 2)" class="icon_Taurus" href="#2">
                 <img
                     src="/images/index/planet/土象/planet_icon_Taurus.svg"
                     alt=""
                 />
             </a>
-            <a class="icon_virgo" href="">
+            <a @click="changePlanet($event, 3)" class="icon_virgo" href="#3">
                 <img
                     src="/images/index/planet/土象/planet_icon_virgo.svg"
                     alt=""
                 />
             </a>
-
-            <div class="planet earth">
+            <!-- 方法一  style字串 -->
+            <div
+                :style="`visibility:${showNum === 0 ? 'visible' : 'hidden'}`"
+                class="planet earth"
+            >
                 <img src="/images/index/planet/土象/土象.svg" alt="" />
             </div>
-            <div class="planet capricorn">
+            <!-- 方法二  物件-->
+            <div
+                :style="{ visibility: showNum === 1 ? 'visible' : 'hidden' }"
+                class="planet capricorn"
+            >
                 <img src="/images/index/planet/土象/70_1.svg" alt="" />
                 <a href="">
                     <img
@@ -33,7 +44,11 @@
                     />
                 </a>
             </div>
-            <div class="planet taurus">
+
+            <div
+                class="planet taurus"
+                :style="`visibility:${showNum === 2 ? 'visible' : 'hidden'}`"
+            >
                 <img src="/images/index/planet/土象/70_2.svg" alt="" />
                 <a href="">
                     <img
@@ -43,7 +58,8 @@
                     />
                 </a>
             </div>
-            <div class="planet virgo">
+            <!-- 方法三 function-->
+            <div class="planet virgo" :style="changeStyle(3)">
                 <img src="/images/index/planet/土象/70_3.svg" alt="" />
                 <a href="">
                     <img
@@ -57,7 +73,28 @@
     </div>
 </template>
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            showNum: 0,
+        };
+    },
+    methods: {
+        changePlanet(e, num) {
+            //停止herf的預設連結
+            console.log(num);
+            e.preventDefault();
+            this.showNum = num;
+        },
+        changeStyle(num) {
+            return {
+                visibility: this.showNum === num ? 'visible' : 'hidden',
+            };
+        },
+    },
+    computed: {},
+    mounted() {},
+};
 </script>
 
 <style lang="scss">
@@ -95,6 +132,7 @@ export default {};
             position: absolute;
             margin-top: whForPC(340, 850);
             left: whForPC(-380, 850);
+            z-index: 1;
         }
         .planet {
             width: 100%;

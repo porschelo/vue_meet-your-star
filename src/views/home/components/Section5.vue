@@ -1,20 +1,20 @@
 <template>
     <div class="i-section5">
         <div class="i-section5-wind">
-            <a class="icon_libra" href="">
+            <a @click="changePlanet($event, 1)" class="icon_libra" href="">
                 <img src="/images/index/planet/風象/libra_icon.svg" alt="" />
             </a>
-            <a class="icon_aquarius" href="">
+            <a @click="changePlanet($event, 2)" class="icon_aquarius" href="">
                 <img src="/images/index/planet/風象/aquarius_icon.svg" alt="" />
             </a>
-            <a class="icon_gemini" href="">
+            <a @click="changePlanet($event, 3)" class="icon_gemini" href="">
                 <img src="/images/index/planet/風象/gemini_icon.svg" alt="" />
             </a>
 
-            <div class="planet wind">
+            <div :class="{ isShow: showNum === 0 }" class="planet wind">
                 <img src="/images/index/planet/風象/風向.svg" alt="" />
             </div>
-            <div class="planet libra">
+            <div :class="{ isShow: showNum === 1 }" class="planet libra">
                 <img src="/images/index/planet/風象/planet_libra.svg" alt="" />
                 <a href="">
                     <img
@@ -24,7 +24,7 @@
                     />
                 </a>
             </div>
-            <div class="planet aquarius">
+            <div :class="{ isShow: showNum === 2 }" class="planet aquarius">
                 <img
                     src="/images/index/planet/風象/planet_aquarius.svg"
                     alt=""
@@ -37,7 +37,7 @@
                     />
                 </a>
             </div>
-            <div class="planet gemini">
+            <div :class="{ isShow: showNum === 3 }" class="planet gemini">
                 <img src="/images/index/planet/風象/planet_gemini.svg" alt="" />
                 <a href="">
                     <img
@@ -51,7 +51,21 @@
     </div>
 </template>
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            showNum: 0,
+        };
+    },
+    methods: {
+        changePlanet(e, num) {
+            e.preventDefault();
+            this.showNum = num;
+        },
+    },
+    computed: {},
+    mounted() {},
+};
 </script>
 <style lang="scss">
 @import '../../../scss/commons.scss';
@@ -88,15 +102,16 @@ export default {};
             margin-top: whForPC(455, 850);
             right: whForPC(-446, 850);
         }
+
         .planet {
             width: 100%;
             position: relative;
             visibility: hidden;
+
             img {
                 width: 100%;
             }
             &.wind {
-                visibility: visible;
                 position: absolute;
                 width: whForPC(1890, 850);
                 top: 50%;
@@ -104,7 +119,6 @@ export default {};
                 transform: translate(-49.1%, -42.4%) rotate(15deg);
             }
             &.libra {
-                visibility: visible;
                 position: relative;
                 // visibility: hidden;
                 .planet_monst_libra {
@@ -141,6 +155,10 @@ export default {};
                     margin-top: 30%;
                     right: 32%;
                 }
+            }
+            //切換class 注意權重 可以寫在必須要改的class裡面！
+            &.isShow {
+                visibility: visible;
             }
         }
     }
