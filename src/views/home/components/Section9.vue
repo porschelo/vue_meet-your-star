@@ -128,13 +128,11 @@
                                 <div class="sing_info1">
                                     <img
                                         class="info_img"
-                                        src="/images/index/info_Img/sing1.svg"
+                                        src="/images/store/healthP-1.png"
                                         alt=""
                                     />
                                     <h3 class="inner_text">
-                                        今天的你想像力、洞察
-                                        力強，如果是從事創意
-                                        工作者在今天能好好發 揮，但也要避免...
+                                        七星陣水晶原石能量陣
                                     </h3>
                                 </div>
                             </a>
@@ -145,13 +143,10 @@
                                 <div class="sing_info2">
                                     <img
                                         class="info_img"
-                                        src="/images/index/info_Img/sing2.svg"
+                                        src="/images/store/maylike-2.jpg"
                                         alt=""
                                     />
-                                    <h3 class="inner_text">
-                                        今天的你想像力、洞察力強，如果是從事創意
-                                        工作者在今天能好好發揮，但也要避免...
-                                    </h3>
+                                    <h3 class="inner_text">水向魔法石融蠟燈</h3>
                                 </div>
                             </a>
                         </swiper-slide>
@@ -161,14 +156,10 @@
                                 <div class="product_info3">
                                     <img
                                         class="info_img"
-                                        src="/images/index/info_Img/sing3.svg"
+                                        src="/images/store/hPd_2.png"
                                         alt=""
                                     />
-                                    <h3 class="inner_text">
-                                        今天的你想像力、洞察
-                                        力強，如果是從事創意
-                                        工作者在今天能好好發 揮，但也要避免...
-                                    </h3>
+                                    <h3 class="inner_text">冥王星晶石手鍊</h3>
                                 </div>
                             </a>
                         </swiper-slide>
@@ -178,14 +169,10 @@
                                 <div class="product_info4">
                                     <img
                                         class="info_img"
-                                        src="/images/index/info_Img/sing1.svg"
+                                        src="/images/store/maylike-1.jpg"
                                         alt=""
                                     />
-                                    <h3 class="inner_text">
-                                        今天的你想像力、洞察
-                                        力強，如果是從事創意
-                                        工作者在今天能好好發 揮，但也要避免...
-                                    </h3>
+                                    <h3 class="inner_text">天然擴香健康石</h3>
                                 </div>
                             </a>
                         </swiper-slide>
@@ -275,6 +262,8 @@ export default {
 @import '../../../scss/mixins.scss';
 @import '../../../scss/color.scss';
 @import '../../../scss/var.scss';
+@import '../../../scss/rwd.scss';
+
 .i-scetion9 {
     position: relative;
     width: 100%;
@@ -298,15 +287,25 @@ export default {
                     width: 63px * 0.7;
                     height: 43px * 0.7;
                     margin-bottom: 5px;
+                    @include index-mobile {
+                        width: 20px;
+                        height: auto;
+                    }
                 }
                 h1 {
                     font-size: $h1;
                     padding: 5px 20px 10px;
+                    @include index-mobile {
+                        font-size: 8px;
+                    }
                 }
             }
             &-e {
                 text-align: center;
                 font-size: $p1;
+                @include index-mobile {
+                    font-size: 6px;
+                }
             }
         }
 
@@ -340,8 +339,10 @@ export default {
 
                 background-color: rgba(218, 199, 199, 0.6);
                 height: 350px;
+                // height: 100%;
                 width: 400px;
                 border: 5px solid rgb(65, 121, 173);
+                text-align: center;
                 // border-radius: 55%;
 
                 /* Center slide text vertically */
@@ -357,9 +358,13 @@ export default {
                 -ms-flex-align: center;
                 -webkit-align-items: center;
                 align-items: center;
+                @include index-mobile {
+                    height: 250px;
+                }
 
                 a {
                     text-decoration: none;
+                    text-align: center;
                 }
                 .info_img {
                     display: block;
@@ -367,6 +372,12 @@ export default {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                    margin: 0 auto;
+                    @include index-mobile {
+                        width: 65%;
+                        height: auto;
+                        // padding-left: 5%;
+                    }
                 }
                 .inner_text {
                     max-width: 280px;
@@ -375,20 +386,11 @@ export default {
                     font-size: $p1;
                     line-height: 1.6;
                     color: rgb(248, 248, 248);
+                    @include index-mobile {
+                        max-width: 250px;
+                        font-size: 6px;
+                    }
                 }
-                // @include index-mobile {
-                //     .info_img {
-                //         text-align: center;
-                //         display: block;
-                //         width: 80%;
-                //         // height: 100%;
-                //         object-fit: cover;
-                //     }
-                //     .inner_text {
-                //         max-width: 250px;
-                //         font-size: 6px;
-                //     }
-                // }
             }
         }
     }
@@ -408,15 +410,25 @@ export default {
                     width: 63px * 0.7;
                     height: 43px * 0.7;
                     margin-bottom: 5px;
+                    @include index-mobile {
+                        width: 20px;
+                        height: auto;
+                    }
                 }
                 h1 {
                     font-size: $h1;
                     padding: 5px 20px 10px;
+                    @include index-mobile {
+                        font-size: 8px;
+                    }
                 }
             }
             &-e {
                 text-align: center;
                 font-size: $p1;
+                @include index-mobile {
+                    font-size: 6px;
+                }
             }
         }
 
@@ -439,7 +451,7 @@ export default {
                 }
             }
         }
-        .swiper-container {
+        .swiper-wrapper {
             width: 95%;
             height: 100%;
 
@@ -449,8 +461,9 @@ export default {
                 font-size: 18px;
 
                 background-color: rgba(218, 199, 199, 0.6);
-                height: 350px;
-                width: 400px;
+                height: auto;
+                max-width: 400px;
+                width: 100%;
                 border: 5px solid rgb(65, 121, 173);
                 // border-radius: 55%;
 
@@ -472,18 +485,27 @@ export default {
                 }
                 .info_img {
                     display: block;
-                    max-width: 90%;
                     width: 100%;
-                    height: 100%;
-                    object-fit: cover;
+                    max-width: 300px;
+                    height: 285px;
+                    margin: 0 auto;
+                    @include index-mobile {
+                        width: 80%;
+                        height: auto;
+                    }
                 }
                 .inner_text {
-                    max-width: 280px;
-                    width: 100%;
+                    // max-width: 280px;
                     // height: 80px;
+                    padding-top: 20px;
+                    margin: 0 auto;
                     font-size: $p1;
                     line-height: 1.6;
                     color: rgb(248, 248, 248);
+                    @include index-mobile {
+                        max-width: 250px;
+                        font-size: 8px;
+                    }
                 }
             }
         }

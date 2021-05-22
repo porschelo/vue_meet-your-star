@@ -31,6 +31,7 @@ export default {
                 document.documentElement.topHeight ||
                 document.body.topHeight ||
                 0;
+            // console.log(topHeight);
             if (topHeight > window.innerHeight * 1.5) {
                 this.btnVisible = true;
             } else {
