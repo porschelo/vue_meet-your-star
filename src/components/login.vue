@@ -1,0 +1,110 @@
+<template>
+    <div>
+        <!-- login-popup -->
+        <div class="popout loginpopup">
+            <div class="popup">
+                <a class="close_login_btn" href="">&times;</a>
+
+                <div class="login_title">
+                    <h1>登入</h1>
+                </div>
+
+                <div class="sec-c login_info">
+                    <div class="login_info_content">
+                        <h3>帳號:</h3>
+                        <input
+                            type="text"
+                            class="account wh"
+                            id="account"
+                            placeholder=""
+                            required
+                        />
+                        <h3>密碼:</h3>
+                        <input
+                            type="text"
+                            class="password wh"
+                            id="password"
+                            placeholder=""
+                            required
+                        />
+                        <div class="logina">
+                            <a href="">忘記密碼？</a>
+                            <a href="" class="gosignup">註冊新帳號</a>
+                        </div>
+                        <a href="membercentre.html"
+                            ><!--暫連membercentre用-->
+                            <button class="send" id="send">出發冒險</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- signup-popup -->
+        <div class="popout signup">
+            <div class="popup">
+                <a class="close_signup_btn" href="#">&times;</a>
+
+                <div class="signuptitle">
+                    <h1>註冊</h1>
+                </div>
+                <div class="sec-c signup_info">
+                    <div class="signup_info_content">
+                        <h3>帳號:</h3>
+                        <input
+                            type="text"
+                            class="accounts wh"
+                            id="accounts"
+                            placeholder=""
+                            required
+                        />
+                        <h3>密碼:</h3>
+                        <input
+                            type="text"
+                            class="passwords wh"
+                            id="passwords"
+                            placeholder=""
+                            required
+                        />
+                        <h3>確認密碼:</h3>
+                        <input
+                            type="text"
+                            class="passwordss wh"
+                            id="passwordss"
+                            placeholder=""
+                            required
+                        />
+                        <h3>手機號碼:</h3>
+                        <input
+                            type="text"
+                            class="cellp wh"
+                            id="cellp"
+                            placeholder=""
+                            required
+                        />
+                        <h3>生日:</h3>
+                        <input
+                            type="text"
+                            class="bhd wh"
+                            id="bhd"
+                            placeholder=" YYYY/MM/DD"
+                            required
+                        />
+
+                        <div class="signupa">
+                            <a href="" class="gologin">已有帳號？登入</a>
+                        </div>
+
+                        <button class="sign" id="sign">加入冒險</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- index-popup end -->
+    </div>
+</template>
+
+<script>
+export default {};
+</script>
+<style lang="scss"></style>

@@ -25,7 +25,7 @@
                 </div>
                 <div class="swiper-container mySwiper gap">
                     <swiper class="swiper-wrapper" :options="swiperOption">
-                        <swiper-slide>
+                        <swiper-slide class="swiper-slide">
                             <a href="starsign.html">
                                 <div class="sing_info1">
                                     <img
@@ -42,7 +42,7 @@
                             </a>
                         </swiper-slide>
 
-                        <swiper-slide>
+                        <swiper-slide class="swiper-slide">
                             <a href="starsign.html">
                                 <div class="sing_info2">
                                     <img
@@ -58,7 +58,7 @@
                             </a>
                         </swiper-slide>
 
-                        <swiper-slide>
+                        <swiper-slide class="swiper-slide">
                             <a href="starsign.html">
                                 <div class="product_info3">
                                     <img
@@ -75,7 +75,7 @@
                             </a>
                         </swiper-slide>
 
-                        <swiper-slide>
+                        <swiper-slide class="swiper-slide">
                             <a href="starsign.html">
                                 <div class="product_info4">
                                     <img
@@ -123,7 +123,7 @@
                 </div>
                 <div class="swiper-container mySwiper gap">
                     <swiper class="swiper-wrapper" :options="swiperOption2">
-                        <swiper-slide>
+                        <swiper-slide class="swiper-slide">
                             <a href="starsign.html">
                                 <div class="sing_info1">
                                     <img
@@ -140,7 +140,7 @@
                             </a>
                         </swiper-slide>
 
-                        <swiper-slide>
+                        <swiper-slide class="swiper-slide">
                             <a href="starsign.html">
                                 <div class="sing_info2">
                                     <img
@@ -156,7 +156,7 @@
                             </a>
                         </swiper-slide>
 
-                        <swiper-slide>
+                        <swiper-slide class="swiper-slide">
                             <a href="starsign.html">
                                 <div class="product_info3">
                                     <img
@@ -173,7 +173,7 @@
                             </a>
                         </swiper-slide>
 
-                        <swiper-slide>
+                        <swiper-slide class="swiper-slide">
                             <a href="starsign.html">
                                 <div class="product_info4">
                                     <img
@@ -227,7 +227,7 @@ export default {
                     //     slidesPerView: 3,
                     //     spaceBetween: 40,
                     // },
-                    768: {
+                    996: {
                         slidesPerView: 2,
                         spaceBetween: 30,
                     },
@@ -251,7 +251,7 @@ export default {
                     //     slidesPerView: 3,
                     //     spaceBetween: 40,
                     // },
-                    768: {
+                    996: {
                         slidesPerView: 2,
                         spaceBetween: 30,
                     },
@@ -278,7 +278,7 @@ export default {
 .i-scetion9 {
     position: relative;
     width: 100%;
-    height: 2270px;
+    height: 2100px;
     background-image: url('/images/index/buttom_bg.svg');
     background-repeat: no-repeat;
     background-position: center center;
@@ -317,14 +317,20 @@ export default {
             align-items: center;
             margin: 0 2%;
             .index_prbtn {
-                margin-right: 15px;
+                margin-right: 10px;
+                img {
+                    width: 40px;
+                }
             }
             .index_nextbtn {
-                margin-left: 15px;
+                margin-left: 10px;
+                img {
+                    width: 40px;
+                }
             }
         }
-        .swiper-container {
-            width: 85%;
+        .swiper-wrapper {
+            width: 95%;
             height: 100%;
 
             .swiper-slide {
@@ -333,7 +339,7 @@ export default {
                 font-size: 18px;
 
                 background-color: rgba(218, 199, 199, 0.6);
-                height: 400px;
+                height: 350px;
                 width: 400px;
                 border: 5px solid rgb(65, 121, 173);
                 // border-radius: 55%;
@@ -356,20 +362,33 @@ export default {
                     text-decoration: none;
                 }
                 .info_img {
-                    img {
-                        display: block;
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                    }
+                    display: block;
+                    max-width: 90%;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
                 }
                 .inner_text {
                     max-width: 280px;
+                    width: 100%;
                     // height: 80px;
                     font-size: $p1;
                     line-height: 1.6;
                     color: rgb(248, 248, 248);
                 }
+                // @include index-mobile {
+                //     .info_img {
+                //         text-align: center;
+                //         display: block;
+                //         width: 80%;
+                //         // height: 100%;
+                //         object-fit: cover;
+                //     }
+                //     .inner_text {
+                //         max-width: 250px;
+                //         font-size: 6px;
+                //     }
+                // }
             }
         }
     }
@@ -408,14 +427,20 @@ export default {
             align-items: center;
             margin: 0 2%;
             .index_prbtn2 {
-                margin-right: 15px;
+                margin-right: 10px;
+                img {
+                    width: 40px;
+                }
             }
             .index_nextbtn2 {
-                margin-left: 15px;
+                margin-left: 10px;
+                img {
+                    width: 40px;
+                }
             }
         }
         .swiper-container {
-            width: 85%;
+            width: 95%;
             height: 100%;
 
             .swiper-slide {
@@ -424,7 +449,7 @@ export default {
                 font-size: 18px;
 
                 background-color: rgba(218, 199, 199, 0.6);
-                height: 400px;
+                height: 350px;
                 width: 400px;
                 border: 5px solid rgb(65, 121, 173);
                 // border-radius: 55%;
@@ -447,16 +472,17 @@ export default {
                 }
                 .info_img {
                     display: block;
-                    width: 300px;
-                    height: 285px;
+                    max-width: 90%;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
                 }
                 .inner_text {
-                    // max-width: 280px;
+                    max-width: 280px;
+                    width: 100%;
                     // height: 80px;
-                    padding-top: 20px;
                     font-size: $p1;
                     line-height: 1.6;
-                    text-align: center;
                     color: rgb(248, 248, 248);
                 }
             }
