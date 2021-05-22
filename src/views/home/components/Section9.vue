@@ -210,10 +210,6 @@ export default {
                     prevEl: '.index_prbtn',
                 },
                 breakpoints: {
-                    // 1024: {
-                    //     slidesPerView: 3,
-                    //     spaceBetween: 40,
-                    // },
                     996: {
                         slidesPerView: 2,
                         spaceBetween: 30,
@@ -234,10 +230,6 @@ export default {
                     prevEl: '.index_prbtn2',
                 },
                 breakpoints: {
-                    // 1024: {
-                    //     slidesPerView: 3,
-                    //     spaceBetween: 40,
-                    // },
                     996: {
                         slidesPerView: 2,
                         spaceBetween: 30,
@@ -268,6 +260,7 @@ export default {
     position: relative;
     width: 100%;
     height: 2100px;
+    padding-top: 10vw;
     background-image: url('/images/index/buttom_bg.svg');
     background-repeat: no-repeat;
     background-position: center center;
@@ -461,9 +454,10 @@ export default {
                 font-size: 18px;
 
                 background-color: rgba(218, 199, 199, 0.6);
-                height: auto;
-                max-width: 400px;
-                width: 100%;
+                height: 350px;
+                // max-width: 400px;
+                // width: 100%;
+                width: 400px;
                 border: 5px solid rgb(65, 121, 173);
                 // border-radius: 55%;
 
@@ -485,7 +479,9 @@ export default {
                 }
                 .info_img {
                     display: block;
+                    max-width: 90%;
                     width: 100%;
+                    height: 100%;
                     max-width: 300px;
                     height: 285px;
                     margin: 0 auto;

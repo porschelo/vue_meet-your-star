@@ -84,8 +84,8 @@ export default {
 .i-section7 {
     position: relative;
     text-align: left;
-    padding: 300px 0 150px;
-    margin-bottom: 250px;
+    padding: 300px 0 0px;
+    // margin-bottom: 250px;
 
     .i-section7-fire {
         display: inline-block;

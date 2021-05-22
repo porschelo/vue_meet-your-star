@@ -1,7 +1,7 @@
 <template>
     <div class="i-scetion8">
-        <div class="cloudBg2">
-            <div class="cloudGroup">
+        <div class="cloudBg">
+            <div class="cloudGroup2">
                 <img
                     class="m1"
                     ref="m1"
@@ -49,25 +49,158 @@
     </div>
 </template>
 <script>
-export default {};
+import { gsap, ScrollTrigger } from 'gsap/all';
+gsap.registerPlugin(ScrollTrigger);
+
+export default {
+    data() {
+        return {};
+    },
+    methods: {
+        scrollTriggrt() {
+            gsap.to(this.$refs.m1, {
+                x: '30%',
+                scrollTrigger: {
+                    trigger: this.$refs.m1,
+                    start: '-10% center',
+                    end: 'top 50px',
+                    scrub: true,
+                    // markers: true,
+                    id: 'scrub',
+                },
+            });
+            gsap.to(this.$refs.m2, {
+                x: '40%',
+                scrollTrigger: {
+                    trigger: this.$refs.m1,
+                    start: 'top center',
+                    end: '300px 50px',
+                    scrub: true,
+                    // markers: true,
+                    id: 'scrub',
+                },
+            });
+            gsap.to(this.$refs.m3, {
+                x: '35%',
+                scrollTrigger: {
+                    trigger: this.$refs.m1,
+                    start: '18% center',
+                    end: '35% 50px',
+                    scrub: true,
+                    // markers: true,
+                    id: 'scrub',
+                },
+            });
+
+            gsap.to(this.$refs.m4, {
+                x: '-35%',
+                scrollTrigger: {
+                    trigger: this.$refs.m1,
+                    start: '30% center',
+                    end: '60% 50px',
+                    scrub: true,
+                    // markers: true,
+                    id: 'scrub',
+                },
+            });
+
+            gsap.to(this.$refs.m5, {
+                x: '35%',
+                scrollTrigger: {
+                    trigger: this.$refs.m5,
+                    start: '27% center',
+                    end: '43% 50px',
+                    scrub: true,
+                    // markers: true,
+                    id: 'scrub',
+                },
+            });
+
+            gsap.to(this.$refs.m6, {
+                x: '32%',
+                scrollTrigger: {
+                    trigger: this.$refs.m6,
+                    start: '28% center',
+                    end: '60% 50px',
+                    scrub: true,
+                    // markers: true,
+                    id: 'scrub',
+                },
+            });
+
+            gsap.to(this.$refs.m7, {
+                x: '-35%',
+                scrollTrigger: {
+                    trigger: this.$refs.m7,
+                    start: '45% center',
+                    end: '66% 150px',
+                    scrub: true,
+                    // markers: true,
+                    id: 'scrub',
+                },
+            });
+        },
+    },
+    computed: {},
+    mounted() {
+        this.scrollTriggrt();
+    },
+    destroyed() {},
+};
 </script>
 <style lang="scss">
 @import '../../../scss/commons.scss';
 .i-scetion8 {
+    margin: 35vw 0 200px;
     position: relative;
-    margin: 220px 0 300px;
-    .cloudBg2 {
-        position: relative;
-        padding-top: whForPC(2323); //圖的高
-        opacity: 0.4;
-        overflow: hidden;
-    }
+
     .cloudGroup2 {
-        width: whForPC(2717); //圖的寬
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-51.8%, -50%);
+        position: relative;
+        padding-top: whForPC(2000);
+
+        .m1 {
+            position: absolute;
+            top: -5vw;
+            left: -76vw;
+        }
+        .m2 {
+            position: absolute;
+            top: -15vw;
+            left: -76vw;
+        }
+        .m3 {
+            position: absolute;
+            top: 3vw;
+            left: -85vw;
+        }
+        .m4 {
+            position: absolute;
+            top: 3vw;
+            right: -80vw;
+        }
+        .m5 {
+            position: absolute;
+            top: 20vw;
+            left: -78vw;
+        }
+        .m6 {
+            position: absolute;
+            top: 24vw;
+            left: -76vw;
+        }
+        .m7 {
+            position: absolute;
+            top: 29vw;
+            right: -81vw;
+        }
+        svg {
+            opacity: 1;
+            width: 150%;
+            // height: 100%;
+        }
+        img {
+            width: 100%;
+        }
     }
 }
 </style>
