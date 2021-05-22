@@ -76,6 +76,7 @@ export default {
 <style lang="scss">
 @import '../scss/var.scss';
 @import '../scss/mixins.scss';
+@import '../scss/rwd.scss';
 
 * {
     border: 0;
@@ -89,9 +90,8 @@ header {
     top: 0;
     z-index: 999;
     width: 100%;
-    height: 240px * 0.7;
-    // background-color: rgba(255, 255, 255, 0.3);
-    background-color: rgba(19, 59, 82, 0.8);
+    height: 200px * 0.7;
+    background: linear-gradient(to right, rgb(26, 98, 111), rgb(22, 46, 83));
     .navbar {
         display: flex;
         justify-content: space-between;
@@ -99,13 +99,13 @@ header {
         margin: 25px 52px 0;
     }
     .logo img {
-        width: 320px * 0.7;
-        padding: 25px 0 0 15px;
+        width: 300px * 0.7;
+        padding: 17px 0 0 15px;
     }
     .nav-list ul {
         display: flex;
         align-items: center;
-        padding-top: 40px;
+        padding-top: 30px;
         li {
             padding: 0 5px;
             list-style: none;
@@ -132,6 +132,58 @@ header {
             opacity: 0.7;
         }
     }
+
+    @include rwd(mobile) {
+        height: 150px * 0.7;
+        .navbar {
+            margin: 10px 18px 0px 0px;
+        }
+        .logo img {
+            width: 220px * 0.7;
+            padding: 22px 0 0 27px;
+        }
+        .nav-list ul {
+            padding-top: 30px;
+            li:nth-child(1) {
+                padding: 0 0 1px;
+                width: 50px;
+                a {
+                    img {
+                        width: 100% * 0.7;
+                    }
+                    &:hover {
+                        opacity: 0.7;
+                    }
+                    cursor: pointer;
+                }
+            }
+            li:nth-child(2) {
+                padding: 0 0;
+                width: 28px;
+                a {
+                    img {
+                        width: 100% * 0.7;
+                    }
+                    &:hover {
+                        opacity: 0.7;
+                    }
+                    cursor: pointer;
+                }
+            }
+            li:nth-child(3) {
+                padding: 0 0;
+                width: 50px;
+                .burgerbtn {
+                    img {
+                        width: 100% * 0.7;
+                    }
+                    &:hover {
+                        opacity: 0.7;
+                    }
+                }
+            }
+        }
+    } //mobile end
 }
 
 .overlaymenu {
@@ -156,7 +208,7 @@ header {
             z-index: 1000;
             .closebtn {
                 position: absolute;
-                top: 30px;
+                top: 25px;
                 right: 68px;
                 color: #fff;
                 font-size: 85px;
@@ -171,9 +223,9 @@ header {
                 padding-top: 80px;
                 display: flex;
                 flex-wrap: wrap;
-                // width: 500px;
-                width: 360px;
+                width: 500px;
                 padding-left: 145px;
+                box-sizing: border-box;
                 li {
                     list-style: none;
                     margin: 12px 15px;
@@ -193,5 +245,65 @@ header {
             }
         }
     }
+
+    @include header-mobile {
+        .menulist {
+            display: flex;
+            justify-content: flex-end;
+
+            .nav-menu {
+                background: linear-gradient(
+                    to right,
+                    rgb(26, 111, 95),
+                    rgb(22, 46, 83)
+                );
+                width: 70%;
+                height: 100%;
+                position: relative;
+                z-index: 1000;
+                border-radius: 0 0 0 160px;
+                .closebtn {
+                    position: absolute;
+                    top: 17px;
+                    right: 27px;
+                    color: #fff;
+                    font-size: 60px;
+                    font-weight: 200;
+                    text-decoration: none;
+                    &:hover {
+                        opacity: 0.7;
+                    }
+                }
+                ul {
+                    font-size: $h2 - 6px;
+                    padding-top: 55px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    width: 48vw;
+                    padding-left: 0vw;
+                    padding-bottom: 80px;
+                    li {
+                        text-align: right;
+                        list-style: none;
+                        margin: 12px 0px;
+                        &:nth-child(5) {
+                            padding-left: 0px;
+                        }
+                        a {
+                            text-decoration: none;
+                            color: #fff;
+                            font-weight: 300;
+                            letter-spacing: 3px;
+                            &:hover {
+                                color: yellow;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } //mobile end
 }
 </style>

@@ -57,6 +57,7 @@ export default {};
 @import '../../../scss/var.scss';
 @import '../../../scss/mixins.scss';
 @import '../../../scss/commons.scss';
+@import '../../../scss/rwd.scss';
 
 .i-section2 {
     width: 100vw;

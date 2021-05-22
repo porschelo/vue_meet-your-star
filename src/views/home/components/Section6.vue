@@ -58,6 +58,7 @@ export default {};
 <style lang="scss">
 @import '../../../scss/commons.scss';
 @import '../../../scss/mixins.scss';
+@import '../../../scss/rwd.scss';
 
 .i-section6 {
     position: relative;
