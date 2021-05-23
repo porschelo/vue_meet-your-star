@@ -209,7 +209,7 @@
 </template>
 <script>
 import myFooter from '@/components/myFooter';
-import Chart from 'chart.js';
+import Chart from 'chart.js/auto';
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 // import style (<= Swiper 5.x)
 import 'swiper/dist/css/swiper.css';
@@ -251,7 +251,7 @@ export default {
     methods: {
         getChart() {
             var ctx = document.getElementById('myChart1').getContext('2d');
-            var myChart = new Chart(ctx, {
+            new Chart(ctx, {
                 type: 'pie',
                 data: {
                     labels: [
