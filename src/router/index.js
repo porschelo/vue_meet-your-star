@@ -2,6 +2,10 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '@/views/home/Index.vue'; //component的自訂名稱
 import ProductDetail from '@/views/product_detail/Index.vue';
+import MemberCentre from '@/views/membercentre/Index.vue';
+import MemberOrderList from '@/views/memberorderlist/Index.vue';
+import MemberCollection from '@/views/membercollection/Index.vue';
+import ShoppingCart from '@/views/shoppingcart/Index.vue';
 
 
 // 動態載入（延遲）
@@ -22,6 +26,26 @@ const routes = [
         path: '/product_detail',
         name: 'ProductDetail',
         component: ProductDetail,
+    },
+    {
+        path: '/membercentre',
+        name: 'MemberCentre',
+        component: MemberCentre,
+    },
+    {
+        path: '/memberorderlist',
+        name: 'MemberOrderList',
+        component: MemberOrderList,
+    },
+    {
+        path: '/membercollection',
+        name: 'MemberCollection',
+        component: MemberCollection,
+    },
+    {
+        path: '/shoppingcart',
+        name: 'ShoppingCart',
+        component: ShoppingCart,
     },
 ];
 
