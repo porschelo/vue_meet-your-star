@@ -2,19 +2,19 @@
     <div id="app">
         <my-header></my-header>
         <router-view />
-        <my-footer></my-footer>
+        <!-- <my-footer></my-footer> -->
         <!-- router渲染的標籤 -->
     </div>
 </template>
 
 <script>
 import myHeader from './components/myHeader';
-import myFooter from './components/myFooter';
+// import myFooter from './components/myFooter';
 export default {
     name: 'App',
     components: {
         myHeader,
-        myFooter,
+        // myFooter,
     },
 };
 </script>

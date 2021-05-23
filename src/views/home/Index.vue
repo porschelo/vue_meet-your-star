@@ -11,6 +11,7 @@
         <section8></section8>
         <section9></section9>
         <toTopBtn></toTopBtn>
+        <my-footer></my-footer>
     </div>
 </template>
 
@@ -26,6 +27,7 @@ import Section7 from '@/views/home/components/Section7';
 import Section8 from '@/views/home/components/Section8';
 import Section9 from '@/views/home/components/Section9';
 import toTopBtn from '@/components/toTopBtn';
+import myFooter from '@/components/myFooter';
 
 export default {
     name: 'Home',
@@ -40,6 +42,7 @@ export default {
         Section8,
         Section9,
         toTopBtn,
+        myFooter,
     },
 };
 </script>
