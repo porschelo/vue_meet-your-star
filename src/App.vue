@@ -1,9 +1,8 @@
 <template>
     <div id="app">
-        
         <my-header></my-header>
         <router-view />
-        
+
         <!-- router渲染的標籤 -->
     </div>
 </template>
