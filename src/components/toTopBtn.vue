@@ -21,10 +21,11 @@ export default {
     },
     methods: {
         toTop() {
-            VueScrollTo.scrollTo('.home-wrapper', 1000, {
+            VueScrollTo.scrollTo('body', 1000, {
                 easing: 'ease-in',
             });
         },
+        //建立函式
         scrollTop() {
             let topHeight =
                 window.pageYOffset ||
@@ -40,6 +41,7 @@ export default {
             // 比較運算子的結果會是Boolean值
             //this.btnVisible = scrollTop > window.innerHeight;
         },
+        //建立監聽事件
         addEventListener() {
             window.addEventListener('scroll', this.scrollTop);
         },
@@ -48,6 +50,7 @@ export default {
         },
     },
     mounted() {
+        //在mounted呼叫監聽事件 執行函式
         this.addEventListener();
     },
     destroyed() {

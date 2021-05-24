@@ -8,6 +8,11 @@ import TestSort from '@/views/test_sort/Index.vue';
 import TestResult from '@/views/test_result/Index.vue';
 import TestQa from '@/views/test_qa/Index.vue';
 import Game from '@/views/game/Index.vue';
+import MemberCentre from '@/views/membercentre/Index.vue';
+import MemberOrderList from '@/views/memberorderlist/Index.vue';
+import MemberCollection from '@/views/membercollection/Index.vue';
+import ShoppingCart from '@/views/shoppingcart/Index.vue';
+
 
 // 動態載入（延遲）
 // route level code-splitting
@@ -57,6 +62,26 @@ const routes = [
         path: '/game',
         name: 'Game',
         component: Game,
+    },
+    {
+        path: '/membercentre',
+        name: 'MemberCentre',
+        component: MemberCentre,
+    },
+    {
+        path: '/memberorderlist',
+        name: 'MemberOrderList',
+        component: MemberOrderList,
+    },
+    {
+        path: '/membercollection',
+        name: 'MemberCollection',
+        component: MemberCollection,
+    },
+    {
+        path: '/shoppingcart',
+        name: 'ShoppingCart',
+        component: ShoppingCart,
     },
 ];
 
