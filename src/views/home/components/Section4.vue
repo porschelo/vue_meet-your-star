@@ -23,6 +23,7 @@
                     alt=""
                 />
             </a>
+            <!-- :style="`display:${showNum ===1 ? 'display':'none'}`" -->
             <!-- 方法一  style字串 -->
             <div
                 :style="`visibility:${showNum === 0 ? 'visible' : 'hidden'}`"
@@ -144,7 +145,7 @@ export default {
                 width: 100%;
             }
             &.earth {
-                visibility: visible;
+                // visibility: visible;
                 width: whForPC(1737, 850);
                 transform: translate(-47.7%, -52%) rotate(-20deg);
                 position: absolute;
@@ -153,7 +154,7 @@ export default {
             }
             &.capricorn {
                 position: relative;
-                visibility: visible;
+                // visibility: visible;
 
                 .planet-monst-capricorn {
                     filter: drop-shadow(13px 10px 7px rgba(0, 0, 0, 0.4));

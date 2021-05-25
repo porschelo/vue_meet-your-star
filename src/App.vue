@@ -1,9 +1,8 @@
 <template>
     <div id="app">
-        
         <my-header></my-header>
         <router-view />
-        
+
         <!-- router渲染的標籤 -->
     </div>
 </template>
@@ -22,6 +21,4 @@ export default {
 
 <style lang="scss">
 @import './scss/_reset.scss';
-#app {
-}
 </style>

@@ -65,8 +65,16 @@ export default {
         },
         isShow(num) {
             //回傳物件 key:value
-            return { isShow: this.showNum === num };
+            return {
+                isShow: this.showNum === num,
+            };
         },
+
+        // isShow(num){
+        //     return{
+        //         isShow : this.showNum === num
+        //     }
+        // }
     },
     computed: {},
 };
