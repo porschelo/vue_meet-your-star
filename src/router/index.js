@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/home/Index.vue'; //component的自訂名稱
-
+import Home from '@/views/home/Index.vue'; //component的自訂名稱
+import Starsign from '@/views/starsign/Index.vue';
+import Landing from '@/views/landing/Index.vue';
 // 動態載入（延遲）
 // route level code-splitting
 // this generates a separate chunk (about.[hash].js) for this route
@@ -15,6 +16,16 @@ const routes = [
         path: '/',
         name: 'Home',
         component: Home,
+    },
+    {
+        path: '/starsign',
+        name: 'Starsign',
+        component: Starsign,
+    },
+    {
+        path: '/landing',
+        name: 'Landing',
+        component: Landing,
     },
 ];
 
