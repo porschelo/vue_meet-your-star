@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <my-header></my-header>
+        <my-header v-if="$route.name !== 'Landing'"></my-header>
         <router-view />
         <!-- router渲染的標籤 -->
     </div>
