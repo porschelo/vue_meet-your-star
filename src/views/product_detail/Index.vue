@@ -3,9 +3,9 @@
         <!-- 標題 -->
         <div class="unstore_title">
             <div class="unstore_title-c">
-                <img src="images/store/uv_icone.png" alt="" />
+                <img src="/images/store/uv_icone.png" alt="" />
                 <h1>宇宙商城</h1>
-                <img src="images/store/uv_icone.png" alt="" />
+                <img src="/images/store/uv_icone.png" alt="" />
             </div>
             <div class="unstore_title-e">
                 <h4>— Universe Store —</h4>
@@ -29,33 +29,23 @@
                 <div class="pd-leftblock">
                     <div class="pd-img_block">
                         <img
-                            src="images/store/healthP-1.png"
-                            class="b -on"
-                            data-img="img1"
+                            src="/images/store/healthP-1.png"
+                            v-if= " showPro === 0 "
                         />
                         <img
-                            src="images/store/healthP-2.png"
-                            class="b"
-                            data-img="img2"
+                            src="/images/store/healthP-2.png"
+                            v-if= " showPro === 1 "
                         />
                         <img
-                            src="images/store/healthP-3.png"
-                            class="b"
-                            data-img="img3"
+                            src="/images/store/healthP-3.png"
+                            v-if= " showPro === 2 "
                         />
                     </div>
-
-                    <div class="pd-btn_block">
-                        <button type="button" data-target="img1" class="a">
-                            <img src="images/store/healthP-1.png" alt="" />
-                        </button>
-                        <button type="button" data-target="img2" class="a">
-                            <img src="images/store/healthP-2.png" alt="" />
-                        </button>
-                        <button type="button" data-target="img3" class="a">
-                            <img src="images/store/healthP-3.png" alt="" />
-                        </button>
-                    </div>
+                    <ul class="pd-btn_block">
+                        <li @click= "showPro = 0"><img src="/images/store/healthP-1.png" alt="" /></li>
+                        <li @click= "showPro = 1"><img src="/images/store/healthP-2.png" alt="" /></li>
+                        <li @click= "showPro = 2"><img src="/images/store/healthP-3.png" alt="" /></li>
+                    </ul>
                 </div>
 
                 <!-- 商品簡介 -->
@@ -63,7 +53,7 @@
                     <!-- 愛心收藏 -->
                     <div class="pd-love">
                         <h2>七星陣水晶原石能量陣</h2>
-                        <img src="images/store/loveicone.png" alt="" />
+                        <img src="/images/store/loveicone.png" alt="" />
                     </div>
 
                     <p>
@@ -108,7 +98,7 @@
                 <hr />
                 <div class="pd-member">
                     <div class="pd-photo">
-                        <img src="images/store/member_pc.jpg" alt="" />
+                        <img src="/images/store/member_pc.jpg" alt="" />
                     </div>
                     <div class="pd-name">
                         <p>applebirdcat</p>
@@ -139,7 +129,7 @@
                 <div class="pd_swiper" crs>
                     <div class="index_prbtn pd_prbtn">
                         <a href="">
-                            <img src="images/index/prbtn.png" alt="" />
+                            <img src="/images/index/prbtn.png" alt="" />
                         </a>
                     </div>
                     <div class="swiper-container mySwiper gap">
@@ -147,7 +137,7 @@
                             <swiper-slide class="swiper-slide">
                                 <div class="pd_product1">
                                     <img
-                                        src="images/store/maylike-1.jpg"
+                                        src="/images/store/maylike-1.jpg"
                                         alt=""
                                     />
                                     <h4>天然擴香健康石</h4>
@@ -157,7 +147,7 @@
                             <swiper-slide class="swiper-slide">
                                 <div class="pd_product2">
                                     <img
-                                        src="images/store/maylike-2.jpg"
+                                        src="/images/store/maylike-2.jpg"
                                         alt=""
                                     />
                                     <h4>冥王星晶石手鍊</h4>
@@ -167,7 +157,7 @@
                             <swiper-slide class="swiper-slide">
                                 <div class="pd_product3">
                                     <img
-                                        src="images/store/maylike-3.jpg"
+                                        src="/images/store/maylike-3.jpg"
                                         alt=""
                                     />
                                     <h4>德國花果茶與乾燥花盒</h4>
@@ -177,7 +167,7 @@
                             <swiper-slide class="swiper-slide">
                                 <div class="pd_product4">
                                     <img
-                                        src="images/store/maylike-4.jpg"
+                                        src="/images/store/maylike-4.jpg"
                                         alt=""
                                     />
                                 </div>
@@ -187,7 +177,7 @@
                             <swiper-slide class="swiper-slide">
                                 <div class="pd_product5">
                                     <img
-                                        src="images/store/maylike-5.jpg"
+                                        src="/images/store/maylike-5.jpg"
                                         alt=""
                                     />
                                 </div>
@@ -198,7 +188,7 @@
 
                     <div class="index_nextbtn pd_nextbtn">
                         <a href="">
-                            <img src="images/index/nxbtn.png" alt="" />
+                            <img src="/images/index/nxbtn.png" alt="" />
                         </a>
                     </div>
                 </div>
@@ -219,6 +209,7 @@ export default {
 
     data() {
         return {
+            showPro: 0,
             swiperOption: {
                 slidesPerView: 3,
                 spaceBetween: 40,
@@ -437,14 +428,7 @@ export default {
                     width: 100%;
                     padding: 0;
                 }
-                .pd-img_block {
-                    img {
-                        display: none;
-                    }
-                    img.-on {
-                        display: inline-block;
-                    }
-                }
+
             }
 
             .pd-img_block {
@@ -457,7 +441,7 @@ export default {
 
             .pd-btn_block {
                 display: flex;
-                button {
+                li {
                     width: calc((100% - 60px) / 3);
                     border-radius: 20px;
                     margin: 0 10px;
