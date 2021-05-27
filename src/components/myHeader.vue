@@ -3,17 +3,17 @@
         <header>
             <div class="navbar">
                 <div class="logo">
-                    <a href="index.html"
-                        ><img src="/images/header/logo.png" alt=""
-                    /></a>
+                    <router-link to="/" class="logo">
+                    <img src="/images/header/logo.png" alt=""/>
+                    </router-link>
                 </div>
 
                 <div class="nav-list">
                     <ul>
                         <li>
-                            <a class="cart"
-                                ><img src="/images/header/cart.png"
-                            /></a>
+                            <router-link to="/shoppingcart" class="cart">
+                            <img src="/images/header/cart.png"/>
+                            </router-link>
                         </li>
                         <li>
                             <a class="login"
@@ -42,11 +42,21 @@
                         >&times;</a
                     >
                     <ul>
-                        <li><a href="starsign.html">星座探索</a></li>
-                        <li><a href="appointment.html">大師預約</a></li>
-                        <li><a href="matchtest.html">心星揭秘</a></li>
-                        <li><a href="unstore.html">宇宙商城</a></li>
-                        <li><a href="game.html">星幣遊戲</a></li>
+                        <li>
+                            <router-link to="/starsign">星座探索</router-link>
+                        </li>
+                        <li>
+                            <router-link to="/appointment">預約談星</router-link>
+                        </li>
+                        <li>
+                            <router-link to="/matchandtest">心星揭秘</router-link>
+                        </li>
+                        <li>
+                            <router-link to="/unstore">宇宙商城</router-link>
+                        </li>
+                        <li>
+                            <router-link to="/game">星幣遊戲</router-link>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -237,7 +247,10 @@ header {
                         color: #fff;
                         font-weight: 300;
                         letter-spacing: 3px;
-                        &:hover {
+                        &.router-link-active{ //所在頁面
+                        color: yellow;
+                        }
+                        &:hover{
                             color: yellow;
                         }
                     }
