@@ -30,7 +30,7 @@
 
                 </div>
                 
-                <button class="tQuestion_next"><a href="test_result">NEXT</a></button>
+                <button class="tQuestion_next"><router-link to ="/test_result">NEXT</router-link></button>
             </div>
             
            
@@ -44,6 +44,15 @@
 <script>
 import myFooter from '@/components/myFooter';
 export default {
+    data(){
+        return {
+            // questions:[
+            //     {題目
+            //         title:''
+            //     }
+            // ]
+        }
+    },
     components: {
         myFooter,
     },

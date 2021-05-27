@@ -30,32 +30,22 @@
                     <div class="pd-img_block">
                         <img
                             src="images/store/healthP-1.png"
-                            class="b -on"
-                            data-img="img1"
+                            v-if= " showPro === 0 "
                         />
                         <img
                             src="images/store/healthP-2.png"
-                            class="b"
-                            data-img="img2"
+                            v-if= " showPro === 1 "
                         />
                         <img
                             src="images/store/healthP-3.png"
-                            class="b"
-                            data-img="img3"
+                            v-if= " showPro === 2 "
                         />
                     </div>
-
-                    <div class="pd-btn_block">
-                        <button type="button" data-target="img1" class="a">
-                            <img src="images/store/healthP-1.png" alt="" />
-                        </button>
-                        <button type="button" data-target="img2" class="a">
-                            <img src="images/store/healthP-2.png" alt="" />
-                        </button>
-                        <button type="button" data-target="img3" class="a">
-                            <img src="images/store/healthP-3.png" alt="" />
-                        </button>
-                    </div>
+                    <ul class="pd-btn_block">
+                        <li @click= "showPro = 0"><img src="images/store/healthP-1.png" alt="" /></li>
+                        <li @click= "showPro = 1"><img src="images/store/healthP-2.png" alt="" /></li>
+                        <li @click= "showPro = 2"><img src="images/store/healthP-3.png" alt="" /></li>
+                    </ul>
                 </div>
 
                 <!-- 商品簡介 -->
@@ -219,6 +209,7 @@ export default {
 
     data() {
         return {
+            showPro: 0,
             swiperOption: {
                 slidesPerView: 3,
                 spaceBetween: 40,
@@ -437,14 +428,7 @@ export default {
                     width: 100%;
                     padding: 0;
                 }
-                .pd-img_block {
-                    img {
-                        display: none;
-                    }
-                    img.-on {
-                        display: inline-block;
-                    }
-                }
+
             }
 
             .pd-img_block {
@@ -457,7 +441,7 @@ export default {
 
             .pd-btn_block {
                 display: flex;
-                button {
+                li {
                     width: calc((100% - 60px) / 3);
                     border-radius: 20px;
                     margin: 0 10px;

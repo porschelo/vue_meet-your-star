@@ -28,7 +28,7 @@
                 <div class="tSort_poster">
                     <img src="images/test/poster.png" alt="">
                 </div>
-                <button class="tSort_start"><a href="test_qa">START</a></button>
+                <button class="tSort_start"><router-link to ="/test_qa">START</router-link></button>
                
                 
             </div>
@@ -149,6 +149,10 @@ export default {
         li{
             display: flex;
             margin: 20px;
+            cursor: pointer;
+            &:hover{
+                opacity: .4;
+            }
             
             img{
                 width: 45px * .7;
