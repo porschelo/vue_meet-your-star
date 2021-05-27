@@ -8,29 +8,35 @@
 
             <div class="tQuestion_title">
                 <div class="tQuestion_title-c">
-                    <img src="images/store/uv_icone.png" alt="">
+                    <img src="/images/store/uv_icone.png" alt="">
                     <h1>心理測驗</h1>
-                    <img src="images/store/uv_icone.png" alt="">
+                    <img src="/images/store/uv_icone.png" alt="">
                 </div>
                 <div class="tQuestion_title-e">
                     <h4>— Personality Test —</h4>
                 </div>
             </div>
 
-            <div class="tQuestion_content">
-                <div class="tq_main">
-                    <p>1. 街角的便利店貼了一張懸賞一萬元的告示，你覺得那告示的內容是？</p>
+            <div class="tQuestion_content" v-if="showQa">
+                <div class="tq_main" v-for="question in questions" :key="question.title">
+                    <p>{{question.title}}</p>
                     <div class="tq_answer">
-                        <div><input type="radio" name="qa1" style="width: 18px; height: 18px; margin-right: 10px;">A.尋找寵物</div>
+                        <!-- <input v-for="choice in question.choices" :key=(choice,key)  v-model="question.value" type="radio" :value="choice.value" style="width: 18px; height: 18px; margin-right: 10px;"> {{question.choices[].content}} -->
+
+                        <p>{{question.value}}</p>
+
+                        <!-- <div><input type="radio" name="qa1" style="width: 18px; height: 18px; margin-right: 10px;">A.尋找寵物</div>
                         <div><input type="radio" name="qa1" style="width: 18px; height: 18px; margin-right: 10px;">B.尋人啟事</div>
                         <div><input type="radio" name="qa1" style="width: 18px; height: 18px; margin-right: 10px;">C.尋找失物</div>
-                        <div><input type="radio" name="qa1" style="width: 18px; height: 18px; margin-right: 10px;" >D.尋找車禍目擊證人</div>
+                        <div><input type="radio" name="qa1" style="width: 18px; height: 18px; margin-right: 10px;" >D.尋找車禍目擊證人</div> -->
                         
                     </div>
 
                 </div>
+
+                <button class="tQuestion_next" @click= "showQa()">NEXT</button>
                 
-                <button class="tQuestion_next"><router-link to ="/test_result">NEXT</router-link></button>
+                <!-- <button class="tQuestion_next"><router-link to ="test_result">NEXT</router-link></button> -->
             </div>
             
            
@@ -46,13 +52,44 @@ import myFooter from '@/components/myFooter';
 export default {
     data(){
         return {
-            // questions:[
-            //     {題目
-            //         title:''
-            //     }
-            // ]
+            is_page:true,
+            vars: null,
+            questions:[
+                {
+                    title:'1. 街角的便利店貼了一張懸賞一萬元的告示，你覺得那告示的內容是？',
+                    value: null,
+                    choices: [
+                        {
+                            content:'A.尋找寵物',
+                            value:'巨蟹座',
+                        },
+                        {
+                            content:'B.尋人啟事',
+                            value:'處女座',
+                        },
+                        {
+                            content:'C.尋找失物',
+                            value:'魔羯座',
+                        },
+                        {
+                            content:'D.尋找車禍目擊證人',
+                            value:'天蠍座',
+                        },
+                    ]
+                },
+                
+
+            ]
         }
     },
+
+    methods:{
+        showQa(){
+            alert(this.questions[0].choices[0].content);
+
+        },
+    },
+
     components: {
         myFooter,
     },

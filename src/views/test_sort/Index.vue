@@ -8,9 +8,9 @@
 
             <div class="tSort_title">
                 <div class="tSort_title-c">
-                    <img src="images/store/uv_icone.png" alt="">
+                    <img src="/images/store/uv_icone.png" alt="">
                     <h1>心理測驗</h1>
-                    <img src="images/store/uv_icone.png" alt="">
+                    <img src="/images/store/uv_icone.png" alt="">
                 </div>
                 <div class="tSort_title-e">
                     <h4>— Personality Test —</h4>
@@ -20,15 +20,17 @@
             <div class="tSort_content">
                 <div class="tSort_option">
                     <ul>
-                        <li><img src="images/test/starball.png" alt=""><h2>星座</h2></li>
-                        <li><img src="images/test/love.png" alt=""><h2>愛情</h2></li>
-                        <li><img src="images/test/bag.png" alt=""><h2>工作</h2></li>
+                        <li @click="showPoster = 0" :class="{highlight:showPoster == 0}"><img src="/images/test/starball.png" alt=""><h2>星座</h2></li>
+                        <li @click="showPoster = 1" :class="{highlight:showPoster == 1}"><img src="/images/test/love.png" alt=""><h2>愛情</h2></li>
+                        <li @click="showPoster = 2" :class="{highlight:showPoster == 2}"><img src="/images/test/bag.png" alt=""><h2>工作</h2></li>
                     </ul>
                 </div>
                 <div class="tSort_poster">
-                    <img src="images/test/poster.png" alt="">
+                    <img src="/images/test/poster1.png" alt="" v-if="showPoster == 0">
+                    <img src="/images/test/poster2.png" alt="" v-if="showPoster == 1">
+                    <img src="/images/test/poster3.png" alt="" v-if="showPoster == 2">
                 </div>
-                <button class="tSort_start"><router-link to ="/test_qa">START</router-link></button>
+                <button class="tSort_start"><router-link to ="test_qa">START</router-link></button>
                
                 
             </div>
@@ -44,8 +46,16 @@
 <script>
 import myFooter from '@/components/myFooter';
 export default {
+    data() {
+        return {
+            showPoster: 0,
+        };
+    },
     components: {
         myFooter,
+    },
+    methods: {
+        
     },
 };
 </script>
@@ -150,8 +160,9 @@ export default {
             display: flex;
             margin: 20px;
             cursor: pointer;
+            opacity: .5;
             &:hover{
-                opacity: .4;
+                opacity: 1;
             }
             
             img{
@@ -170,6 +181,10 @@ export default {
                 }
             }
         }
+        .highlight{
+                opacity: 1;
+        }
+       
     }
 
     .tSort_poster{
@@ -202,19 +217,19 @@ export default {
         background-color: #44796A;
     }
 
-    .overlaymenu{
-        .menulist{
-            .nav-menu{
-                ul{
-                    li:nth-child(3){
-                        a{
-                            color: yellow;
-                        }
-                    }
-                }
-            }
-        }
-    }
+    // .overlaymenu{
+    //     .menulist{
+    //         .nav-menu{
+    //             ul{
+    //                 li:nth-child(3){
+    //                     a{
+    //                         color: yellow;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 </style>

@@ -15,10 +15,10 @@
 
             <!-- 頁籤 -->
             <ul class="unstore_sort">
-                <li @click="showProduct = 'health'">健康</li>
-                <li @click="showProduct = 'love'">愛情</li>
-                <li @click="showProduct = 'work'">工作</li>
-                <li @click="showProduct = 'study'">學業</li>
+                <li @click="showProduct = 'health'" :class="{highlight:showProduct == 'health'}">健康</li>
+                <li @click="showProduct = 'love'" :class="{highlight:showProduct == 'love'}">愛情</li>
+                <li @click="showProduct = 'work'" :class="{highlight:showProduct == 'work'}">工作</li>
+                <li @click="showProduct = 'study'" :class="{highlight:showProduct == 'study'}">學業</li>
                 <li><router-link to ="/unstore/customized">客製化</router-link></li>
             </ul>
 
@@ -84,9 +84,8 @@
             </div>
 
             <div class="unstore_monster">
-                <a href="customized.html"
-                    ><img src="images/store/unstore-monster.png" alt=""
-                /></a>
+                <router-link to ="/unstore/customized"><img src="images/store/unstore-monster.png" alt=""
+                /></router-link>
             </div>
         </div>
         <my-footer></my-footer>
@@ -235,7 +234,14 @@ export default {
             text-decoration: none;
             color: white;
         }
+    } 
+    .unstore_sort{
+        .highlight {
+            background: #cccccc;
+        }
     }
+
+    
 
     /*===== 商品內容 =====*/
     .unstore_content {

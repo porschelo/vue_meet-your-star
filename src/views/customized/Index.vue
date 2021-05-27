@@ -374,13 +374,16 @@ export default {
         }
     }
 
-    @include bookmark('.customized_sort') {
-        a {
-            text-decoration: none;
-            color: #707070;
-            background-color: $colorPb;
-        }
-    }
+    @include bookmark('.customized_sort');
+
+    .customized_sort{
+       li{
+           a{
+               text-decoration: none;
+               color: #707070;
+           }
+       }
+   }
 
     .customized {
         &_content {
