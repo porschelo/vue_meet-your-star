@@ -6,6 +6,11 @@ import MemberCentre from '@/views/membercentre/Index.vue';
 import MemberOrderList from '@/views/memberorderlist/Index.vue';
 import MemberCollection from '@/views/membercollection/Index.vue';
 import ShoppingCart from '@/views/shoppingcart/Index.vue';
+import Appointment from '@/views/appointment/Index.vue';
+import ApDate from '@/views/apdate/Index.vue';
+import ApConfirm from '@/views/apconfirm/Index.vue';
+import ApFinish from '@/views/apfinish/Index.vue';
+import Order from '@/views/order/Index.vue';
 
 
 // 動態載入（延遲）
@@ -46,6 +51,31 @@ const routes = [
         path: '/shoppingcart',
         name: 'ShoppingCart',
         component: ShoppingCart,
+    },
+    {
+        path: '/appointment',
+        name: 'Appointment',
+        component: Appointment,
+    },
+    {
+        path: '/apdate',
+        name: 'ApDate',
+        component: ApDate,
+    },
+    {
+        path: '/apconfirm',
+        name: 'ApConfirm',
+        component: ApConfirm,
+    },
+    {
+        path: '/apfinish',
+        name: 'ApFinish',
+        component: ApFinish,
+    },
+    {
+        path: '/order',
+        name: 'Order',
+        component: Order,
     },
 ];
 
