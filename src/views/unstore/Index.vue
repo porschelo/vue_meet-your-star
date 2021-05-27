@@ -19,7 +19,7 @@
                 <li @click="showProduct = 'love'">愛情</li>
                 <li @click="showProduct = 'work'">工作</li>
                 <li @click="showProduct = 'study'">學業</li>
-                <li><router-link to ="/customized">客製化</router-link></li>
+                <li><router-link to ="/unstore/customized">客製化</router-link></li>
             </ul>
 
             <!-- 商品內容 -->
@@ -27,7 +27,7 @@
                 <div class="unstore_product">
                     <template  v-for="(product,key) in products">
                          <div class="item" v-if="showProduct === product.category"  :key="key">
-                        <router-link to="/product_detail">
+                        <router-link to="/unstore/product_detail">
                             <img :src="product.imgURL">
                             <p >{{product.imgURL}}</p>
                             <h4 >{{product.name}}</h4>
