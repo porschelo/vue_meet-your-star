@@ -5,7 +5,7 @@
         <div class="jl_wrapper1">
             <div class="jl_top_fix">
                 <div class="jl_section">
-                    <a href="/test_sort.html" class="jl_yellow">
+                    <router-link to="/matchandtest/test_sort" class="jl_yellow">
                         <img
                             src="/images/horoscope_page/m1-planet-yellow.png"
                             alt="黃色星球"
@@ -14,12 +14,12 @@
                             星座配對 <br />
                             - Horoscope Matching -
                         </h2>
-                    </a>
+                    </router-link>
                 </div>
             </div>
 
             <div class="jl_section2">
-                <router-link to="/match2" class="jl_red">
+                <router-link to="/matchandtest/match2" class="jl_red">
                     <img
                         src="/images/horoscope_page/m1-planet-red.png"
                         alt="紅色星球"

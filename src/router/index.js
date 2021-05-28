@@ -59,8 +59,8 @@ const routes = [
         component: Match1,
     },
             {
-        path: '/match3',
-        name: 'm3',
+        path: '/matchandtest/match3',
+        name: 'Match3',
         component: Match3,
     },
     {

@@ -113,8 +113,9 @@
             <button type="button" class="match_btn">MATCH</button>
 
             <div class="jl_temp">
-                <router-link to="/match1"> </router-link>
-                <a href="/match3.">暫時假連結到測試結果頁面</a>
+                <router-link to="/matchandtest/match3">
+                    暫時假連結到測試結果頁面
+                </router-link>
             </div>
 
             <div class="jl_footer">
