@@ -1,0 +1,179 @@
+<template>
+    <div>
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="ap_style.css"> -->
+    @@include('layout/scripts.html')
+
+
+</head>
+<body>
+    <div class="j_wrapper">
+      <!-- @@include('layout/header.html') -->
+
+        <!-- 中間背景 -->
+        <div class="j_middle">
+            <!-- 頁面標題 -->
+            <div class="j_title">
+
+                <div class="j_bigtitle">
+                  <img src="/images/appointment/earth2.png" alt="" id="earth">
+                  <h1>預約談星</h1>
+                  <img src="/images/appointment/earth2.png" alt="" id="earth">
+                </div>
+                   
+                <div class="j_subtitle">
+                    <h4>
+                    — Reservation With Experts — 
+                    </h4>
+                </div>
+                
+            </div>
+            <!-- 進度條 -->
+            <div class="j_progress">
+                
+                <li class="container__item">
+                    <div class="stepper">
+                      <input class="stepper__input" id="stepper-5-0" name="stepper-5" type="radio" checked="checked"/>
+                      <div class="stepper__step">
+                        <label class="stepper__button" for="stepper-5-0"></label>
+                        <p class="stepper__content">step 1:選擇老師</p>
+                      </div>
+                      <input class="stepper__input" id="stepper-5-1" name="stepper-5" type="radio"/>
+                      <div class="stepper__step">
+                        <label class="stepper__button" for="stepper-5-1"></label>
+                        <p class="stepper__content">step 2:選擇時段</p>
+                      </div>
+                      <input class="stepper__input" id="stepper-5-2" name="stepper-5" type="radio"/>
+                      <div class="stepper__step">
+                        <label class="stepper__button" for="stepper-5-2"></label>
+                        <p class="stepper__content">step 3: 確認結帳資料</p>
+                      </div>
+                      <input class="stepper__input" id="stepper-5-3" name="stepper-5" type="radio"/>
+                      <div class="stepper__step">
+                        <label class="stepper__button" for="stepper-5-3"></label>
+                        <p class="stepper__content">step 4: 預約完成</p>
+                      </div>
+                      
+                    </div>
+                  </li>
+            </div>
+
+            <!-- 儀錶板 -->
+            <div class="j_panel">
+              <!-- <div class=".j_panel_date_inner"> -->
+
+                <div class="j_panel_title">
+                    <h2>選擇時段</h2>
+                </div> 
+                
+                    <!-- <div class="j_panel_content">
+                    
+                    </div> -->
+                    <!-- table -->
+          
+                    
+                  <table class="rwd-table">
+                    <tbody>
+                      <tr>
+                        <th>時間</th>
+                        <th>5/9(日)</th>
+                        <th>5/10(一)</th>
+                        <th>5/11(二)</th>
+                        <th>5/12(三)</th>
+                        <th>5/13(四)</th>
+                        <th>5/14(五)</th>
+                        <th>5/15(六)</th>
+                      </tr>
+                      <tr>
+                        <td data-th="時間">早上</td>
+                        <td data-th="5/9(日)" class="able">可預約</td>
+                        <!-- <label for="" class="choose">已選取</label> -->
+                        <td data-th="5/10(一)"></td>
+                        <td data-th="5/11(二)"></td>
+                        <td data-th="5/12(三)" class="able">可預約</td>
+                        <td data-th="5/13(四)" class="able">可預約</td>
+                        <td data-th="5/14(五)"></td>
+                        <td data-th="5/15(六)" class="able">可預約</td>
+                      </tr>
+                      <tr>
+                      <td data-th="時間">中午</td>
+                        <td data-th="5/9(日)" class="able">可預約</td>
+                        <td data-th="5/10(一)"></td>
+                        <td data-th="5/11(二)" class="able">可預約</td>
+                        <td data-th="5/12(三)" class="able">可預約</td>
+                        <td data-th="5/13(四)"></td>
+                        <td data-th="5/14(五)"></td>
+                        <td data-th="5/15(六)" class="able">可預約</td>
+                      </tr>
+                      <tr>
+                        <td data-th="時間">晚上</td>
+                        <td data-th="5/9(日)" class="able">可預約</td>
+                        <td data-th="5/10(一)"></td>
+                        <td data-th="5/11(二)" class="able">可預約</td>
+                        <td data-th="5/12(三)"></td>
+                        <td data-th="5/13(四)"></td>
+                        <td data-th="5/14(五)" class="able">可預約</td>
+                        <td data-th="5/15(六)"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+
+
+                    <!-- button -->
+                        <form action="" class="j_btn">
+                            <button type="button" value="page" class="j_btn2" onclick="location.href='/appointment'">回上頁
+                            </button>
+                            <button type="button" value="page" class="j_btn2" onclick="location.href ='/apconfirm'">下一頁</button>
+
+                        </form>
+              <!-- </div>             -->
+            </div>
+            
+        </div>
+
+      <!-- @@include('layout/footer.html') -->
+        <myFooter></myFooter>
+    </div>
+</body>
+</html>
+    </div>
+</template>
+
+<script>
+import myFooter from '@/components/myFooter'
+
+export default {
+    
+    // el:".j_wrapper",
+    
+    components: {
+        myFooter,
+        
+    },
+
+    methods:{
+        // able:function(){
+            
+        //     alert('已預約');
+        // },
+    },
+}
+</script>
+
+<style lang="scss">
+    @import '@/scss/color.scss';
+    @import '@/scss/var.scss';
+    @import '@/scss/center.scss';
+    @import '@/scss/mixins.scss';
+    @import '@/scss/rwd.scss';
+    @import '@/scss/ap.scss';
+
+    
+</style>

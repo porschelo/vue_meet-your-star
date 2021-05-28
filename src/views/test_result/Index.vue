@@ -10,9 +10,9 @@
             <!-- 標題 -->
             <div class="tResult_title">
                 <div class="tResult_title-c">
-                    <img src="images/store/uv_icone.png" alt="">
+                    <img src="/images/store/uv_icone.png" alt="">
                     <h1>心理測驗結果</h1>
-                    <img src="images/store/uv_icone.png" alt="">
+                    <img src="/images/store/uv_icone.png" alt="">
                 </div>
                 <div class="tResult_title-e">
                     <h4>— Personality Test Result —</h4>
@@ -41,11 +41,11 @@
                             <h2>適合相處的星座</h2>
                             <div class="kind_Constellations">
                                 <div class="kc_one">
-                                    <img src="images/test/result-monster1.png" alt="">
+                                    <img src="/images/test/result-monster1.png" alt="">
                                     <h3>天蠍</h3>
                                 </div>
                                 <div class="kc_two">
-                                    <img src="images/test/result-monster2.png" alt="">
+                                    <img src="/images/test/result-monster2.png" alt="">
                                     <h3>處女</h3>
                                 </div>
                             </div>    
@@ -56,11 +56,11 @@
                             <h2>需要保持距離的星座</h2>
                             <div class="distance_Constellations">
                                 <div class="dc_one">
-                                    <img src="images/test/result-monster3.png" alt="">
+                                    <img src="/images/test/result-monster3.png" alt="">
                                     <h3>天蠍</h3>
                                 </div>
                                 <div class="dc_two">
-                                    <img src="images/test/result-monster4.png" alt="">
+                                    <img src="/images/test/result-monster4.png" alt="">
                                     <h3>處女</h3>
                                 </div>
                             </div>    
