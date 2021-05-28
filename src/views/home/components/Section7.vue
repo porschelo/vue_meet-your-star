@@ -1,23 +1,27 @@
 <template>
     <div class="i-section7">
         <div class="i-section7-fire">
-            <a class="icon_Aries" href="">
+            <a @click="changePlanet($event, 1)" class="icon_Aries" href="">
                 <img src="/images/index/planet/火象/Aries_icon.svg" alt="" />
             </a>
-            <a class="icon_Leo" href="">
+            <a @click="changePlanet($event, 2)" class="icon_Leo" href="">
                 <img src="/images/index/planet/火象/Leo_icon.svg" alt="" />
             </a>
-            <a class="icon_Sagittarius" href="">
+            <a
+                @click="changePlanet($event, 3)"
+                class="icon_Sagittarius"
+                href=""
+            >
                 <img
                     src="/images/index/planet/火象/Sagittarius_icon.svg"
                     alt=""
                 />
             </a>
 
-            <div class="planet fire">
+            <div :class="isShow(0)" class="planet fire">
                 <img src="/images/index/planet/火象/火象.svg" alt="" />
             </div>
-            <div class="planet Aries">
+            <div :class="isShow(1)" class="planet Aries">
                 <img src="/images/index/planet/火象/planet_Aries.svg" alt="" />
                 <a href="">
                     <img
@@ -27,7 +31,7 @@
                     />
                 </a>
             </div>
-            <div class="planet Leo">
+            <div :class="isShow(2)" class="planet Leo">
                 <img src="/images/index/planet/火象/planet_Leo.svg" alt="" />
                 <a href="">
                     <img
@@ -37,7 +41,7 @@
                     />
                 </a>
             </div>
-            <div class="planet Sagittarius">
+            <div :class="isShow(3)" class="planet Sagittarius">
                 <img
                     src="/images/index/planet/火象/planet_Sagittarius.svg"
                     alt=""
@@ -54,18 +58,34 @@
     </div>
 </template>
 <script>
-export default {};
+export default {
+    data() {
+        return { showNum: 0 };
+    },
+    methods: {
+        changePlanet(e, num) {
+            e.preventDefault();
+            this.showNum = num;
+        },
+        isShow(num) {
+            return { isShow: this.showNum === num };
+        },
+    },
+    computed: {},
+    mounted() {},
+};
 </script>
 
 <style lang="scss">
 @import '../../../scss/commons.scss';
 @import '../../../scss/mixins.scss';
+@import '../../../scss/rwd.scss';
 
 .i-section7 {
     position: relative;
     text-align: left;
-    padding: 300px 0 150px;
-    margin-bottom: 250px;
+    padding: 300px 0 0px;
+    // margin-bottom: 250px;
 
     .i-section7-fire {
         display: inline-block;
@@ -94,7 +114,7 @@ export default {};
         .planet {
             width: 100%;
             position: relative;
-            position: relative;
+            visibility: hidden;
             img {
                 width: 100%;
             }
@@ -142,6 +162,9 @@ export default {};
                     right: 32%;
                 }
             }
+            &.isShow {
+                visibility: visible;
+            }
         }
     }
 }
@@ -179,7 +202,7 @@ export default {};
             .icon_Aries {
                 width: wh(250);
                 margin-top: wh(-130);
-                right: wh(130);
+                left: wh(130);
             }
             .icon_Leo {
                 width: wh(250);
@@ -189,7 +212,7 @@ export default {};
             .icon_Sagittarius {
                 width: wh(250);
                 margin-top: wh(-30);
-                right: wh(290);
+                left: wh(290);
             }
             .planet {
                 &.fire {

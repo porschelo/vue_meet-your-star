@@ -1,49 +1,49 @@
 //置中
-@mixin center {
-    margin: 0 auto;
-}
+// @mixin center {
+//     margin: 0 auto;
+// }
 
-//頁碼
-@mixin pagination {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    font-size: $p2;
-    color: white;
-    li {
-        padding-left: 10px;
-    }
-    .-on {
-        color: #4eacf2;
-    }
-}
+// //頁碼
+// @mixin pagination {
+//     display: flex;
+//     text-align: center;
+//     justify-content: center;
+//     font-size: $p2;
+//     color: white;
+//     li {
+//         padding-left: 10px;
+//     }
+//     .-on {
+//         color: #4eacf2;
+//     }
+// }
 
-@mixin rwd1260 {
-    @media (max-width: 1260px) {
-        @content;
-    }
-}
+// @mixin rwd1260 {
+//     @media (max-width: 1260px) {
+//         @content;
+//     }
+// }
 
-@mixin index-md {
-    @media (max-width: 992px) {
-        @content;
-    }
-}
-@mixin index-bigPad {
-    @media (max-width: 860px) {
-        @content;
-    }
-}
-@mixin index-pad {
-    @media (max-width: 768px) {
-        @content;
-    }
-}
-@mixin index-mobile {
-    @media (max-width: 640px) {
-        @content;
-    }
-}
+// @mixin index-md {
+//     @media (max-width: 992px) {
+//         @content;
+//     }
+// }
+// @mixin index-bigPad {
+//     @media (max-width: 860px) {
+//         @content;
+//     }
+// }
+// @mixin index-pad {
+//     @media (max-width: 768px) {
+//         @content;
+//     }
+// }
+// @mixin index-mobile {
+//     @media (max-width: 640px) {
+//         @content;
+//     }
+// }
 
 // @mixin btn{
 //     font-size: $h2;
@@ -58,3 +58,8 @@
 
 //         }
 //     }
+
+@import './button';
+// @import './pagination';
+// @import './rwd';
+// @import './center';

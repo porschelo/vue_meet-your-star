@@ -1,26 +1,23 @@
 <template>
     <div id="app">
-        <my-header></my-header>
+        <my-header v-if="$route.name !== 'Landing'"></my-header>
         <router-view />
-        <my-footer></my-footer>
         <!-- router渲染的標籤 -->
     </div>
 </template>
 
 <script>
 import myHeader from './components/myHeader';
-import myFooter from './components/myFooter';
+// import myFooter from './components/myFooter';
 export default {
     name: 'App',
     components: {
         myHeader,
-        myFooter,
+        // myFooter,
     },
 };
 </script>
 
 <style lang="scss">
 @import './scss/_reset.scss';
-#app {
-}
 </style>

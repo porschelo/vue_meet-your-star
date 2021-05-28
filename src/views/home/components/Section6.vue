@@ -1,20 +1,20 @@
 <template>
     <div class="i-section6">
         <div class="i-section6-water">
-            <a class="icon_Cancer" href="">
+            <a @click="changePlanet($event, 1)" class="icon_Cancer" href="">
                 <img src="/images/index/planet/水象/cancer_icon.svg" alt="" />
             </a>
-            <a class="icon_Scorpio" href="">
+            <a @click="changePlanet($event, 2)" class="icon_Scorpio" href="">
                 <img src="/images/index/planet/水象/scorpio_icon.svg" alt="" />
             </a>
-            <a class="icon_Pisces" href="">
+            <a @click="changePlanet($event, 3)" class="icon_Pisces" href="">
                 <img src="/images/index/planet/水象/pisces_icon.svg" alt="" />
             </a>
 
-            <div class="planet water">
+            <div :class="isShow(0)" class="planet water">
                 <img src="/images/index/planet/水象/水象.svg" alt="" />
             </div>
-            <div class="planet Cancer">
+            <div :class="isShow(1)" class="planet Cancer">
                 <img src="/images/index/planet/水象/planet_Cancer.svg" alt="" />
                 <a href="">
                     <img
@@ -24,7 +24,7 @@
                     />
                 </a>
             </div>
-            <div class="planet Scorpio">
+            <div :class="isShow(2)" class="planet Scorpio">
                 <img
                     src="/images/index/planet/水象/planet_Scorpio.svg"
                     alt=""
@@ -37,7 +37,7 @@
                     />
                 </a>
             </div>
-            <div class="planet Pisces">
+            <div :class="isShow(3)" class="planet Pisces">
                 <img src="/images/index/planet/水象/planet_Pisces.svg" alt="" />
                 <a href="">
                     <img
@@ -52,12 +52,38 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            showNum: 0,
+        };
+    },
+    methods: {
+        changePlanet(e, num) {
+            e.preventDefault();
+            this.showNum = num;
+        },
+        isShow(num) {
+            //回傳物件 key:value
+            return {
+                isShow: this.showNum === num,
+            };
+        },
+
+        // isShow(num){
+        //     return{
+        //         isShow : this.showNum === num
+        //     }
+        // }
+    },
+    computed: {},
+};
 </script>
 
 <style lang="scss">
 @import '../../../scss/commons.scss';
 @import '../../../scss/mixins.scss';
+@import '../../../scss/rwd.scss';
 
 .i-section6 {
     position: relative;
@@ -100,7 +126,6 @@ export default {};
                 width: 100%;
             }
             &.water {
-                visibility: visible;
                 width: whForPC(1300, 850);
                 transform: translate(-48.2%, -46.9%) rotate(-35deg);
                 position: absolute;
@@ -109,8 +134,6 @@ export default {};
             }
             &.Cancer {
                 position: relative;
-                visibility: visible;
-
                 .planet-monst-Cancer {
                     filter: drop-shadow(13px 10px 7px rgba(0, 0, 0, 0.4));
                     width: whForPC(230, 850);
@@ -145,6 +168,9 @@ export default {};
                     top: 0;
                     margin-top: 30%;
                 }
+            }
+            &.isShow {
+                visibility: visible;
             }
         }
     }

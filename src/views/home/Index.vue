@@ -10,7 +10,8 @@
         <section7></section7>
         <section8></section8>
         <section9></section9>
-        <back-btn></back-btn>
+        <toTopBtn></toTopBtn>
+        <my-footer></my-footer>
     </div>
 </template>
 
@@ -25,7 +26,9 @@ import Section6 from '@/views/home/components/Section6';
 import Section7 from '@/views/home/components/Section7';
 import Section8 from '@/views/home/components/Section8';
 import Section9 from '@/views/home/components/Section9';
-import BackBtn from '@/components/backBtn.vue';
+import toTopBtn from '@/components/toTopBtn';
+import myFooter from '@/components/myFooter';
+
 export default {
     name: 'Home',
     components: {
@@ -38,8 +41,10 @@ export default {
         Section7,
         Section8,
         Section9,
-        BackBtn,
+        toTopBtn,
+        myFooter,
     },
+    mounted() {},
 };
 </script>
 <style lang="scss">
