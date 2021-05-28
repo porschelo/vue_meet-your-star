@@ -4,15 +4,16 @@
             <div class="navbar">
                 <div class="logo">
                     <router-link to="/" class="logo">
-                    <img src="/images/header/logo.png" alt=""/>
+                        <img src="/images/header/logo.png" alt="" />
                     </router-link>
+                    <h1 style="color: #fff">{{ $store.state.carts }}</h1>
                 </div>
 
                 <div class="nav-list">
                     <ul>
                         <li>
                             <router-link to="/shoppingcart" class="cart">
-                            <img src="/images/header/cart.png"/>
+                                <img src="/images/header/cart.png" />
                             </router-link>
                         </li>
                         <li>
@@ -46,10 +47,14 @@
                             <router-link to="/starsign">星座探索</router-link>
                         </li>
                         <li>
-                            <router-link to="/appointment">預約談星</router-link>
+                            <router-link to="/appointment"
+                                >預約談星</router-link
+                            >
                         </li>
                         <li>
-                            <router-link to="/matchandtest">心星揭秘</router-link>
+                            <router-link to="/matchandtest"
+                                >心星揭秘</router-link
+                            >
                         </li>
                         <li>
                             <router-link to="/unstore">宇宙商城</router-link>
@@ -247,10 +252,11 @@ header {
                         color: #fff;
                         font-weight: 300;
                         letter-spacing: 3px;
-                        &.router-link-active{ //所在頁面
-                        color: yellow;
+                        &.router-link-active {
+                            //所在頁面
+                            color: yellow;
                         }
-                        &:hover{
+                        &:hover {
                             color: yellow;
                         }
                     }

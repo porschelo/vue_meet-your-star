@@ -69,9 +69,9 @@
                     <div class="pd-price">
                         <span>{{ price }}</span
                         >元
-                        <select v-model="n" @change="changNum">
+                        <select v-model="count">
                             <option disabled>-- 請選擇數量 --</option>
-                            <option v-for="n in 10" :key="n">
+                            <option v-for="n in 10" :value="n" :key="n">
                                 {{ n }}
                             </option>
                         </select>
@@ -241,7 +241,7 @@ export default {
                 },
             },
             price: 500,
-            n: 1,
+            count: 1,
             // chooseNum: 1,
         };
     },
@@ -311,21 +311,16 @@ export default {
                 },
             });
         },
-        changNum() {
-            this.price * this.n;
-            return this.n;
-        },
     },
 
     mounted() {
         this.getChart();
     },
-    // computed: {
-    //     changNum() {
-    //         this.price * this.n;
-    //         return this.n;
-    //     },
-    // },
+    computed: {
+        currentPrice() {
+            return this.price * this.count;
+        },
+    },
 };
 </script>
 <style lang="scss">

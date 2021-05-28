@@ -44,6 +44,7 @@ export default {
         toTopBtn,
         myFooter,
     },
+    mounted() {},
 };
 </script>
 <style lang="scss">
