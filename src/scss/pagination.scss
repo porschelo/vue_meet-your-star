@@ -36,6 +36,7 @@
             text-align: center;
             line-height: 2;
             border-radius: 20px 20px 0 0;
+            cursor: pointer;
 
             @include rwd(pad) {
                 font-size: 20px;

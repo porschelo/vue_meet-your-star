@@ -1,0 +1,213 @@
+<template>
+    <div>
+        <!-- Wrapper Start -->
+
+        <div class="jl_wrapper1">
+            <div class="jl_top_fix">
+                <div class="jl_section">
+                    <a href="/test_sort.html" class="jl_yellow">
+                        <img
+                            src="/images/horoscope_page/m1-planet-yellow.png"
+                            alt=""
+                        />
+                        <h2>
+                            星座配對 <br />
+                            - Horoscope Matching -
+                        </h2>
+                    </a>
+                </div>
+            </div>
+
+            <div class="jl_section2">
+                <a href="/match2.html" class="jl_red">
+                    <img
+                        src="/images/horoscope_page/m1-planet-red.png"
+                        alt=""
+                    />
+                    <h2>
+                        星座配對 <br />
+                        - Horoscope Matching -
+                    </h2>
+                </a>
+            </div>
+
+            <div class="jl-footer">
+                <myFooter></myFooter>
+            </div>
+        </div>
+        <!-- Wrapper end -->
+    </div>
+</template>
+
+<script>
+import myFooter from '@/components/myFooter';
+
+export default {
+    components: {
+        myFooter,
+    },
+};
+</script>
+
+<style lang="scss">
+@import '@/scss/color.scss';
+@import '@/scss/var.scss';
+@import '@/scss/mixins.scss';
+@import '@/scss/rwd.scss';
+.jl_wrapper1 {
+    background-image: url(/images/horoscope_page/match1_bg@2x.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    // width:100%;
+
+    color: #d6e0f7;
+    text-decoration: none;
+
+    .jl_top_fix {
+        overflow: hidden;
+    }
+
+    .jl_section {
+        margin-top: 10%;
+        margin-left: 10%;
+        position: relative;
+        // border: 5px solid yellow ;
+        width: 30%;
+        @include rwd(pad) {
+            // 1199px
+            margin-top: 20%;
+        }
+        @include rwd(mobile) {
+            // 768px
+            margin-top: 35%;
+        }
+
+        img {
+            //this is the yellow planet
+            // border: 5px solid green;
+            width: 100%;
+        }
+
+        h2 {
+            //yellow planet text
+            position: absolute;
+            color: #d6e0f7;
+            font-size: $h2;
+            text-align: center;
+            text-decoration: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            // border: 5px solid red;
+            width: 100%;
+
+            @include rwd(pad) {
+                // 1199px
+                font-size: $p1;
+            }
+
+            @include rwd(pad2) {
+                // 1100px
+                font-size: $p2;
+            }
+
+            @include rwd(mobile) {
+                // 768px
+                font-size: $f;
+            }
+        }
+    } //jl_section
+
+    .jl_yellow {
+        display: block;
+        position: relative;
+        margin-right: auto;
+    } //jl_yellow end
+
+    // red planet start
+
+    .jl_section2 {
+        // border: 5px solid orange;
+        position: relative;
+        margin-left: 50%;
+        width: 35%;
+
+        .jl_red {
+            display: block;
+            position: relative;
+            margin-right: 4vw;
+            margin-left: auto;
+            // border: 3px solid green;
+            width: 100%;
+            overflow: hidden;
+
+            img {
+                // border:2px solid pink;
+
+                width: 100%;
+
+                @include rwd(pad) {
+                    // 1199px
+                    // width:580px *0.7;
+                }
+
+                @include rwd(mobile) {
+                    // 768px
+                    // width:580px *0.4;
+                }
+            }
+
+            h2 {
+                //red planet text
+                position: absolute;
+                color: #d6e0f7;
+                font-size: $h2;
+                text-align: center;
+                width: 100%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                // border: 3px solid yellow;
+
+                @include rwd(pad) {
+                    // 1199px
+                    font-size: $p1;
+                }
+
+                @include rwd(pad2) {
+                    // 1100px
+                    font-size: $p2;
+                }
+
+                @include rwd(mobile) {
+                    // 768px
+                    font-size: $f;
+                }
+            }
+        }
+    }
+
+    .jl-footer {
+        width: 100%;
+        height: 200px;
+        background-color: #44796a;
+    }
+
+    //nav-list 所在頁面樣式
+    .overlaymenu {
+        .menulist {
+            .nav-menu {
+                ul {
+                    li:nth-child(3) {
+                        a {
+                            color: yellow;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // end of jl_wrapper1
+}
+</style>

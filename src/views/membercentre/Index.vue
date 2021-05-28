@@ -1,0 +1,464 @@
+<template>
+    <div>
+        
+        <!-- STAR -->
+        <div class="wrapper">
+        
+        <!-- Title -->
+        <div class="MC_title">
+            <div class="MC_title-c">
+                <img src="/images/membercentre/earth.png" alt="">
+                <h1>會員中心</h1>
+                <img src="/images/membercentre/earth.png" alt="">
+            </div>
+
+            <div class="MC_title-e">
+                <h4>一 Member Centre 一</h4>
+            </div>
+        </div>
+        <!-- Title END-->
+        
+
+        <div class="mid_block">
+            <div class="tab">
+                <!-- <a href="./membercentre.html" class="tab_btn">個人資料</a>
+                <a href="./memberorderlist.html" class="tab_btn">訂單資料</a>
+                <a href="./membercollection.html" class="tab_btn">我的收藏</a> -->
+            </div>
+            <div class="mid">
+                <div class="mid_top">
+                
+                    <div class="left">
+                        <img src="/images/membercentre/fakedata.png" alt="">
+                        <div class="name">
+                            <h4>水瓶座</h4>
+                        </div>
+                    </div>
+
+                    <div class="right">
+                        <div class="right__main">
+                            <div class="info">
+                                <div class="info_1">
+                                    <div class="info_Name">
+                                        <h4>姓名</h4>
+                                        <h4>王曉明</h4>
+                                    </div>
+                                    <div class="info_Bdate">
+                                        <h4>生日</h4>
+                                        <h4>1991/01/23</h4>
+                                    </div>
+                                </div>
+                                <div class="info_2">
+                                    <div class="info_Sex">
+                                        <h4>性別</h4>
+                                        <h4>男</h4>
+                                    </div>
+                                    <div class="info_Phone">
+                                        <h4>電話</h4>
+                                        <h4>0987-654-311</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right__bottom">
+                            <h4>累積星幣 : 999</h4>
+                            <img src="/images/membercentre/star_coin.png" alt="">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom" @click="editData">
+                    <button class="change_data">修改資料</button>
+                </div>
+            </div>
+               
+        </div>
+        <myFooter></myFooter> 
+        <!--wrapper END  -->
+    </div>
+
+    
+
+    </div>
+</template>
+
+
+<script>
+import myFooter from '@/components/myFooter'
+
+export default {
+
+methods:{
+        editData(){
+
+        }
+},
+
+   components: {
+        myFooter,
+        
+    },
+}
+</script>
+
+<style lang="scss">
+@import '@/scss/color.scss';
+@import '@/scss/var.scss';
+@import '@/scss/center.scss';
+@import '@/scss/mixins.scss';
+@import '@/scss/rwd.scss';
+
+
+
+
+//scss
+
+$font_size:(H1:52*.7px,
+    H2:40*.7px,
+    H3:35*.7px,
+    H4:30*.7px,
+    p:20*.7px);
+
+$color:(white:#fff,
+    gray:#CACACA,
+    pink:#FFC2CF,
+    lightblue:#D6E0F7,
+    font_color:#777777,
+);
+
+
+$border :1px solid;
+
+.wrapper {
+
+    @include rwd("mobile") {
+        h1 {
+            font-size: $h1 - 8px !important;
+        }
+
+        h2 {
+            font-size: $h2 - 6px !important;
+        }
+
+        h3 {
+            font-size: $h3 - 6px !important;
+        }
+
+        h4 {
+            font-size: $p1 - 6px !important;
+        }
+    }
+
+    * {
+        box-sizing: border-box;
+
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(/images/membercentre/member-bg2x.png);
+    background-size: cover;
+
+
+    // Title star
+    .MC_title {
+
+        color: $colorT;
+        padding: (80px + 240px) * .7 0 0;
+
+        margin-bottom: 280px*.7;
+
+        &-c {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 63px * .7;
+                height: 43px * .7;
+                margin-bottom: 5px;
+            }
+        }
+
+        h1 {
+            font-size: $h1;
+            padding: 5px 20px 10px;
+
+            // @include rwd("mobile"){
+            //     font-size: $h1 - 8px;
+            // }
+        }
+
+        &-e {
+            text-align: center;
+            font-size: $p1;
+        }
+    }
+
+    // Title END
+
+    // memberinfo star
+
+    .mid_block {
+        // border: 1px solid red;
+        max-width: 1300*.7px;
+        width: 100%;
+
+
+
+
+
+        .tab {
+            display: flex;
+            justify-content: space-evenly;
+
+
+
+            a {
+
+                font-size: $h3;
+                background-color: map-get($color, gray);
+                color: map-get($color, font_color);
+                max-width: 265*.7px;
+                max-height: 75*.7px;
+                width: 100%;
+                border-radius: 20*.7px 20*.7px 0 0;
+                line-height: 75*.7px;
+                text-align: center;
+                cursor: pointer;
+                // margin-left: 37*.7px;
+                text-decoration: none;
+
+                @include rwd("mobile") {
+                    width: 25%;
+                    font-size: $h3 - 6px
+                }
+
+                &:nth-of-type(1) {
+                    background-color: map-get($color, white);
+                }
+
+            }
+        }
+
+        .mid {
+            border: 3px solid white;
+            margin: 0 5%;
+
+        }
+
+        .mid_top {
+            // border: 1px solid green;
+            display: flex;
+            flex-wrap: wrap;
+
+            .left {
+                // border: 1px solid orange;
+                margin: 8%;
+
+                @include rwd("mobile") {
+                    width: 100%;
+                    margin: 3%;
+                }
+
+                img {
+                    width: 330*.7px;
+                    height: 310*.7px;
+                    display: block;
+                    margin: 0 auto;
+                    // margin-bottom: 16*.7px;
+                    margin-bottom: 10%;
+                }
+
+                h4 {
+                    font-size: $p1;
+                    color: map-get($color, pink);
+                    text-align: center;
+
+
+                }
+            }
+
+            .right {
+                flex-grow: 2;
+                // border: 1px solid purple;
+                margin: 8% 2%;
+
+
+
+                h4 {
+                    font-size: map-get($font_size, H4);
+                    color: map-get($color, white);
+
+                    &:nth-of-type(2n+1) {
+                        color: #DEDEDE
+                    }
+
+
+                }
+
+                .info {
+                    .info_1 {
+                        // border: 3px solid red;
+                        display: flex;
+                        flex-wrap: wrap;
+                        margin-bottom: 15%;
+
+                        @include rwd("mobile") {
+                            margin-bottom: 5%;
+                        }
+
+
+                        .info_Name {
+                            width: 40%;
+
+                            @include rwd("mobile") {
+                                width: 100%;
+
+                                margin-bottom: 5%;
+                                text-align: center;
+                            }
+
+                            h4 {
+                                margin-bottom: 5%;
+
+                                @include rwd("mobile") {
+                                    margin-bottom: 2%;
+                                }
+                            }
+
+
+
+
+
+
+                        }
+
+                        .info_Bdate {
+                            width: 60%;
+
+                            @include rwd("mobile") {
+                                width: 100%;
+                                text-align: center;
+                            }
+
+                            h4 {
+                                margin-bottom: 2%; //數字國字高度不一樣所以%數不同
+                            }
+
+
+
+                        }
+                    }
+
+                    .info_2 {
+                        // border: 3px solid red;
+                        display: flex;
+                        flex-wrap: wrap;
+                        margin-bottom: 20%;
+
+                        @include rwd("mobile") {
+
+                            margin-bottom: 10%;
+                            // border: 1px solid black;
+                        }
+
+
+
+
+                        .info_Sex {
+                            width: 40%;
+
+                            @include rwd("mobile") {
+                                width: 100%;
+                                text-align: center;
+                                margin-bottom: 5%;
+                                // border: 1px solid black;
+                            }
+
+                            h4 {
+                                margin-bottom: 5%;
+
+                                @include rwd("mobile") {
+                                    margin-bottom: 2%;
+                                }
+                            }
+
+
+                        }
+
+                        .info_Phone {
+                            width: 60%;
+
+                            h4 {
+                                margin-bottom: 2%;
+                            }
+
+                            @include rwd("mobile") {
+                                width: 100%;
+                                text-align: center;
+                            }
+
+                        }
+                    }
+                }
+
+                .right__bottom {
+                    display: flex;
+
+
+                    @include rwd("mobile") {
+                        justify-content: center;
+                        // border: 1px solid red;
+                    }
+
+                    img {
+                        width: 5%;
+                        margin: 0 2%;
+                    }
+                }
+            }
+
+
+        }
+
+        .bottom {
+            // border: 4px solid purple;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5%;
+
+            @include rwd("mobile") {
+                margin-bottom: 10%;
+            }
+
+            @include btn-module('.change_data', 280, 100) {
+                color: white;
+
+                @include rwd("mobile") {
+                    font-size: $h3 - 6px;
+                    width: 170 * 0.7px;
+                    height: 80 * 0.7px;
+                }
+            }
+
+
+        }
+    }
+
+    // memberinfo END
+    // wrapper END
+}
+
+
+
+// scss end
+
+</style>
