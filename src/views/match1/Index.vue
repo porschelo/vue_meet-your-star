@@ -5,30 +5,30 @@
         <div class="jl_wrapper1">
             <div class="jl_top_fix">
                 <div class="jl_section">
-                    <a href="/test_sort.html" class="jl_yellow">
+                    <router-link to="/matchandtest/test_sort" class="jl_yellow">
                         <img
                             src="/images/horoscope_page/m1-planet-yellow.png"
-                            alt=""
+                            alt="黃色星球"
                         />
                         <h2>
-                            星座配對 <br />
-                            - Horoscope Matching -
+                            心理測驗 <br />
+                            — Personality Test —
                         </h2>
-                    </a>
+                    </router-link>
                 </div>
             </div>
 
             <div class="jl_section2">
-                <a href="/match2.html" class="jl_red">
+                <router-link to="/matchandtest/match2" class="jl_red">
                     <img
                         src="/images/horoscope_page/m1-planet-red.png"
-                        alt=""
+                        alt="紅色星球"
                     />
                     <h2>
                         星座配對 <br />
                         - Horoscope Matching -
                     </h2>
-                </a>
+                </router-link>
             </div>
 
             <div class="jl-footer">
@@ -54,6 +54,7 @@ export default {
 @import '@/scss/var.scss';
 @import '@/scss/mixins.scss';
 @import '@/scss/rwd.scss';
+
 .jl_wrapper1 {
     background-image: url(/images/horoscope_page/match1_bg@2x.png);
     background-repeat: no-repeat;
@@ -194,19 +195,19 @@ export default {
     }
 
     //nav-list 所在頁面樣式
-    .overlaymenu {
-        .menulist {
-            .nav-menu {
-                ul {
-                    li:nth-child(3) {
-                        a {
-                            color: yellow;
-                        }
-                    }
-                }
-            }
-        }
-    }
+    // .overlaymenu {
+    //     .menulist {
+    //         .nav-menu {
+    //             ul {
+    //                 li:nth-child(3) {
+    //                     a {
+    //                         color: yellow;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
     // end of jl_wrapper1
 }
