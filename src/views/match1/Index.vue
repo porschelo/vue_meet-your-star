@@ -11,8 +11,8 @@
                             alt="黃色星球"
                         />
                         <h2>
-                            星座配對 <br />
-                            - Horoscope Matching -
+                            心理測驗 <br />
+                            — Personality Test —
                         </h2>
                     </router-link>
                 </div>
