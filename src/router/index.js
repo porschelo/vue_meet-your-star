@@ -3,7 +3,8 @@ import VueRouter from 'vue-router';
 import Home from '@/views/home/Index.vue'; //component的自訂名稱
 import ProductDetail from '@/views/product_detail/Index.vue';
 import Match1 from '@/views/match1/Index.vue';
-import Match2 from '@/views/match2/Index.vue';
+import Match2 from '@/views/match2/match2.vue';
+import Match3 from '@/views/match3/match3.vue';
 import UnStore from '@/views/unstore/Index.vue';
 import Customized from '@/views/customized/Index.vue';
 import TestSort from '@/views/test_sort/Index.vue';
@@ -42,8 +43,13 @@ const routes = [
     },
         {
         path: '/match2',
-        name: 'Match2',
+        name: 'match2',
         component: Match2,
+    },
+            {
+        path: '/match3',
+        name: 'm3',
+        component: Match3,
     },
         {
         path: '/unstore',
