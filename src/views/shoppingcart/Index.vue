@@ -2,16 +2,15 @@
     <div>
         <!-- wrapper Star -->
         <div class="SC_wrapper">
-        
             <!-- Title -->
-            
+
             <div class="SC_title">
                 <div class="SC_title-c">
-                    <img src="images/shopping_cart/earth.png" alt="">
+                    <img src="images/shopping_cart/earth.png" alt="" />
                     <h1>購物車</h1>
-                    <img src="images/shopping_cart/earth.png" alt="">
+                    <img src="images/shopping_cart/earth.png" alt="" />
                 </div>
-            
+
                 <div class="SC_title-e">
                     <h4>一 Shopping Cart 一</h4>
                 </div>
@@ -20,10 +19,8 @@
             <!-- Title END-->
 
             <div class="SC_mid_block">
-
                 <div class="list_info">
                     <table>
-
                         <thead>
                             <tr class="list_title">
                                 <td>商品圖片</td>
@@ -39,15 +36,29 @@
                         </thead>
 
                         <tbody>
-                            <tr>
+                            <tr
+                                v-for="(item, index) in cartlist"
+                                :key="`${index}`"
+                            >
                                 <td>
-                                    <img src="/images/shopping_cart/shopping1.png" alt="" class="shopping_pic">
+                                    <img
+                                        :src="item.productImg"
+                                        alt=""
+                                        class="shopping_pic"
+                                    />
                                 </td>
-                                <td>測試文字七個字</td>
+                                <td>{{ item.productName }}</td>
                                 <td>
-                                    <input type="number" min="0" value="1" class="item_count">
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        max="10"
+                                        v-model="item.count"
+                                        class="item_count"
+                                        @change="changeCount(index)"
+                                    />
                                 </td>
-                                <td>500</td>
+                                <td>{{ item.total }}</td>
                                 <td>
                                     <button class="delete_item">刪除</button>
                                 </td>
@@ -59,7 +70,7 @@
                                 </td>
                             </tr>
 
-                            <tr>
+                            <!-- <tr>
                                 <td>
                                     <img src="/images/shopping_cart/shopping2.png" alt="" class="shopping_pic">
                                 </td>
@@ -77,81 +88,93 @@
                                 <td colspan="5">
                                     <div class="line"></div>
                                 </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <img src="/images/shopping_cart/shopping1.png" alt="" class="shopping_pic">
-                                </td>
-                                <td>測試文字七個字</td>
-                                <td>
-                                    <input type="number" min="0" value="1" class="item_count">
-                                </td>
-                                <td>500</td>
-                                <td>
-                                    <button class="delete_item">刪除</button>
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td colspan="5">
-                                    <div class="line"></div>
-                                </td>
-                            </tr>
+                            </tr> -->
 
                             <!-- total block -->
-                            
+
                             <tr class="total_price">
                                 <td colspan="4"></td>
-                                <td class="total_price">總計: 1700 元</td>
+                                <td class="total_price">
+                                    總計:{{ totalPrice }} 元
+                                </td>
                             </tr>
-                            
+
                             <!-- pay block -->
-                            
+
                             <tr class="pay_btn">
                                 <td colspan="4"></td>
                                 <td>
-                                    <button class="pay_check" onclick="location.href='./order.html'">前往付款</button>
+                                    <button
+                                        class="pay_check"
+                                        onclick="location.href='./order.html'"
+                                    >
+                                        前往付款
+                                    </button>
                                 </td>
                             </tr>
-
                         </tbody>
-
                     </table>
                 </div>
 
-            <!--SC_mid_block END -->
+                <!--SC_mid_block END -->
             </div>
-        <myFooter></myFooter>
-    <!--wrapper END  -->
-    </div>
+            <myFooter></myFooter>
+            <!--wrapper END  -->
+        </div>
 
         <!-- template END -->
     </div>
 </template>
 
 <script>
-import myFooter from '@/components/myFooter'
+import myFooter from '@/components/myFooter';
 export default {
+    data() {
+        return {};
+    },
+    methods: {
+        changeCount(index) {
+            let cart = [];
+            cart = this.$store.state.cartList;
+            //要改newPdData.total
+            cart[index].total = cart[index].price * cart[index].count;
+            console.log(cart[index].total);
+        },
+    },
+    computed: {
+        //取用vuex
+        cartlist() {
+            return this.$store.state.cartList;
+            // console.log(cartlist);
+        },
+        totalPrice() {
+            // var sumPrice = 0;
+            // for (let i = 0; i < this.cartlist.length; i++) {
+            //     sumPrice = sumPrice + this.cartlist[i].total;
+            // }
+            // return sumPrice;
+            var sumPrice = 0;
+            this.cartlist.forEach((item) => {
+                sumPrice += item.total;
+            });
+            return sumPrice;
+        },
+    },
     components: {
         myFooter,
-        
     },
-}
+    mounted() {},
+};
 </script>
 
-
 <style lang="scss">
+@import '@/scss/color.scss';
+@import '@/scss/var.scss';
+@import '@/scss/center.scss';
+@import '@/scss/mixins.scss';
+@import '@/scss/rwd.scss';
 
-    @import '@/scss/color.scss';
-    @import '@/scss/var.scss';
-    @import '@/scss/center.scss';
-    @import '@/scss/mixins.scss';
-    @import '@/scss/rwd.scss';
-
-
-    .SC_wrapper {
-
+.SC_wrapper {
     * {
         box-sizing: border-box;
     }
@@ -173,9 +196,9 @@ export default {
         // border: $border red;
 
         color: $colorT;
-        padding: (80px + 200px) * .7 0 0;
+        padding: (80px + 200px) * 0.7 0 0;
 
-        margin-bottom: 280px*.7;
+        margin-bottom: 280px * 0.7;
 
         &-c {
             display: flex;
@@ -183,8 +206,8 @@ export default {
             align-items: center;
 
             img {
-                width: 63px * .7;
-                height: 43px * .7;
+                width: 63px * 0.7;
+                height: 43px * 0.7;
                 margin-bottom: 5px;
             }
         }
@@ -201,8 +224,8 @@ export default {
     }
 
     .SC_mid_block {
-        border: 1px solid red;
-        max-width: 1300*.7px;
+        // border: 1px solid red;
+        max-width: 1300 * 0.7px;
         width: 100%;
 
         .list_info {
@@ -214,7 +237,6 @@ export default {
             @include rwd(mobile) {
                 font-size: 12px;
             }
-
 
             table {
                 text-align: center;
@@ -239,12 +261,12 @@ export default {
 
                 .shopping_pic {
                     margin: 5% auto;
-                    max-width: 200px*.7;
+                    max-width: 200px * 0.7;
                     width: 100%;
                     border-radius: 5px;
 
                     @include rwd(mobile) {
-                        max-width: 110px*.7;
+                        max-width: 110px * 0.7;
                     }
                 }
 
@@ -252,33 +274,32 @@ export default {
                     width: 40px;
                 }
 
-                @include btn-module(".delete_item", 191, 75) {
+                @include btn-module('.delete_item', 191, 75) {
                     color: white;
-                    line-height: (75*.7) - 6px;
+                    line-height: (75 * 0.7) - 6px;
                     margin: 10% auto;
                     font-size: $p2;
 
                     @include rwd(mobile) {
                         font-size: $p2 - 8px;
-                        width: 110px*.7;
-                        height: 50px*.7;
-                        line-height: (50*.7) - 6px;
+                        width: 110px * 0.7;
+                        height: 50px * 0.7;
+                        line-height: (50 * 0.7) - 6px;
                         letter-spacing: 1px;
-
                     }
                 }
 
-                @include btn-module(".pay_check", 191, 75) {
+                @include btn-module('.pay_check', 191, 75) {
                     color: white;
-                    line-height: (75*.7) - 6px;
+                    line-height: (75 * 0.7) - 6px;
                     margin: 10% auto;
                     font-size: $p2;
 
                     @include rwd(mobile) {
                         font-size: $p2 - 8px;
-                        width: 110px*.7;
-                        height: 50px*.7;
-                        line-height: (50*.7) - 6px;
+                        width: 110px * 0.7;
+                        height: 50px * 0.7;
+                        line-height: (50 * 0.7) - 6px;
                         letter-spacing: 1px;
                     }
                 }
@@ -286,6 +307,4 @@ export default {
         }
     }
 }
-
-
 </style>

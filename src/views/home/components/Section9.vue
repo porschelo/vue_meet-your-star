@@ -25,24 +25,27 @@
                 </div>
                 <div class="swiper-container mySwiper gap">
                     <swiper class="swiper-wrapper" :options="swiperOption">
-                        <swiper-slide class="swiper-slide">
+                        <swiper-slide
+                            class="swiper-slide"
+                            v-for="item in signDaily"
+                            :key="item"
+                        >
                             <a href="starsign.html">
                                 <div class="sing_info1">
                                     <img
                                         class="info_img"
-                                        src="/images/index/info_Img/sing1.svg"
+                                        :src="item.DAILY_IMG"
                                         alt=""
                                     />
+                                    <!-- src="/images/index/info_Img/sing1.svg" -->
                                     <h3 class="inner_text">
-                                        今天的你想像力、洞察
-                                        力強，如果是從事創意
-                                        工作者在今天能好好發 揮，但也要避免...
+                                        {{ item.DAILY }}
                                     </h3>
                                 </div>
                             </a>
                         </swiper-slide>
 
-                        <swiper-slide class="swiper-slide">
+                        <!-- <swiper-slide class="swiper-slide">
                             <a href="starsign.html">
                                 <div class="sing_info2">
                                     <img
@@ -90,7 +93,7 @@
                                     </h3>
                                 </div>
                             </a>
-                        </swiper-slide>
+                        </swiper-slide> -->
                     </swiper>
                     <!-- <div class="swiper-pagination"></div> -->
                 </div>
@@ -192,6 +195,7 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import axios from 'axios';
 // import style (<= Swiper 5.x)
 import 'swiper/dist/css/swiper.css';
 
@@ -240,7 +244,17 @@ export default {
                     },
                 },
             },
+            signDaily: [],
         };
+    },
+    mounted() {
+        axios
+            .post('http://localhost/meet_ur_heart/php/home_daily_select.php')
+            .then((res) => {
+                // console.log(res);
+                this.signDaily = res.data;
+                console.log(this.signDaily);
+            });
     },
 
     components: {
@@ -379,6 +393,10 @@ export default {
                     font-size: $p1;
                     line-height: 1.6;
                     color: rgb(248, 248, 248);
+                    display: -webkit-box; //將元素設為盒子伸縮模型顯示
+                    -webkit-box-orient: vertical; //伸縮方向設為垂直方向
+                    -webkit-line-clamp: 4; //超出3行隱藏，並顯示省略號
+                    overflow: hidden;
                     @include index-mobile {
                         max-width: 250px;
                         font-size: 6px;

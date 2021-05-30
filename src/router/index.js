@@ -23,7 +23,6 @@ import ApConfirm from '@/views/apconfirm/Index.vue';
 import ApFinish from '@/views/apfinish/Index.vue';
 import Order from '@/views/order/Index.vue';
 
-
 // 動態載入（延遲）
 // route level code-splitting
 // this generates a separate chunk (about.[hash].js) for this route
@@ -58,7 +57,7 @@ const routes = [
         name: 'Match1',
         component: Match1,
     },
-            {
+    {
         path: '/matchandtest/match3',
         name: 'Match3',
         component: Match3,
