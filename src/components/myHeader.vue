@@ -16,7 +16,7 @@
                             </router-link>
                         </li>
                         <li>
-                            <a class="login"
+                            <a class="login" @click="onOpenLogin"
                                 ><img src="/images/header/member.png"
                             /></a>
                         </li>
@@ -65,6 +65,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'myHeader',
     data() {
@@ -79,6 +80,10 @@ export default {
         onMenuClose() {
             this.menutogger = false;
         },
+
+        onOpenLogin(){
+            this.$store.commit('loginVisible',true)
+        }
     },
 };
 </script>
