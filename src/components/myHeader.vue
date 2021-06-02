@@ -16,9 +16,18 @@
                             </router-link>
                         </li>
                         <li>
-                            <a class="login" @click="onOpenLogin"
-                                ><img src="/images/header/member.png"
-                            /></a>
+                            <a class="login" @click="onOpenLogin" v-if='loginStatus ==0'>
+                                <img src="/images/header/member.png"  />
+                                
+                            </a>
+                            <!-- <a class="login" v-else>
+                                <img :src = memberIcon >
+                            </a> -->
+
+                            <router-link to="/membercentre" class="login" v-else>
+                                <img :src = memberIcon >
+                            </router-link>
+                            
                         </li>
                         <li>
                             <button
@@ -84,6 +93,17 @@ export default {
         onOpenLogin(){
             this.$store.commit('loginVisible',true)
         }
+    },
+
+    computed: {
+        loginStatus(){
+            return this.$store.state.loginStatus;
+        },
+
+        memberIcon(){
+            return this.$store.state.memberIcon;
+            
+        },
     },
 };
 </script>

@@ -137,7 +137,7 @@ export default {
 
         axios
             .post('http://localhost/vue_meet_u_heart/php/Select.php', 
-               { id: 10001 },
+               { id: this.$store.state.loginID },
             )
             .then((res) => {
                 console.log(res);
@@ -187,6 +187,12 @@ export default {
                 this.change_status = 1;
             }
         },
+    },
+
+    computed: {
+        loginID(){
+            return this.$store.state.loginID;
+        }
     },
 
     components: {

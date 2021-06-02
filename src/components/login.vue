@@ -18,6 +18,7 @@
                             id="account"
                             placeholder=""
                             required
+                            v-model="userAccount"
                         />
                         <h3>密碼:</h3>
                         <input
@@ -26,14 +27,14 @@
                             id="password"
                             placeholder=""
                             required
+                            v-model="userPassword"
                         />
                         <div class="logina">
                             <a href="#">忘記密碼？</a>
                             <a href="" class="gosignup" @click.prevent="goSignup">註冊新帳號</a>
                         </div>
-                        <a href="membercentre.html"
-                            ><!--暫連membercentre用-->
-                            <button class="send" id="send">出發冒險</button>
+                        <a href="">
+                            <button class="send" id="send" @click.prevent="loginCheck">出發冒險</button>
                         </a>
                     </div>
                 </div>
@@ -55,8 +56,10 @@
                             type="text"
                             class="accounts wh"
                             id="accounts"
-                            placeholder=""
+                            placeholder=" example@gmail.com"
                             required
+                            v-model.trim="signAccount"
+                            
                         />
                         <h3>密碼:</h3>
                         <input
@@ -65,6 +68,7 @@
                             id="passwords"
                             placeholder=""
                             required
+                            v-model.trim="signPassword"
                         />
                         <h3>確認密碼:</h3>
                         <input
@@ -73,29 +77,33 @@
                             id="passwordss"
                             placeholder=""
                             required
+                            v-model.trim="signPasswordCheck"
+                            
                         />
                         <h3>手機號碼:</h3>
                         <input
                             type="text"
                             class="cellp wh"
                             id="cellp"
-                            placeholder=""
+                            placeholder=" 09xx-xxx-xxx"
                             required
+                            v-model.trim="signCellphone"
                         />
-                        <h3>生日:</h3>
+                        <h3 @click="CheckStarSign">生日:</h3>
                         <input
                             type="text"
                             class="bhd wh"
                             id="bhd"
                             placeholder=" YYYY/MM/DD"
                             required
+                            v-model.trim="signBirthdate"
                         />
 
                         <div class="signupa">
                             <a href="" class="gologin" @click.prevent="gologin">已有帳號？登入</a>
                         </div>
 
-                        <button class="sign" id="sign">加入冒險</button>
+                        <button class="sign" id="sign" @click="signCheck">加入冒險</button>
                     </div>
                 </div>
             </div>
@@ -105,9 +113,28 @@
 </template>
 
 <script>
+
+import axios from 'axios';
+
 export default {
 
+    data() {
+        return {
+            // login
+            userAccount:"",
+            userPassword:"",
 
+            // signup
+            signAccount:"",
+            signPassword:"",
+            signPasswordCheck:"",
+            signCellphone:"",
+            signBirthdate:"",
+            signMemberPic:"",
+            signMemberL_Pic:"",
+            
+        }
+    },
 
     computed:{
         loginBol(){
@@ -117,6 +144,7 @@ export default {
         signBol(){
             return this.$store.state.signBol;
         },
+
         
     },
 
@@ -137,6 +165,138 @@ export default {
         gologin(){
             this.$store.commit('loginVisible',true);
             this.$store.commit('signVisible',false);
+        },
+
+        loginCheck(){
+            axios.post('http://localhost/vue_meet_u_heart/php/login.php', 
+               { userAccount: this.userAccount ,
+                 userPassword:this.userPassword,
+               },
+                
+            )
+                .then((res) =>{
+                    if(res.data.length ==1){
+                        alert("登入成功");
+                        console.log(res);
+                        this.$store.commit('loginVisible',false);
+                        this.$store.commit('loginStatus',1);
+                        // console.log(res.data[0].MEMBER_icon);
+                        let str = res.data[0].MEMBER_icon;
+                        let loginID = res.data[0].MEMBER_ID;
+                        // console.log(loginID);
+                        this.$store.dispatch('setmemberIcon',str);
+                        this.$store.dispatch('setloginID',loginID);
+                        
+
+
+                    }else{
+                        alert("登入失敗,請重新輸入帳號或密碼");
+                        // console.log(res);
+                    }
+                })
+        },
+
+        CheckStarSign(){
+            // console.log(this.signBirthdate.split('/'));
+            let birthDay = this.signBirthdate.split('/')
+            let abc = new Date(2021,birthDay[1]-1,birthDay[2]);
+            console.log(abc);
+
+            if(abc>= new Date(2021,1-1,21) && abc<= new Date(2021,2-1,19)){
+                alert("水瓶座 Aquarius");
+                this.signMemberPic="/images/membercentre/Aquarius.png";
+                this.signMemberL_Pic="/images/membercentre/L_Aquarius.png";
+                
+                }
+            if(abc>= new Date(2021,2-1,20) && abc<= new Date(2021,3-1,20)){
+                alert("雙魚座 Pisces");
+                this.signMemberPic="/images/membercentre/Pisces.png";
+                this.signMemberL_Pic="/images/membercentre/L_Pisces.png";
+                
+            }
+            if(abc>= new Date(2021,3-1,21) && abc<= new Date(2021,4-1,19)){
+                alert("牧羊座 Aries");
+                this.signMemberPic="/images/membercentre/Aries.png";
+                this.signMemberL_Pic="/images/membercentre/L_Aries.png";
+            }
+            if(abc>= new Date(2021,4-1,20) && abc<= new Date(2021,5-1,20)){
+                alert("金牛座 Taurus");
+                this.signMemberPic="/images/membercentre/Taurus.png";
+                this.signMemberL_Pic="/images/membercentre/L_Taurus.png";
+            }
+            if(abc>= new Date(2021,5-1,21) && abc<= new Date(2021,6-1,21)){
+                alert("雙子座 Gemini");
+                this.signMemberPic="/images/membercentre/Gemini.png";
+                this.signMemberL_Pic="/images/membercentre/L_Gemini.png";
+            }
+            if(abc>= new Date(2021,6-1,22) && abc<= new Date(2021,7-1,22)){
+                alert("巨蟹座 Cancer");
+                this.signMemberPic="/images/membercentre/Cancer.png";
+                this.signMemberL_Pic="/images/membercentre/L_Cancer.png";
+            }
+            if(abc>= new Date(2021,7-1,23) && abc<= new Date(2021,8-1,22)){
+                alert("獅子座 Leo");
+                this.signMemberPic="/images/membercentre/Leo.png";
+                this.signMemberL_Pic="/images/membercentre/L_Leo.png";
+            }
+            if(abc>= new Date(2021,8-1,23) && abc<= new Date(2021,9-1,22)){
+                alert("處女座 Virgo");
+                this.signMemberPic="/images/membercentre/Virgo.png";
+                this.signMemberL_Pic="/images/membercentre/L_Virgo.png";
+            }
+            
+            if(abc>= new Date(2021,9-1,23) && abc<= new Date(2021,10-1,23)){
+                alert("天秤座 Libra");
+                this.signMemberPic="/images/membercentre/Libra.png";
+                this.signMemberL_Pic="/images/membercentre/L_Libra.png";
+            }
+            if(abc>= new Date(2021,10-1,24) && abc<= new Date(2021,11-1,21)){
+                alert("天蠍座 Scorpio");
+                this.signMemberPic="/images/membercentre/Scorpio.png";
+                this.signMemberL_Pic="/images/membercentre/L_Scorpio.png";
+            }
+            if(abc>= new Date(2021,11-1,22) && abc<= new Date(2021,12-1,20)){
+                alert("射手座 Sagittarius");
+                this.signMemberPic="/images/membercentre/Sagittarius.png";
+                this.signMemberL_Pic="/images/membercentre/L_Sagittarius.png";
+            }
+            // if(abc<= new Date(2021,1-1,21) && abc>= new Date(2020,12-1,20)){
+            //     alert("摩羯座 Capricorn");
+            // }
+            
+        },
+
+        signCheck(){
+            if(this.signAccount==""){
+                alert("帳號欄位不可空白")
+            }else if(this.signPassword==""){
+                alert("密碼欄位不可空白")
+            }else if(this.signPasswordCheck==""){
+                alert("密碼確認欄位不可空白")
+            }else if(this.signPassword!=this.signPasswordCheck){
+                alert("密碼比對不相同,請重新檢查輸入")
+            }else if(this.signCellphone==""){
+                alert("手機號碼不可空白")
+            }else if(this.signBirthdate==""){
+                alert("生日欄位不可空白")
+            }else{
+                this.CheckStarSign();
+                axios.post("http://localhost/vue_meet_u_heart/php/signup.php",
+                    {
+                        signAccount:this.signAccount,
+                        signPassword:this.signPassword,
+                        signMemberPic:this.signMemberPic,
+                        signBirthdate:this.signBirthdate,
+                        signCellphone:this.signCellphone,
+                        signMemberL_Pic:this.signMemberL_Pic,
+
+                        
+                    })
+                alert("歡迎加入冒險行列")
+                this.$store.commit('signVisible',false);
+                this.$store.commit('loginVisible',true);
+            }
+            
         }
     },
 };
