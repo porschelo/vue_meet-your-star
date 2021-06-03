@@ -20,7 +20,7 @@
             </div>
 
             <div class="tResult_content">
-                <div class="tResult_main">
+                <div class="tResult_main" @selectedValue="addData">
                     <div class="result_left">
 
                         <!-- 結果直條圖 -->
@@ -77,6 +77,8 @@
            
         </div>
         <div class="tResult_footer">
+            <!-- <childVue :childMethod="parentMethod"></childVue>
+            this.$emit('childMethod','value') -->
             <my-footer></my-footer>
         </div>
         
@@ -88,11 +90,20 @@
 import myFooter from '@/components/myFooter';
 import Chart from 'chart.js/auto';
 export default {
+    data(){
+        return{
+            answers:[],
+        }
+    },
     components: {
         myFooter,
     },
 
     methods: {
+        // addData(item) {
+        //     this.answers.push(item);
+        //     console.log(this.answers);
+        // },
         getChart() {
             var ctx = document.getElementById('myChart2').getContext('2d');
             new Chart(ctx, {
@@ -115,7 +126,7 @@ export default {
                     datasets: [
                         {
                             label: '# of Votes',
-                            data: [12, 19, 3, 5, 2, 3, 8, 6, 2, 13, 15, 3],
+                            data: [1, 1, 1, 2, 2, 1, 3, 0, 0, 1, 1, 0],
                             backgroundColor: [
                                 'rgba(255, 99, 132, 1)',
                                 'rgba(54, 162, 235, 1)',
@@ -154,7 +165,8 @@ export default {
     },
     mounted(){
         this.getChart();
-    }
+       // bus.$on('selectedValue', totalCount); 
+    },
 };
 </script>
 <style lang="scss">
