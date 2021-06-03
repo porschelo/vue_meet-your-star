@@ -15,21 +15,22 @@
         </div>
         <div class="galaxys">
             <img class="starship" src="/images/starsign/ss_bg2.png" alt="">
-            <a href="" class="galx1"><img src="/images/starsign/galx1.png" alt=""></a>
-            <a href="" class="galx2"><img src="/images/starsign/galx2.png" alt=""></a>
-            <a href="" class="galx3"><img src="/images/starsign/galx3.png" alt=""></a>
-            <a href="" class="galx4"><img src="/images/starsign/galx4.png" alt=""></a>
+            <!-- <a class="galx1" href="/starsign?id=3"><img src="/images/starsign/galx1.png" alt="" @click="this.starinfo[0].STAR_SIGN_ID = 3"></a> -->
+            <router-link class="galx1" :to="{ name: 'Starsign', query: { id: 10 }}"><img src="/images/starsign/galx1.png" alt="" ></router-link>
+            <router-link class="galx2" :to="{ name: 'Starsign', query: { id: 1 }}"><img src="/images/starsign/galx2.png" alt="" ></router-link>
+            <router-link class="galx3" :to="{ name: 'Starsign', query: { id: 4 }}"><img src="/images/starsign/galx3.png" alt="" ></router-link>
+            <router-link class="galx4" :to="{ name: 'Starsign', query: { id: 7 }}"><img src="/images/starsign/galx4.png" alt="" ></router-link>
         </div> 
 
         <section class="starsignsec">
             <div class="starsignswitch">
-                <button class="prbtn"><img src="/images/starsign/prbtn.png" alt=""></button>
+                <a class="prbtn" :href="'/starsign?id='+ prev"><img src="/images/starsign/prbtn.png" alt=""></a>
                 <div class="drivingcard">
-                    <h2>牡羊座 Aries</h2>
+                    <h2>{{ starsignname }}</h2>
                     <div class="cardtop">
-                        <img class="cardpt" src="/images/starsign/fr1.png" alt="">
+                        <img class="cardpt" :src="starsignpt" alt="">
                         <div class="cardct">
-                            <h3 class="ssbday">生日 <span>3/21 ～ 4/19</span></h3>
+                            <h3 class="ssbday">生日 <span>{{ starsignbday1 }}</span><span> ～ </span><span>{{ starsignbday2 }}</span></h3>
                             <p class="ssprof">倔強，遇到討厭的人，寧可受罪也不向對方求助。陌生人面前很安靜很慢熱，熟了很鬧騰。有小脾氣但很隱忍，不輕易表露自己性情和內心。對繁瑣的事情沒耐心，容易放棄。</p>
                         </div>
                     </div>
@@ -37,21 +38,21 @@
                         <h3 class="cdbtl">MYS-2021<br>星際駕駛證</h3>
                         <div class="cdbtr">
                             <div class="prs prs1">
-                                <h3>熱情</h3>
-                                <h3>97%</h3>
+                                <h3>{{ pers1 }}</h3>
+                                <h3>{{ pers1val }}</h3>
                             </div>
                             <div class="prs prs2">
-                                <h3>創造</h3>
-                                <h3>78%</h3>
+                                <h3>{{ pers2 }}</h3>
+                                <h3>{{ pers2val }}</h3>
                             </div>
                             <div class="prs prs3">
-                                <h3>衝動</h3>
-                                <h3>69%</h3>
+                                <h3>{{ pers3 }}</h3>
+                                <h3>{{ pers3val }}</h3>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="nxbtn"><img src="/images/starsign/nxbtn.png" alt=""></button>
+                <a class="nxbtn" :href="'/starsign?id='+ next"><img src="/images/starsign/nxbtn.png" alt=""></a>
             </div>
             <div class="starsigncont">
                 <div class="starsignleft">
@@ -130,13 +131,72 @@
 
 import myFooter from '@/components/myFooter';
 import toTopBtn from '@/components/toTopBtn';
+import axios from 'axios';
 
 export default {
     components: {
         myFooter,
         toTopBtn,
     },
+    data() {
+        return {
+            starinfo: [],
+            starsignname: '',
+            starsignbday1: '',
+            starsignbday2: '',
+            // starsignpers: '',
+            starsignpt: '',
+            pers1: '',
+            pers1val: '',
+            pers2: '',
+            pers2val: '',
+            pers3: '',
+            pers3val: '',
+            next:null,
+            prev:null,
+        }
+    },
+    mounted(){
+        let urlParams = new URLSearchParams(window.location.search);
+        
+        let id = urlParams.get("id")
+        if(id){
+            id = id -1
+        }else{
+            id = 0 //漢堡進入預設頁面
+        }
+        //左右切換id
+        this.next = id === 11 ? 1 : (id + 2)
+        this.prev = id === 0 ? 12 : (id)
+
+        axios
+            .post('http://localhost:8080/php/Select.php', 
+               { id: this.$store.state.loginID },
+            )
+            .then((res) => {
+                console.log(res);
+                this.starinfo = res.data;
+                // console.log(this.starinfo);
+                
+                this.starsignname = this.starinfo[id].STAR_SIGN_NAME;
+                this.starsignbday1 = this.starinfo[id].STAR_SIGN_S;
+                this.starsignbday2 = this.starinfo[id].STAR_SIGN_E;
+                // this.starsignpers = this.starinfo[id].STAR_SIGN_E;
+                this.starsignpt = this.starinfo[id].MONSTER_IMG;
+                this.pers1 = this.starinfo[id].PERSONLITY_1;
+                this.pers1val = this.starinfo[id].PERSONLITY_1_VALUE;
+                this.pers2 = this.starinfo[id].PERSONLITY_2;
+                this.pers2val = this.starinfo[id].PERSONLITY_2_VALUE;
+                this.pers3 = this.starinfo[id].PERSONLITY_3;
+                this.pers3val = this.starinfo[id].PERSONLITY_3_VALUE;
+
+                
+            });
+    
+    },
 };
+
+
 </script>
 
 <style lang="scss">

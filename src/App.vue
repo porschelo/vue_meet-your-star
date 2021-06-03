@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <my-header v-if="$route.name !== 'Landing'"></my-header>
-        <router-view />
+        <router-view :key="$route.fullPath"/>
         <!-- router渲染的標籤 -->
     </div>
 </template>
