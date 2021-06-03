@@ -260,9 +260,9 @@ export default {
                 this.signMemberPic="/images/membercentre/Sagittarius.png";
                 this.signMemberL_Pic="/images/membercentre/L_Sagittarius.png";
             }
-            // if(abc<= new Date(2021,1-1,21) && abc>= new Date(2020,12-1,20)){
-            //     alert("摩羯座 Capricorn");
-            // }
+            if(abc<= new Date(2021,1-1,21) && abc>= new Date(2020,12-1,20)){
+                alert("摩羯座 Capricorn");
+            }
             
         },
 
