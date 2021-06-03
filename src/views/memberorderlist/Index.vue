@@ -20,9 +20,9 @@
             <div class="MOL_midblock_out">
                 
                 <div class="list_tab">
-                    <!-- <a href="./membercentre.html" class="list_tab_btn">個人資料</a>
-                    <a href="./memberorderlist.html" class="list_tab_btn">訂單資料</a>
-                    <a href="./membercollection.html" class="list_tab_btn">我的收藏</a> -->
+                    <router-link to="membercentre" class="tab_btn">個人資料</router-link>
+                    <router-link to="memberorderlist" class="tab_btn">訂單資料</router-link>
+                    <router-link to="membercollection" class="tab_btn">我的收藏</router-link>
                 </div>
 
 
@@ -73,7 +73,57 @@
                                     </td>
                                 </tr>
 
-                                <tr class="orderlist2">
+                                <!-- v-for -1 -->
+
+                                <tr class="orderlist1" v-for="list_info in mb_list" :key="list_info">
+                                    <td rowspan="1">
+                                        <div class="numid">{{list_info.LIST_ID}}</div>
+                                        <button class="buyagain" onclick="location.href='./order.html'">再次購買</button>
+                                    </td>
+                                    <td><img :src="list_info.PRODUCT_IMG" alt="" class="list_pica"></td>
+                                    <td class="order_name">{{list_info.PRODUCT_NAME}}</td>
+                                    <td>{{list_info.PRODUCT_COUNT}}</td>
+                                    <td>{{list_info.PRODUCT_PRICE}}</td>
+                                </tr>
+
+                                <!-- v-for end -->
+
+
+
+                                <!-- v-for -2 -->
+                                    <!-- <template >
+                                        <div v-for="zxc in mb_list" :key="zxc">
+                                        
+                                        <tr class="orderlist1" >
+                                            <td rowspan="1">
+                                                <div class="numid">{{zxc.LIST_ID}}</div>
+                                                <button class="buyagain" onclick="location.href='./order.html'">再次購買</button>
+                                            </td>
+                                            <td><img :src="zxc.PRODUCT_IMG" alt="" class="list_pica"></td>
+                                            <td class="order_name">{{zxc.PRODUCT_NAME}}</td>
+                                            <td>{{zxc.PRODUCT_COUNT}}</td>
+                                            <td>{{zxc.PRODUCT_PRICE}}</td>
+                                        </tr>
+
+                                         <tr class="total_price">
+                                    <td colspan="2"></td>
+                                    <td >共計 2 件</td>
+                                    <td colspan="2" class="price">1000元</td>
+                                    </tr>
+
+
+                                        
+                                        </div>
+                                        
+                                    </template> -->
+
+                                   
+
+                                <!-- v-for -2 end -->
+
+
+
+                                <!-- <tr class="orderlist2">
                                     <td>
                                         <div class="numid">20210124</div>
                                         <button class="buyagain">再次購買</button>
@@ -112,7 +162,7 @@
                                     <td colspan="2"></td>
                                     <td>共計 1 件</td>
                                     <td colspan="2" class="price">700元</td>
-                                </tr>
+                                </tr> -->
 
                             </tbody>
                         </table>
@@ -129,8 +179,30 @@
 </template>
 
 <script>
+import axios from 'axios';
 import myFooter from '@/components/myFooter'
 export default {
+
+    mounted() {
+        axios.post('http://localhost/vue_meet_u_heart/php/memberlist.php',
+             { id: 10005 },
+        )
+            .then((res) => {
+                console.log(res);
+                this.mb_list = res.data;
+            })
+        
+    },
+
+    data() {
+        return {
+            mb_list:[],
+        }
+        
+    },
+
+
+
     components: {
         myFooter,
         
