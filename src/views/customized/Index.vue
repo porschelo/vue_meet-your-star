@@ -296,10 +296,12 @@
             </div>
         </div>
         <my-footer></my-footer>
+         <toTopBtn></toTopBtn>
     </div>
 </template>
 <script>
 import myFooter from '@/components/myFooter';
+import toTopBtn from '@/components/toTopBtn';
 export default {
     data() {
         return {
@@ -314,6 +316,7 @@ export default {
     },
     components: {
         myFooter,
+        toTopBtn,
     },
     methods: {
         
