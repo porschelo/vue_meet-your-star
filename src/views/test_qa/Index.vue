@@ -16,6 +16,7 @@
                 </div>
             </div>
 
+            <!-- <div class="tResult_content" v-if="final_answer"> -->
             <div class="tResult_content">
                 <div class="tResult_main">
                     <div class="result_left">
@@ -27,8 +28,7 @@
 
                         <!-- 結果敘述 -->
                         <div class="tr_result">
-                             <p>你的情商很高，什麼話該說什麼話不該說他們比任何人都清楚很多，所以在很多時候，雖然雙子什麼都不說，可是心裡卻比誰都要清楚。
-                             在關鍵時刻會把自己強大的人際交往一面顯露出來，常常身邊人被他們的反應速度和口才所深深折服</p>
+                             <p>{{results[finalAnswer].personality}}</p>
                         </div>
                     </div>
      
@@ -38,12 +38,12 @@
                             <h2>適合相處的星座</h2>
                             <div class="kind_Constellations">
                                 <div class="kc_one">
-                                    <img src="/images/test/result-monster1.png" alt="">
-                                    <h3>天蠍</h3>
+                                    <img :src="results[finalAnswer].matchOne">
+                                    <h3>{{results[finalAnswer].matchTitleOne}}</h3>
                                 </div>
                                 <div class="kc_two">
-                                    <img src="/images/test/result-monster2.png" alt="">
-                                    <h3>處女</h3>
+                                    <img :src="results[finalAnswer].matchTwo">
+                                    <h3>{{results[finalAnswer].matchTitleTwo}}</h3>
                                 </div>
                             </div>    
                         </div>
@@ -53,12 +53,12 @@
                             <h2>需要保持距離的星座</h2>
                             <div class="distance_Constellations">
                                 <div class="dc_one">
-                                    <img src="/images/test/result-monster3.png" alt="">
-                                    <h3>天蠍</h3>
+                                    <img :src="results[finalAnswer].distanceOne">
+                                    <h3>{{results[finalAnswer].distanceTitleOne}}</h3>
                                 </div>
                                 <div class="dc_two">
-                                    <img src="/images/test/result-monster4.png" alt="">
-                                    <h3>處女</h3>
+                                    <img :src="results[finalAnswer].distanceTwo">
+                                    <h3>{{results[finalAnswer].distanceTitleTwo}}</h3>
                                 </div>
                             </div>    
 
@@ -130,8 +130,9 @@ export default {
             is_page:true,
             vars: 0,
             final:false,
-            // constellations:[ '牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座',
-            //             '摩羯座','水瓶座','雙魚座'],
+            finalAnswer: [],
+            constellations:[ '牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座',
+                        '摩羯座','水瓶座','雙魚座'],
             answers:[],
             questions:[
                 {
@@ -183,7 +184,7 @@ export default {
                 },
                 {
                     num: 3,
-                    title:'3.牛肉麵店什麼都賣，到牛肉麵店不見得就要吃牛肉麵，根據你的印象，你點哪一種餐點次數較多呢？',
+                    title:'3.到牛肉麵店不見得就要吃牛肉麵，你點哪一種餐點次數較多呢？',
                     value: null,
                     choices: [
                         {
@@ -367,7 +368,7 @@ export default {
                 },
                 {
                     num: 11,
-                    title:'11.你最完美的人生表現？有一位美女走在街上，突然驚叫了一聲，你認為是：',
+                    title:'11.有一位美女走在街上，突然驚叫了一聲，你認為是?',
                     value: null,
                     choices: [
                         {
@@ -416,144 +417,144 @@ export default {
                 {
                     constellation:'牡羊座',
                     personality:'經常給人一種活力無限，對凡事都充滿熱情的積極態度，特別是面對自己感興趣的事物時，幾乎是只要想到就會馬上付諸行動。喜歡無拘無束過日子，不喜歡自己的生活受到外界的壓抑，天生就是一名自由追求者，越是想要控制他卻越容易得到反效果。',
-                    matchOne:'images/test/taurus.png',
-                    matchTwo: 'images/test/gemini.png',
+                    matchOne:'/images/test/taurus.png',
+                    matchTwo: '/images/test/gemini.png',
                     matchTitleOne:'金牛',
                     matchTitleTwo:'雙子',
-                    distanceOne:'images/test/capricorn.png',
-                    distanceTwo:'images/test/scorpio.png',
+                    distanceOne:'/images/test/capricorn.png',
+                    distanceTwo:'/images/test/scorpio.png',
                     distanceTitleOne:'摩羯',
                     distanceTitleTwo:'天蠍',
                 },
                 {
                     constellation:'金牛座',
                     personality:'具有拘謹，緩慢，沉默，踏實和溫順的特性，會運用穩定和可靠的行為風格，建立熟悉的生活習慣和安定的做事方式。 不過，金牛座的人習慣待在自己熟悉的安定環境，習慣千篇一律的單調做事方式，遇到臨機應變的事情，就會變得慢吞吞和不靈光。',
-                    matchOne:'images/test/virgo.png',
-                    matchTwo: 'images/test/capricorn.png',
+                    matchOne:'/images/test/virgo.png',
+                    matchTwo: '/images/test/capricorn.png',
                     matchTitleOne:'處女',
                     matchTitleTwo:'摩羯',
-                    distanceOne:'images/test/leo.png',
-                    distanceTwo:'images/test/scorpio.png',
+                    distanceOne:'/images/test/leo.png',
+                    distanceTwo:'/images/test/scorpio.png',
                     distanceTitleOne:'獅子',
                     distanceTitleTwo:'天蠍',
                 },
                 {
                     constellation:'雙子座',
                     personality:'意志一體兩面的積極與消極，多才多藝，也可同時處理很多事情，有些則會表現出明顯的兩種或多種人格，這種多變的特性，往往令人難以捉摸。具有靈性、聰明、心智活躍敏銳，喜歡忙碌和追求新的概念及作事的方法。對事物的思考很快，改變主意也比一般人快。',
-                    matchOne:'images/test/aquarius.png',
-                    matchTwo: 'images/test/libra.png',
+                    matchOne:'/images/test/aquarius.png',
+                    matchTwo: '/images/test/libra.png',
                     matchTitleOne:'水瓶',
                     matchTitleTwo:'天秤',
-                    distanceOne:'images/test/virgo.png',
-                    distanceTwo:'images/test/sagittarius.png',
+                    distanceOne:'/images/test/virgo.png',
+                    distanceTwo:'/images/test/sagittarius.png',
                     distanceTitleOne:'處女',
                     distanceTitleTwo:'射手',
                 },
                 {
                     constellation:'巨蟹座',
                     personality:'具有旺盛的精力和敏銳的感覺，道德意識很強烈，對慾望的追求也總能適度的停止。有精闢的洞察能力，自尊心也很強，同時也生性慷慨、感情豐富，樂意幫助有需要的人，並喜歡被需要與被保護的感覺。',
-                    matchOne:'images/test/pisces.png',
-                    matchTwo: 'images/test/scorpio.png',
+                    matchOne:'/images/test/pisces.png',
+                    matchTwo: '/images/test/scorpio.png',
                     matchTitleOne:'雙魚',
                     matchTitleTwo:'天蠍',
-                    distanceOne:'images/test/libra.png',
-                    distanceTwo:'images/test/capricorn.png',
+                    distanceOne:'/images/test/libra.png',
+                    distanceTwo:'/images/test/capricorn.png',
                     distanceTitleOne:'天秤',
                     distanceTitleTwo:'魔羯',
                 },
                 {
                     constellation:'獅子座',
                     personality:'具有權威感與支配能力，通常有一種貴族氣息或是王者風範。受人尊重，做事相當獨立，知道如何運用能力和權術以達到目的。有時也相當浪漫，喜歡美麗的事並愛炫耀、豪華及被人圍繞與讚美。個性溫暖、友善、體貼、外向、對人慷慨大方，很容易交朋友，人緣當然也很不錯。',
-                    matchOne:'images/test/aries.png',
-                    matchTwo: 'images/test/sagittarius.png',
+                    matchOne:'/images/test/aries.png',
+                    matchTwo: '/images/test/sagittarius.png',
                     matchTitleOne:'牡羊',
                     matchTitleTwo:'射手',
-                    distanceOne:'images/test/scorpio.png',
-                    distanceTwo:'images/test/aquarius.png',
+                    distanceOne:'/images/test/scorpio.png',
+                    distanceTwo:'/images/test/aquarius.png',
                     distanceTitleOne:'天蠍',
                     distanceTitleTwo:'水瓶',
                 },
                 {
                     constellation:'處女座',
                     personality:'有豐富的知性，做事一絲不苟，有旺盛的批判精神，是個完美主義者，極度的厭惡虛偽與不正當的事。無論年紀大小，都保有一顆赤子之心，充滿了對過去的回憶及對未來的夢想。通常他們也很實際，總是可以使愛幻想和實際的性格共存且並榮。',
-                    matchOne:'images/test/taurus.png',
-                    matchTwo: 'images/test/capricorn.png',
+                    matchOne:'/images/test/taurus.png',
+                    matchTwo: '/images/test/capricorn.png',
                     matchTitleOne:'金牛',
                     matchTitleTwo:'魔羯',
-                    distanceOne:'images/test/sagittarius.png',
-                    distanceTwo:'images/test/pisces.png',
+                    distanceOne:'/images/test/sagittarius.png',
+                    distanceTwo:'/images/test/pisces.png',
                     distanceTitleOne:'射手',
                     distanceTitleTwo:'雙魚',
                 },
                 {
                     constellation:'天秤座',
                     personality:'凡事講求邏輯和策略，絕對不以暴力解決事情，而是以巧妙的手腕，在對等的權利和利害中找出平衡點。優柔而不寡斷，八面玲瓏，頗有社交才華，容易搏得在上位者的眷顧和禮遇。有強烈的求知慾，領悟力，想像力，和直覺力，天生喜歡表現，並要求別人給與熱烈的反應和激賞。',
-                    matchOne:'images/test/aquarius.png',
-                    matchTwo: 'images/test/gemini.png',
+                    matchOne:'/images/test/aquarius.png',
+                    matchTwo: '/images/test/gemini.png',
                     matchTitleOne:'水瓶',
                     matchTitleTwo:'雙子',
-                    distanceOne:'images/test/sagittarius.png',
-                    distanceTwo:'images/test/pisces.png',
+                    distanceOne:'/images/test/sagittarius.png',
+                    distanceTwo:'/images/test/pisces.png',
                     distanceTitleOne:'射手',
                     distanceTitleTwo:'雙魚',
                 },
                 {
                     constellation:'天蠍座',
                     personality:'有著強烈的第六感、神秘的探視能力及吸引力，做事常憑直覺；雖然有著敏銳的觀察力，但往往仍靠感覺來決定一切。個性強悍而不妥協，也非常好勝，這是一種自我要求的自我超越，以不斷填補內心深處的慾望。',
-                    matchOne:'images/test/pisces.png',
-                    matchTwo: 'images/test/cancer.png',
+                    matchOne:'/images/test/pisces.png',
+                    matchTwo: '/images/test/cancer.png',
                     matchTitleOne:'雙魚',
                     matchTitleTwo:'巨蟹',
-                    distanceOne:'images/test/aquarius.png',
-                    distanceTwo:'images/test/capricorn.png',
+                    distanceOne:'/images/test/aquarius.png',
+                    distanceTwo:'/images/test/capricorn.png',
                     distanceTitleOne:'水瓶',
                     distanceTitleTwo:'金牛',
                 },
                 {
                     constellation:'射手座',
                     personality:'有很好的幽默感，有決斷力及意志力，但生氣時會變得非常頑固。心智反應很快，任何事學得很快。有靈活的想像力用於實際事物上。對週遭的事感到興趣而能專心致力。有直覺而能洞悉人們的動機。身體健康，但有點神經質。感情上時而熱情如火，時而漠不關心。這種起伏不定的感情是造成失敗的原因。',
-                    matchOne:'images/test/aries.png',
-                    matchTwo: 'images/test/capricorn.png',
+                    matchOne:'/images/test/aries.png',
+                    matchTwo: '/images/test/capricorn.png',
                     matchTitleOne:'牡羊',
                     matchTitleTwo:'金牛',
-                    distanceOne:'images/test/virgo.png',
-                    distanceTwo:'images/test/capricorn.png',
+                    distanceOne:'/images/test/virgo.png',
+                    distanceTwo:'/images/test/capricorn.png',
                     distanceTitleOne:'處女',
                     distanceTitleTwo:'魔羯',
                 },
                 {
                     constellation:'摩羯座',
                     personality:'腦子機警，時時想要抓住並利用環境，腦子的滲透力大，眼睛明亮，很快就可以看出別人的弱點以供自己利用。一般來說，是討人喜歡的，表現出整齊而吸引人的外貌，具有迷人的風度，不易受刺激，在危急時表現甚佳。深思熟慮，長於外交，小心而保守，能克服膽小的傾向。',
-                    matchOne:'images/test/virgo.png',
-                    matchTwo: 'images/test/capricorn.png',
+                    matchOne:'/images/test/virgo.png',
+                    matchTwo: '/images/test/capricorn.png',
                     matchTitleOne:'處女',
                     matchTitleTwo:'金牛',
-                    distanceOne:'images/test/aries.png',
-                    distanceTwo:'images/test/cancer.png',
+                    distanceOne:'/images/test/aries.png',
+                    distanceTwo:'/images/test/cancer.png',
                     distanceTitleOne:'牡羊',
                     distanceTitleTwo:'巨蟹',
                 },
                 {
                     constellation:'水瓶座',
                     personality:'有天生的理性瞭解人類內心的本性，同時擁有高度的容忍力，性格通常是均衡而健康的。富於研究精神，喜愛一切新穎的東西，能接受新的發現。具有好的觀察能力及建立理論的能力，常常造成天才人物，發明家，科學家或成為一位精明的人類行為研究者。',
-                    matchOne:'images/test/gemini.png',
-                    matchTwo: 'images/test/libra.png',
+                    matchOne:'/images/test/gemini.png',
+                    matchTwo: '/images/test/libra.png',
                     matchTitleOne:'雙子',
                     matchTitleTwo:'天秤',
-                    distanceOne:'images/test/capricorn.png',
-                    distanceTwo:'images/test/leo.png',
+                    distanceOne:'/images/test/capricorn.png',
+                    distanceTwo:'/images/test/leo.png',
                     distanceTitleOne:'金牛',
                     distanceTitleTwo:'獅子',
                 },
                 {
                     constellation:'雙魚座',
                     personality:'有良好的觀察力，領悟力和判斷力，學習能力相當快，記憶力很好，也有靈活的想像力，喜愛白日夢，享受奇思妙想之境界，也有好的推理能力，喜歡旅行而得到舒暢。天生有仁慈，大方，憐憫，耐心，和保守的性情。',
-                    matchOne:'images/test/cancer.png',
-                    matchTwo: 'images/test/scorpio.png',
+                    matchOne:'/images/test/cancer.png',
+                    matchTwo: '/images/test/scorpio.png',
                     matchTitleOne:'巨蟹',
                     matchTitleTwo:'天蠍',
-                    distanceOne:'images/test/gemini.png',
-                    distanceTwo:'images/test/virgo.png',
+                    distanceOne:'/images/test/gemini.png',
+                    distanceTwo:'/images/test/virgo.png',
                     distanceTitleOne:'雙子',
                     distanceTitleTwo:'處女',
                 },
@@ -604,7 +605,14 @@ export default {
                 return newObj
             }
             console.log(getMaxRepetData(names));
-
+            let maxRepetName = getMaxRepetData(names);
+            console.log(maxRepetName.key);
+           
+            let maxRepetkey = this.constellations.indexOf(maxRepetName.key);
+            console.log(maxRepetkey);
+            
+            this.finalAnswer.push(maxRepetkey);
+            console.log(maxRepetkey);
 
 
             //顯示結果和長條圖
@@ -833,12 +841,13 @@ export default {
             text-align: center;
             border-radius: 20px;
             padding: 10px;
-            margin-top: 50px;
+            margin-top: 20px;
         }
         
         .kind_Constellations{
             display: flex;
             justify-content: center;
+            align-content: center;
             
         }
 
