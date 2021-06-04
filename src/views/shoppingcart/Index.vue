@@ -36,98 +36,55 @@
                         </thead>
 
                         <tbody>
-                            <tr>
+                            <tr
+                                v-for="(item, index) in cartlist"
+                                :key="`${index}`"
+                            >
                                 <td>
                                     <img
-                                        src="/images/shopping_cart/shopping1.png"
+                                        :src="item.productImg"
                                         alt=""
                                         class="shopping_pic"
                                     />
                                 </td>
-                                <td>測試文字七個字</td>
+                                <td>{{ item.productName }}</td>
                                 <td>
                                     <input
                                         type="number"
-                                        min="0"
-                                        value="1"
+                                        min="1"
+                                        max="10"
+                                        v-model="item.count"
                                         class="item_count"
+                                        @change="changeCount(index)"
                                     />
                                 </td>
-                                <td>500</td>
+                                <td>{{ item.total }}</td>
                                 <td>
-                                    <button class="delete_item">刪除</button>
+                                    <button
+                                        class="delete_item"
+                                        @click="deleteBtn(index)"
+                                    >
+                                        刪除
+                                    </button>
                                 </td>
-                            </tr>
-
-                            <tr>
                                 <td colspan="5">
                                     <div class="line"></div>
                                 </td>
                             </tr>
 
-                            <tr>
-                                <td>
-                                    <img
-                                        src="/images/shopping_cart/shopping2.png"
-                                        alt=""
-                                        class="shopping_pic"
-                                    />
-                                </td>
-                                <td>測試文字七個字</td>
-                                <td>
-                                    <input
-                                        type="number"
-                                        min="0"
-                                        value="1"
-                                        class="item_count"
-                                    />
-                                </td>
-                                <td>500</td>
-                                <td>
-                                    <button class="delete_item">刪除</button>
-                                </td>
-                            </tr>
-
-                            <tr>
+                            <!-- <tr>
                                 <td colspan="5">
                                     <div class="line"></div>
                                 </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <img
-                                        src="/images/shopping_cart/shopping1.png"
-                                        alt=""
-                                        class="shopping_pic"
-                                    />
-                                </td>
-                                <td>測試文字七個字</td>
-                                <td>
-                                    <input
-                                        type="number"
-                                        min="0"
-                                        value="1"
-                                        class="item_count"
-                                    />
-                                </td>
-                                <td>500</td>
-                                <td>
-                                    <button class="delete_item">刪除</button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td colspan="5">
-                                    <div class="line"></div>
-                                </td>
-                            </tr>
+                            </tr> -->
 
                             <!-- total block -->
 
                             <tr class="total_price">
                                 <td colspan="4"></td>
-                                <td class="total_price">總計: 1700 元</td>
+                                <td class="total_price">
+                                    總計:{{ totalPrice }} 元
+                                </td>
                             </tr>
 
                             <!-- pay block -->
@@ -160,9 +117,49 @@
 <script>
 import myFooter from '@/components/myFooter';
 export default {
+    data() {
+        return {};
+    },
+    methods: {
+        changeCount(index) {
+            let cart = [];
+            cart = this.$store.state.cartList;
+            //要改newPdData.total
+            cart[index].total = cart[index].price * cart[index].count;
+            console.log(cart[index].total);
+
+            this.$store.dispatch('updateCart', cart);
+        },
+        deleteBtn(index) {
+            let newCart = [...this.cartlist];
+            newCart.splice(index, 1);
+
+            this.$store.dispatch('updateCart', newCart);
+        },
+    },
+    computed: {
+        //取用vuex
+        cartlist() {
+            return this.$store.state.cartList;
+            // console.log(cartlist);
+        },
+        totalPrice() {
+            // var sumPrice = 0;
+            // for (let i = 0; i < this.cartlist.length; i++) {
+            //     sumPrice = sumPrice + this.cartlist[i].total;
+            // }
+            // return sumPrice;
+            var sumPrice = 0;
+            this.cartlist.forEach((item) => {
+                sumPrice += item.total;
+            });
+            return sumPrice;
+        },
+    },
     components: {
         myFooter,
     },
+    // mounted() {},
 };
 </script>
 
@@ -223,7 +220,7 @@ export default {
     }
 
     .SC_mid_block {
-        border: 1px solid red;
+        // border: 1px solid red;
         max-width: 1300 * 0.7px;
         width: 100%;
 

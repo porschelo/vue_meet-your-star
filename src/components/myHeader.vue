@@ -16,9 +16,18 @@
                             </router-link>
                         </li>
                         <li>
-                            <a class="login"
-                                ><img src="/images/header/member.png"
-                            /></a>
+                            <a class="login" @click="onOpenLogin" v-if='loginStatus ==0'>
+                                <img src="/images/header/member.png"  />
+                                
+                            </a>
+                            <!-- <a class="login" v-else>
+                                <img :src = memberIcon >
+                            </a> -->
+
+                            <router-link to="/membercentre" class="login" v-else>
+                                <img :src = memberIcon >
+                            </router-link>
+                            
                         </li>
                         <li>
                             <button
@@ -69,6 +78,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'myHeader',
     data() {
@@ -82,6 +92,21 @@ export default {
         },
         onMenuClose() {
             this.menutogger = false;
+        },
+
+        onOpenLogin(){
+            this.$store.commit('loginVisible',true)
+        }
+    },
+
+    computed: {
+        loginStatus(){
+            return this.$store.state.loginStatus;
+        },
+
+        memberIcon(){
+            return this.$store.state.memberIcon;
+            
         },
     },
 };

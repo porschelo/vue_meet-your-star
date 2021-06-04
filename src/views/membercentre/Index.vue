@@ -18,19 +18,22 @@
 
             <div class="mid_block">
                 <div class="tab">
-                    <!-- <a href="./membercentre.html" class="tab_btn">個人資料</a>
-                <a href="./memberorderlist.html" class="tab_btn">訂單資料</a>
-                <a href="./membercollection.html" class="tab_btn">我的收藏</a> -->
+                    <router-link to="membercentre" class="tab_btn"
+                        >個人資料</router-link
+                    >
+                    <router-link to="memberorderlist" class="tab_btn"
+                        >訂單資料</router-link
+                    >
+                    <router-link to="membercollection" class="tab_btn"
+                        >我的收藏</router-link
+                    >
                 </div>
                 <div class="mid">
                     <div class="mid_top">
                         <div class="left">
-                            <img
-                                src="/images/membercentre/fakedata.png"
-                                alt=""
-                            />
+                            <img :src="star_sign_pic" alt="" />
                             <div class="name">
-                                <h4>水瓶座</h4>
+                                <h4>{{ star_sign_name }}</h4>
                             </div>
                         </div>
 
@@ -40,39 +43,77 @@
                                     <div class="info_1">
                                         <div class="info_Name">
                                             <h4>姓名</h4>
-                                            <h4>王曉明</h4>
+                                            <h4 v-show="data_info">
+                                                {{ member_name }}
+                                            </h4>
+                                            <input
+                                                type="text"
+                                                maxlength="10"
+                                                v-model="member_name"
+                                                v-show="edit_info"
+                                            />
                                         </div>
                                         <div class="info_Bdate">
                                             <h4>生日</h4>
-                                            <h4>1991/01/23</h4>
+                                            <h4 v-show="data_info">
+                                                {{ member_date }}
+                                            </h4>
+                                            <input
+                                                type="text"
+                                                maxlength="10"
+                                                v-model="member_date"
+                                                v-show="edit_info"
+                                            />
                                         </div>
                                     </div>
                                     <div class="info_2">
                                         <div class="info_Sex">
                                             <h4>性別</h4>
-                                            <h4>男</h4>
+                                            <h4 v-show="data_info">
+                                                {{ member_gender }}
+                                            </h4>
+                                            <select
+                                                name="gender"
+                                                v-model="member_gender"
+                                                v-show="edit_info"
+                                            >
+                                                <option value="男">男</option>
+                                                <option value="女">女</option>
+                                            </select>
                                         </div>
                                         <div class="info_Phone">
                                             <h4>電話</h4>
-                                            <h4>0987-654-311</h4>
+                                            <h4 v-show="data_info">
+                                                {{ member_phone }}
+                                            </h4>
+                                            <input
+                                                type="text"
+                                                v-model="member_phone"
+                                                maxlength="12"
+                                                v-show="edit_info"
+                                            />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="right__bottom">
-                                <h4>累積星幣 : 999</h4>
-                                <img
-                                    src="/images/membercentre/star_coin.png"
-                                    alt=""
-                                />
+                                <h4>累積星幣 : {{ star_points }}</h4>
+                                <img :src="star_points_pic" alt="" />
                             </div>
                         </div>
                     </div>
-                    <div class="bottom" @click="editData">
-                        <button class="change_data">修改資料</button>
+                    <div class="bottom" @click="editData(change_status)">
+                        <button class="change_data">
+                            {{ change_data_btn }}
+                        </button>
                     </div>
                 </div>
             </div>
+
+            <!-- <div>
+                {{ this.memberinfo | json }}
+            </div> -->
+
             <myFooter></myFooter>
             <!--wrapper END  -->
         </div>
@@ -80,16 +121,89 @@
 </template>
 
 <script>
+import axios from 'axios';
 import myFooter from '@/components/myFooter';
 
 export default {
+    mounted() {
+        
+        // axios.post((response).then{
+        //     this.star-dasda = data.star_sign_pic
+
+        // })
+
+        // axios.get('../../php/Select.php').then(res => console.log(res));
+        // axios.get('../../php/Select.php').then(res => console.log(res.data));
+
+        axios
+            .post('http://localhost/vue_meet_u_heart/php/Select.php', 
+               { id: this.$store.state.loginID },
+            )
+            .then((res) => {
+                console.log(res);
+                this.memberinfo = res.data;
+                console.log(this.memberinfo);
+                // console.log(this.memberinfo[0].MEMBER_NAME);
+
+                this.member_name = this.memberinfo[0].MEMBER_NAME;
+                this.member_date = this.memberinfo[0].MEMBER_BIRTHDAY;
+                this.member_gender = this.memberinfo[0].MEMBER_GENDER;
+                this.member_phone = this.memberinfo[0].MEMBER_PHONE;
+                this.star_points = this.memberinfo[0].MEMBER_POINT;
+                this.star_sign_pic = this.memberinfo[0].MEMBER_IMG;
+            });
+
+
+    },
+    data() {
+        return {
+            memberinfo: [],
+            star_sign_pic: '/images/membercentre/fakedata.png',
+            star_sign_name: '水瓶座',
+            member_name: '王曉明',
+            member_date: '1991/01/23',
+            member_gender: '男',
+            member_phone: '0987-654-321',
+            star_points: 987,
+            star_points_pic: '/images/membercentre/star_coin.png',
+
+            change_data_btn: '修改資料',
+            change_status: 1,
+            edit_info: false,
+            data_info: true,
+        };
+    },
     methods: {
-        editData() {},
+        editData(btn_status) {
+            if (btn_status == 1) {
+                this.edit_info = true;
+                this.data_info = false;
+                this.change_data_btn = '儲存資料';
+                this.change_status = 0;
+            } else if (btn_status == 0) {
+                this.edit_info = false;
+                this.data_info = true;
+                this.change_data_btn = '修改資料';
+                this.change_status = 1;
+            }
+        },
+    },
+
+    computed: {
+        loginID(){
+            return this.$store.state.loginID;
+        }
     },
 
     components: {
         myFooter,
     },
+
+    // mounted:{
+    //     axios.get('./XML_JSON_CSV/bookData.json')
+    //                .then(res => this.books = res.data)  //成功時候的處理函數
+    //                .catch(error => console.log(error))  //失敗時候的處理函數
+    // }
 };
 </script>
 
@@ -235,7 +349,10 @@ $border: 1px solid;
         .mid_top {
             // border: 1px solid green;
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            @include rwd('mobile') {
+                flex-wrap: wrap;
+            }
 
             .left {
                 // border: 1px solid orange;
@@ -247,12 +364,15 @@ $border: 1px solid;
                 }
 
                 img {
-                    width: 330 * 0.7px;
-                    height: 310 * 0.7px;
+                    // width: 226 * 0.7px;
+                    // height: 252 * 0.7px;
                     display: block;
                     margin: 0 auto;
                     // margin-bottom: 16*.7px;
                     margin-bottom: 10%;
+                    @include rwd('mobile') {
+                        margin-top: 10%;
+                    }
                 }
 
                 h4 {
@@ -266,6 +386,12 @@ $border: 1px solid;
                 flex-grow: 2;
                 // border: 1px solid purple;
                 margin: 8% 2%;
+
+                input {
+                    @include rwd('mobile') {
+                        text-align: center;
+                    }
+                }
 
                 h4 {
                     font-size: map-get($font_size, H4);
@@ -352,6 +478,7 @@ $border: 1px solid;
 
                         .info_Phone {
                             width: 60%;
+                            // border: 1px solid black;
 
                             h4 {
                                 margin-bottom: 2%;

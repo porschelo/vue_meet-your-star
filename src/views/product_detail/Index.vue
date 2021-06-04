@@ -58,8 +58,8 @@
                 <div class="pd-rightblock">
                     <!-- 愛心收藏 -->
                     <div class="pd-love">
-                        <h2>七星陣水晶原石能量陣</h2>
-                        <img src="/images/store/loveicone.png" alt="" />
+                        <h2>{{ productData.productName }}</h2>
+                        <img :src="productData.productImg" alt="" />
                     </div>
 
                     <p>
@@ -67,11 +67,12 @@
                     </p>
 
                     <div class="pd-price">
-                        <span>{{ price }}</span
+                        <span>{{ totalNum }}</span
                         >元
-                        <select v-model="n" @change="changNum">
+                        <!-- 綁定 :value -->
+                        <select v-model="productData.count">
                             <option disabled>-- 請選擇數量 --</option>
-                            <option v-for="n in 10" :key="n">
+                            <option v-for="n in 10" :value="n" :key="n">
                                 {{ n }}
                             </option>
                         </select>
@@ -79,7 +80,9 @@
                     </div>
 
                     <div class="pd-butn">
-                        <button class="pd-add">加入購物車</button>
+                        <button class="pd-add" @click="addToCart">
+                            加入購物車
+                        </button>
                         <button class="pd-buy">立即購買</button>
                     </div>
                 </div>
@@ -240,9 +243,12 @@ export default {
                     },
                 },
             },
-            price: 500,
-            n: 1,
-            // chooseNum: 1,
+            productData: {
+                productName: '七星陣水晶原石能量陣',
+                productImg: '/images/store/healthP-1.png',
+                price: 500,
+                count: 1,
+            },
         };
     },
 
@@ -311,21 +317,23 @@ export default {
                 },
             });
         },
-        changNum() {
-            this.price * this.n;
-            return this.n;
+        addToCart() {
+            let newPdData = { ...this.productData };
+            newPdData.total = this.totalNum;
+            // console.log(newPdData);
+            // this.productData.tatol=  this.totalNum
+            this.$store.dispatch('addToCart', newPdData);
         },
     },
 
     mounted() {
         this.getChart();
     },
-    // computed: {
-    //     changNum() {
-    //         this.price * this.n;
-    //         return this.n;
-    //     },
-    // },
+    computed: {
+        totalNum() {
+            return this.productData.price * this.productData.count;
+        },
+    },
 };
 </script>
 <style lang="scss">
