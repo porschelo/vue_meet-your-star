@@ -33,6 +33,12 @@ export default {
         this.$store.commit('updateLoginStatus',storageLoginStatus);
         this.$store.commit('updatememberIcon',storagememberIcon);
         this.$store.commit('updateloginID',storageloginID);
+
+        // cart
+        let storageCarts =
+            JSON.parse(localStorage.getItem('storageCart')) || [];
+        console.log(storageCarts);
+        this.$store.commit('addCartUpdate', storageCarts);
     },
 };
 </script>

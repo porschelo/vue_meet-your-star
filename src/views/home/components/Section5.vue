@@ -16,36 +16,36 @@
             </div>
             <div :class="{ isShow: showNum === 1 }" class="planet libra">
                 <img src="/images/index/planet/風象/planet_libra.svg" alt="" />
-                <a href="">
+                <router-link :to="{ name: 'Starsign', query: { id: 4 } }">
                     <img
                         class="planet_monst_libra"
                         src="/images/index/planet/風象/天秤帶字.svg"
                         alt=""
                     />
-                </a>
+                </router-link>
             </div>
             <div :class="{ isShow: showNum === 2 }" class="planet aquarius">
                 <img
                     src="/images/index/planet/風象/planet_aquarius.svg"
                     alt=""
                 />
-                <a href="">
+                <router-link :to="{ name: 'Starsign', query: { id: 5 } }">
                     <img
                         class="planet_monst_aquarius"
                         src="/images/index/planet/風象/水瓶帶字.svg"
                         alt=""
                     />
-                </a>
+                </router-link>
             </div>
             <div :class="{ isShow: showNum === 3 }" class="planet gemini">
                 <img src="/images/index/planet/風象/planet_gemini.svg" alt="" />
-                <a href="">
+                <router-link :to="{ name: 'Starsign', query: { id: 5 } }">
                     <img
                         class="planet_monst_gemini"
                         src="/images/index/planet/風象/雙子帶字.svg"
                         alt=""
                     />
-                </a>
+                </router-link>
             </div>
         </div>
     </div>
@@ -101,6 +101,7 @@ export default {
             position: absolute;
             margin-top: whForPC(455, 850);
             right: whForPC(-446, 850);
+            z-index: 1;
         }
 
         .planet {
