@@ -1,104 +1,96 @@
 <template>
     <div>
-        
         <!-- STAR -->
         <div class="wrapper">
-        
-        <!-- Title -->
-        <div class="MC_title">
-            <div class="MC_title-c">
-                <img src="/images/membercentre/earth.png" alt="">
-                <h1>會員中心</h1>
-                <img src="/images/membercentre/earth.png" alt="">
-            </div>
+            <!-- Title -->
+            <div class="MC_title">
+                <div class="MC_title-c">
+                    <img src="/images/membercentre/earth.png" alt="" />
+                    <h1>會員中心</h1>
+                    <img src="/images/membercentre/earth.png" alt="" />
+                </div>
 
-            <div class="MC_title-e">
-                <h4>一 Member Centre 一</h4>
+                <div class="MC_title-e">
+                    <h4>一 Member Centre 一</h4>
+                </div>
             </div>
-        </div>
-        <!-- Title END-->
-        
+            <!-- Title END-->
 
-        <div class="mid_block">
-            <div class="tab">
-                <!-- <a href="./membercentre.html" class="tab_btn">個人資料</a>
+            <div class="mid_block">
+                <div class="tab">
+                    <!-- <a href="./membercentre.html" class="tab_btn">個人資料</a>
                 <a href="./memberorderlist.html" class="tab_btn">訂單資料</a>
                 <a href="./membercollection.html" class="tab_btn">我的收藏</a> -->
-            </div>
-            <div class="mid">
-                <div class="mid_top">
-                
-                    <div class="left">
-                        <img src="/images/membercentre/fakedata.png" alt="">
-                        <div class="name">
-                            <h4>水瓶座</h4>
+                </div>
+                <div class="mid">
+                    <div class="mid_top">
+                        <div class="left">
+                            <img
+                                src="/images/membercentre/fakedata.png"
+                                alt=""
+                            />
+                            <div class="name">
+                                <h4>水瓶座</h4>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="right">
-                        <div class="right__main">
-                            <div class="info">
-                                <div class="info_1">
-                                    <div class="info_Name">
-                                        <h4>姓名</h4>
-                                        <h4>王曉明</h4>
+                        <div class="right">
+                            <div class="right__main">
+                                <div class="info">
+                                    <div class="info_1">
+                                        <div class="info_Name">
+                                            <h4>姓名</h4>
+                                            <h4>王曉明</h4>
+                                        </div>
+                                        <div class="info_Bdate">
+                                            <h4>生日</h4>
+                                            <h4>1991/01/23</h4>
+                                        </div>
                                     </div>
-                                    <div class="info_Bdate">
-                                        <h4>生日</h4>
-                                        <h4>1991/01/23</h4>
-                                    </div>
-                                </div>
-                                <div class="info_2">
-                                    <div class="info_Sex">
-                                        <h4>性別</h4>
-                                        <h4>男</h4>
-                                    </div>
-                                    <div class="info_Phone">
-                                        <h4>電話</h4>
-                                        <h4>0987-654-311</h4>
+                                    <div class="info_2">
+                                        <div class="info_Sex">
+                                            <h4>性別</h4>
+                                            <h4>男</h4>
+                                        </div>
+                                        <div class="info_Phone">
+                                            <h4>電話</h4>
+                                            <h4>0987-654-311</h4>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="right__bottom">
-                            <h4>累積星幣 : 999</h4>
-                            <img src="/images/membercentre/star_coin.png" alt="">
-                            
+                            <div class="right__bottom">
+                                <h4>累積星幣 : 999</h4>
+                                <img
+                                    src="/images/membercentre/star_coin.png"
+                                    alt=""
+                                />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="bottom" @click="editData">
-                    <button class="change_data">修改資料</button>
+                    <div class="bottom" @click="editData">
+                        <button class="change_data">修改資料</button>
+                    </div>
                 </div>
             </div>
-               
+            <myFooter></myFooter>
+            <!--wrapper END  -->
         </div>
-        <myFooter></myFooter> 
-        <!--wrapper END  -->
-    </div>
-
-    
-
     </div>
 </template>
 
-
 <script>
-import myFooter from '@/components/myFooter'
+import myFooter from '@/components/myFooter';
 
 export default {
-
-methods:{
-        editData(){
-
-        }
-},
-
-   components: {
-        myFooter,
-        
+    methods: {
+        editData() {},
     },
-}
+
+    components: {
+        myFooter,
+    },
+};
 </script>
 
 <style lang="scss">
@@ -108,30 +100,28 @@ methods:{
 @import '@/scss/mixins.scss';
 @import '@/scss/rwd.scss';
 
-
-
-
 //scss
 
-$font_size:(H1:52*.7px,
-    H2:40*.7px,
-    H3:35*.7px,
-    H4:30*.7px,
-    p:20*.7px);
-
-$color:(white:#fff,
-    gray:#CACACA,
-    pink:#FFC2CF,
-    lightblue:#D6E0F7,
-    font_color:#777777,
+$font_size: (
+    H1: 52 * 0.7px,
+    H2: 40 * 0.7px,
+    H3: 35 * 0.7px,
+    H4: 30 * 0.7px,
+    p: 20 * 0.7px,
 );
 
+$color: (
+    white: #fff,
+    gray: #cacaca,
+    pink: #ffc2cf,
+    lightblue: #d6e0f7,
+    font_color: #777777,
+);
 
-$border :1px solid;
+$border: 1px solid;
 
 .wrapper {
-
-    @include rwd("mobile") {
+    @include rwd('mobile') {
         h1 {
             font-size: $h1 - 8px !important;
         }
@@ -151,7 +141,6 @@ $border :1px solid;
 
     * {
         box-sizing: border-box;
-
     }
 
     img {
@@ -166,14 +155,12 @@ $border :1px solid;
     background-image: url(/images/membercentre/member-bg2x.png);
     background-size: cover;
 
-
     // Title star
     .MC_title {
-
         color: $colorT;
-        padding: (80px + 240px) * .7 0 0;
+        padding: (80px + 240px) * 0.7 0 0;
 
-        margin-bottom: 280px*.7;
+        margin-bottom: 280px * 0.7;
 
         &-c {
             display: flex;
@@ -181,8 +168,8 @@ $border :1px solid;
             align-items: center;
 
             img {
-                width: 63px * .7;
-                height: 43px * .7;
+                width: 63px * 0.7;
+                height: 43px * 0.7;
                 margin-bottom: 5px;
             }
         }
@@ -208,50 +195,41 @@ $border :1px solid;
 
     .mid_block {
         // border: 1px solid red;
-        max-width: 1300*.7px;
+        max-width: 1300 * 0.7px;
         width: 100%;
-
-
-
-
 
         .tab {
             display: flex;
             justify-content: space-evenly;
 
-
-
             a {
-
                 font-size: $h3;
                 background-color: map-get($color, gray);
                 color: map-get($color, font_color);
-                max-width: 265*.7px;
-                max-height: 75*.7px;
+                max-width: 265 * 0.7px;
+                max-height: 75 * 0.7px;
                 width: 100%;
-                border-radius: 20*.7px 20*.7px 0 0;
-                line-height: 75*.7px;
+                border-radius: 20 * 0.7px 20 * 0.7px 0 0;
+                line-height: 75 * 0.7px;
                 text-align: center;
                 cursor: pointer;
                 // margin-left: 37*.7px;
                 text-decoration: none;
 
-                @include rwd("mobile") {
+                @include rwd('mobile') {
                     width: 25%;
-                    font-size: $h3 - 6px
+                    font-size: $h3 - 6px;
                 }
 
                 &:nth-of-type(1) {
                     background-color: map-get($color, white);
                 }
-
             }
         }
 
         .mid {
             border: 3px solid white;
             margin: 0 5%;
-
         }
 
         .mid_top {
@@ -263,14 +241,14 @@ $border :1px solid;
                 // border: 1px solid orange;
                 margin: 8%;
 
-                @include rwd("mobile") {
+                @include rwd('mobile') {
                     width: 100%;
                     margin: 3%;
                 }
 
                 img {
-                    width: 330*.7px;
-                    height: 310*.7px;
+                    width: 330 * 0.7px;
+                    height: 310 * 0.7px;
                     display: block;
                     margin: 0 auto;
                     // margin-bottom: 16*.7px;
@@ -281,8 +259,6 @@ $border :1px solid;
                     font-size: $p1;
                     color: map-get($color, pink);
                     text-align: center;
-
-
                 }
             }
 
@@ -291,17 +267,13 @@ $border :1px solid;
                 // border: 1px solid purple;
                 margin: 8% 2%;
 
-
-
                 h4 {
                     font-size: map-get($font_size, H4);
                     color: map-get($color, white);
 
-                    &:nth-of-type(2n+1) {
-                        color: #DEDEDE
+                    &:nth-of-type(2n + 1) {
+                        color: #dedede;
                     }
-
-
                 }
 
                 .info {
@@ -311,15 +283,14 @@ $border :1px solid;
                         flex-wrap: wrap;
                         margin-bottom: 15%;
 
-                        @include rwd("mobile") {
+                        @include rwd('mobile') {
                             margin-bottom: 5%;
                         }
-
 
                         .info_Name {
                             width: 40%;
 
-                            @include rwd("mobile") {
+                            @include rwd('mobile') {
                                 width: 100%;
 
                                 margin-bottom: 5%;
@@ -329,22 +300,16 @@ $border :1px solid;
                             h4 {
                                 margin-bottom: 5%;
 
-                                @include rwd("mobile") {
+                                @include rwd('mobile') {
                                     margin-bottom: 2%;
                                 }
                             }
-
-
-
-
-
-
                         }
 
                         .info_Bdate {
                             width: 60%;
 
-                            @include rwd("mobile") {
+                            @include rwd('mobile') {
                                 width: 100%;
                                 text-align: center;
                             }
@@ -352,9 +317,6 @@ $border :1px solid;
                             h4 {
                                 margin-bottom: 2%; //數字國字高度不一樣所以%數不同
                             }
-
-
-
                         }
                     }
 
@@ -364,19 +326,15 @@ $border :1px solid;
                         flex-wrap: wrap;
                         margin-bottom: 20%;
 
-                        @include rwd("mobile") {
-
+                        @include rwd('mobile') {
                             margin-bottom: 10%;
                             // border: 1px solid black;
                         }
 
-
-
-
                         .info_Sex {
                             width: 40%;
 
-                            @include rwd("mobile") {
+                            @include rwd('mobile') {
                                 width: 100%;
                                 text-align: center;
                                 margin-bottom: 5%;
@@ -386,12 +344,10 @@ $border :1px solid;
                             h4 {
                                 margin-bottom: 5%;
 
-                                @include rwd("mobile") {
+                                @include rwd('mobile') {
                                     margin-bottom: 2%;
                                 }
                             }
-
-
                         }
 
                         .info_Phone {
@@ -401,11 +357,10 @@ $border :1px solid;
                                 margin-bottom: 2%;
                             }
 
-                            @include rwd("mobile") {
+                            @include rwd('mobile') {
                                 width: 100%;
                                 text-align: center;
                             }
-
                         }
                     }
                 }
@@ -413,8 +368,7 @@ $border :1px solid;
                 .right__bottom {
                     display: flex;
 
-
-                    @include rwd("mobile") {
+                    @include rwd('mobile') {
                         justify-content: center;
                         // border: 1px solid red;
                     }
@@ -425,8 +379,6 @@ $border :1px solid;
                     }
                 }
             }
-
-
         }
 
         .bottom {
@@ -435,21 +387,19 @@ $border :1px solid;
             justify-content: center;
             margin-bottom: 5%;
 
-            @include rwd("mobile") {
+            @include rwd('mobile') {
                 margin-bottom: 10%;
             }
 
             @include btn-module('.change_data', 280, 100) {
                 color: white;
 
-                @include rwd("mobile") {
+                @include rwd('mobile') {
                     font-size: $h3 - 6px;
                     width: 170 * 0.7px;
                     height: 80 * 0.7px;
                 }
             }
-
-
         }
     }
 
@@ -457,8 +407,5 @@ $border :1px solid;
     // wrapper END
 }
 
-
-
 // scss end
-
 </style>

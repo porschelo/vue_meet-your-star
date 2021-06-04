@@ -15,6 +15,10 @@ export default {
         myHeader,
         // myFooter,
     },
+    created(){
+        let storageteachername = JSON.parse(localStorage.getItem('saveteacher' )) || [];
+        this.$store.commit('selectteachername', storageteachername);
+    },
 };
 </script>
 

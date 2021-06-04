@@ -2,13 +2,12 @@
     <div>
         <!-- wrapper star -->
         <div class="MOL_wrapper">
-        
             <!-- Title -->
             <div class="MOL_title">
                 <div class="MOL_title-c">
-                    <img src="images/memberorderlist/earth.png" alt="">
+                    <img src="images/memberorderlist/earth.png" alt="" />
                     <h1>會員中心</h1>
-                    <img src="images/memberorderlist/earth.png" alt="">
+                    <img src="images/memberorderlist/earth.png" alt="" />
                 </div>
 
                 <div class="MOL_title-e">
@@ -18,162 +17,178 @@
             <!-- Title END-->
 
             <div class="MOL_midblock_out">
-                
                 <div class="list_tab">
                     <!-- <a href="./membercentre.html" class="list_tab_btn">個人資料</a>
                     <a href="./memberorderlist.html" class="list_tab_btn">訂單資料</a>
                     <a href="./membercollection.html" class="list_tab_btn">我的收藏</a> -->
                 </div>
 
-
                 <div class="list_box">
-                        <table>
-                            <thead>
-                                <tr class="list_title">
-                                    <td>訂單編號</td>
-                                    <td class="order_pic">商品圖片</td>
-                                    <td class="order_name">商品名稱</td>
-                                    <td>數量</td>
-                                    <td>金額</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="5">
-                                        <div class="line"></div>
-                                    </td>
-                                </tr>
-                            </thead>
+                    <table>
+                        <thead>
+                            <tr class="list_title">
+                                <td>訂單編號</td>
+                                <td class="order_pic">商品圖片</td>
+                                <td class="order_name">商品名稱</td>
+                                <td>數量</td>
+                                <td>金額</td>
+                            </tr>
+                            <tr>
+                                <td colspan="5">
+                                    <div class="line"></div>
+                                </td>
+                            </tr>
+                        </thead>
 
-                            <tbody class="order_table">
-                                <tr class="orderlist1">
-                                    <td rowspan="2">
-                                        <div class="numid">20210123</div>
-                                        <button class="buyagain" onclick="location.href='./order.html'">再次購買</button>
-                                    </td>
-                                    <td><img src="/images/memberorderlist/list_item1.png" alt="" class="list_pica"></td>
-                                    <td class="order_name">測試文字七個字</td>
-                                    <td>1</td>
-                                    <td>500</td>
-                                </tr>
-                                <tr>
-                                    <td><img src="/images/memberorderlist/list_item2.png" alt="" class="list_pica"></td>
-                                    <td class="order_name">宇宙能量手環</td>
-                                    <td>1</td>
-                                    <td>500</td>
-                                </tr>
+                        <tbody class="order_table">
+                            <tr class="orderlist1">
+                                <td rowspan="2">
+                                    <div class="numid">20210123</div>
+                                    <button
+                                        class="buyagain"
+                                        onclick="location.href='./order.html'"
+                                    >
+                                        再次購買
+                                    </button>
+                                </td>
+                                <td>
+                                    <img
+                                        src="/images/memberorderlist/list_item1.png"
+                                        alt=""
+                                        class="list_pica"
+                                    />
+                                </td>
+                                <td class="order_name">測試文字七個字</td>
+                                <td>1</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img
+                                        src="/images/memberorderlist/list_item2.png"
+                                        alt=""
+                                        class="list_pica"
+                                    />
+                                </td>
+                                <td class="order_name">宇宙能量手環</td>
+                                <td>1</td>
+                                <td>500</td>
+                            </tr>
 
-                                <tr class="total_price">
-                                    <td colspan="2"></td>
-                                    <td >共計 2 件</td>
-                                    <td colspan="2" class="price">1000元</td>
-                                </tr>
+                            <tr class="total_price">
+                                <td colspan="2"></td>
+                                <td>共計 2 件</td>
+                                <td colspan="2" class="price">1000元</td>
+                            </tr>
 
-                                <tr>
-                                    <td colspan="5">
-                                        <div class="line"></div>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td colspan="5">
+                                    <div class="line"></div>
+                                </td>
+                            </tr>
 
-                                <tr class="orderlist2">
-                                    <td>
-                                        <div class="numid">20210124</div>
-                                        <button class="buyagain">再次購買</button>
-                                    </td>
-                                    <td><img src="/images/memberorderlist/list_item1.png" alt="" class="list_pica"></td>
-                                    <td class="order_name">宇宙能量手環</td>
-                                    <td>1</td>
-                                    <td>600</td>
-                                </tr>
+                            <tr class="orderlist2">
+                                <td>
+                                    <div class="numid">20210124</div>
+                                    <button class="buyagain">再次購買</button>
+                                </td>
+                                <td>
+                                    <img
+                                        src="/images/memberorderlist/list_item1.png"
+                                        alt=""
+                                        class="list_pica"
+                                    />
+                                </td>
+                                <td class="order_name">宇宙能量手環</td>
+                                <td>1</td>
+                                <td>600</td>
+                            </tr>
 
-                                <tr>
-                                    <td colspan="2"></td>
-                                    <td>共計 1 件</td>
-                                    <td  colspan="2" class="price">600元</td>
-                                </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td>共計 1 件</td>
+                                <td colspan="2" class="price">600元</td>
+                            </tr>
 
+                            <tr>
+                                <td colspan="5">
+                                    <div class="line"></div>
+                                </td>
+                            </tr>
 
-                                <tr>
-                                    <td colspan="5">
-                                        <div class="line"></div>
-                                    </td>
-                                </tr>
+                            <tr class="orderlist3">
+                                <td>
+                                    <div class="numid">20210125</div>
+                                    <button class="buyagain">再次購買</button>
+                                </td>
+                                <td>
+                                    <img
+                                        src="/images/memberorderlist/list_item1.png"
+                                        alt=""
+                                        class="list_pica"
+                                    />
+                                </td>
+                                <td class="order_name">宇宙能量手環</td>
+                                <td>1</td>
+                                <td>700</td>
+                            </tr>
 
-                                <tr class="orderlist3">
-                                    <td>
-                                        <div class="numid">20210125</div>
-                                        <button class="buyagain">再次購買</button>
-                                    </td>
-                                    <td><img src="/images/memberorderlist/list_item1.png" alt="" class="list_pica"></td>
-                                    <td class="order_name">宇宙能量手環</td>
-                                    <td>1</td>
-                                    <td>700</td>
-                                </tr>
-
-                                <tr>
-                                    <td colspan="2"></td>
-                                    <td>共計 1 件</td>
-                                    <td colspan="2" class="price">700元</td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    
+                            <tr>
+                                <td colspan="2"></td>
+                                <td>共計 1 件</td>
+                                <td colspan="2" class="price">700元</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <myFooter></myFooter> 
+            <myFooter></myFooter>
             <!-- wrapper END-->
         </div>
-    
+
         <!-- template END -->
     </div>
 </template>
 
 <script>
-import myFooter from '@/components/myFooter'
+import myFooter from '@/components/myFooter';
 export default {
     components: {
         myFooter,
-        
     },
-}
+};
 </script>
 
-
 <style lang="scss">
+@import '@/scss/color.scss';
+@import '@/scss/var.scss';
+@import '@/scss/center.scss';
+@import '@/scss/mixins.scss';
+@import '@/scss/rwd.scss';
 
-    @import '@/scss/color.scss';
-    @import '@/scss/var.scss';
-    @import '@/scss/center.scss';
-    @import '@/scss/mixins.scss';
-    @import '@/scss/rwd.scss';
+// scss
 
-    // scss
-
-    $font_size:(H1:52*.7px,
-    H2:40*.7px,
-    H3:35*.7px,
-    H4:30*.7px,
-    p:20*.7px);
-
-$color:(white:#fff,
-    gray:#CACACA,
-    pink:#FFC2CF,
-    lightblue:#D6E0F7,
-    font_color:#777777,
+$font_size: (
+    H1: 52 * 0.7px,
+    H2: 40 * 0.7px,
+    H3: 35 * 0.7px,
+    H4: 30 * 0.7px,
+    p: 20 * 0.7px,
 );
 
+$color: (
+    white: #fff,
+    gray: #cacaca,
+    pink: #ffc2cf,
+    lightblue: #d6e0f7,
+    font_color: #777777,
+);
 
-$border :1px solid;
-
-
-
-
-
-
+$border: 1px solid;
 
 .MOL_wrapper {
-
-    @include rwd("mobile") {
+    @include rwd('mobile') {
         // h1 {
         //     font-size: $h1 - 8px !important;
         // }
@@ -189,13 +204,10 @@ $border :1px solid;
         // h4 {
         //     font-size: $p1 - 6px !important;
         // }
-
-
     }
 
     * {
         box-sizing: border-box;
-
     }
 
     img {
@@ -211,11 +223,10 @@ $border :1px solid;
     background-size: cover;
 
     .MOL_title {
-
         color: $colorT;
-        padding: (80px + 240px) * .7 0 0;
+        padding: (80px + 240px) * 0.7 0 0;
 
-        margin-bottom: 280px*.7;
+        margin-bottom: 280px * 0.7;
 
         &-c {
             display: flex;
@@ -223,8 +234,8 @@ $border :1px solid;
             align-items: center;
 
             img {
-                width: 63px * .7;
-                height: 43px * .7;
+                width: 63px * 0.7;
+                height: 43px * 0.7;
                 margin-bottom: 5px;
             }
         }
@@ -240,47 +251,37 @@ $border :1px solid;
         }
     }
 
-
-
-    ;
-
     .MOL_midblock_out {
-
         // border: $border red;
-        max-width: 1300*.7px;
+        max-width: 1300 * 0.7px;
         width: 100%;
-
 
         .list_tab {
             display: flex;
             justify-content: space-evenly;
 
-
-
             a {
-
                 font-size: $h3;
                 background-color: map-get($color, gray);
                 color: map-get($color, font_color);
-                max-width: 265*.7px;
-                max-height: 75*.7px;
+                max-width: 265 * 0.7px;
+                max-height: 75 * 0.7px;
                 width: 100%;
-                border-radius: 20*.7px 20*.7px 0 0;
-                line-height: 75*.7px;
+                border-radius: 20 * 0.7px 20 * 0.7px 0 0;
+                line-height: 75 * 0.7px;
                 text-align: center;
                 cursor: pointer;
                 // margin-left: 37*.7px;
                 text-decoration: none;
 
-                @include rwd("mobile") {
+                @include rwd('mobile') {
                     width: 25%;
-                    font-size: $h3 - 6px
+                    font-size: $h3 - 6px;
                 }
 
                 &:nth-of-type(2) {
                     background-color: map-get($color, white);
                 }
-
             }
         }
 
@@ -290,9 +291,8 @@ $border :1px solid;
             color: map-get($color, white);
             margin: 0 5%;
 
-            @include rwd("mobile") {
-
-                font-size: 12px
+            @include rwd('mobile') {
+                font-size: 12px;
             }
 
             table {
@@ -303,37 +303,27 @@ $border :1px solid;
 
                 @include rwd(mobile) {
                     line-height: 1.5;
-
                 }
-
-
-
-
 
                 @include btn-module('.buyagain', 191, 75) {
                     color: white;
-                    line-height: (75*.7) - 6px;
+                    line-height: (75 * 0.7) - 6px;
                     margin: 10% auto;
                     font-size: $p2;
 
                     @include rwd(mobile) {
                         font-size: $p2 - 8px;
-                        width: 110px*.7;
-                        height: 50px*.7;
-                        line-height: (50*.7) - 6px;
+                        width: 110px * 0.7;
+                        height: 50px * 0.7;
+                        line-height: (50 * 0.7) - 6px;
                         letter-spacing: 1px;
-
                     }
-
                 }
-
-
 
                 td {
                     vertical-align: middle;
                     border: 1px solid green;
                     letter-spacing: 2px;
-
                 }
 
                 .line {
@@ -345,7 +335,6 @@ $border :1px solid;
                 .price,
                 .numid {
                     color: map-get($color, pink);
-
                 }
 
                 .order_name,
@@ -358,29 +347,16 @@ $border :1px solid;
 
                 .list_pica {
                     margin: 5% auto;
-                    max-width: 200px*.7;
+                    max-width: 200px * 0.7;
                     width: 100%;
                     border-radius: 5px;
 
                     @include rwd(mobile) {
-                        max-width: 110px*.7;
+                        max-width: 110px * 0.7;
                     }
-
-
                 }
-
-
-
-
-
             }
         }
-
-
     }
-
-
 }
-
-
 </style>

@@ -4,8 +4,19 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    state: {},
-    mutations: {},
-    actions: {},
+    state: {
+        selectteacher:'',
+    },
+    mutations: {
+        selectteachername(state, teachername){
+            state.selectteacher = teachername; 
+        }
+
+    },
+    actions: {
+        setselectteacher(context, teachername){
+            context.commit('selectteachername', teachername)
+        }
+    },
     modules: {},
 });

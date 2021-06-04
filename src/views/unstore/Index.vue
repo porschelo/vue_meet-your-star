@@ -15,26 +15,51 @@
 
             <!-- 頁籤 -->
             <ul class="unstore_sort">
-                <li @click="showProduct = 'health'" :class="{highlight:showProduct == 'health'}">健康</li>
-                <li @click="showProduct = 'love'" :class="{highlight:showProduct == 'love'}">愛情</li>
-                <li @click="showProduct = 'work'" :class="{highlight:showProduct == 'work'}">工作</li>
-                <li @click="showProduct = 'study'" :class="{highlight:showProduct == 'study'}">學業</li>
-                <li><router-link to ="/unstore/customized">客製化</router-link></li>
+                <li
+                    @click="showProduct = 'health'"
+                    :class="{ highlight: showProduct == 'health' }"
+                >
+                    健康
+                </li>
+                <li
+                    @click="showProduct = 'love'"
+                    :class="{ highlight: showProduct == 'love' }"
+                >
+                    愛情
+                </li>
+                <li
+                    @click="showProduct = 'work'"
+                    :class="{ highlight: showProduct == 'work' }"
+                >
+                    工作
+                </li>
+                <li
+                    @click="showProduct = 'study'"
+                    :class="{ highlight: showProduct == 'study' }"
+                >
+                    學業
+                </li>
+                <li>
+                    <router-link to="/unstore/customized">客製化</router-link>
+                </li>
             </ul>
 
             <!-- 商品內容 -->
             <div class="unstore_content">
                 <div class="unstore_product">
-                    <template  v-for="(product,key) in products">
-                         <div class="item" v-if="showProduct === product.category"  :key="key">
-                        <router-link to="/unstore/product_detail">
-                            <img :src="product.imgURL">
-                            <p >{{product.imgURL}}</p>
-                            <h4 >{{product.name}}</h4>
-                        </router-link>
-                    </div>
+                    <template v-for="(product, key) in products">
+                        <div
+                            class="item"
+                            v-if="showProduct === product.category"
+                            :key="key"
+                        >
+                            <router-link to="/unstore/product_detail">
+                                <img :src="product.imgURL" />
+                                <p>{{ product.imgURL }}</p>
+                                <h4>{{ product.name }}</h4>
+                            </router-link>
+                        </div>
                     </template>
-                   
 
                     <!-- <template  v-if="showProduct == 0">
                         <div class="item" v-for="(health,key) in healths" :key="key">
@@ -70,7 +95,6 @@
                             <h4 v-if="showProduct == 3">{{study.name}}</h4>
                         </router-link>
                     </div> -->
-
                 </div>
 
                 <!-- 頁碼 -->
@@ -84,7 +108,8 @@
             </div>
 
             <div class="unstore_monster">
-                <router-link to ="/unstore/customized"><img src="images/store/unstore-monster.png" alt=""
+                <router-link to="/unstore/customized"
+                    ><img src="images/store/unstore-monster.png" alt=""
                 /></router-link>
             </div>
         </div>
@@ -94,40 +119,136 @@
 <script>
 import myFooter from '@/components/myFooter';
 export default {
-     data() {
+    data() {
         return {
             showProduct: 'health',
             // choosed_category:'',
             // choosed_category:'health',
-            products:[
-            {imgURL:'images/store/hPd_1.png', name:'七星陣水晶原石能量陣',category:'health'},
-            {imgURL:'images/store/hPd_2.png', name:'水向魔法石融蠟燈',category:'health'},
-            {imgURL:'images/store/hPd_3.png', name:'生命之花奧剛金字塔',category:'health'},
-            {imgURL:'images/store/hPd_4.png', name:'天然擴香健康石',category:'health'},
-            {imgURL:'images/store/hPd_5.png', name:'冥王星晶石手鍊',category:'health'},
-            {imgURL:'images/store/hPd_6.png', name:'德國花果茶與乾燥花盒',category:'health'},
-            {imgURL:'images/store/hPd_2.png', name:'七星陣水晶原石能量陣',category:'love'},
-            {imgURL:'images/store/hPd_2.png', name:'水向魔法石融蠟燈',category:'love'},
-            {imgURL:'images/store/hPd_2.png', name:'生命之花奧剛金字塔',category:'love'},
-            {imgURL:'images/store/hPd_2.png', name:'天然擴香健康石',category:'love'},
-            {imgURL:'images/store/hPd_2.png', name:'冥王星晶石手鍊',category:'love'},
-            {imgURL:'images/store/hPd_2.png', name:'德國花果茶與乾燥花盒',category:'love'},
-            {imgURL:'images/store/hPd_3.png', name:'生命之花奧剛金字塔',category:'work'},
-            {imgURL:'images/store/hPd_3.png', name:'生命之花奧剛金字塔',category:'work'},
-            {imgURL:'images/store/hPd_3.png', name:'生命之花奧剛金字塔',category:'work'},
-            {imgURL:'images/store/hPd_3.png', name:'生命之花奧剛金字塔',category:'work'},
-            {imgURL:'images/store/hPd_3.png', name:'生命之花奧剛金字塔',category:'work'},
-            {imgURL:'images/store/hPd_3.png', name:'生命之花奧剛金字塔',category:'work'},
-            {imgURL:'images/store/hPd_4.png', name:'生命之花奧剛金字塔',category:'study'},
-            {imgURL:'images/store/hPd_4.png', name:'生命之花奧剛金字塔',category:'study'},
-            {imgURL:'images/store/hPd_4.png', name:'生命之花奧剛金字塔',category:'study'},
-            {imgURL:'images/store/hPd_4.png', name:'生命之花奧剛金字塔',category:'study'},
-            {imgURL:'images/store/hPd_4.png', name:'生命之花奧剛金字塔',category:'study'},
-            {imgURL:'images/store/hPd_4.png', name:'生命之花奧剛金字塔',category:'study'},
+            products: [
+                {
+                    imgURL: 'images/store/hPd_1.png',
+                    name: '七星陣水晶原石能量陣',
+                    category: 'health',
+                },
+                {
+                    imgURL: 'images/store/hPd_2.png',
+                    name: '水向魔法石融蠟燈',
+                    category: 'health',
+                },
+                {
+                    imgURL: 'images/store/hPd_3.png',
+                    name: '生命之花奧剛金字塔',
+                    category: 'health',
+                },
+                {
+                    imgURL: 'images/store/hPd_4.png',
+                    name: '天然擴香健康石',
+                    category: 'health',
+                },
+                {
+                    imgURL: 'images/store/hPd_5.png',
+                    name: '冥王星晶石手鍊',
+                    category: 'health',
+                },
+                {
+                    imgURL: 'images/store/hPd_6.png',
+                    name: '德國花果茶與乾燥花盒',
+                    category: 'health',
+                },
+                {
+                    imgURL: 'images/store/hPd_2.png',
+                    name: '七星陣水晶原石能量陣',
+                    category: 'love',
+                },
+                {
+                    imgURL: 'images/store/hPd_2.png',
+                    name: '水向魔法石融蠟燈',
+                    category: 'love',
+                },
+                {
+                    imgURL: 'images/store/hPd_2.png',
+                    name: '生命之花奧剛金字塔',
+                    category: 'love',
+                },
+                {
+                    imgURL: 'images/store/hPd_2.png',
+                    name: '天然擴香健康石',
+                    category: 'love',
+                },
+                {
+                    imgURL: 'images/store/hPd_2.png',
+                    name: '冥王星晶石手鍊',
+                    category: 'love',
+                },
+                {
+                    imgURL: 'images/store/hPd_2.png',
+                    name: '德國花果茶與乾燥花盒',
+                    category: 'love',
+                },
+                {
+                    imgURL: 'images/store/hPd_3.png',
+                    name: '生命之花奧剛金字塔',
+                    category: 'work',
+                },
+                {
+                    imgURL: 'images/store/hPd_3.png',
+                    name: '生命之花奧剛金字塔',
+                    category: 'work',
+                },
+                {
+                    imgURL: 'images/store/hPd_3.png',
+                    name: '生命之花奧剛金字塔',
+                    category: 'work',
+                },
+                {
+                    imgURL: 'images/store/hPd_3.png',
+                    name: '生命之花奧剛金字塔',
+                    category: 'work',
+                },
+                {
+                    imgURL: 'images/store/hPd_3.png',
+                    name: '生命之花奧剛金字塔',
+                    category: 'work',
+                },
+                {
+                    imgURL: 'images/store/hPd_3.png',
+                    name: '生命之花奧剛金字塔',
+                    category: 'work',
+                },
+                {
+                    imgURL: 'images/store/hPd_4.png',
+                    name: '生命之花奧剛金字塔',
+                    category: 'study',
+                },
+                {
+                    imgURL: 'images/store/hPd_4.png',
+                    name: '生命之花奧剛金字塔',
+                    category: 'study',
+                },
+                {
+                    imgURL: 'images/store/hPd_4.png',
+                    name: '生命之花奧剛金字塔',
+                    category: 'study',
+                },
+                {
+                    imgURL: 'images/store/hPd_4.png',
+                    name: '生命之花奧剛金字塔',
+                    category: 'study',
+                },
+                {
+                    imgURL: 'images/store/hPd_4.png',
+                    name: '生命之花奧剛金字塔',
+                    category: 'study',
+                },
+                {
+                    imgURL: 'images/store/hPd_4.png',
+                    name: '生命之花奧剛金字塔',
+                    category: 'study',
+                },
             ],
 
             // healths:[
-           
+
             // ],
             // loves:[
             // {imgURL:'images/store/hPd_2.png', name:'七星陣水晶原石能量陣'},
@@ -153,17 +274,11 @@ export default {
             // {imgURL:'images/store/hPd_5.png', name:'冥王星晶石手鍊'},
             // {imgURL:'images/store/hPd_6.png', name:'德國花果茶與乾燥花盒'},
             // ],
-
-            
         };
     },
-    methods: {
+    methods: {},
 
-    },
-
-    computed: {
-       
-    },
+    computed: {},
 
     components: {
         myFooter,
@@ -234,14 +349,12 @@ export default {
             text-decoration: none;
             color: white;
         }
-    } 
-    .unstore_sort{
+    }
+    .unstore_sort {
         .highlight {
             background: #cccccc;
         }
     }
-
-    
 
     /*===== 商品內容 =====*/
     .unstore_content {
