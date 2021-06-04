@@ -15,6 +15,12 @@ export default {
         myHeader,
         // myFooter,
     },
+    created() {
+        let storageCarts =
+            JSON.parse(localStorage.getItem('storageCart')) || [];
+        console.log(storageCarts);
+        this.$store.commit('addCartUpdate', storageCarts);
+    },
 };
 </script>
 

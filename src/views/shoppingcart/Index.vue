@@ -51,7 +51,7 @@
                                 <td>
                                     <input
                                         type="number"
-                                        min="0"
+                                        min="1"
                                         max="10"
                                         v-model="item.count"
                                         class="item_count"
@@ -60,31 +60,19 @@
                                 </td>
                                 <td>{{ item.total }}</td>
                                 <td>
-                                    <button class="delete_item">刪除</button>
+                                    <button
+                                        class="delete_item"
+                                        @click="deleteBtn(index)"
+                                    >
+                                        刪除
+                                    </button>
                                 </td>
-                            </tr>
-
-                            <tr>
                                 <td colspan="5">
                                     <div class="line"></div>
                                 </td>
                             </tr>
 
                             <!-- <tr>
-                                <td>
-                                    <img src="/images/shopping_cart/shopping2.png" alt="" class="shopping_pic">
-                                </td>
-                                <td>測試文字七個字</td>
-                                <td>
-                                    <input type="number" min="0" value="1" class="item_count">
-                                </td>
-                                <td>500</td>
-                                <td>
-                                    <button class="delete_item">刪除</button>
-                                </td>
-                            </tr>
-                            
-                            <tr>
                                 <td colspan="5">
                                     <div class="line"></div>
                                 </td>
@@ -139,6 +127,14 @@ export default {
             //要改newPdData.total
             cart[index].total = cart[index].price * cart[index].count;
             console.log(cart[index].total);
+
+            this.$store.dispatch('updateCart', cart);
+        },
+        deleteBtn(index) {
+            let newCart = [...this.cartlist];
+            newCart.splice(index, 1);
+
+            this.$store.dispatch('updateCart', newCart);
         },
     },
     computed: {
@@ -163,7 +159,7 @@ export default {
     components: {
         myFooter,
     },
-    mounted() {},
+    // mounted() {},
 };
 </script>
 
