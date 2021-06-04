@@ -21,6 +21,19 @@ export default {
         login,
         // myFooter,
     },
+
+    created() {
+        let storageLoginStatus = JSON.parse(localStorage.getItem('loginStatus')) ||[] ;
+        let storagememberIcon = JSON.parse(localStorage.getItem('memberIcon')) ||[] ;
+        let storageloginID = JSON.parse(localStorage.getItem('loginID')) ||[] ;
+        console.log(storageLoginStatus);
+        console.log(storagememberIcon);
+        console.log(storageloginID);
+
+        this.$store.commit('updateLoginStatus',storageLoginStatus);
+        this.$store.commit('updatememberIcon',storagememberIcon);
+        this.$store.commit('updateloginID',storageloginID);
+    },
 };
 </script>
 
