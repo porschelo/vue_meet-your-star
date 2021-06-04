@@ -4,7 +4,7 @@
             <div class="navbar">
                 <div class="logo">
                     <router-link to="/" class="logo">
-                    <img src="/images/header/logo.png" alt=""/>
+                        <img src="/images/header/logo.png" alt="" />
                     </router-link>
                 </div>
 
@@ -12,13 +12,22 @@
                     <ul>
                         <li>
                             <router-link to="/shoppingcart" class="cart">
-                            <img src="/images/header/cart.png"/>
+                                <img src="/images/header/cart.png" />
                             </router-link>
                         </li>
                         <li>
-                            <a class="login"
-                                ><img src="/images/header/member.png"
-                            /></a>
+                            <a class="login" @click="onOpenLogin" v-if='loginStatus ==0'>
+                                <img src="/images/header/member.png"  />
+                                
+                            </a>
+                            <!-- <a class="login" v-else>
+                                <img :src = memberIcon >
+                            </a> -->
+
+                            <router-link to="/membercentre" class="login" v-else>
+                                <img :src = memberIcon >
+                            </router-link>
+                            
                         </li>
                         <li>
                             <button
@@ -46,10 +55,14 @@
                             <router-link to="/starsign">星座探索</router-link>
                         </li>
                         <li>
-                            <router-link to="/appointment">預約談星</router-link>
+                            <router-link to="/appointment"
+                                >預約談星</router-link
+                            >
                         </li>
                         <li>
-                            <router-link to="/matchandtest">心星揭秘</router-link>
+                            <router-link to="/matchandtest"
+                                >心星揭秘</router-link
+                            >
                         </li>
                         <li>
                             <router-link to="/unstore">宇宙商城</router-link>
@@ -65,6 +78,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'myHeader',
     data() {
@@ -78,6 +92,21 @@ export default {
         },
         onMenuClose() {
             this.menutogger = false;
+        },
+
+        onOpenLogin(){
+            this.$store.commit('loginVisible',true)
+        }
+    },
+
+    computed: {
+        loginStatus(){
+            return this.$store.state.loginStatus;
+        },
+
+        memberIcon(){
+            return this.$store.state.memberIcon;
+            
         },
     },
 };
@@ -247,10 +276,11 @@ header {
                         color: #fff;
                         font-weight: 300;
                         letter-spacing: 3px;
-                        &.router-link-active{ //所在頁面
-                        color: yellow;
+                        &.router-link-active {
+                            //所在頁面
+                            color: yellow;
                         }
-                        &:hover{
+                        &:hover {
                             color: yellow;
                         }
                     }

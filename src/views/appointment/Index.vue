@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="j_wrapper">
-        <!-- @@include('layout/header.html') -->
+            <!-- @@include('layout/header.html') -->
 
-        <!-- 中間背景 -->
+            <!-- 中間背景 -->
             <div class="j_middle">
                 <!-- 頁面標題 -->
                 <div class="j_title">
@@ -57,18 +57,19 @@
                         <h2>星座老師</h2>
                     </div>
                         <div class="j_panel_img">
-                        <div class="j_panel_pic">
+                        <div class="j_panel_pic" v-for="(item,index) in teacher" :key="item">
                     
-                            <img :src=teacherpic[1].img alt="">
-                            <div class="j_panel_info">
-                            <h4>{{teacherpic[1].name}}</h4>
-                            <p>{{teacherpic[1].special}}</p>
+                            <img :src="item.TEACHER_IMG" @click="selectteacher(index)">
+                            <div class="j_panel_info" >
+                            <h4>{{item.TEACHER_NAME}}</h4>
+                            <p>{{item.TEACHER_INFO}}</p>
 
                             </div>
 
                         </div>
 
-                        <div class="j_panel_pic">
+                            
+                        <!-- <div class="j_panel_pic">
                     
                             <img :src=teacherpic[0].img alt="">
                             <div class="j_panel_info">
@@ -86,7 +87,7 @@
                             <h4>{{teacherpic[2].name}}</h4>
                             <p>{{teacherpic[2].special}}</p>
                             
-                            </div>
+                            </div> -->
 
                         </div>                     
                         </div>
@@ -107,37 +108,58 @@
             </div>
 
     
-        <!-- @@include('layout/footer.html') -->
             <myFooter></myFooter>
-        </div>
     </div>
 </template>
 
 
 <script>
 import myFooter from '@/components/myFooter'
+import axios from 'axios'
 
 export default {
     
     data() {
         return {
-             teacherpic:[
-                {img:'/images/appointment/dr1.png',name:'安格斯雞老師', special:'開啟財運大門',money:'1,000'},
-                {img:'/images/appointment/dr2.png',name:'危機老師', special:'工作危機處理',money:'1,500'},
-                {img:'/images/appointment/dr3.png',name:'唐揚雞老師', special:'愛情魔幻靈藥',money:'2,000'},
-                {img:'/images/appointment/dr2.png',name:'卡拉雞老師', special:'運動除油幫手',money:'2,500'},
-
+            //  TEACHER:[
+            //     {img:'/images/appointment/dr1.png',name:'安格斯雞老師', special:'開啟財運大門',money:'1,000'},
+            //     {img:'/images/appointment/dr2.png',name:'危機老師', special:'工作危機處理',money:'1,500'},
+            //     {img:'/images/appointment/dr3.png',name:'唐揚雞老師', special:'愛情魔幻靈藥',money:'2,000'},
+            //     {img:'/images/appointment/dr2.png',name:'卡拉雞老師', special:'運動除油幫手',money:'2,500'},
+                
 
                 
                 
-                ],
+            //     ],
+
+            teacher:[],
         }
+    },
+    mounted() {
+    
+      axios.post('http://localhost/meetyourstars/teacher.php',
+      
+      )
+      .then((res) => {
+        console.log(res);
+        this.teacher = res.data;
+      });
+
     },
 
     components: {
         myFooter,
         
     },
+    methods: {
+        selectteacher(index){
+            let teachername = this.teacher[index].TEACHER_NAME;
+            // console.log(teachername);
+            this.$store.dispatch('setselectteacher',teachername );
+            localStorage.setItem('saveteacher', JSON.stringify(this.$store.state.selectteacher));
+        }
+    },
+    
 }
 
 

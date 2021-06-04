@@ -1,98 +1,108 @@
 <template>
     <div>
         <div class="wrapper_tResult">
-        <div class="tResult_header">
-            
-        </div>
-        
-        <div class="tResult_section">
+            <div class="tResult_header"></div>
 
-            <!-- 標題 -->
-            <div class="tResult_title">
-                <div class="tResult_title-c">
-                    <img src="/images/store/uv_icone.png" alt="">
-                    <h1>心理測驗結果</h1>
-                    <img src="/images/store/uv_icone.png" alt="">
+            <div class="tResult_section">
+                <!-- 標題 -->
+                <div class="tResult_title">
+                    <div class="tResult_title-c">
+                        <img src="/images/store/uv_icone.png" alt="" />
+                        <h1>心理測驗結果</h1>
+                        <img src="/images/store/uv_icone.png" alt="" />
+                    </div>
+                    <div class="tResult_title-e">
+                        <h4>— Personality Test Result —</h4>
+                    </div>
                 </div>
-                <div class="tResult_title-e">
-                    <h4>— Personality Test Result —</h4>
-                </div>
-            </div>
 
             <div class="tResult_content">
-                <div class="tResult_main">
+                <div class="tResult_main" @selectedValue="addData">
                     <div class="result_left">
 
-                        <!-- 結果直條圖 -->
-                        <div class="tr_chart">
-                            <canvas id="myChart2" width="400" height="400"></canvas>
+                            <!-- 結果敘述 -->
+                            <div class="tr_result">
+                                <p>
+                                    你的情商很高，什麼話該說什麼話不該說他們比任何人都清楚很多，所以在很多時候，雖然雙子什麼都不說，可是心裡卻比誰都要清楚。
+                                    在關鍵時刻會把自己強大的人際交往一面顯露出來，常常身邊人被他們的反應速度和口才所深深折服
+                                </p>
+                            </div>
                         </div>
 
-                        <!-- 結果敘述 -->
-                        <div class="tr_result">
-                             <p>你的情商很高，什麼話該說什麼話不該說他們比任何人都清楚很多，所以在很多時候，雖然雙子什麼都不說，可是心裡卻比誰都要清楚。
-                             在關鍵時刻會把自己強大的人際交往一面顯露出來，常常身邊人被他們的反應速度和口才所深深折服</p>
+                        <div class="result_right">
+                            <!-- 適合星座 -->
+                            <div class="right_top">
+                                <h2>適合相處的星座</h2>
+                                <div class="kind_Constellations">
+                                    <div class="kc_one">
+                                        <img
+                                            src="/images/test/result-monster1.png"
+                                            alt=""
+                                        />
+                                        <h3>天蠍</h3>
+                                    </div>
+                                    <div class="kc_two">
+                                        <img
+                                            src="/images/test/result-monster2.png"
+                                            alt=""
+                                        />
+                                        <h3>處女</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 不適合星座 -->
+                            <div class="right_bottom">
+                                <h2>需要保持距離的星座</h2>
+                                <div class="distance_Constellations">
+                                    <div class="dc_one">
+                                        <img
+                                            src="/images/test/result-monster3.png"
+                                            alt=""
+                                        />
+                                        <h3>天蠍</h3>
+                                    </div>
+                                    <div class="dc_two">
+                                        <img
+                                            src="/images/test/result-monster4.png"
+                                            alt=""
+                                        />
+                                        <h3>處女</h3>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-     
-                    <div class="result_right">
-                        <!-- 適合星座 -->
-                        <div class="right_top">
-                            <h2>適合相處的星座</h2>
-                            <div class="kind_Constellations">
-                                <div class="kc_one">
-                                    <img src="/images/test/result-monster1.png" alt="">
-                                    <h3>天蠍</h3>
-                                </div>
-                                <div class="kc_two">
-                                    <img src="/images/test/result-monster2.png" alt="">
-                                    <h3>處女</h3>
-                                </div>
-                            </div>    
-                        </div>
-
-                        <!-- 不適合星座 -->
-                        <div class="right_bottom">
-                            <h2>需要保持距離的星座</h2>
-                            <div class="distance_Constellations">
-                                <div class="dc_one">
-                                    <img src="/images/test/result-monster3.png" alt="">
-                                    <h3>天蠍</h3>
-                                </div>
-                                <div class="dc_two">
-                                    <img src="/images/test/result-monster4.png" alt="">
-                                    <h3>處女</h3>
-                                </div>
-                            </div>    
-
-     
-                        </div>
-     
-                    </div>
-
                 </div>
-               
             </div>
             
            
         </div>
         <div class="tResult_footer">
+            <!-- <childVue :childMethod="parentMethod"></childVue>
+            this.$emit('childMethod','value') -->
             <my-footer></my-footer>
         </div>
-        
-    </div>
-
     </div>
 </template>
 <script>
 import myFooter from '@/components/myFooter';
 import Chart from 'chart.js/auto';
 export default {
+    data(){
+        return{
+            answers:[],
+        }
+    },
     components: {
         myFooter,
     },
 
     methods: {
+        // addData(item) {
+        //     this.answers.push(item);
+        //     console.log(this.answers);
+        // },
         getChart() {
             var ctx = document.getElementById('myChart2').getContext('2d');
             new Chart(ctx, {
@@ -115,7 +125,7 @@ export default {
                     datasets: [
                         {
                             label: '# of Votes',
-                            data: [12, 19, 3, 5, 2, 3, 8, 6, 2, 13, 15, 3],
+                            data: [1, 1, 1, 2, 2, 1, 3, 0, 0, 1, 1, 0],
                             backgroundColor: [
                                 'rgba(255, 99, 132, 1)',
                                 'rgba(54, 162, 235, 1)',
@@ -152,9 +162,10 @@ export default {
             });
         },
     },
-    mounted(){
+    mounted() {
         this.getChart();
-    }
+       // bus.$on('selectedValue', totalCount); 
+    },
 };
 </script>
 <style lang="scss">
@@ -163,63 +174,61 @@ export default {
 @import '@/scss/center.scss';
 @import '@/scss/mixins.scss';
 @import '@/scss/rwd.scss';
-.wrapper_tResult{
-
-    .tResult_header{
+.wrapper_tResult {
+    .tResult_header {
         height: 140px;
         background-color: #023552;
-        @include rwd(mobile){
+        @include rwd(mobile) {
             height: 100px;
         }
     }
 
-    .tResult_section{
+    .tResult_section {
         //背景圖
-         background-image: url(/images/test/bgi_star.png);
-         background-size: 100% 100%;
-         padding-bottom: 140px;
-         @include rwd(mobile){
+        background-image: url(/images/test/bgi_star.png);
+        background-size: 100% 100%;
+        padding-bottom: 140px;
+        @include rwd(mobile) {
             background-size: 100% 30%;
             background-image: url(/images/test/bgi_phone.png);
         }
-     }
+    }
 
-     /*===== 標題 =====*/
-    .tResult_title{
+    /*===== 標題 =====*/
+    .tResult_title {
         // border: 1px solid red;
         color: $colorT;
-        padding: 80px  * .7 0 0;
-        &-c{
+        padding: 80px * 0.7 0 0;
+        &-c {
             display: flex;
             justify-content: center;
             align-items: center;
 
-            img{
-                width: 63px * .7;
-                height: 43px * .7;
+            img {
+                width: 63px * 0.7;
+                height: 43px * 0.7;
                 margin-bottom: 5px;
             }
         }
-       
-       h1{
-           font-size: $h1;
-           padding: 5px 20px 10px;
-           @include rwd(mobile){
+
+        h1 {
+            font-size: $h1;
+            padding: 5px 20px 10px;
+            @include rwd(mobile) {
                 font-size: $h1 - 8px;
             }
-       }
+        }
 
-       &-e{
+        &-e {
             text-align: center;
             font-size: $p1;
-            @include rwd(mobile){
+            @include rwd(mobile) {
                 font-size: $p1 - 6px;
             }
-       }
-
+        }
     }
 
-    .tResult_content{
+    .tResult_content {
         // border: 1px solid yellow;
         width: 85%;
         height: 85%;
@@ -231,113 +240,108 @@ export default {
         background-size: 100% 100%;
         background-repeat: no-repeat;
         margin-top: 56px;
-        @include rwd(mobile){
+        @include rwd(mobile) {
             background-image: none;
             margin-top: 0px;
         }
 
-        .tResult_main{
+        .tResult_main {
             // border: 1px solid white;
             width: 70%;
             @include center;
             padding-top: 180px;
             display: flex;
             line-height: 1.6;
-            @include rwd(mobile){
+            @include rwd(mobile) {
                 display: block;
                 width: 100%;
                 padding-top: 100px;
             }
         }
 
-        
-
-        .result_left{
+        .result_left {
             // border: 1px solid greenyellow;
             width: 50%;
             padding: 0px 0px 0 10px;
-            @include rwd(mobile){
+            @include rwd(mobile) {
                 width: 100%;
             }
         }
 
         /*===== 結果直條圖=====*/
-        .tr_chart{
-            @include rwd(mobile){
+        .tr_chart {
+            @include rwd(mobile) {
                 width: 100%;
                 margin-bottom: 50px;
             }
         }
-        
-        
-         /*===== 結果敘述=====*/
-        .tr_result{
-            margin-bottom: 230px * .7;
-            @include rwd(mobile){
+
+        /*===== 結果敘述=====*/
+        .tr_result {
+            margin-bottom: 230px * 0.7;
+            @include rwd(mobile) {
                 margin-bottom: 80px;
             }
         }
 
-        .result_right{
-
+        .result_right {
             width: 50%;
             padding: 0 10px;
-            @include rwd(mobile){
+            @include rwd(mobile) {
                 width: 100%;
             }
-            
-            h2{
+
+            h2 {
                 margin-bottom: 10px;
             }
-            img{
+            img {
                 width: 90%;
             }
         }
 
-         /*===== 適合星座=====*/
-        .right_top{
+        /*===== 適合星座=====*/
+        .right_top {
             border: 3px solid $colorT;
             text-align: center;
             border-radius: 20px;
             padding: 10px;
             margin-top: 50px;
         }
-        
-        .kind_Constellations{
+
+        .kind_Constellations {
             display: flex;
             justify-content: center;
-            
         }
 
         /*===== 不適合星座=====*/
-        .right_bottom{
+        .right_bottom {
             @extend.right_top;
             margin-top: 10px;
         }
 
-        .distance_Constellations{
-            @extend.kind_Constellations; 
-            .dc_one{
-                margin: 5px;
-            }
-            .dc_two{
-                margin: 5px;
-            }
-        }
+        // .distance_Constellations {
+        //     @extend.kind_constellations;
+        //     .dc_one {
+        //         margin: 5px;
+        //     }
+        //     .dc_two {
+        //         margin: 5px;
+        //     }
+        // }
     }
 
-    .tResult_footer{
+    .tResult_footer {
         width: 100%;
         height: 200px;
-        background-color: #44796A;
+        background-color: #44796a;
     }
 
-    .overlaymenu{
-        .menulist{
-            .nav-menu{
-                ul{
-                    li:nth-child(3){
-                        a{
+    .overlaymenu {
+        .menulist {
+            .nav-menu {
+                ul {
+                    li:nth-child(3) {
+                        a {
                             color: yellow;
                         }
                     }

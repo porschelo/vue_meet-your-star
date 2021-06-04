@@ -16,36 +16,36 @@
             </div>
             <div :class="isShow(1)" class="planet Cancer">
                 <img src="/images/index/planet/水象/planet_Cancer.svg" alt="" />
-                <a href="">
+                <router-link :to="{ name: 'Starsign', query: { id: 7 } }">
                     <img
                         class="planet-monst-Cancer"
                         src="/images/index/planet/水象/巨蠍帶字.svg"
                         alt=""
                     />
-                </a>
+                </router-link>
             </div>
             <div :class="isShow(2)" class="planet Scorpio">
                 <img
                     src="/images/index/planet/水象/planet_Scorpio.svg"
                     alt=""
                 />
-                <a href="">
+                <router-link :to="{ name: 'Starsign', query: { id: 8 } }">
                     <img
                         class="planet-monst-Scorpio"
                         src="/images/index/planet/水象/天蠍帶字.svg"
                         alt=""
                     />
-                </a>
+                </router-link>
             </div>
             <div :class="isShow(3)" class="planet Pisces">
                 <img src="/images/index/planet/水象/planet_Pisces.svg" alt="" />
-                <a href="">
+                <router-link :to="{ name: 'Starsign', query: { id: 9 } }">
                     <img
                         class="planet-monst-Pisces"
                         src="/images/index/planet/水象/雙魚帶字.svg"
                         alt=""
                     />
-                </a>
+                </router-link>
             </div>
         </div>
     </div>

@@ -13,10 +13,10 @@
             </div>
 
             <ul class="customized_sort">
-                <li><router-link to ="/unstore">健康</router-link></li>
-                <li><router-link to ="/unstore">愛情</router-link></li>
-                <li><router-link to ="/unstore">工作</router-link></li>
-                <li><router-link to ="/unstore">學業</router-link></li>
+                <li><router-link to="/unstore">健康</router-link></li>
+                <li><router-link to="/unstore">愛情</router-link></li>
+                <li><router-link to="/unstore">工作</router-link></li>
+                <li><router-link to="/unstore">學業</router-link></li>
                 <li>客製化</li>
             </ul>
 
@@ -296,10 +296,12 @@
             </div>
         </div>
         <my-footer></my-footer>
+         <toTopBtn></toTopBtn>
     </div>
 </template>
 <script>
 import myFooter from '@/components/myFooter';
+import toTopBtn from '@/components/toTopBtn';
 export default {
     data() {
         return {
@@ -314,10 +316,9 @@ export default {
     },
     components: {
         myFooter,
+        toTopBtn,
     },
-    methods: {
-        
-    },
+    methods: {},
 };
 </script>
 <style lang="scss">
@@ -376,14 +377,14 @@ export default {
 
     @include bookmark('.customized_sort');
 
-    .customized_sort{
-       li{
-           a{
-               text-decoration: none;
-               color: #707070;
-           }
-       }
-   }
+    .customized_sort {
+        li {
+            a {
+                text-decoration: none;
+                color: #707070;
+            }
+        }
+    }
 
     .customized {
         &_content {
@@ -433,7 +434,7 @@ export default {
                 &:hover {
                     border: 3px solid rgba(245, 255, 103, 0.5);
                 }
-                
+
                 h4 {
                     position: absolute;
                     top: 70%;
@@ -567,7 +568,7 @@ export default {
             margin-top: 60px;
             margin-left: 50px;
             font-size: $p1;
-            img{
+            img {
                 width: 100%;
             }
             img:hover {

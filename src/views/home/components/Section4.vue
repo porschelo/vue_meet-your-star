@@ -37,13 +37,13 @@
                 class="planet capricorn"
             >
                 <img src="/images/index/planet/土象/70_1.svg" alt="" />
-                <a href="">
+                <router-link :to="{ name: 'Starsign', query: { id: 1 } }">
                     <img
                         class="planet-monst-capricorn"
                         src="/images/index/planet/土象/capricorn_click_me.svg"
                         alt=""
                     />
-                </a>
+                </router-link>
             </div>
 
             <div
@@ -51,24 +51,24 @@
                 :style="`visibility:${showNum === 2 ? 'visible' : 'hidden'}`"
             >
                 <img src="/images/index/planet/土象/70_2.svg" alt="" />
-                <a href="">
+                <router-link :to="{ name: 'Starsign', query: { id: 2 } }">
                     <img
                         class="planet-monst-taurus"
                         src="/images/index/planet/土象/taurus_click me.svg"
                         alt=""
                     />
-                </a>
+                </router-link>
             </div>
             <!-- 方法三 function-->
             <div class="planet virgo" :style="changeStyle(3)">
                 <img src="/images/index/planet/土象/70_3.svg" alt="" />
-                <a href="">
+                <router-link :to="{ name: 'Starsign', query: { id: 3 } }">
                     <img
                         class="planet-monst-irgo"
                         src="/images/index/planet/土象/virgo_click_me.svg"
                         alt=""
                     />
-                </a>
+                </router-link>
             </div>
         </div>
     </div>

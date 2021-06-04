@@ -16,6 +16,7 @@
     "swiper": "^4.5.1",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.1.1",
+    "vue-pagination-2": "^3.0.9",
     "vue-popup-mixin": "^1.0.6",
     "vue-router": "^3.2.0",
     "vue-scrollto": "^2.20.0",

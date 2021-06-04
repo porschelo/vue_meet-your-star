@@ -1,14 +1,13 @@
 <template>
     <div class="wrapper_game">
-         @@include('layout/header.html')
-        
-        <div class="game_section">
+        @@include('layout/header.html')
 
+        <div class="game_section">
             <div class="game_title">
                 <div class="game_title-c">
-                    <img src="images/store/uv_icone.png" alt="">
+                    <img src="images/store/uv_icone.png" alt="" />
                     <h1>星幣遊戲</h1>
-                    <img src="images/store/uv_icone.png" alt="">
+                    <img src="images/store/uv_icone.png" alt="" />
                 </div>
                 <div class="game_title-e">
                     <h4>— Star Coin Collecting Game —</h4>
@@ -17,7 +16,7 @@
 
             <div class="game_main">
                 <div class="game_box">
-                    <img src="images/game/game.png" alt="">
+                    <img src="images/game/game.png" alt="" />
                     <button class="game_start">START</button>
                 </div>
                 <div class="game_coin">
@@ -26,10 +25,8 @@
                 <div class="game_btn">
                     <button class="save_coin">儲存星幣</button>
                     <button class="play_again">再玩一次</button>
-    
                 </div>
             </div>
-           
         </div>
 
         <my-footer></my-footer>
@@ -49,49 +46,48 @@ export default {
 @import '@/scss/center.scss';
 @import '@/scss/mixins.scss';
 @import '@/scss/rwd.scss';
-.wrapper_game{
+.wrapper_game {
     //背景圖
     background-image: url(/images/test/bgi_phone.png);
     background-size: cover;
-    @include rwd(mobile){
-       background-size: 100% 50%;
+    @include rwd(mobile) {
+        background-size: 100% 50%;
     }
 
-    .game_title{
+    .game_title {
         // border: 1px solid red;
         color: $colorT;
-        padding: ( 80px + 240px ) * .7 0 0;
-        &-c{
+        padding: (80px + 240px) * 0.7 0 0;
+        &-c {
             display: flex;
             justify-content: center;
             align-items: center;
 
-            img{
-                width: 63px * .7;
-                height: 43px * .7;
+            img {
+                width: 63px * 0.7;
+                height: 43px * 0.7;
                 margin-bottom: 5px;
             }
         }
-       
-       h1{
-           font-size: $h1;
-           padding: 5px 20px 10px;
-           @include rwd(mobile){
+
+        h1 {
+            font-size: $h1;
+            padding: 5px 20px 10px;
+            @include rwd(mobile) {
                 font-size: $h1 - 6px;
             }
-       }
+        }
 
-       &-e{
+        &-e {
             text-align: center;
             font-size: $p1;
-            @include rwd(mobile){
+            @include rwd(mobile) {
                 font-size: $p1 - 6px;
             }
-       }
-
+        }
     }
 
-    .game_main{
+    .game_main {
         // border: 1px solid red;
         width: 80%;
         padding-top: 63px;
@@ -100,68 +96,66 @@ export default {
         color: white;
     }
 
-    .game_box{
+    .game_box {
         width: 60%;
-        img{
+        img {
             width: 100%;
         }
         @include center;
         position: relative;
-        @include rwd(mobile){
+        @include rwd(mobile) {
             width: 100%;
-         }
+        }
 
-        @include btn-module('.game_start', 280, 100){
+        @include btn-module('.game_start', 280, 100) {
             color: white;
             display: block;
             position: absolute;
-            top:70%;
+            top: 70%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
     }
-    .game_coin{
+    .game_coin {
         font-size: $h2;
         letter-spacing: $ls;
-        p{
+        p {
             margin-top: 70px;
             margin-bottom: 70px;
         }
-        span{
-            color: #F2F464;
+        span {
+            color: #f2f464;
         }
-       
     }
-    .game_btn{
-        @include btn-module('.save_coin', 280, 100){
+    .game_btn {
+        @include btn-module('.save_coin', 280, 100) {
             color: white;
             margin-right: 70px;
-            @include rwd(mobile){
-                font-size: $h3 - 8px;
-                    width: 170 * 0.7px;
-                    height: 80 * 0.7px;
-                    margin-right: 5px;
-             }
-        }
-        
-        @include btn-module('.play_again', 280, 100){
-            color: white;
-            @include rwd(mobile){
+            @include rwd(mobile) {
                 font-size: $h3 - 8px;
                 width: 170 * 0.7px;
                 height: 80 * 0.7px;
-             }
+                margin-right: 5px;
+            }
         }
 
+        @include btn-module('.play_again', 280, 100) {
+            color: white;
+            @include rwd(mobile) {
+                font-size: $h3 - 8px;
+                width: 170 * 0.7px;
+                height: 80 * 0.7px;
+            }
+        }
     }
 
     //nav-list 所在頁面樣式
-    .overlaymenu{
-        .menulist{
-            .nav-menu{
-                ul{
-                    li:nth-child(5){
-                        a{
+    .overlaymenu {
+        .menulist {
+            .nav-menu {
+                ul {
+                    li:nth-child(5) {
+                        a {
                             color: yellow;
                         }
                     }
@@ -169,6 +163,5 @@ export default {
             }
         }
     }
-    
 }
 </style>
