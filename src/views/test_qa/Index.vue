@@ -72,7 +72,7 @@
             </div>
         </div>
         
-        <div class="tQuestion_section" v-else>
+        <!-- <div class="tQuestion_section" v-else> -->
 
         <div class="tQuestion_section">
             <div class="tQuestion_title">
@@ -117,7 +117,8 @@
         <div class="tQuestion_footer">
             <my-footer></my-footer>
         </div>
-    </div>
+      </div>
+    
 </template>
 <script>
 import myFooter from '@/components/myFooter';
