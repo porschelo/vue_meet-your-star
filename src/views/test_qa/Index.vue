@@ -72,7 +72,7 @@
             </div>
         </div>
         
-        <div class="tQuestion_section" v-else>
+        <!-- <div class="tQuestion_section" v-else> -->
 
         <div class="tQuestion_section">
             <div class="tQuestion_title">
