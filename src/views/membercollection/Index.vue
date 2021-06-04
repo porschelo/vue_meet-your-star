@@ -1,24 +1,20 @@
 <template>
     <div>
-        
         <div class="F_wrapper">
-    
-
             <!-- Title -->
 
             <div class="MF_title">
                 <div class="MF_title-c">
-                    <img src="images/membercollection/earth.png" alt="">
+                    <img src="images/membercollection/earth.png" alt="" />
                     <h1>會員中心</h1>
-                    <img src="images/membercollection/earth.png" alt="">
+                    <img src="images/membercollection/earth.png" alt="" />
                 </div>
-            
+
                 <div class="MF_title-e">
                     <h4>一 Member Centre 一</h4>
                 </div>
             </div>
             <!-- Title END-->
-
 
             <div class="MF_mid_block">
                 <div class="tab">
@@ -26,16 +22,15 @@
                     <router-link to="memberorderlist" class="tab_btn">訂單資料</router-link>
                     <router-link to="membercollection" class="tab_btn">我的收藏</router-link>
                 </div>
-                
-                <div class="mid">
 
-                        <table>
-                            <thead>
-                                <tr class="collection_title">
-                                    <td>商品圖片</td>
-                                    <td>商品名稱</td>
-                                    <td>金額</td>
-                                    <!-- <td>
+                <div class="mid">
+                    <table>
+                        <thead>
+                            <tr class="collection_title">
+                                <td>商品圖片</td>
+                                <td>商品名稱</td>
+                                <td>金額</td>
+                                <!-- <td>
                                         <button class="canel_collection">前往付款</button>
                                     </td> -->
                                 </tr>
@@ -149,41 +144,37 @@ export default {
     },
     components: {
         myFooter,
-        
     },
-}
+};
 </script>
 
-
 <style lang="scss">
+@import '@/scss/color.scss';
+@import '@/scss/var.scss';
+@import '@/scss/center.scss';
+@import '@/scss/mixins.scss';
+@import '@/scss/rwd.scss';
 
-    @import '@/scss/color.scss';
-    @import '@/scss/var.scss';
-    @import '@/scss/center.scss';
-    @import '@/scss/mixins.scss';
-    @import '@/scss/rwd.scss';
+// scss
 
-    // scss
-
-    $font_size:(H1:52*.7px,
-    H2:40*.7px,
-    H3:35*.7px,
-    H4:30*.7px,
-    p:20*.7px);
-
-$color:(white:#fff,
-    gray:#CACACA,
-    pink:#FFC2CF,
-    lightblue:#D6E0F7,
-    font_color:#777777,
+$font_size: (
+    H1: 52 * 0.7px,
+    H2: 40 * 0.7px,
+    H3: 35 * 0.7px,
+    H4: 30 * 0.7px,
+    p: 20 * 0.7px,
 );
 
-
-
-
+$color: (
+    white: #fff,
+    gray: #cacaca,
+    pink: #ffc2cf,
+    lightblue: #d6e0f7,
+    font_color: #777777,
+);
 
 .F_wrapper {
-    @include rwd("mobile") {
+    @include rwd('mobile') {
         // h1 {
         //     font-size: $h1 - 8px !important;
         // }
@@ -217,15 +208,14 @@ $color:(white:#fff,
     background-image: url(/images/membercollection/member-bg2x.png);
     background-size: cover;
 
-
     .MF_title {
         // margin: 320*.7px 0 550*.7px 0;
         // border: $border red;
 
         color: $colorT;
-        padding: (80px + 240px) * .7 0 0;
+        padding: (80px + 240px) * 0.7 0 0;
 
-        margin-bottom: 280px*.7;
+        margin-bottom: 280px * 0.7;
 
         &-c {
             display: flex;
@@ -233,8 +223,8 @@ $color:(white:#fff,
             align-items: center;
 
             img {
-                width: 63px * .7;
-                height: 43px * .7;
+                width: 63px * 0.7;
+                height: 43px * 0.7;
                 margin-bottom: 5px;
             }
         }
@@ -254,39 +244,35 @@ $color:(white:#fff,
 
     .MF_mid_block {
         // border: 1px solid red;
-        max-width: 1300*.7px;
+        max-width: 1300 * 0.7px;
         width: 100%;
-
 
         .tab {
             display: flex;
             justify-content: space-evenly;
 
-
             a {
-
                 font-size: $h3;
                 background-color: map-get($color, gray);
                 color: map-get($color, font_color);
-                max-width: 265*.7px;
-                max-height: 75*.7px;
+                max-width: 265 * 0.7px;
+                max-height: 75 * 0.7px;
                 width: 100%;
-                border-radius: 20*.7px 20*.7px 0 0;
-                line-height: 75*.7px;
+                border-radius: 20 * 0.7px 20 * 0.7px 0 0;
+                line-height: 75 * 0.7px;
                 text-align: center;
                 cursor: pointer;
                 // margin-left: 37*.7px;
                 text-decoration: none;
 
-                @include rwd("mobile") {
+                @include rwd('mobile') {
                     width: 25%;
-                    font-size: $h3 - 6px
+                    font-size: $h3 - 6px;
                 }
 
                 &:nth-of-type(3) {
                     background-color: map-get($color, white);
                 }
-
             }
         }
 
@@ -296,9 +282,8 @@ $color:(white:#fff,
             color: map-get($color, white);
             margin: 0 5%;
 
-            @include rwd("mobile") {
-
-                font-size: 13px
+            @include rwd('mobile') {
+                font-size: 13px;
             }
 
             table {
@@ -306,8 +291,6 @@ $color:(white:#fff,
                 width: 100%;
                 margin-top: 4%;
                 margin-bottom: 4%;
-
-
 
                 td {
                     vertical-align: middle;
@@ -324,35 +307,32 @@ $color:(white:#fff,
 
                 @include btn-module('.canel_collection', 191, 75) {
                     color: white;
-                    line-height: (75*.7)-6px;
+                    line-height: (75 * 0.7)-6px;
                     font-size: $p2;
                     @include center;
 
-                    @include rwd("mobile") {
+                    @include rwd('mobile') {
                         font-size: $p2 - 8px;
-                        width: 110px*.7;
-                        height: 50px*.7;
-                        line-height: (50*.7) - 6px;
+                        width: 110px * 0.7;
+                        height: 50px * 0.7;
+                        line-height: (50 * 0.7) - 6px;
                         letter-spacing: 1px;
                     }
                 }
 
                 .collection_item {
                     margin: 5% auto;
-                    max-width: 200px*.7;
+                    max-width: 200px * 0.7;
                     width: 100%;
                     border-radius: 5px;
                     // border: 3px solid white;
 
                     @include rwd(mobile) {
-                        max-width: 110px*.7;
+                        max-width: 110px * 0.7;
                     }
                 }
             }
         }
-
     }
-
 }
-
 </style>

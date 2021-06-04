@@ -13,7 +13,7 @@
                     <img src="images/store/uv_icone.png" alt="" />
                 </div>
                 <div class="unstore_title-e">
-                    <h4>— Universe Store —</h4>
+                    <h4>— Daily horoscope —</h4>
                 </div>
             </div>
             <!-- Swiper -->
@@ -25,24 +25,27 @@
                 </div>
                 <div class="swiper-container mySwiper gap">
                     <swiper class="swiper-wrapper" :options="swiperOption">
-                        <swiper-slide class="swiper-slide">
+                        <swiper-slide
+                            class="swiper-slide"
+                            v-for="(item, index) in signDaily"
+                            :key="index"
+                        >
                             <a href="starsign.html">
                                 <div class="sing_info1">
                                     <img
                                         class="info_img"
-                                        src="/images/index/info_Img/sing1.svg"
+                                        :src="item.DAILY_IMG"
                                         alt=""
                                     />
+                                    <!-- src="/images/index/info_Img/sing1.svg" -->
                                     <h3 class="inner_text">
-                                        今天的你想像力、洞察
-                                        力強，如果是從事創意
-                                        工作者在今天能好好發 揮，但也要避免...
+                                        {{ item.DAILY }}
                                     </h3>
                                 </div>
                             </a>
                         </swiper-slide>
 
-                        <swiper-slide class="swiper-slide">
+                        <!-- <swiper-slide class="swiper-slide">
                             <a href="starsign.html">
                                 <div class="sing_info2">
                                     <img
@@ -90,7 +93,7 @@
                                     </h3>
                                 </div>
                             </a>
-                        </swiper-slide>
+                        </swiper-slide> -->
                     </swiper>
                     <!-- <div class="swiper-pagination"></div> -->
                 </div>
@@ -107,11 +110,11 @@
             <div class="unstore_title">
                 <div class="unstore_title-c">
                     <img src="images/store/uv_icone.png" alt="" />
-                    <h1>每日運勢</h1>
+                    <h1>火熱商品</h1>
                     <img src="images/store/uv_icone.png" alt="" />
                 </div>
                 <div class="unstore_title-e">
-                    <h4>— Universe Store —</h4>
+                    <h4>— Air Supply —</h4>
                 </div>
             </div>
             <!-- Swiper -->
@@ -123,56 +126,21 @@
                 </div>
                 <div class="swiper-container mySwiper gap">
                     <swiper class="swiper-wrapper" :options="swiperOption2">
-                        <swiper-slide class="swiper-slide">
+                        <swiper-slide
+                            class="swiper-slide"
+                            v-for="(item, index) in signProduct"
+                            :key="index"
+                        >
                             <a href="starsign.html">
                                 <div class="sing_info1">
                                     <img
                                         class="info_img"
-                                        src="/images/store/healthP-1.png"
+                                        :src="item.PRODUCT_IMG"
                                         alt=""
                                     />
                                     <h3 class="inner_text">
-                                        七星陣水晶原石能量陣
+                                        {{ item.PRODUCT_NAME }}
                                     </h3>
-                                </div>
-                            </a>
-                        </swiper-slide>
-
-                        <swiper-slide class="swiper-slide">
-                            <a href="starsign.html">
-                                <div class="sing_info2">
-                                    <img
-                                        class="info_img"
-                                        src="/images/store/maylike-2.jpg"
-                                        alt=""
-                                    />
-                                    <h3 class="inner_text">水向魔法石融蠟燈</h3>
-                                </div>
-                            </a>
-                        </swiper-slide>
-
-                        <swiper-slide class="swiper-slide">
-                            <a href="starsign.html">
-                                <div class="product_info3">
-                                    <img
-                                        class="info_img"
-                                        src="/images/store/hPd_2.png"
-                                        alt=""
-                                    />
-                                    <h3 class="inner_text">冥王星晶石手鍊</h3>
-                                </div>
-                            </a>
-                        </swiper-slide>
-
-                        <swiper-slide class="swiper-slide">
-                            <a href="starsign.html">
-                                <div class="product_info4">
-                                    <img
-                                        class="info_img"
-                                        src="/images/store/maylike-1.jpg"
-                                        alt=""
-                                    />
-                                    <h3 class="inner_text">天然擴香健康石</h3>
                                 </div>
                             </a>
                         </swiper-slide>
@@ -192,6 +160,7 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import axios from 'axios';
 // import style (<= Swiper 5.x)
 import 'swiper/dist/css/swiper.css';
 
@@ -201,15 +170,20 @@ export default {
     data() {
         return {
             swiperOption: {
-                slidesPerView: 3,
+                slidesPerView: 4,
                 spaceBetween: 40,
                 loop: true,
+                // autoplay: true,
 
                 navigation: {
                     nextEl: '.index_nextbtn',
                     prevEl: '.index_prbtn',
                 },
                 breakpoints: {
+                    1200: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
                     996: {
                         slidesPerView: 2,
                         spaceBetween: 30,
@@ -240,7 +214,25 @@ export default {
                     },
                 },
             },
+            signDaily: [],
+            signProduct: [],
         };
+    },
+    mounted() {
+        axios
+            .post('http://localhost/meet_ur_heart/php/home_daily_select.php')
+            .then((res) => {
+                // console.log(res);
+                this.signDaily = res.data;
+                // console.log(this.signDaily);
+            });
+
+        axios
+            .post('http://localhost/meet_ur_heart/php/home_product_select.php')
+            .then((res) => {
+                this.signProduct = res.data;
+                // console.log(this.signProduct);
+            });
     },
 
     components: {
@@ -379,6 +371,10 @@ export default {
                     font-size: $p1;
                     line-height: 1.6;
                     color: rgb(248, 248, 248);
+                    display: -webkit-box; //將元素設為盒子伸縮模型顯示
+                    -webkit-box-orient: vertical; //伸縮方向設為垂直方向
+                    -webkit-line-clamp: 4; //超出3行隱藏，並顯示省略號
+                    overflow: hidden;
                     @include index-mobile {
                         max-width: 250px;
                         font-size: 6px;
