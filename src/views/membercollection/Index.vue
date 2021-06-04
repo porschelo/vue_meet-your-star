@@ -22,9 +22,9 @@
 
             <div class="MF_mid_block">
                 <div class="tab">
-                    <!-- <a href="./membercentre.html" class="tab_btn">個人資料</a>
-                    <a href="./memberorderlist.html" class="tab_btn">訂單資料</a>
-                    <a href="./membercollection.html" class="tab_btn">我的收藏</a> -->
+                    <router-link to="membercentre" class="tab_btn">個人資料</router-link>
+                    <router-link to="memberorderlist" class="tab_btn">訂單資料</router-link>
+                    <router-link to="membercollection" class="tab_btn">我的收藏</router-link>
                 </div>
                 
                 <div class="mid">
@@ -47,54 +47,39 @@
                             </thead>
                         
                             <tbody>
-                                <tr class="cn1">
-                                    <td><img src="/images/membercollection/collection1.png" alt="" class="collection_item"></td>
-                                    <td class="cn_name">能量手環</td>
-                                    <td>500</td>
-                                    <td rowspan="1">
-                                        <button class="canel_collection">取消收藏</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="5">
-                                        <div class="line"></div>
-                                    </td>
-                                </tr>
-                        
-                                <tr class="cn2">
-                                    <td><img src="/images/membercollection/collection2.png" alt="" class="collection_item"></td>
-                                    <td class="cn_name">宇宙能量手環喔</td>
-                                    <td>600</td>
-                                    <td rowspan="1">
-                                        <button class="canel_collection">取消收藏</button>
-                                    </td>
-                                    
-                                </tr>
-                        
-                                <tr>
-                                    <td colspan="5">
-                                        <div class="line"></div>
-                                    </td>
-                                </tr>
-                        
-                                <tr class="cn3">
-                                    <td><img src="/images/membercollection/collection2.png" alt="" class="collection_item"></td>
-                                    <td class="cn_name">宇宙能量手環</td>
-                                    <td>700</td>
-                                    <td rowspan="1">
-                                        <button class="canel_collection">取消收藏</button>
-                                    </td>
-                                </tr>
 
-                                
-                                        
+                                <!-- v-for 版 -->
+                                    <!-- <tr class="cn1" v-for=" (zxc,index) in collection_info " :key = zxc>
+                                    <td><img :src= "zxc.collection_pic" alt="" class="collection_item"></td>
+                                    <td class="cn_name">{{zxc.collection_name}}</td>
+                                    <td>{{zxc.collection_price}}</td>
+                                    <td rowspan="1">
+                                        <button class="canel_collection" @click="cancel_btn(index)">取消收藏</button>
+                                    </td>
+                                </tr> -->
+
+                                <!-- 接資料版 -->
+
+                                <tr class="cn1" v-for=" (collection_item,index) in collection_data " :key = collection_item>
+
+                                    <td><img :src= "collection_item.PRODUCT_IMG" alt="" class="collection_item"></td>
+                                    <td class="cn_name">{{collection_item.PRODUCT_NAME}}</td>
+                                    <td>{{collection_item.PRODUCT_PRICE}}</td>
+                                    <td rowspan="1">
+                                        <button class="canel_collection" @click="cancel_btn(index)">取消收藏</button>
+                                    </td>
+
+                                </tr>
+         
                             </tbody>
                         
                         </table>
                     
                 </div>
-                
+                    
                 <!-- MF_mid_block END -->
+
+                
             </div>
 
             <myFooter></myFooter>
@@ -106,8 +91,62 @@
 </template>
 
 <script>
+import axios from 'axios';
 import myFooter from '@/components/myFooter'
 export default {
+
+    mounted() {
+        axios
+            .get('http://localhost/vue_meet_u_heart/php/membercollection.php', {
+                params: { id: 10001 },
+            })
+            .then((res) => {
+                console.log(res);
+                this.collection_data = res.data;
+                
+            });
+    },
+
+    data() {
+        return {
+            collection_data:[],
+            collection_info:[
+                // {
+                //     collection_pic:"/images/membercollection/collection1.png",
+                //     collection_name:"能量手環",
+                //     collection_price:600,
+                // },
+
+                // {
+                //     collection_pic:"/images/membercollection/collection2.png",
+                //     collection_name:"宇宙能量手環",
+                //     collection_price:500,
+                // },
+                // {
+                //     collection_pic:"/images/membercollection/collection2.png",
+                //     collection_name:"測試文字七個字",
+                //     collection_price:700,
+                // },
+                // {
+                //     collection_pic:"/images/membercollection/collection1.png",
+                //     collection_name:"能量手環",
+                //     collection_price:600,
+                // },
+                // {
+                //     collection_pic:"/images/membercollection/collection2.png",
+                //     collection_name:"測試文字七個字",
+                //     collection_price:700,
+                // },
+            ],
+        }
+    },
+
+    methods: {
+        cancel_btn(index){
+            alert(index);
+            this.collection_data.splice(index,1)
+        }
+    },
     components: {
         myFooter,
         
@@ -273,7 +312,7 @@ $color:(white:#fff,
                 td {
                     vertical-align: middle;
                     letter-spacing: 2px;
-                    border: 1px solid green;
+                    // border: 1px solid green;
 
                 }
 

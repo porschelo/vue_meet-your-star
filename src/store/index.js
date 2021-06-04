@@ -6,8 +6,14 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         cartList: [],
+        loginBol:false,
+        signBol:false,
+        loginStatus: 0 ,
+        memberIcon:"",
+        loginID:"",
     },
     mutations: {
+        //cart
         addCart(state, obj1) {
             state.cartList.push(obj1);
             console.log(state.cartList);
@@ -15,6 +21,22 @@ export default new Vuex.Store({
         addCartUpdate(state, cart) {
             state.cartList = cart;
         },
+        //login
+        loginVisible(state,bol){
+            state.loginBol = bol;
+        },
+        signVisible(state,bol){
+            state.signBol = bol;
+        },
+        loginStatus(state,value){
+            state.loginStatus = value;
+        },
+        memberIcon(state,str){
+            state.memberIcon = str;
+        },
+        loginID(state,str){
+            state.loginID = str;
+        }
     },
     actions: {
         //更新整個購物車
@@ -35,6 +57,15 @@ export default new Vuex.Store({
                 JSON.stringify(this.state.cartList)
             );
         },
+        setmemberIcon:function(context,str){
+            context.commit('memberIcon',str);
+        },
+        setloginID:function(context,loginID){
+            context.commit('loginID',loginID);
+        },
+
     },
-    modules: {},
+    
+   
+
 });
