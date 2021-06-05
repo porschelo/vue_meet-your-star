@@ -213,7 +213,7 @@ export default {
 
         CheckStarSign() {
             // console.log(this.signBirthdate.split('/'));
-            let birthDay = this.signBirthdate.split('/');
+            let birthDay = this.signBirthdate.split('/');//['2001','01','20']
             let abc = new Date(2021, birthDay[1] - 1, birthDay[2]);
             console.log(abc);
 
