@@ -132,6 +132,9 @@ export default {
             signBirthdate:"",
             signMemberPic:"",
             signMemberL_Pic:"",
+            signStarsign:"",
+            signMonth:0,
+            signDay:0,
             
         }
     },
@@ -197,74 +200,88 @@ export default {
         },
 
         CheckStarSign(){
-            // console.log(this.signBirthdate.split('/'));
             let birthDay = this.signBirthdate.split('/')
-            let abc = new Date(2021,birthDay[1]-1,birthDay[2]);
-            console.log(abc);
+            this.month = birthDay[1];
+            this.day = birthDay[2];
+            console.log(this.month,this.day);
+            this.signStarsign = this.getAstro((this.month) ,(this.day) );
+            console.log(this.signStarsign);
 
-            if(abc>= new Date(2021,1-1,21) && abc<= new Date(2021,2-1,19)){
+            if(this.signStarsign == "水瓶"){
                 alert("水瓶座 Aquarius");
                 this.signMemberPic="/images/membercentre/Aquarius.png";
                 this.signMemberL_Pic="/images/membercentre/L_Aquarius.png";
                 
                 }
-            if(abc>= new Date(2021,2-1,20) && abc<= new Date(2021,3-1,20)){
+            if(this.signStarsign == "雙魚"){
                 alert("雙魚座 Pisces");
                 this.signMemberPic="/images/membercentre/Pisces.png";
                 this.signMemberL_Pic="/images/membercentre/L_Pisces.png";
                 
             }
-            if(abc>= new Date(2021,3-1,21) && abc<= new Date(2021,4-1,19)){
+            if(this.signStarsign == "牧羊"){
                 alert("牧羊座 Aries");
                 this.signMemberPic="/images/membercentre/Aries.png";
                 this.signMemberL_Pic="/images/membercentre/L_Aries.png";
             }
-            if(abc>= new Date(2021,4-1,20) && abc<= new Date(2021,5-1,20)){
+            if(this.signStarsign == "金牛"){
                 alert("金牛座 Taurus");
                 this.signMemberPic="/images/membercentre/Taurus.png";
                 this.signMemberL_Pic="/images/membercentre/L_Taurus.png";
             }
-            if(abc>= new Date(2021,5-1,21) && abc<= new Date(2021,6-1,21)){
+            if(this.signStarsign == "雙子"){
                 alert("雙子座 Gemini");
                 this.signMemberPic="/images/membercentre/Gemini.png";
                 this.signMemberL_Pic="/images/membercentre/L_Gemini.png";
             }
-            if(abc>= new Date(2021,6-1,22) && abc<= new Date(2021,7-1,22)){
+            if(this.signStarsign == "巨蟹"){
                 alert("巨蟹座 Cancer");
                 this.signMemberPic="/images/membercentre/Cancer.png";
                 this.signMemberL_Pic="/images/membercentre/L_Cancer.png";
             }
-            if(abc>= new Date(2021,7-1,23) && abc<= new Date(2021,8-1,22)){
+            if(this.signStarsign == "獅子"){
                 alert("獅子座 Leo");
                 this.signMemberPic="/images/membercentre/Leo.png";
                 this.signMemberL_Pic="/images/membercentre/L_Leo.png";
             }
-            if(abc>= new Date(2021,8-1,23) && abc<= new Date(2021,9-1,22)){
+            if(this.signStarsign == "處女"){
                 alert("處女座 Virgo");
                 this.signMemberPic="/images/membercentre/Virgo.png";
                 this.signMemberL_Pic="/images/membercentre/L_Virgo.png";
             }
             
-            if(abc>= new Date(2021,9-1,23) && abc<= new Date(2021,10-1,23)){
+            if(this.signStarsign == "天秤"){
                 alert("天秤座 Libra");
                 this.signMemberPic="/images/membercentre/Libra.png";
                 this.signMemberL_Pic="/images/membercentre/L_Libra.png";
             }
-            if(abc>= new Date(2021,10-1,24) && abc<= new Date(2021,11-1,21)){
+            if(this.signStarsign == "天蠍"){
                 alert("天蠍座 Scorpio");
                 this.signMemberPic="/images/membercentre/Scorpio.png";
                 this.signMemberL_Pic="/images/membercentre/L_Scorpio.png";
             }
-            if(abc>= new Date(2021,11-1,22) && abc<= new Date(2021,12-1,20)){
+            if(this.signStarsign == "射手"){
                 alert("射手座 Sagittarius");
                 this.signMemberPic="/images/membercentre/Sagittarius.png";
                 this.signMemberL_Pic="/images/membercentre/L_Sagittarius.png";
             }
-            if(abc<= new Date(2021,1-1,21) && abc>= new Date(2020,12-1,20)){
-                alert("摩羯座 Capricorn");
+            if(this.signStarsign == "魔羯"){
+                alert("魔羯座 Capricorn");
             }
             
+            
         },
+
+        // st
+
+        getAstro(month,day){
+            var s="魔羯水瓶雙魚牡羊金牛雙子巨蟹獅子處女天秤天蠍射手魔羯";
+            var arr=[20,19,21,21,21,22,23,23,23,23,22,22];
+            return s.substr(month*2-(day<arr[month-1]?2:0),2);
+        },
+
+
+        // en
 
         signCheck(){
             if(this.signAccount==""){
