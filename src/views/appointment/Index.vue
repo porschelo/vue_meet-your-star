@@ -93,22 +93,24 @@
                         </div>
                         <div class="button_page">
                         <button type="button" value="page" class="j_page" onclick="location.href ='/apdate'" >下一頁
-                            <div class="dialog"
+                            <!-- <div class="dialog"
                                 v-show="show"
                                 transition="dialog-fade">
                                 <div class="dialog-content">
                                 <slot></slot>
                                 </div>
-                            </div>
+                            </div> -->
                         </button>
                         </div>
                     </div>
                 
                 </div>
-            </div>
+            
 
-    
-            <myFooter></myFooter>
+          
+        <myFooter></myFooter>
+        
+     </div>
     </div>
 </template>
 
