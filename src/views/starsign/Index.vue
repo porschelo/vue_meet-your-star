@@ -31,6 +31,7 @@
                         <div class="cardct">
                             <h3 class="ssbday">生日 <span>{{ starsignbday1 }}</span><span> ～ </span><span>{{ starsignbday2 }}</span></h3>
                             <p class="ssprof">倔強，遇到討厭的人，寧可受罪也不向對方求助。陌生人面前很安靜很慢熱，熟了很鬧騰。有小脾氣但很隱忍，不輕易表露自己性情和內心。對繁瑣的事情沒耐心，容易放棄。</p>
+                            <!-- <p class="ssprof">{{ starsignpers }}</p> -->
                         </div>
                     </div>
                     <div class="cardbottom">
@@ -57,7 +58,6 @@
                 <div class="starsignleft">
                     <div class="luckyeveryday">
                         <h2>每日運勢</h2>
-                        <!-- <p>今天的你想像力、洞察力強，如果是從事創意工作者在今天能好好發揮，但也要避免想太多而焦慮。感情方面桃花運旺盛，建議多參加社交認識新朋友，你會是大家的目光焦點。幸運色是橘色。</p> -->
                         <p>{{ starsigndaily }}</p>
                     </div>
                     <div class="productforyou">
@@ -71,34 +71,15 @@
                 <div class="starsignarticle">
                     <h2>相關文章</h2>
                     <ul class="artimenu">
+
                         <li class="artitem">
-                            <a class="artitle">衝動、急躁激進！卻是牡羊對世界的挑戰</a>
-                            <!-- <a class="artitle">{{ articletitle }}</a> -->
-                            <p class="artminp"><span>牡羊座有天真又大膽的性格，讓他們勇敢接觸陌生的人事物，以此開創新的生活經驗，也給人活力洋溢的感覺</span> ...</p>
-                            <a href="" class="armorebtn">more</a>
-                        </li>
-                        <li class="artitem">
-                            <a class="artitle">愛就對了！牡羊座式的愛情</a>
+                            <a class="artitle" @click="onArtiPopOpen">{{ articletitle }}</a>
                             <p class="artminp">
-                                <span
-                                    >我們談談牡羊座，牡羊的愛，永遠那麼熱烈，愛就是坦誠相見、就是無怨無悔。想要靠近的時候，牡羊座才不會退讓</span
-                                >
-                                ...
+                                <span>{{ articlecont  | ellipsis }}</span>
                             </p>
-                            <a href="" class="armorebtn">more</a>
-                        </li>
-                        <li class="artitem">
-                            <a class="artitle"
-                                >牡羊座有很強的自我？其實是「心直口快」</a
-                            >
-                            <p class="artminp">
-                                <span
-                                    >很多人都覺得，牡羊座有很強的自我；他們自尊心很重，脾氣不太好，又常常有心或無意地挑釁其他人</span
-                                >
-                                ...
-                            </p>
-                            <a href="" class="armorebtn">more</a>
-                        </li>
+                            <a class="armorebtn" @click="onArtiPopOpen">more</a>
+                        </li>  
+
                     </ul>
                     <ul class="ssarti_pagination">
                         <li><a href="#">&lt;</a></li>
@@ -112,23 +93,17 @@
         </section>
 
         <!-- article popup -->
-        <div class="overlayarticle">
+        <div class="overlayarticle" v-show="artipop">
             <div class="artiflex">
                 <div class="articlepop">
-                    <a class="articlosebtn" href="#">&times;</a>
-                    <h2>衝動、急躁激進！卻是牡羊對世界的挑戰</h2>
-                    <img src="/images/starsign/arti1.png" alt="" />
-                    <p>
-                        牡羊座有天真又大膽的性格，讓他們勇敢接觸陌生的人事物，以此開創新的生活經驗，也給人活力洋溢的感覺。而率真且凡事不會多想就去實行的風格，也經常做出一些讓自己事後懊悔不已的衝動行為。
-                    </p>
-                    <hr />
-                    <p>
-                        熱情奔放的他們，清楚知道自己想要什麼，他們會用盡所有努力去爭取想要的事。講白了，牡羊座大多憑個人衝動行事，想做什麼就做什麼，對於自己的所作所為不會多想，具有自我投入和自得其樂的色彩。
-                    </p>
-                    <hr />
-                    <p>
-                        也因此，牡羊座與身俱來的自信，會感染給身邊的人。牡羊座的生活充滿刺激和趣事，全然投入享受生命的他們，總是帶著一股正能量，鼓勵朋友去做自己心之所嚮的事、以及跳脫舒適圈。他們乍看之下「有勇無謀」的個性，卻能發展出隨機應變以及處理緊急狀況的臨場應變能力喔！
-                    </p>
+                    <a class="articlosebtn" href="#" @click="onArtiPopClose">&times;</a>
+                    
+                    <h2>{{ articletitle }}</h2>
+
+                    <img :src="articlept" alt="" />
+
+                    <p>{{ articlecont }}</p>
+                    
                     <div class="articlebtn">
                         <a href="" class="prarti">＜ 上一篇</a>
                         <a href="" class="nxarti">下一篇 ＞</a>
@@ -155,6 +130,7 @@ export default {
     },
     data() {
         return {
+            artipop: false,
             starinfo: [],
             starsignname: '',
             starsignbday1: '',
@@ -167,17 +143,29 @@ export default {
             pers2val: '',
             pers3: '',
             pers3val: '',
-            starsigndaily: '',
-            // articletitle: '',
+            starsigndaily: '',        
             next:null,
             prev:null,
+            starart: [],
+            articletitle: '',
+            articlecont: '',
+            articlept: '',
             
         }
+    },
+    methods: {
+        onArtiPopOpen() {
+            this.artipop = true;
+        },
+        onArtiPopClose() {
+            this.artipop = false;
+        },
     },
     mounted(){
         let urlParams = new URLSearchParams(window.location.search);
         
         let id = urlParams.get("id")
+
         if(id){
             id = id -1
         }else{
@@ -188,7 +176,7 @@ export default {
         this.prev = id === 0 ? 12 : (id)
 
         axios
-            .post('http://localhost:8080/php/Select.php', 
+            .post('http://localhost:8080/php/starsign.php', 
                { id: this.$store.state.loginID },
             )
             .then((res) => {
@@ -208,12 +196,36 @@ export default {
                 this.pers3 = this.starinfo[id].PERSONLITY_3;
                 this.pers3val = this.starinfo[id].PERSONLITY_3_VALUE;
                 this.starsigndaily = this.starinfo[id].DAILY;
-                // this.articletitle = this.starinfo[id].ARTICLE_TITLE;
-
+                
+            }),
+        axios
+            .post('http://localhost:8080/php/article.php', 
+               { id: this.$store.state.loginID },
+            )
+            .then((res) => {
+                console.log(res);
+                this.starart = res.data;
+                // console.log(this.starart);
+                
+                this.articletitle = this.starart[id].ARTICLE_TITLE;
+                this.articlecont = this.starart[id].ARTICLE_CONTENT;
+                this.articlept = this.starart[id].ARTICLE_IMG;
                 
             });
     
     },
+    filters: {
+        //限制顯示字數
+        ellipsis(value) {
+            const len = 55;
+            if (!value) return "";
+            if (value.length > len) {
+                return value.slice(0, len) + " ...";
+            }
+            return value;
+        }
+    },
+
 };
 
 
@@ -361,10 +373,7 @@ export default {
             display: flex;
             justify-content: center;
             align-items: center;
-            button {
-                outline: 0;
-                border: 0;
-                background: 0;
+            a {
                 width: 45px;
                 box-sizing: content-box;
                 cursor: pointer;
@@ -658,7 +667,7 @@ export default {
                         padding-left: 10px;
                         width: 430px;
                         color: #fff;
-                        margin-bottom: 50px;
+                        margin-bottom: 38px;
                         @include rwd(pad2) {
                             width: 85%;
                             padding-left: 0;
@@ -685,6 +694,7 @@ export default {
                             }
                         }
                         .armorebtn {
+                            cursor: pointer;
                             font-size: $p2;
                             color: rgb(252, 140, 99);
                             display: block;
@@ -722,7 +732,7 @@ export default {
         left: 0;
         right: 0;
         background: rgba(7, 7, 7, 0.6);
-        display: none;
+        // display: none;
         z-index: 1000;
         overflow: scroll;
         .artiflex {
@@ -813,19 +823,5 @@ export default {
         margin-top: -10px;
     }
 
-    // //nav-list 所在頁面樣式
-    // .overlaymenu{
-    //     .menulist{
-    //         .nav-menu{
-    //             ul{
-    //                 li:nth-child(1){
-    //                     a{
-    //                         color: yellow;
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
 }
 </style>
