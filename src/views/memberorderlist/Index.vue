@@ -182,7 +182,7 @@ export default {
 
     mounted() {
         axios.post('http://localhost/vue_meet_u_heart/php/memberlist.php',
-             { id: 10005 },
+             { id: this.$store.state.loginID },
         )
             .then((res) => {
                 console.log(res);
@@ -368,7 +368,7 @@ $border: 1px solid;
 
                 td {
                     vertical-align: middle;
-                    border: 1px solid green;
+                    // border: 1px solid green;
                     letter-spacing: 2px;
                 }
 
