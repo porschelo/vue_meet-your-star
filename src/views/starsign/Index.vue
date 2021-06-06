@@ -30,8 +30,7 @@
                         <img class="cardpt" :src="starsignpt" alt="">
                         <div class="cardct">
                             <h3 class="ssbday">生日 <span>{{ starsignbday1 }}</span><span> ～ </span><span>{{ starsignbday2 }}</span></h3>
-                            <p class="ssprof">倔強，遇到討厭的人，寧可受罪也不向對方求助。陌生人面前很安靜很慢熱，熟了很鬧騰。有小脾氣但很隱忍，不輕易表露自己性情和內心。對繁瑣的事情沒耐心，容易放棄。</p>
-                            <!-- <p class="ssprof">{{ starsignpers }}</p> -->
+                            <p class="ssprof">{{ starsignpers }}</p>
                         </div>
                     </div>
                     <div class="cardbottom">
@@ -63,9 +62,9 @@
                     <div class="productforyou">
                         <h2>開運商品</h2>
                         <div class="sspd">
-                            <img src="/images/store/hPd_1.png" alt="" />
+                            <img :src="sspdimg" alt="" />
                         </div>
-                        <h3>七星陣水晶原石能量陣</h3>
+                        <h3>{{ sspdtitle }}</h3>
                     </div>
                 </div>
                 <div class="starsignarticle">
@@ -135,7 +134,7 @@ export default {
             starsignname: '',
             starsignbday1: '',
             starsignbday2: '',
-            // starsignpers: '',
+            starsignpers: '',
             starsignpt: '',
             pers1: '',
             pers1val: '',
@@ -150,6 +149,9 @@ export default {
             articletitle: '',
             articlecont: '',
             articlept: '',
+            starprdt: [],
+            sspdtitle: '',
+            sspdimg: '',
             
         }
     },
@@ -187,7 +189,7 @@ export default {
                 this.starsignname = this.starinfo[id].STAR_SIGN_NAME;
                 this.starsignbday1 = this.starinfo[id].STAR_SIGN_S;
                 this.starsignbday2 = this.starinfo[id].STAR_SIGN_E;
-                // this.starsignpers = this.starinfo[id].STAR_SIGN_E;
+                this.starsignpers = this.starinfo[id].STAR_SIGN_PRF;
                 this.starsignpt = this.starinfo[id].MONSTER_IMG;
                 this.pers1 = this.starinfo[id].PERSONLITY_1;
                 this.pers1val = this.starinfo[id].PERSONLITY_1_VALUE;
@@ -210,6 +212,19 @@ export default {
                 this.articletitle = this.starart[id].ARTICLE_TITLE;
                 this.articlecont = this.starart[id].ARTICLE_CONTENT;
                 this.articlept = this.starart[id].ARTICLE_IMG;
+                
+            }),
+        axios
+            .post('http://localhost:8080/php/luckyproduct.php', 
+               { id: this.$store.state.loginID },
+            )
+            .then((res) => {
+                console.log(res);
+                this.starprdt = res.data;
+                // console.log(this.starprdt);
+                
+                this.sspdtitle = this.starprdt[id].PRODUCT_NAME;
+                this.sspdimg = this.starprdt[id].PRODUCT_IMG;
                 
             });
     
@@ -778,7 +793,7 @@ export default {
                     }
                 }
                 img {
-                    width: 70%;
+                    width: 68%;
                     margin: 30px 0;
                     border-radius: 10px;
                     @include rwd(mobile) {
