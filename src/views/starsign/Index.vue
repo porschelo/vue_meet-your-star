@@ -13,24 +13,48 @@
             </div>
         </div>
         <div class="galaxys">
-            <img class="starship" src="/images/starsign/ss_bg2.png" alt="">
+            <img class="starship" src="/images/starsign/ss_bg2.png" alt="" />
             <!-- <a class="galx1" href="/starsign?id=3"><img src="/images/starsign/galx1.png" alt="" @click="this.starinfo[0].STAR_SIGN_ID = 3"></a> -->
-            <router-link class="galx1" :to="{ name: 'Starsign', query: { id: 10 }}"><img src="/images/starsign/galx1.png" alt="" ></router-link>
-            <router-link class="galx2" :to="{ name: 'Starsign', query: { id: 1 }}"><img src="/images/starsign/galx2.png" alt="" ></router-link>
-            <router-link class="galx3" :to="{ name: 'Starsign', query: { id: 4 }}"><img src="/images/starsign/galx3.png" alt="" ></router-link>
-            <router-link class="galx4" :to="{ name: 'Starsign', query: { id: 7 }}"><img src="/images/starsign/galx4.png" alt="" ></router-link>
-        </div> 
+            <router-link
+                class="galx1"
+                :to="{ name: 'Starsign', query: { id: 10 } }"
+                ><img src="/images/starsign/galx1.png" alt=""
+            /></router-link>
+            <router-link
+                class="galx2"
+                :to="{ name: 'Starsign', query: { id: 1 } }"
+                ><img src="/images/starsign/galx2.png" alt=""
+            /></router-link>
+            <router-link
+                class="galx3"
+                :to="{ name: 'Starsign', query: { id: 4 } }"
+                ><img src="/images/starsign/galx3.png" alt=""
+            /></router-link>
+            <router-link
+                class="galx4"
+                :to="{ name: 'Starsign', query: { id: 7 } }"
+                ><img src="/images/starsign/galx4.png" alt=""
+            /></router-link>
+        </div>
 
         <section class="starsignsec">
             <div class="starsignswitch">
-                <a class="prbtn" :href="'/starsign?id='+ prev"><img src="/images/starsign/prbtn.png" alt=""></a>
+                <a class="prbtn" :href="'/starsign?id=' + prev"
+                    ><img src="/images/starsign/prbtn.png" alt=""
+                /></a>
                 <div class="drivingcard">
                     <h2>{{ starsignname }}</h2>
                     <div class="cardtop">
-                        <img class="cardpt" :src="starsignpt" alt="">
+                        <img class="cardpt" :src="starsignpt" alt="" />
                         <div class="cardct">
-                            <h3 class="ssbday">生日 <span>{{ starsignbday1 }}</span><span> ～ </span><span>{{ starsignbday2 }}</span></h3>
-                            <p class="ssprof">倔強，遇到討厭的人，寧可受罪也不向對方求助。陌生人面前很安靜很慢熱，熟了很鬧騰。有小脾氣但很隱忍，不輕易表露自己性情和內心。對繁瑣的事情沒耐心，容易放棄。</p>
+                            <h3 class="ssbday">
+                                生日 <span>{{ starsignbday1 }}</span
+                                ><span> ～ </span
+                                ><span>{{ starsignbday2 }}</span>
+                            </h3>
+                            <p class="ssprof">
+                                倔強，遇到討厭的人，寧可受罪也不向對方求助。陌生人面前很安靜很慢熱，熟了很鬧騰。有小脾氣但很隱忍，不輕易表露自己性情和內心。對繁瑣的事情沒耐心，容易放棄。
+                            </p>
                         </div>
                     </div>
                     <div class="cardbottom">
@@ -51,7 +75,9 @@
                         </div>
                     </div>
                 </div>
-                <a class="nxbtn" :href="'/starsign?id='+ next"><img src="/images/starsign/nxbtn.png" alt=""></a>
+                <a class="nxbtn" :href="'/starsign?id=' + next"
+                    ><img src="/images/starsign/nxbtn.png" alt=""
+                /></a>
             </div>
             <div class="starsigncont">
                 <div class="starsignleft">
@@ -72,9 +98,16 @@
                     <h2>相關文章</h2>
                     <ul class="artimenu">
                         <li class="artitem">
-                            <a class="artitle">衝動、急躁激進！卻是牡羊對世界的挑戰</a>
+                            <a class="artitle"
+                                >衝動、急躁激進！卻是牡羊對世界的挑戰</a
+                            >
                             <!-- <a class="artitle">{{ articletitle }}</a> -->
-                            <p class="artminp"><span>牡羊座有天真又大膽的性格，讓他們勇敢接觸陌生的人事物，以此開創新的生活經驗，也給人活力洋溢的感覺</span> ...</p>
+                            <p class="artminp">
+                                <span
+                                    >牡羊座有天真又大膽的性格，讓他們勇敢接觸陌生的人事物，以此開創新的生活經驗，也給人活力洋溢的感覺</span
+                                >
+                                ...
+                            </p>
                             <a href="" class="armorebtn">more</a>
                         </li>
                         <li class="artitem">
@@ -169,33 +202,32 @@ export default {
             pers3val: '',
             starsigndaily: '',
             // articletitle: '',
-            next:null,
-            prev:null,
-            
-        }
+            next: null,
+            prev: null,
+        };
     },
-    mounted(){
+    mounted() {
         let urlParams = new URLSearchParams(window.location.search);
-        
-        let id = urlParams.get("id")
-        if(id){
-            id = id -1
-        }else{
-            id = 0 //漢堡進入預設頁面
+
+        let id = urlParams.get('id');
+        if (id) {
+            id = id - 1;
+        } else {
+            id = 0; //漢堡進入預設頁面
         }
         //左右切換id
-        this.next = id === 11 ? 1 : (id + 2)
-        this.prev = id === 0 ? 12 : (id)
+        this.next = id === 11 ? 1 : id + 2;
+        this.prev = id === 0 ? 12 : id;
 
         axios
-            .post('http://localhost:8080/php/Select.php', 
-               { id: this.$store.state.loginID },
-            )
+            .post('http://localhost:8080/php/Select.php', {
+                id: this.$store.state.loginID,
+            })
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 this.starinfo = res.data;
                 // console.log(this.starinfo);
-                
+
                 this.starsignname = this.starinfo[id].STAR_SIGN_NAME;
                 this.starsignbday1 = this.starinfo[id].STAR_SIGN_S;
                 this.starsignbday2 = this.starinfo[id].STAR_SIGN_E;
@@ -209,14 +241,9 @@ export default {
                 this.pers3val = this.starinfo[id].PERSONLITY_3_VALUE;
                 this.starsigndaily = this.starinfo[id].DAILY;
                 // this.articletitle = this.starinfo[id].ARTICLE_TITLE;
-
-                
             });
-    
     },
 };
-
-
 </script>
 
 <style lang="scss">

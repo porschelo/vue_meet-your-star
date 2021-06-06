@@ -199,7 +199,7 @@ export default {
                         this.$store.commit('loginVisible', false);
                         this.$store.commit('loginStatus', 1);
                         // console.log(res.data[0].MEMBER_icon);
-                        let str = res.data[0].MEMBER_icon;
+                        let str = res.data[0].MEMBER_ICON;
                         let loginID = res.data[0].MEMBER_ID;
                         // console.log(loginID);
                         this.$store.dispatch('setmemberIcon', str);
@@ -213,7 +213,7 @@ export default {
 
         CheckStarSign() {
             // console.log(this.signBirthdate.split('/'));
-            let birthDay = this.signBirthdate.split('/');//['2001','01','20']
+            let birthDay = this.signBirthdate.split('/'); //['2001','01','20']
             let abc = new Date(2021, birthDay[1] - 1, birthDay[2]);
             console.log(abc);
 
