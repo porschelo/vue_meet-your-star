@@ -6,22 +6,26 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         //teacher
-        selectteacher:'',
+        selectteacher: '',
 
         //cart
         cartList: [],
 
         //login
-        loginBol:false,
-        signBol:false,
-        loginStatus: 0 ,
-        memberIcon:"",
-        loginID:"",
+        loginBol: false,
+        signBol: false,
+        loginStatus: 0,
+        memberIcon: '',
+        loginID: '',
+
+        //product
+        productId: 0,
+        productType: '2',
     },
     mutations: {
         //teacher
-        selectteachername(state, teachername){
-            state.selectteacher = teachername; 
+        selectteachername(state, teachername) {
+            state.selectteacher = teachername;
         },
         //cart
         addCart(state, obj1) {
@@ -32,39 +36,54 @@ export default new Vuex.Store({
             state.cartList = cart;
         },
         //login
-        loginVisible(state,bol){
+        loginVisible(state, bol) {
             state.loginBol = bol;
         },
-        signVisible(state,bol){
+        signVisible(state, bol) {
             state.signBol = bol;
         },
-        loginStatus(state,value){
+        loginStatus(state, value) {
             state.loginStatus = value;
-            localStorage.setItem('loginStatus',JSON.stringify(this.state.loginStatus));
+            localStorage.setItem(
+                'loginStatus',
+                JSON.stringify(this.state.loginStatus)
+            );
         },
-        updateLoginStatus(state,value){
+        updateLoginStatus(state, value) {
             state.loginStatus = value;
         },
-        memberIcon(state,str){
+        memberIcon(state, str) {
             state.memberIcon = str;
-            localStorage.setItem('memberIcon',JSON.stringify(this.state.memberIcon));
+            localStorage.setItem(
+                'memberIcon',
+                JSON.stringify(this.state.memberIcon)
+            );
         },
-        updatememberIcon(state,str){
+        updatememberIcon(state, str) {
             state.memberIcon = str;
         },
-        loginID(state,str){
+        loginID(state, str) {
             state.loginID = str;
-            localStorage.setItem('loginID',JSON.stringify(this.state.loginID));
+            localStorage.setItem('loginID', JSON.stringify(this.state.loginID));
         },
-        updateloginID(state,str){
+        updateloginID(state, str) {
             state.loginID = str;
         },
-
+        logout(state, val) {
+            state.loginStatus = val;
+        },
+        //product
+        sendproductId(state, id) {
+            state.productId = id;
+        },
+        backtoPage(state, str) {
+            state.productType = str;
+        },
     },
     actions: {
         //teacher
-        setselectteacher(context, teachername){
-            context.commit('selectteachername', teachername)
+        setselectteacher(context, teachername) {
+            context.commit('selectteachername', teachername);
         },
         //更新整個購物車
         updateCart(context, cart) {
@@ -86,33 +105,29 @@ export default new Vuex.Store({
         },
 
         //login
-        setmemberIcon:function(context,str){
-            context.commit('memberIcon',str);
+        setmemberIcon: function (context, str) {
+            context.commit('memberIcon', str);
         },
-        setloginID:function(context,loginID){
-            context.commit('loginID',loginID);
+        setloginID: function (context, loginID) {
+            context.commit('loginID', loginID);
         },
-        updateLoginStatus:function(context,status){
-            context.commit('updateloginStatus',status);
-            localStorage.setItem('loginStatus',JSON.stringify(this.state.loginStatus));
-                   
+        updateLoginStatus: function (context, status) {
+            context.commit('updateloginStatus', status);
+            localStorage.setItem(
+                'loginStatus',
+                JSON.stringify(this.state.loginStatus)
+            );
         },
-        updatememberIcon:function(context,str){
-            context.commit('updatememberIcon',str);
-            localStorage.setItem('memberIcon',JSON.stringify(this.state.memberIcon));
-                   
+        updatememberIcon: function (context, str) {
+            context.commit('updatememberIcon', str);
+            localStorage.setItem(
+                'memberIcon',
+                JSON.stringify(this.state.memberIcon)
+            );
         },
-        updateLoginID:function(context,str){
-            context.commit('updateloginID',str);
-            localStorage.setItem('loginID',JSON.stringify(this.state.loginID));
-                   
+        updateLoginID: function (context, str) {
+            context.commit('updateloginID', str);
+            localStorage.setItem('loginID', JSON.stringify(this.state.loginID));
         },
     },
-    
-    
-    
-    
-    
-   
-
 });

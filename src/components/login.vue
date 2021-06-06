@@ -1,9 +1,14 @@
 <template>
-    <div class="login-popup" >
+    <div class="login-popup">
         <!-- login-popup -->
         <div class="popout loginpopup" v-if="loginBol">
             <div class="popup">
-                <a class="close_login_btn" href="" @click.prevent="onClose('login')">&times;</a>
+                <a
+                    class="close_login_btn"
+                    href=""
+                    @click.prevent="onClose('login')"
+                    >&times;</a
+                >
 
                 <div class="login_title">
                     <h1>登入</h1>
@@ -31,10 +36,21 @@
                         />
                         <div class="logina">
                             <a href="#">忘記密碼？</a>
-                            <a href="" class="gosignup" @click.prevent="goSignup">註冊新帳號</a>
+                            <a
+                                href=""
+                                class="gosignup"
+                                @click.prevent="goSignup"
+                                >註冊新帳號</a
+                            >
                         </div>
                         <a href="">
-                            <button class="send" id="send" @click.prevent="loginCheck">出發冒險</button>
+                            <button
+                                class="send"
+                                id="send"
+                                @click.prevent="loginCheck"
+                            >
+                                出發冒險
+                            </button>
                         </a>
                     </div>
                 </div>
@@ -44,7 +60,12 @@
         <!-- signup-popup -->
         <div class="popout signup" v-show="signBol">
             <div class="popup">
-                <a class="close_signup_btn" href="#" @click.prevent="onClose('signin')">&times;</a>
+                <a
+                    class="close_signup_btn"
+                    href="#"
+                    @click.prevent="onClose('signin')"
+                    >&times;</a
+                >
 
                 <div class="signuptitle">
                     <h1>註冊</h1>
@@ -59,7 +80,6 @@
                             placeholder=" example@gmail.com"
                             required
                             v-model.trim="signAccount"
-                            
                         />
                         <h3>密碼:</h3>
                         <input
@@ -78,7 +98,6 @@
                             placeholder=""
                             required
                             v-model.trim="signPasswordCheck"
-                            
                         />
                         <h3>手機號碼:</h3>
                         <input
@@ -100,10 +119,14 @@
                         />
 
                         <div class="signupa">
-                            <a href="" class="gologin" @click.prevent="gologin">已有帳號？登入</a>
+                            <a href="" class="gologin" @click.prevent="gologin"
+                                >已有帳號？登入</a
+                            >
                         </div>
 
-                        <button class="sign" id="sign" @click="signCheck">加入冒險</button>
+                        <button class="sign" id="sign" @click="signCheck">
+                            加入冒險
+                        </button>
                     </div>
                 </div>
             </div>
@@ -113,16 +136,14 @@
 </template>
 
 <script>
-
 import axios from 'axios';
 
 export default {
-
     data() {
         return {
             // login
-            userAccount:"",
-            userPassword:"",
+            userAccount: '',
+            userPassword: '',
 
             // signup
             signAccount:"",
@@ -140,64 +161,59 @@ export default {
         }
     },
 
-    computed:{
-        loginBol(){
+    computed: {
+        loginBol() {
             return this.$store.state.loginBol;
         },
 
-        signBol(){
+        signBol() {
             return this.$store.state.signBol;
         },
-
-        
     },
 
     methods: {
-        onClose(event){
-            if(event == "login"){
-                this.$store.commit('loginVisible',false);
-            }else if(event == "signin"){
-                this.$store.commit('signVisible',false);
+        onClose(event) {
+            if (event == 'login') {
+                this.$store.commit('loginVisible', false);
+            } else if (event == 'signin') {
+                this.$store.commit('signVisible', false);
             }
         },
 
-        goSignup(){
-            this.$store.commit('signVisible',true);
-            this.$store.commit('loginVisible',false);
+        goSignup() {
+            this.$store.commit('signVisible', true);
+            this.$store.commit('loginVisible', false);
         },
 
-        gologin(){
-            this.$store.commit('loginVisible',true);
-            this.$store.commit('signVisible',false);
+        gologin() {
+            this.$store.commit('loginVisible', true);
+            this.$store.commit('signVisible', false);
         },
 
-        loginCheck(){
-            axios.post('http://localhost/vue_meet_u_heart/php/login.php', 
-               { userAccount: this.userAccount ,
-                 userPassword:this.userPassword,
-               },
-                
-            )
-                .then((res) =>{
-                    if(res.data.length ==1){
-                        alert("登入成功");
+        loginCheck() {
+            // axios.post('http://localhost/vue_meet_u_heart/php/login.php',
+            axios
+                .post('http://localhost/meet_ur_heart/php/login.php', {
+                    userAccount: this.userAccount,
+                    userPassword: this.userPassword,
+                })
+                .then((res) => {
+                    if (res.data.length == 1) {
+                        alert('登入成功');
                         console.log(res);
-                        this.$store.commit('loginVisible',false);
-                        this.$store.commit('loginStatus',1);
+                        this.$store.commit('loginVisible', false);
+                        this.$store.commit('loginStatus', 1);
                         // console.log(res.data[0].MEMBER_icon);
                         let str = res.data[0].MEMBER_ICON;
                         let loginID = res.data[0].MEMBER_ID;
                         // console.log(loginID);
-                        this.$store.dispatch('setmemberIcon',str);
-                        this.$store.dispatch('setloginID',loginID);
-                        
-
-
-                    }else{
-                        alert("登入失敗,請重新輸入帳號或密碼");
+                        this.$store.dispatch('setmemberIcon', str);
+                        this.$store.dispatch('setloginID', loginID);
+                    } else {
+                        alert('登入失敗,請重新輸入帳號或密碼');
                         // console.log(res);
                     }
-                })
+                });
         },
 
         CheckStarSign(){
@@ -329,21 +345,20 @@ export default {
                 this.$store.commit('signVisible',false);
                 this.$store.commit('loginVisible',true);
             }
-            
-        }
+        },
     },
 };
 </script>
 <style lang="scss">
-    @import '@/scss/color.scss';
-    @import '@/scss/var.scss';
-    @import '@/scss/center.scss';
-    @import '@/scss/mixins.scss';
-    @import '@/scss/rwd.scss';
+@import '@/scss/color.scss';
+@import '@/scss/var.scss';
+@import '@/scss/center.scss';
+@import '@/scss/mixins.scss';
+@import '@/scss/rwd.scss';
 
 // scss
 
-    .popout {
+.popout {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -353,7 +368,6 @@ export default {
     // display: none;
     z-index: 1000;
     overflow-y: scroll;
-
 }
 
 .popup {
@@ -369,8 +383,6 @@ export default {
         width: 100%;
     }
 
-
-
     .close_login_btn {
         position: absolute;
         top: -20px;
@@ -382,7 +394,6 @@ export default {
 
         @include rwd(mobile) {
             right: 0px;
-
         }
     }
 
@@ -397,7 +408,6 @@ export default {
 
         @include rwd(mobile) {
             right: 0px;
-
         }
     }
 }
@@ -417,8 +427,6 @@ export default {
         padding: 20px 0 50px;
         @include center;
 
-
-
         h3 {
             font-size: $h3 - 2px;
             margin: 3% 0;
@@ -431,7 +439,6 @@ export default {
             margin: 1% 0 5%;
             font-size: $h3 - 3px;
             padding: 5px 3px;
-
         }
 
         .logina {
@@ -451,7 +458,7 @@ export default {
             text-decoration: none;
         }
 
-        @include btn-module(".send", 200, 90) {
+        @include btn-module('.send', 200, 90) {
             display: block;
             margin: 30px auto 0;
             color: #555;
@@ -480,8 +487,6 @@ export default {
         padding: 20px 0 50px;
         @include center;
 
-
-
         h3 {
             font-size: $h3 - 2px;
             margin: 3% 0;
@@ -494,7 +499,6 @@ export default {
             margin: 1% 0 5%;
             font-size: $h3 - 3px;
             padding: 5px 3px;
-
         }
 
         .signupa {
@@ -509,7 +513,7 @@ export default {
             }
         }
 
-        @include btn-module(".sign", 200, 90) {
+        @include btn-module('.sign', 200, 90) {
             display: block;
             margin: 30px auto 0;
             color: #555;
@@ -522,7 +526,4 @@ export default {
         }
     }
 }
-
-
-
 </style>

@@ -18,8 +18,13 @@
                 <div class="breadcrumb">
                     <ul class="breadcrumb_list">
                         <li><a href="#">開運商品</a></li>
-                        <li><a href="#">健康</a></li>
-                        <li>七星陣水晶原石能量陣</li>
+                        <li>
+                            <a href="#" @click.prevent="backPage">
+                                {{ productType }}
+                            </a>
+                        </li>
+                        <li>{{ productName }}</li>
+                        <!-- <li>{{ productsArr[index].PRODUCT_NAME }}</li> -->
                     </ul>
                 </div>
             </div>
@@ -28,28 +33,19 @@
                 <!-- 商品角度切換 -->
                 <div class="pd-leftblock">
                     <div class="pd-img_block">
-                        <img
-                            src="/images/store/healthP-1.png"
-                            v-if="showPro === 0"
-                        />
-                        <img
-                            src="/images/store/healthP-2.png"
-                            v-if="showPro === 1"
-                        />
-                        <img
-                            src="/images/store/healthP-3.png"
-                            v-if="showPro === 2"
-                        />
+                        <img :src="productImg1" v-if="showPro === 0" />
+                        <img :src="productImg2" v-if="showPro === 1" />
+                        <img :src="productImg3" v-if="showPro === 2" />
                     </div>
                     <ul class="pd-btn_block">
                         <li @click="showPro = 0">
-                            <img src="/images/store/healthP-1.png" alt="" />
+                            <img :src="productImg1" alt="" />
                         </li>
                         <li @click="showPro = 1">
-                            <img src="/images/store/healthP-2.png" alt="" />
+                            <img :src="productImg2" alt="" />
                         </li>
                         <li @click="showPro = 2">
-                            <img src="/images/store/healthP-3.png" alt="" />
+                            <img :src="productImg3" alt="" />
                         </li>
                     </ul>
                 </div>
@@ -59,7 +55,18 @@
                     <!-- 愛心收藏 -->
                     <div class="pd-love">
                         <h2>{{ productData.productName }}</h2>
-                        <img :src="productData.productImg" alt="" />
+                        <a class="addlick" @click.prevent="addlike">
+                            <img
+                                v-if="islike"
+                                src="/images/store/loveicone.png"
+                                alt=""
+                            />
+                            <img
+                                v-else
+                                src="/images/store/loveicone_click.png"
+                                alt=""
+                            />
+                        </a>
                     </div>
 
                     <p>
@@ -214,6 +221,7 @@
 import myFooter from '@/components/myFooter';
 import Chart from 'chart.js/auto';
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import axios from 'axios';
 // import style (<= Swiper 5.x)
 import 'swiper/dist/css/swiper.css';
 
@@ -243,6 +251,14 @@ export default {
                     },
                 },
             },
+
+            islike: 1,
+            productsArr: [], //[{}]
+            productName: '',
+            productImg1: '',
+            productImg2: '',
+            productImg3: '',
+            productType: '', //'工作'
             productData: {
                 productName: '七星陣水晶原石能量陣',
                 productImg: '/images/store/healthP-1.png',
@@ -324,15 +340,68 @@ export default {
             // this.productData.tatol=  this.totalNum
             this.$store.dispatch('addToCart', newPdData);
         },
+        addlike() {
+            if (this.islike == 0) {
+                this.islike = 1;
+            } else {
+                this.islike = 0;
+            }
+        },
+        typeChange(value) {
+            switch (value) {
+                case '1':
+                    this.productType = '工作';
+                    break;
+                case '2':
+                    this.productType = ' 健康';
+                    break;
+                case '3':
+                    this.productType = ' 愛情';
+                    break;
+                case '4':
+                    this.productType = '學業';
+                    break;
+            }
+        },
+        backPage() {
+            this.$router.push({
+                path: '/unstore',
+            });
+
+            this.$store.commit('backtoPage', this.productsArr[0].PRODUCT_TYPE);
+            //現在this.productType ="學業" 但傳到vuex要傳數字
+        },
     },
 
     mounted() {
         this.getChart();
+        axios
+            .post(
+                'http://localhost/meet_ur_heart/php/product_detail_select.php',
+                {
+                    productId: this.$store.state.productId,
+                    //送去php 被點擊商品的id
+                }
+            )
+            .then((res) => {
+                this.productsArr = res.data;
+                this.productName = this.productsArr[0].PRODUCT_NAME;
+                this.productImg1 = this.productsArr[0].PRODUCT_IMG;
+                this.productImg2 = this.productsArr[0].PRODUCT_IMG2;
+                this.productImg3 = this.productsArr[0].PRODUCT_IMG3;
+                this.productType = this.productsArr[0].PRODUCT_TYPE;
+                // this.typeChange(this.productsArr[0].PRODUCT_TYPE);
+                this.typeChange(this.productType); //this.productType='2'
+                console.log(this.productsArr);
+            });
     },
     computed: {
         totalNum() {
             return this.productData.price * this.productData.count;
         },
+        // sendproductId() {
+        //     return this.$store.state.productId;
+        // },
     },
 };
 </script>
@@ -499,6 +568,9 @@ export default {
                     }
                 }
                 /*===== 愛心收藏 =====*/
+                .addlick {
+                    cursor: pointer;
+                }
                 .pd-love {
                     margin-top: 30px;
                     display: flex;
