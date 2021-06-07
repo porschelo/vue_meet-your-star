@@ -14,7 +14,6 @@
         </div>
         <div class="galaxys">
             <img class="starship" src="/images/starsign/ss_bg2.png" alt="">
-            <!-- <a class="galx1" href="/starsign?id=3"><img src="/images/starsign/galx1.png" alt="" @click="this.starinfo[0].STAR_SIGN_ID = 3"></a> -->
             <router-link class="galx1" :to="{ name: 'Starsign', query: { id: 10 }}"><img src="/images/starsign/galx1.png" alt="" ></router-link>
             <router-link class="galx2" :to="{ name: 'Starsign', query: { id: 1 }}"><img src="/images/starsign/galx2.png" alt="" ></router-link>
             <router-link class="galx3" :to="{ name: 'Starsign', query: { id: 4 }}"><img src="/images/starsign/galx3.png" alt="" ></router-link>
@@ -23,7 +22,7 @@
 
         <section class="starsignsec">
             <div class="starsignswitch">
-                <a class="prbtn" :href="'/starsign?id='+ prev"><img src="/images/starsign/prbtn.png" alt=""></a>
+                <router-link class="prbtn" :to="{ name: 'Starsign', query: { id: prev }}"><img src="/images/starsign/prbtn.png" alt=""></router-link>
                 <div class="drivingcard">
                     <h2>{{ starsignname }}</h2>
                     <div class="cardtop">
@@ -51,7 +50,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="nxbtn" :href="'/starsign?id='+ next"><img src="/images/starsign/nxbtn.png" alt=""></a>
+                <router-link class="nxbtn" :to="{ name: 'Starsign', query: { id: next }}"><img src="/images/starsign/nxbtn.png" alt=""></router-link>
             </div>
             <div class="starsigncont">
                 <div class="starsignleft">
@@ -69,44 +68,46 @@
                 </div>
                 <div class="starsignarticle">
                     <h2>相關文章</h2>
-                    <ul class="artimenu">
+                    <div class="artiwrapper">
+                        <ul class="artimenu" v-if="starart">
 
-                        <li class="artitem">
-                            <a class="artitle" @click="onArtiPopOpen">{{ articletitle }}</a>
-                            <p class="artminp">
-                                <span>{{ articlecont  | ellipsis }}</span>
-                            </p>
-                            <a class="armorebtn" @click="onArtiPopOpen">more</a>
-                        </li>  
+                            <li class="artitem" v-for="(arti,key) in starart" :key="key">
+                                <a v-if="arti.ARTICLE_TITLE" class="artitle" @click="onArtiPopOpen(arti)">{{ arti.ARTICLE_TITLE }}</a>
+                                <p class="artminp" v-if="arti.ARTICLE_CONTENT">
+                                    <span>{{ arti.ARTICLE_CONTENT | ellipsis }}</span>
+                                </p>
+                                <a class="armorebtn" @click="onArtiPopOpen(arti)">more</a>
+                            </li>  
 
-                    </ul>
-                    <ul class="ssarti_pagination">
+                        </ul>
+                    </div>
+                    <!-- <ul class="ssarti_pagination">
                         <li><a href="#">&lt;</a></li>
                         <li><a href="#" class="-on">1</a></li>
                         <li><a href="#">2</a></li>
                         <li><a href="#">3</a></li>
                         <li><a href="#">&gt;</a></li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </section>
 
         <!-- article popup -->
-        <div class="overlayarticle" v-show="artipop">
+        <div class="overlayarticle" v-if="artipop">
             <div class="artiflex">
                 <div class="articlepop">
                     <a class="articlosebtn" href="#" @click="onArtiPopClose">&times;</a>
                     
-                    <h2>{{ articletitle }}</h2>
+                    <h2>{{ artipop.ARTICLE_TITLE }}</h2>
 
-                    <img :src="articlept" alt="" />
+                    <img :src="artipop.ARTICLE_IMG" alt="" />
 
-                    <p>{{ articlecont }}</p>
+                    <p>{{ artipop.ARTICLE_CONTENT }}</p>
                     
-                    <div class="articlebtn">
+                    <!-- <div class="articlebtn">
                         <a href="" class="prarti">＜ 上一篇</a>
                         <a href="" class="nxarti">下一篇 ＞</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -129,7 +130,7 @@ export default {
     },
     data() {
         return {
-            artipop: false,
+            artipop: null,
             starinfo: [],
             starsignname: '',
             starsignbday1: '',
@@ -146,9 +147,6 @@ export default {
             next:null,
             prev:null,
             starart: [],
-            articletitle: '',
-            articlecont: '',
-            articlept: '',
             starprdt: [],
             sspdtitle: '',
             sspdimg: '',
@@ -156,11 +154,11 @@ export default {
         }
     },
     methods: {
-        onArtiPopOpen() {
-            this.artipop = true;
+        onArtiPopOpen(arti) { //抓選到的arti
+            this.artipop = arti;
         },
         onArtiPopClose() {
-            this.artipop = false;
+            this.artipop = null;
         },
     },
     mounted(){
@@ -178,9 +176,7 @@ export default {
         this.prev = id === 0 ? 12 : (id)
 
         axios
-            .post('http://localhost:8080/php/starsign.php', 
-               { id: this.$store.state.loginID },
-            )
+            .post('http://localhost:8080/php/starsign.php', )
             .then((res) => {
                 console.log(res);
                 this.starinfo = res.data;
@@ -202,7 +198,7 @@ export default {
             }),
         axios
             .post('http://localhost:8080/php/article.php', 
-               { id: this.$store.state.loginID },
+               { id: id + 1}, //傳給php
             )
             .then((res) => {
                 console.log(res);
@@ -215,9 +211,7 @@ export default {
                 
             }),
         axios
-            .post('http://localhost:8080/php/luckyproduct.php', 
-               { id: this.$store.state.loginID },
-            )
+            .post('http://localhost:8080/php/luckyproduct.php')
             .then((res) => {
                 console.log(res);
                 this.starprdt = res.data;
@@ -673,70 +667,95 @@ export default {
                     width: 75vw;
                     height: auto;
                 }
-                .artimenu {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    .artitem {
-                        padding-left: 10px;
-                        width: 430px;
-                        color: #fff;
-                        margin-bottom: 38px;
-                        @include rwd(pad2) {
-                            width: 85%;
-                            padding-left: 0;
-                        }
-                        .artitle {
-                            font-size: $h3 - 1px;
-                            line-height: 1.4;
-                            text-decoration: none;
-                            cursor: pointer;
-                            @include rwd(pad2) {
-                                font-size: $h3 - 3px;
-                            }
-                            @include rwd(mobile) {
-                                font-size: $h3 - 7px;
-                            }
-                        }
-                        .artminp {
-                            font-size: $p2;
-                            line-height: 1.6;
-                            padding-top: 10px;
-                            font-weight: 300;
-                            @include rwd(mobile) {
-                                font-size: $p2 - 3px;
-                            }
-                        }
-                        .armorebtn {
-                            cursor: pointer;
-                            font-size: $p2;
-                            color: rgb(252, 140, 99);
-                            display: block;
-                            text-align: right;
-                            padding-right: 15px;
-                            padding-top: 10px;
-                            @include rwd(pad2) {
-                                font-size: $p2 - 3px;
-                                padding-right: 15px;
-                            }
-                        }
-                    }
-                }
-                .ssarti_pagination {
-                    @include pagination;
-                    a {
-                        color: white;
-                    }
-                    .-on {
-                        color: rgb(252, 140, 99);
-                    }
+                .artiwrapper{
+                    height: 690px;
+                    overflow: auto;
                     @include rwd(pad2) {
-                        margin-bottom: 30px;
+                    height: 560px;
                     }
+                    @include rwd(mobile) {
+                    overflow: visible;
+                    height: auto;
+                    }
+                    .artimenu {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        .artitem {
+                            padding-left: 10px;
+                            width: 430px;
+                            color: #fff;
+                            margin-bottom: 38px;
+                            @include rwd(pad2) {
+                                width: 85%;
+                                padding-left: 0;
+                            }
+                            .artitle {
+                                font-size: $h3 - 1px;
+                                line-height: 1.4;
+                                text-decoration: none;
+                                cursor: pointer;
+                                @include rwd(pad2) {
+                                    font-size: $h3 - 3px;
+                                }
+                                @include rwd(mobile) {
+                                    font-size: $h3 - 7px;
+                                }
+                            }
+                            .artminp {
+                                font-size: $p2;
+                                line-height: 1.6;
+                                padding-top: 10px;
+                                font-weight: 300;
+                                @include rwd(mobile) {
+                                    font-size: $p2 - 3px;
+                                }
+                            }
+                            .armorebtn {
+                                cursor: pointer;
+                                font-size: $p2;
+                                color: rgb(252, 140, 99);
+                                display: block;
+                                text-align: right;
+                                padding-right: 15px;
+                                padding-top: 10px;
+                                @include rwd(pad2) {
+                                    font-size: $p2 - 3px;
+                                    padding-right: 15px;
+                                }
+                            }
+                        }
+                    }
+
                 }
+                // .ssarti_pagination {
+                //     @include pagination;
+                //     a {
+                //         color: white;
+                //     }
+                //     .-on {
+                //         color: rgb(252, 140, 99);
+                //     }
+                //     @include rwd(pad2) {
+                //         margin-bottom: 30px;
+                //     }
+                // }
             }
         }
+    }
+    //scrollbar
+    ::-webkit-scrollbar {
+    width: 3.5px;
+    }
+    ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2); 
+    }
+    ::-webkit-scrollbar-thumb {
+    background: rgba(252, 140, 99, 0.8); 
+    }
+    ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.8); 
     }
 
     //article popup
@@ -804,31 +823,31 @@ export default {
                 p {
                     color: #777;
                     font-size: $p2;
-                    margin: 10px 15% 10px;
+                    margin: 10px 15% 60px;
                     letter-spacing: $ls;
                     line-height: 1.4;
                     @include rwd(mobile) {
                         font-size: $p2 - 3px;
-                        margin: 10px 10% 10px;
+                        margin: 10px 10% 60px;
                     }
                 }
-                .articlebtn {
-                    margin: 40px 0 50px;
-                    display: flex;
-                    width: 70%;
-                    justify-content: space-between;
-                    align-items: center;
-                    @include rwd(mobile) {
-                        width: 80%;
-                    }
-                    a {
-                        color: rgb(82, 82, 121);
-                        font-size: $p2;
-                        @include rwd(mobile) {
-                            font-size: $p2 - 3px;
-                        }
-                    }
-                }
+                // .articlebtn {
+                //     margin: 40px 0 50px;
+                //     display: flex;
+                //     width: 70%;
+                //     justify-content: space-between;
+                //     align-items: center;
+                //     @include rwd(mobile) {
+                //         width: 80%;
+                //     }
+                //     a {
+                //         color: rgb(82, 82, 121);
+                //         font-size: $p2;
+                //         @include rwd(mobile) {
+                //             font-size: $p2 - 3px;
+                //         }
+                //     }
+                // }
             }
         }
     }
