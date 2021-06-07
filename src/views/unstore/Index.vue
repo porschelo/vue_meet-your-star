@@ -53,11 +53,16 @@
                             v-if="showProduct === item.PRODUCT_TYPE"
                             :key="index"
                         >
-                            <a @click.prevent="sendProductId(index)">
+                            <router-link
+                                :to="{
+                                    name: 'ProductDetail',
+                                    query: { id: item.PRODUCT_ID },
+                                }"
+                            >
                                 <img :src="item.PRODUCT_IMG" />
                                 <!-- <p>{{ product.imgURL }}</p> -->
                                 <h4>{{ item.PRODUCT_NAME }}</h4>
-                            </a>
+                            </router-link>
                         </div>
                     </template>
 

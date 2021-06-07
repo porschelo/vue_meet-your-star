@@ -30,9 +30,9 @@ export default {
         let storagememberIcon =
             JSON.parse(localStorage.getItem('memberIcon')) || [];
         let storageloginID = JSON.parse(localStorage.getItem('loginID')) || [];
-        console.log(storageLoginStatus);
-        console.log(storagememberIcon);
-        console.log(storageloginID);
+        // console.log(storageLoginStatus);
+        // console.log(storagememberIcon);
+        // console.log(storageloginID);
 
         this.$store.commit('updateLoginStatus', storageLoginStatus);
         this.$store.commit('updatememberIcon', storagememberIcon);

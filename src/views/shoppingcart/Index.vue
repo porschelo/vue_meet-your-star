@@ -123,7 +123,7 @@ export default {
             let cart = [];
             cart = this.$store.state.cartList;
             //要改newPdData.total
-            cart[index].total = cart[index].price * cart[index].count;
+            cart[index].total = cart[index].productPrice * cart[index].count;
             console.log(cart[index].total);
 
             this.$store.dispatch('updateCart', cart);

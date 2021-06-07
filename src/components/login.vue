@@ -195,7 +195,7 @@ export default {
                 .then((res) => {
                     if (res.data.length == 1) {
                         alert('登入成功');
-                        console.log(res);
+                        // console.log(res);
                         this.$store.commit('loginVisible', false);
                         this.$store.commit('loginStatus', 1);
                         // console.log(res.data[0].MEMBER_icon);
@@ -215,7 +215,7 @@ export default {
             // console.log(this.signBirthdate.split('/'));
             let birthDay = this.signBirthdate.split('/'); //['2001','01','20']
             let abc = new Date(2021, birthDay[1] - 1, birthDay[2]);
-            console.log(abc);
+            // console.log(abc);
 
             if (
                 abc >= new Date(2021, 1 - 1, 21) &&
