@@ -34,7 +34,7 @@
                 <div class="pd-leftblock">
                     <div class="pd-img_block">
                         <img
-                            :src="this.productData2.productImg1"
+                            :src="this.productData2.productImg"
                             v-if="showPro === 0"
                         />
                         <img
@@ -48,7 +48,7 @@
                     </div>
                     <ul class="pd-btn_block">
                         <li @click="showPro = 0">
-                            <img :src="productData2.productImg1" alt="" />
+                            <img :src="productData2.productImg" alt="" />
                         </li>
                         <li @click="showPro = 1">
                             <img :src="productData2.productImg2" alt="" />
@@ -270,6 +270,7 @@ export default {
             //     // count: 1,
             // },
             productData2: null,
+            likelist: [],
         };
     },
 
@@ -348,10 +349,33 @@ export default {
             this.$store.dispatch('addToCart', newPdData);
         },
         addlike() {
-            if (this.islike == 0) {
-                this.islike = 1;
+            if (this.$store.state.loginStatus == 0) {
+                this.$store.commit('loginVisible', true);
             } else {
-                this.islike = 0;
+                if (this.islike == 1) {
+                    this.islike = 0;
+
+                    axios.post(
+                        'http://localhost/meet_ur_heart/php/product_addlike_select.php',
+                        {
+                            memberId: this.$store.state.loginID,
+                            productId: this.productData2.productId,
+                        }
+                    );
+                    // .then((res) => {});
+                } else {
+                    let yes = confirm('請問是否確定取消收藏商品？');
+                    if (yes) {
+                        this.islike = 1;
+                        axios.post(
+                            'http://localhost/meet_ur_heart/php/product_addlike_delete.php',
+                            {
+                                memberId: this.$store.state.loginID,
+                                productId: this.productData2.productId,
+                            }
+                        );
+                    }
+                }
             }
         },
         typeChange(value) {
@@ -409,7 +433,7 @@ export default {
                 const productData = {};
                 // console.log(res);
                 productData.productName = this.productsArr[0].PRODUCT_NAME;
-                productData.productImg1 = this.productsArr[0].PRODUCT_IMG;
+                productData.productImg = this.productsArr[0].PRODUCT_IMG;
                 productData.productImg2 = this.productsArr[0].PRODUCT_IMG2;
                 productData.productImg3 = this.productsArr[0].PRODUCT_IMG3;
                 productData.productType = this.productsArr[0].PRODUCT_TYPE;
@@ -418,6 +442,7 @@ export default {
                 );
                 productData.productInfo = this.productsArr[0].PRODUCT_INFO;
                 productData.productPrf = this.productsArr[0].PRODUCT_PRF;
+                productData.productId = this.productsArr[0].PRODUCT_ID;
                 productData.count = 1;
                 //把暫存資料都一次用到data2
                 this.productData2 = productData;

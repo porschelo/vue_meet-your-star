@@ -23,12 +23,12 @@
             <img src="/images/index/rocket.svg" alt="" />
         </div>
         <div class="ufo">
-            <a href="">
+            <router-link to="/appointment">
                 <div class="cloud">
                     <p>預約談星</p>
                 </div>
                 <img src="/images/index/ufo.svg" alt="" />
-            </a>
+            </router-link>
         </div>
     </div>
 </template>

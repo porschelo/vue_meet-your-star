@@ -30,7 +30,12 @@
                             v-for="(item, index) in signDaily"
                             :key="index"
                         >
-                            <a href="starsign.html">
+                            <router-link
+                                :to="{
+                                    name: 'Starsign',
+                                    query: { id: index + 1 },
+                                }"
+                            >
                                 <div class="sing_info1">
                                     <img
                                         class="info_img"
@@ -42,7 +47,7 @@
                                         {{ item.DAILY }}
                                     </h3>
                                 </div>
-                            </a>
+                            </router-link>
                         </swiper-slide>
 
                         <!-- <swiper-slide class="swiper-slide">
@@ -131,7 +136,12 @@
                             v-for="(item, index) in signProduct"
                             :key="index"
                         >
-                            <a href="starsign.html">
+                            <router-link
+                                :to="{
+                                    name: 'ProductDetail',
+                                    query: { id: item.PRODUCT_ID },
+                                }"
+                            >
                                 <div class="sing_info1">
                                     <img
                                         class="info_img"
@@ -142,7 +152,7 @@
                                         {{ item.PRODUCT_NAME }}
                                     </h3>
                                 </div>
-                            </a>
+                            </router-link>
                         </swiper-slide>
                     </swiper>
                     <!-- <div class="swiper-pagination"></div> -->
