@@ -284,11 +284,16 @@
 
                 <div class="customized_price">
                     <p>
-                        <span>500</span>元 / 個
-                        <input type="number" value="1" min="1" />個 共<span
-                            style="color: #4eacf2"
-                            >1000</span
-                        >元
+                        <span>{{productData.price}}</span>元 / 個
+                        <!-- <span v-if="showPro == 0">{{cardData.price}}</span>元 / 個 -->
+                        <!-- <span v-if="showPro == 4">{{shirtData.price}}</span>元 / 個 -->
+                        <select v-model="productData.count">
+                            <option disabled>-- 請選擇數量 --</option>
+                            <option v-for="n in 5" :value="n" :key="n">
+                                {{ n }}
+                            </option>
+                        </select>個
+                        共<span style="color: #4eacf2">{{ totalNum }}</span>元
                     </p>
                     <button class="cust-add">加入購物車</button>
                     <button class="cust-buy">立即購買</button>
@@ -312,6 +317,11 @@ export default {
             showMouth: 0,
             showFitting: 0,
             showColor: 0,
+            productData:{
+                price: 800,
+                count: 1,
+            },
+            
         };
     },
     components: {
@@ -319,6 +329,12 @@ export default {
         toTopBtn,
     },
     methods: {},
+
+    computed: {
+        totalNum() {
+            return this.productData.price * this.productData.count;
+        },
+    },
 };
 </script>
 <style lang="scss">
