@@ -400,7 +400,7 @@ export default {
         let id = urlParams.get('id');
         axios
             .post(
-                'http://localhost/meet_ur_heart/php/product_detail_select.php',
+                'http://localhost/vue_meet_u_heart/php/product_detail_select.php',
                 {
                     productId: id,
                     //送去php 被點擊商品的id

@@ -181,7 +181,7 @@ export default {
         this.prev = id === 0 ? 12 : id;
 
         axios
-            .post('http://localhost:8080/php/starsign.php')
+            .post('http://localhost/vue_meet_u_heart/php/starsign.php')
             .then((res) => {
                 // console.log(res);
                 this.starinfo = res.data;
@@ -202,7 +202,7 @@ export default {
                 
             }),
         axios
-            .post('http://localhost:8080/php/article.php', 
+            .post('http://localhost/vue_meet_u_heart/php/article.php', 
                { id: id + 1}, //傳給php
             )
             .then((res) => {
@@ -212,7 +212,7 @@ export default {
                 
             }),
         axios
-            .post('http://localhost:8080/php/luckyproduct.php')
+            .post('http://localhost/vue_meet_u_heart/php/luckyproduct.php')
             .then((res) => {
                 console.log(res);
                 this.starprdt = res.data;
