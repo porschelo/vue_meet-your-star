@@ -27,7 +27,7 @@
                         />
                         <h3>密碼:</h3>
                         <input
-                            type="text"
+                            type="password"
                             class="password wh"
                             id="password"
                             placeholder=""
@@ -83,7 +83,7 @@
                         />
                         <h3>密碼:</h3>
                         <input
-                            type="text"
+                            type="password"
                             class="passwords wh"
                             id="passwords"
                             placeholder=""
@@ -92,7 +92,7 @@
                         />
                         <h3>確認密碼:</h3>
                         <input
-                            type="text"
+                            type="password"
                             class="passwordss wh"
                             id="passwordss"
                             placeholder=""
@@ -107,6 +107,7 @@
                             placeholder=" 09xx-xxx-xxx"
                             required
                             v-model.trim="signCellphone"
+                            maxlength="12"
                         />
                         <h3 @click="CheckStarSign">生日:</h3>
                         <input
@@ -127,6 +128,8 @@
                         <button class="sign" id="sign" @click="signCheck">
                             加入冒險
                         </button>
+
+                       
                     </div>
                 </div>
             </div>
@@ -157,6 +160,8 @@ export default {
             signMonth:0,
             signDay:0,
             monsterName:"",
+            testValue:"",
+            qwe:","
             
         }
     },
@@ -172,6 +177,14 @@ export default {
     },
 
     methods: {
+
+        checkdata(){
+            
+         
+            
+        },
+
+
         onClose(event) {
             if (event == 'login') {
                 this.$store.commit('loginVisible', false);
