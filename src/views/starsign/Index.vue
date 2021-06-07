@@ -60,10 +60,14 @@
                     </div>
                     <div class="productforyou">
                         <h2>開運商品</h2>
-                        <div class="sspd">
-                            <img :src="sspdimg" alt="" />
-                        </div>
-                        <h3>{{ sspdtitle }}</h3>
+                        <router-link :to="{ name: 'ProductDetail',query: { id: sspdid }}">
+                            <div class="sspd">
+                                <img :src="sspdimg" alt="" />
+                            </div>
+                        </router-link>
+                        <router-link :to="{ name: 'ProductDetail',query: { id: sspdid }}">
+                            <h3>{{ sspdtitle }}</h3>
+                        </router-link>
                     </div>
                 </div>
                 <div class="starsignarticle">
@@ -150,6 +154,7 @@ export default {
             starprdt: [],
             sspdtitle: '',
             sspdimg: '',
+            sspdid:'',
             
         }
     },
@@ -176,7 +181,7 @@ export default {
         this.prev = id === 0 ? 12 : (id)
 
         axios
-            .post('http://localhost:8080/php/starsign.php', )
+            .post('http://localhost:8080/php/starsign.php')
             .then((res) => {
                 console.log(res);
                 this.starinfo = res.data;
@@ -205,10 +210,6 @@ export default {
                 this.starart = res.data;
                 // console.log(this.starart);
                 
-                this.articletitle = this.starart[id].ARTICLE_TITLE;
-                this.articlecont = this.starart[id].ARTICLE_CONTENT;
-                this.articlept = this.starart[id].ARTICLE_IMG;
-                
             }),
         axios
             .post('http://localhost:8080/php/luckyproduct.php')
@@ -219,6 +220,7 @@ export default {
                 
                 this.sspdtitle = this.starprdt[id].PRODUCT_NAME;
                 this.sspdimg = this.starprdt[id].PRODUCT_IMG;
+                this.sspdid = this.starprdt[id].PRODUCT_ID;
                 
             });
     
