@@ -85,9 +85,9 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="tQuestion_section" v-else> -->
+        <div class="tQuestion_section" v-else>
 
-        <div class="tQuestion_section">
+        <!-- <div class="tQuestion_section"> -->
             <div class="tQuestion_title">
                 <div class="tQuestion_title-c">
                     <img src="/images/store/uv_icone.png" alt="" />
@@ -121,9 +121,8 @@
                                 />
                                 <p>{{ choice.content }}</p>
 
-                                <!-- <p>{{question.value}}</p> -->
                             </div>
-                            <p>選擇{{ question.value }}</p>
+                            <!-- <p>選擇{{ question.value }}</p> -->
                         </template>
                     </div>
                 </div>
@@ -157,6 +156,8 @@ export default {
             vars: 0,
             final: false,
             finalAnswer: [],
+            test:[],
+            times:[],
             constellations: [
                 '牡羊座',
                 '金牛座',
@@ -560,7 +561,7 @@ export default {
                     matchTitleOne: '雙魚',
                     matchTitleTwo: '巨蟹',
                     distanceOne: '/images/test/aquarius.png',
-                    distanceTwo: '/images/test/capricorn.png',
+                    distanceTwo: '/images/test/taurus.png',
                     distanceTitleOne: '水瓶',
                     distanceTitleTwo: '金牛',
                 },
@@ -569,7 +570,7 @@ export default {
                     personality:
                         '有很好的幽默感，有決斷力及意志力，但生氣時會變得非常頑固。心智反應很快，任何事學得很快。有靈活的想像力用於實際事物上。對週遭的事感到興趣而能專心致力。有直覺而能洞悉人們的動機。身體健康，但有點神經質。感情上時而熱情如火，時而漠不關心。這種起伏不定的感情是造成失敗的原因。',
                     matchOne: '/images/test/aries.png',
-                    matchTwo: '/images/test/capricorn.png',
+                    matchTwo: '/images/test/taurus.png',
                     matchTitleOne: '牡羊',
                     matchTitleTwo: '金牛',
                     distanceOne: '/images/test/virgo.png',
@@ -582,7 +583,7 @@ export default {
                     personality:
                         '腦子機警，時時想要抓住並利用環境，腦子的滲透力大，眼睛明亮，很快就可以看出別人的弱點以供自己利用。一般來說，是討人喜歡的，表現出整齊而吸引人的外貌，具有迷人的風度，不易受刺激，在危急時表現甚佳。深思熟慮，長於外交，小心而保守，能克服膽小的傾向。',
                     matchOne: '/images/test/virgo.png',
-                    matchTwo: '/images/test/capricorn.png',
+                    matchTwo: '/images/test/taurus.png',
                     matchTitleOne: '處女',
                     matchTitleTwo: '金牛',
                     distanceOne: '/images/test/aries.png',
@@ -598,7 +599,7 @@ export default {
                     matchTwo: '/images/test/libra.png',
                     matchTitleOne: '雙子',
                     matchTitleTwo: '天秤',
-                    distanceOne: '/images/test/capricorn.png',
+                    distanceOne: '/images/test/taurus.png',
                     distanceTwo: '/images/test/leo.png',
                     distanceTitleOne: '金牛',
                     distanceTitleTwo: '獅子',
@@ -641,6 +642,12 @@ export default {
                 return obj;
             }, {});
             console.log(totalCount);
+            let countKey = Object.keys(totalCount);
+            console.log(countKey);
+            this.test = countKey;
+            let countValue = Object.values(totalCount);
+            console.log(countValue);
+            this.times = countValue;
 
             //顯示陣列中出現最多的星座
             var names = this.answers;
@@ -665,17 +672,20 @@ export default {
             let maxRepetName = getMaxRepetData(names);
             console.log(maxRepetName.key);
 
+            //顯示陣列中出現最多的星座的index
             let maxRepetkey = this.constellations.indexOf(maxRepetName.key);
             console.log(maxRepetkey);
 
             this.finalAnswer.push(maxRepetkey);
             console.log(maxRepetkey);
 
+
             //顯示結果和長條圖
             this.final = true;
             this.$nextTick(() => {
                 this.getChart();
             });
+
         },
 
         getChart() {
@@ -683,24 +693,11 @@ export default {
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: [
-                        '牡羊座',
-                        '金牛座',
-                        '雙子座',
-                        '巨蟹座',
-                        '獅子座',
-                        '處女座',
-                        '天秤座',
-                        '天蠍座',
-                        '射手座',
-                        '摩羯座',
-                        '水瓶座',
-                        '雙魚座',
-                    ],
+                    labels: this.test,
                     datasets: [
                         {
                             label: '# of Votes',
-                            data: [1, 1, 1, 2, 2, 1, 3, 0, 0, 1, 1, 0],
+                            data: this.times,
                             backgroundColor: [
                                 'rgba(255, 99, 132, 1)',
                                 'rgba(54, 162, 235, 1)',
@@ -894,6 +891,15 @@ export default {
             display: flex;
             justify-content: center;
             align-content: center;
+            // border: 1px solid red;
+            // .kc_one{
+            //     border: 1px solid green;
+            //     width: 40%;
+            // }
+            // .kc_two{
+            //     border: 1px solid green;
+            //     width: 40%;
+            // }
         }
 
         /*===== 不適合星座=====*/
@@ -902,15 +908,17 @@ export default {
             margin-top: 10px;
         }
 
-        // .distance_Constellations {
-        //     @extend.kind_constellations;
-        //     .dc_one {
-        //         margin: 5px;
-        //     }
-        //     .dc_two {
-        //         margin: 5px;
-        //     }
-        // }
+        .distance_Constellations {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            .dc_one {
+                margin: 5px;
+            }
+            .dc_two {
+                margin: 5px;
+            }
+        }
     }
 
     .tQuestion_section {

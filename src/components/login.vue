@@ -211,7 +211,7 @@ export default {
                 .then((res) => {
                     if (res.data.length == 1) {
                         alert('登入成功');
-                        console.log(res);
+                        // console.log(res);
                         this.$store.commit('loginVisible', false);
                         this.$store.commit('loginStatus', 1);
                         // console.log(res.data[0].MEMBER_icon);
