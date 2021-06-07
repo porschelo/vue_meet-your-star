@@ -72,10 +72,10 @@
 
                                 <!-- v-for -1 -->
 
-                                <tr class="orderlist1" v-for="list_info in mb_list" :key="list_info">
+                                <tr class="orderlist1" v-for="(list_info,index) in mb_list" :key="list_info">
                                     <td rowspan="1">
                                         <div class="numid">{{list_info.LIST_ID}}</div>
-                                        <button class="buyagain" onclick="location.href='./order.html'">再次購買</button>
+                                        <button class="buyagain" @click="buytocart(index)">再次購買</button>
                                     </td>
                                     <td><img :src="list_info.PRODUCT_IMG" alt="" class="list_pica"></td>
                                     <td class="order_name">{{list_info.PRODUCT_NAME}}</td>
@@ -187,6 +187,8 @@ export default {
             .then((res) => {
                 console.log(res);
                 this.mb_list = res.data;
+
+                console.log(this.mb_list);
             })
         
     },
@@ -196,6 +198,25 @@ export default {
             mb_list:[],
         }
         
+    },
+
+    methods: {
+        buytocart(index){
+            alert(index);
+            // console.log(this.mb_list[index]);
+            let newBuyItem = {};
+            newBuyItem.productName =this.mb_list[index].PRODUCT_NAME;
+            newBuyItem.productImg =this.mb_list[index].PRODUCT_IMG;
+            newBuyItem.count =this.mb_list[index].PRODUCT_COUNT;
+            newBuyItem.price =this.mb_list[index].PRODUCT_PRICE;
+            newBuyItem.total =this.mb_list[index].PRODUCT_PRICE * this.mb_list[index].PRODUCT_COUNT;
+
+            // console.log(newBuyItem);
+            this.$store.dispatch('addToCart', newBuyItem);
+            this.$router.push({
+                    path: '/shoppingcart',
+                });
+        }
     },
 
 

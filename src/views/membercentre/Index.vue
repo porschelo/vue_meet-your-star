@@ -138,15 +138,9 @@ export default {
         // axios.get('../../php/Select.php').then(res => console.log(res.data));
 
         axios
-<<<<<<< HEAD
             .post('http://localhost/vue_meet_u_heart/php/SelectMember.php', 
                { id: this.$store.state.loginID },
             )
-=======
-            .post('http://localhost/vue_meet_u_heart/php/Select.php', {
-                id: this.$store.state.loginID,
-            })
->>>>>>> development
             .then((res) => {
                 console.log(res);
                 this.memberinfo = res.data;

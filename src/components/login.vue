@@ -191,9 +191,7 @@ export default {
         },
 
         loginCheck() {
-            // axios.post('http://localhost/vue_meet_u_heart/php/login.php',
-            axios
-                .post('http://localhost/meet_ur_heart/php/login.php', {
+            axios.post('http://localhost/vue_meet_u_heart/php/login.php',{
                     userAccount: this.userAccount,
                     userPassword: this.userPassword,
                 })
