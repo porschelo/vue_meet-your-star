@@ -107,6 +107,9 @@
                             {{ change_data_btn }}
                         </button>
                     </div>
+                    <div class="bottom" @click="deleteData">
+                        <button class="change_data">登出會員</button>
+                    </div>
                 </div>
             </div>
 
@@ -126,7 +129,6 @@ import myFooter from '@/components/myFooter';
 
 export default {
     mounted() {
-        
         // axios.post((response).then{
         //     this.star-dasda = data.star_sign_pic
 
@@ -136,9 +138,9 @@ export default {
         // axios.get('../../php/Select.php').then(res => console.log(res.data));
 
         axios
-            .post('http://localhost/vue_meet_u_heart/php/Select.php', 
-               { id: this.$store.state.loginID },
-            )
+            .post('http://localhost/vue_meet_u_heart/php/Select.php', {
+                id: this.$store.state.loginID,
+            })
             .then((res) => {
                 console.log(res);
                 this.memberinfo = res.data;
@@ -152,8 +154,6 @@ export default {
                 this.star_points = this.memberinfo[0].MEMBER_POINT;
                 this.star_sign_pic = this.memberinfo[0].MEMBER_IMG;
             });
-
-
     },
     data() {
         return {
@@ -187,12 +187,19 @@ export default {
                 this.change_status = 1;
             }
         },
+        deleteData() {
+            this.$store.commit('logout', 0);
+            this.$router.push({
+                path: '/',
+            });
+            localStorage.clear();
+        },
     },
 
     computed: {
-        loginID(){
+        loginID() {
             return this.$store.state.loginID;
-        }
+        },
     },
 
     components: {

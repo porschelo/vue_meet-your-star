@@ -26,7 +26,7 @@
                 <div class="drivingcard">
                     <h2>{{ starsignname }}</h2>
                     <div class="cardtop">
-                        <img class="cardpt" :src="starsignpt" alt="">
+                        <img class="cardpt" :src="starsignpt" alt="" />
                         <div class="cardct">
                             <h3 class="ssbday">生日 <span>{{ starsignbday1 }}</span><span> ～ </span><span>{{ starsignbday2 }}</span></h3>
                             <p class="ssprof">{{ starsignpers }}</p>
@@ -177,16 +177,16 @@ export default {
             id = 0 //漢堡進入預設頁面
         }
         //左右切換id
-        this.next = id === 11 ? 1 : (id + 2)
-        this.prev = id === 0 ? 12 : (id)
+        this.next = id === 11 ? 1 : id + 2;
+        this.prev = id === 0 ? 12 : id;
 
         axios
             .post('http://localhost:8080/php/starsign.php')
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 this.starinfo = res.data;
                 // console.log(this.starinfo);
-                
+
                 this.starsignname = this.starinfo[id].STAR_SIGN_NAME;
                 this.starsignbday1 = this.starinfo[id].STAR_SIGN_S;
                 this.starsignbday2 = this.starinfo[id].STAR_SIGN_E;
@@ -223,7 +223,6 @@ export default {
                 this.sspdid = this.starprdt[id].PRODUCT_ID;
                 
             });
-    
     },
     filters: {
         //限制顯示字數
@@ -238,8 +237,6 @@ export default {
     },
 
 };
-
-
 </script>
 
 <style lang="scss">

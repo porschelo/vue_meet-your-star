@@ -16,18 +16,24 @@
                             </router-link>
                         </li>
                         <li>
-                            <a class="login" @click="onOpenLogin" v-if='loginStatus ==0'>
-                                <img src="/images/header/member.png"  />
-                                
+                            <a
+                                class="login"
+                                @click="onOpenLogin"
+                                v-if="loginStatus == 0"
+                            >
+                                <img src="/images/header/member.png" />
                             </a>
                             <!-- <a class="login" v-else>
                                 <img :src = memberIcon >
                             </a> -->
 
-                            <router-link to="/membercentre" class="login" v-else>
-                                <img :src = memberIcon >
+                            <router-link
+                                to="/membercentre"
+                                class="login"
+                                v-else
+                            >
+                                <img class="mosterImg" :src="memberIcon" />
                             </router-link>
-                            
                         </li>
                         <li>
                             <button
@@ -78,7 +84,6 @@
 </template>
 
 <script>
-
 export default {
     name: 'myHeader',
     data() {
@@ -94,19 +99,18 @@ export default {
             this.menutogger = false;
         },
 
-        onOpenLogin(){
-            this.$store.commit('loginVisible',true)
-        }
+        onOpenLogin() {
+            this.$store.commit('loginVisible', true);
+        },
     },
 
     computed: {
-        loginStatus(){
+        loginStatus() {
             return this.$store.state.loginStatus;
         },
 
-        memberIcon(){
+        memberIcon() {
             return this.$store.state.memberIcon;
-            
         },
     },
 };
@@ -145,6 +149,9 @@ header {
         display: flex;
         align-items: center;
         padding-top: 30px;
+        .mosterImg {
+            width: 55px;
+        }
         li {
             padding: 0 5px;
             list-style: none;
@@ -201,7 +208,7 @@ header {
                 width: 28px;
                 a {
                     img {
-                        width: 100% * 0.7;
+                        width: 100%;
                     }
                     &:hover {
                         opacity: 0.7;
@@ -209,6 +216,7 @@ header {
                     cursor: pointer;
                 }
             }
+
             li:nth-child(3) {
                 padding: 0 0;
                 width: 50px;

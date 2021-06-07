@@ -12,14 +12,19 @@
             </div>
         </div>
 
-        <div class="product-detail_content">
+        <div class="product-detail_content" v-if="productData2">
             <div class="product-detail_top">
                 <!-- 麵包屑 -->
                 <div class="breadcrumb">
                     <ul class="breadcrumb_list">
                         <li><a href="#">開運商品</a></li>
-                        <li><a href="#">健康</a></li>
-                        <li>七星陣水晶原石能量陣</li>
+                        <li>
+                            <a href="#" @click.prevent="backPage">
+                                {{ productData2.productType }}
+                            </a>
+                        </li>
+                        <li>{{ productData2.productName }}</li>
+                        <!-- <li>{{ productsArr[index].PRODUCT_NAME }}</li> -->
                     </ul>
                 </div>
             </div>
@@ -29,27 +34,27 @@
                 <div class="pd-leftblock">
                     <div class="pd-img_block">
                         <img
-                            src="/images/store/healthP-1.png"
+                            :src="this.productData2.productImg1"
                             v-if="showPro === 0"
                         />
                         <img
-                            src="/images/store/healthP-2.png"
+                            :src="productData2.productImg2"
                             v-if="showPro === 1"
                         />
                         <img
-                            src="/images/store/healthP-3.png"
+                            :src="productData2.productImg3"
                             v-if="showPro === 2"
                         />
                     </div>
                     <ul class="pd-btn_block">
                         <li @click="showPro = 0">
-                            <img src="/images/store/healthP-1.png" alt="" />
+                            <img :src="productData2.productImg1" alt="" />
                         </li>
                         <li @click="showPro = 1">
-                            <img src="/images/store/healthP-2.png" alt="" />
+                            <img :src="productData2.productImg2" alt="" />
                         </li>
                         <li @click="showPro = 2">
-                            <img src="/images/store/healthP-3.png" alt="" />
+                            <img :src="productData2.productImg3" alt="" />
                         </li>
                     </ul>
                 </div>
@@ -58,8 +63,19 @@
                 <div class="pd-rightblock">
                     <!-- 愛心收藏 -->
                     <div class="pd-love">
-                        <h2>{{ productData.productName }}</h2>
-                        <img :src="productData.productImg" alt="" />
+                        <h2>{{ productData2.productName }}</h2>
+                        <a class="addlick" @click.prevent="addlike">
+                            <img
+                                v-if="islike"
+                                src="/images/store/loveicone.png"
+                                alt=""
+                            />
+                            <img
+                                v-else
+                                src="/images/store/loveicone_click.png"
+                                alt=""
+                            />
+                        </a>
                     </div>
 
                     <p>
@@ -67,10 +83,10 @@
                     </p>
 
                     <div class="pd-price">
-                        <span>{{ totalNum }}</span
+                        <span>{{ totalNum() }}</span
                         >元
                         <!-- 綁定 :value -->
-                        <select v-model="productData.count">
+                        <select v-model="productData2.count">
                             <option disabled>-- 請選擇數量 --</option>
                             <option v-for="n in 10" :value="n" :key="n">
                                 {{ n }}
@@ -214,6 +230,7 @@
 import myFooter from '@/components/myFooter';
 import Chart from 'chart.js/auto';
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import axios from 'axios';
 // import style (<= Swiper 5.x)
 import 'swiper/dist/css/swiper.css';
 
@@ -243,12 +260,19 @@ export default {
                     },
                 },
             },
-            productData: {
-                productName: '七星陣水晶原石能量陣',
-                productImg: '/images/store/healthP-1.png',
-                price: 500,
-                count: 1,
-            },
+
+            islike: 1,
+            //     productName: '七星陣水晶原石能量陣',
+            //     productImg1: '/images/store/healthP-1.png',
+            //     productImg2: '',
+            //     productImg3: '',
+            //     productType: '',
+            //     price: 500,
+            //     count: 1,
+            //     //  price: 500,
+            //     // count: 1,
+            // },
+            productData2: null,
         };
     },
 
@@ -318,21 +342,126 @@ export default {
             });
         },
         addToCart() {
-            let newPdData = { ...this.productData };
-            newPdData.total = this.totalNum;
+            let newPdData = { ...this.productData2 };
+            newPdData.total = this.totalNum();
+            // console.log(this.totalNum());
+            // console.log(this.totalNum);
             // console.log(newPdData);
             // this.productData.tatol=  this.totalNum
             this.$store.dispatch('addToCart', newPdData);
         },
+        addlike() {
+            if (this.islike == 0) {
+                this.islike = 1;
+            } else {
+                this.islike = 0;
+            }
+        },
+        typeChange(value) {
+            switch (value) {
+                case '1':
+                    this.productData2.productType = '工作';
+                    break;
+                case '2':
+                    this.productData2.productType = ' 健康';
+                    break;
+                case '3':
+                    this.productData2.productType = ' 愛情';
+                    break;
+                case '4':
+                    this.productData2.productType = '學業';
+                    break;
+            }
+        },
+        backPage() {
+            this.$router.push({
+                path: '/unstore',
+            });
+
+            this.$store.commit('backtoPage', this.productsArr[0].PRODUCT_TYPE);
+            //現在this.productType ="學業" 但傳到vuex要傳數字
+        },
+        totalNum() {
+            if (
+                this.productData2 &&
+                this.productData2.productPrice &&
+                this.productData2.count
+            ) {
+                return parseInt(
+                    this.productData2.productPrice * this.productData2.count
+                );
+            }
+            return this.productData2.productPrice;
+        },
+    },
+    created() {
+        //抓網址
+        let urlParams = new URLSearchParams(window.location.search);
+        let id = urlParams.get('id');
+        axios
+            .post(
+                'http://localhost/meet_ur_heart/php/product_detail_select.php',
+                {
+                    productId: id,
+                    //送去php 被點擊商品的id
+                }
+            )
+            .then((res) => {
+                this.productsArr = res.data;
+                //productData先暫存
+                const productData = {};
+                // console.log(res);
+                productData.productName = this.productsArr[0].PRODUCT_NAME;
+                productData.productImg1 = this.productsArr[0].PRODUCT_IMG;
+                productData.productImg2 = this.productsArr[0].PRODUCT_IMG2;
+                productData.productImg3 = this.productsArr[0].PRODUCT_IMG3;
+                productData.productType = this.productsArr[0].PRODUCT_TYPE;
+                productData.productPrice = parseInt(
+                    this.productsArr[0].PRODUCT_PRICE
+                );
+                productData.productInfo = this.productsArr[0].PRODUCT_INFO;
+                productData.count = 1;
+                //把暫存資料都一次用到data2
+                this.productData2 = productData;
+
+                //把類型的值帶入switch轉成文字
+                // this.typeChange(this.productsArr[0].PRODUCT_TYPE);
+                this.typeChange(this.productData2.productType); //this.productType='2'
+                console.log(this.productData2);
+            });
     },
 
     mounted() {
-        this.getChart();
+        // this.getChart();
+        // axios
+        //     .post(
+        //         'http://localhost/meet_ur_heart/php/product_detail_select.php',
+        //         {
+        //             productId: this.$store.state.productId,
+        //             //送去php 被點擊商品的id
+        //         }
+        //     )
+        //     .then((res) => {
+        //         this.productsArr = res.data;
+        //         this.productData2.productName = this.productsArr[0].PRODUCT_NAME;
+        //         this.productData2.productImg1 = this.productsArr[0].PRODUCT_IMG;
+        //         this.productData2.productImg2 = this.productsArr[0].PRODUCT_IMG2;
+        //         this.productData2.productImg3 = this.productsArr[0].PRODUCT_IMG3;
+        //         this.productData2.productType = this.productsArr[0].PRODUCT_TYPE;
+        //         this.productData2.productPrice = parseInt(
+        //             this.productsArr[0].PRODUCT_PRICE
+        //         );
+        //         this.productData2.productInfo = this.productsArr[0].PRODUCT_INFO;
+        //         // this.typeChange(this.productsArr[0].PRODUCT_TYPE);
+        //         this.typeChange(this.productType); //this.productType='2'
+        //         console.log(this.productData2);
+        //         console.log(this.totalNum);
+        //     });
     },
     computed: {
-        totalNum() {
-            return this.productData.price * this.productData.count;
-        },
+        // sendproductId() {
+        //     return this.$store.state.productId;
+        // },
     },
 };
 </script>
@@ -499,6 +628,9 @@ export default {
                     }
                 }
                 /*===== 愛心收藏 =====*/
+                .addlick {
+                    cursor: pointer;
+                }
                 .pd-love {
                     margin-top: 30px;
                     display: flex;
