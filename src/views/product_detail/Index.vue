@@ -79,7 +79,7 @@
                     </div>
 
                     <p>
-                        淨化能量、開智慧、增加記憶、平穩心態、深層的冥想、增強洞察力、舒緩情緒減少壓力
+                        {{ productData2.productPrf }}
                     </p>
 
                     <div class="pd-price">
@@ -113,10 +113,7 @@
                 </div>
                 <div class="pd-more">
                     <p>
-                        ★宇宙之能-奧剛金字塔<br />
-                        ★尺寸：底邊 7 cm 斜邊8.5 cm <br />
-                        ★材料：黑曜石、紅瑪瑙、紅玉隨、黃水晶、橄欖石、天河石、青金石、紫水晶、白水晶柱、金箔、生命之花、生命之樹<br />
-                        ☆奧剛Orgonite通常是由水晶、礦石、金屬所組成，是用來淨化環境的能量場，越大型的奧剛適用範圍越大，可以放在比較大的商用空間或放在結帳櫃台當成藝術擺飾(開幕禮品)，中小型的可以放在房間或辦公桌也可以隨身攜帶，圓盤型的可以當杯墊，淨化水質。有關奧剛的功能可以自行搜尋。
+                        {{ productData2.productInfo }}
                     </p>
                 </div>
             </div>
@@ -420,6 +417,7 @@ export default {
                     this.productsArr[0].PRODUCT_PRICE
                 );
                 productData.productInfo = this.productsArr[0].PRODUCT_INFO;
+                productData.productPrf = this.productsArr[0].PRODUCT_PRF;
                 productData.count = 1;
                 //把暫存資料都一次用到data2
                 this.productData2 = productData;
