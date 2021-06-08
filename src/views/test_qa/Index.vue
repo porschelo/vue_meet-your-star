@@ -770,6 +770,7 @@ export default {
         @include rwd(mobile) {
             background-size: 100% 30%;
             background-image: url(/images/test/bgi_phone.png);
+            padding-bottom: 20px;
         }
     }
 
@@ -929,6 +930,7 @@ export default {
         @include rwd(mobile) {
             background-size: 100% 50%;
             background-image: url(/images/test/bgi_phone.png);
+            padding-bottom: 0;
         }
     }
 
