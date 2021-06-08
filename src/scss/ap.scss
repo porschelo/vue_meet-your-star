@@ -216,16 +216,7 @@ $letter-spacing:2.5;
                }
                
         }
-// .j_panel_date_inner{
-//           border: 5px solid chartreuse;
-//           // max-width:1200*.7px;
-//           width:85% !important;
-          
-//           // height:80% !important;
-//           margin:0 auto !important ;
-//           // z-index: -4;
-          
-//         }
+
         // .j_page{
 .button_page{
 width: 70%;
@@ -496,19 +487,20 @@ width: 70%;
       // border:3px solid #D6E0F7;
       // max-width:280*.7px;
 
-      width: 95%;
+      width: 100%;
       display: flex;
       justify-content: center;
       flex-grow: 1;
-      flex-wrap: wrap;
+      // flex-wrap: wrap;
       padding: 20*.7px;
+      
         // @include rwd(mobile){
         //   width:calc((95% - 20*.7px));
         // }
         @media(max-width: 900px){
           flex-direction: column;
           justify-content:center;
-          align-items: center;
+          align-items: left;
           
           margin-bottom: 20*.7px;
         }
@@ -522,6 +514,11 @@ width: 70%;
             height: 350*.7px;
             // height:60%;
             border-radius: 39px;
+            // :hover{
+            //   border: rgb(16, 240, 27) solid 3px;
+      
+            // }
+            
               @include rwd(pad){
                 height: 275*.7px;
 
@@ -544,16 +541,18 @@ width: 70%;
       display: flex;
       padding: 15* .7px;
       // margin-left: 20*.7px;
-      // width:50%;
+      // width:30%;
       // flex-wrap: wrap;
       justify-self:center;
       align-items: center;
-
-      // @media(max-width: 900px){
-      //   margin-bottom: 40*.7px;
-      // }
+        :hover{
+          cursor: pointer;
+        }
     }
     .j_panel_info{
+      // width:calc(43% - 15*.7px);
+      // border: #94B4F4 1px solid;
+
       width:43%;
       color:$color;
       text-align:center;
@@ -801,10 +800,10 @@ $breakpoint-alpha: 875px;
       // border: darkcyan 3px solid;
       -webkit-box-shadow: 0 2px 2px -2px #0E1119;
        -moz-box-shadow: 0 2px 2px -2px #0E1119;
-            box-shadow: 0 2px 2px -2px #0E1119;
+            box-shadow: 0 10px 10px -8px #0E1119;
       &.able:hover{
-        box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
-        transform: translate3d(6px, -6px, 0);
+        box-shadow: #7F7C21 -6px 6px, #7F7C21 -4px 4px, #7F7C21 -4px 4px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+        transform: translate3d(4px, 1px, 6px);
         transition-delay: 0s;
         transition-duration: 0.4s;
         transition-property: all;
@@ -879,7 +878,7 @@ body {
     //   padding:1vw;
     // }
      @media (min-width:390px) { 
-       padding: 1vw ; 
+       padding: 0.75vw ; 
      }
   }
   th, td:before {
