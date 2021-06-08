@@ -208,7 +208,7 @@ export default {
             newBuyItem.productName =this.mb_list[index].PRODUCT_NAME;
             newBuyItem.productImg =this.mb_list[index].PRODUCT_IMG;
             newBuyItem.count =this.mb_list[index].PRODUCT_COUNT;
-            newBuyItem.price =this.mb_list[index].PRODUCT_PRICE;
+            newBuyItem.productPrice =this.mb_list[index].PRODUCT_PRICE;
             newBuyItem.total =this.mb_list[index].PRODUCT_PRICE * this.mb_list[index].PRODUCT_COUNT;
 
             // console.log(newBuyItem);
