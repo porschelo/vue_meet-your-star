@@ -92,9 +92,9 @@ export default {
 
     mounted() {
         axios
-            .get('http://localhost/vue_meet_u_heart/php/membercollection.php', {
-                params: { id: 10001 },
-            })
+            .post('http://localhost/vue_meet_u_heart/php/membercollection.php', 
+                 { id:this.$store.state.loginID },
+            )
             .then((res) => {
                 console.log(res);
                 this.collection_data = res.data;

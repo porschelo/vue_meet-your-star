@@ -92,10 +92,8 @@
                             <tr class="pay_btn">
                                 <td colspan="4"></td>
                                 <td>
-                                    <button
-                                        class="pay_check"
-                                        onclick="location.href='./order.html'"
-                                    >
+                                    <button class="pay_check" @click="sentBill">
+                                        <!-- onclick="location.href='./order.html'" -->
                                         前往付款
                                     </button>
                                 </td>
@@ -125,7 +123,7 @@ export default {
             let cart = [];
             cart = this.$store.state.cartList;
             //要改newPdData.total
-            cart[index].total = cart[index].price * cart[index].count;
+            cart[index].total = cart[index].productPrice * cart[index].count;
             console.log(cart[index].total);
 
             this.$store.dispatch('updateCart', cart);
@@ -135,6 +133,15 @@ export default {
             newCart.splice(index, 1);
 
             this.$store.dispatch('updateCart', newCart);
+        },
+        sentBill() {
+            if (this.$store.state.loginStatus == 0) {
+                this.$store.commit('loginVisible', true);
+            } else {
+                this.$router.push({
+                    path: '/order',
+                });
+            }
         },
     },
     computed: {

@@ -14,7 +14,6 @@
         </div>
         <div class="galaxys">
             <img class="starship" src="/images/starsign/ss_bg2.png" alt="">
-            <!-- <a class="galx1" href="/starsign?id=3"><img src="/images/starsign/galx1.png" alt="" @click="this.starinfo[0].STAR_SIGN_ID = 3"></a> -->
             <router-link class="galx1" :to="{ name: 'Starsign', query: { id: 10 }}"><img src="/images/starsign/galx1.png" alt="" ></router-link>
             <router-link class="galx2" :to="{ name: 'Starsign', query: { id: 1 }}"><img src="/images/starsign/galx2.png" alt="" ></router-link>
             <router-link class="galx3" :to="{ name: 'Starsign', query: { id: 4 }}"><img src="/images/starsign/galx3.png" alt="" ></router-link>
@@ -23,14 +22,14 @@
 
         <section class="starsignsec">
             <div class="starsignswitch">
-                <a class="prbtn" :href="'/starsign?id='+ prev"><img src="/images/starsign/prbtn.png" alt=""></a>
+                <router-link class="prbtn" :to="{ name: 'Starsign', query: { id: prev }}"><img src="/images/starsign/prbtn.png" alt=""></router-link>
                 <div class="drivingcard">
                     <h2>{{ starsignname }}</h2>
                     <div class="cardtop">
-                        <img class="cardpt" :src="starsignpt" alt="">
+                        <img class="cardpt" :src="starsignpt" alt="" />
                         <div class="cardct">
                             <h3 class="ssbday">生日 <span>{{ starsignbday1 }}</span><span> ～ </span><span>{{ starsignbday2 }}</span></h3>
-                            <p class="ssprof">倔強，遇到討厭的人，寧可受罪也不向對方求助。陌生人面前很安靜很慢熱，熟了很鬧騰。有小脾氣但很隱忍，不輕易表露自己性情和內心。對繁瑣的事情沒耐心，容易放棄。</p>
+                            <p class="ssprof">{{ starsignpers }}</p>
                         </div>
                     </div>
                     <div class="cardbottom">
@@ -51,88 +50,68 @@
                         </div>
                     </div>
                 </div>
-                <a class="nxbtn" :href="'/starsign?id='+ next"><img src="/images/starsign/nxbtn.png" alt=""></a>
+                <router-link class="nxbtn" :to="{ name: 'Starsign', query: { id: next }}"><img src="/images/starsign/nxbtn.png" alt=""></router-link>
             </div>
             <div class="starsigncont">
                 <div class="starsignleft">
                     <div class="luckyeveryday">
                         <h2>每日運勢</h2>
-                        <!-- <p>今天的你想像力、洞察力強，如果是從事創意工作者在今天能好好發揮，但也要避免想太多而焦慮。感情方面桃花運旺盛，建議多參加社交認識新朋友，你會是大家的目光焦點。幸運色是橘色。</p> -->
                         <p>{{ starsigndaily }}</p>
                     </div>
                     <div class="productforyou">
                         <h2>開運商品</h2>
-                        <div class="sspd">
-                            <img src="/images/store/hPd_1.png" alt="" />
-                        </div>
-                        <h3>七星陣水晶原石能量陣</h3>
+                        <router-link :to="{ name: 'ProductDetail',query: { id: sspdid }}">
+                            <div class="sspd">
+                                <img :src="sspdimg" alt="" />
+                            </div>
+                        </router-link>
+                        <router-link :to="{ name: 'ProductDetail',query: { id: sspdid }}">
+                            <h3>{{ sspdtitle }}</h3>
+                        </router-link>
                     </div>
                 </div>
                 <div class="starsignarticle">
                     <h2>相關文章</h2>
-                    <ul class="artimenu">
-                        <li class="artitem">
-                            <a class="artitle">衝動、急躁激進！卻是牡羊對世界的挑戰</a>
-                            <!-- <a class="artitle">{{ articletitle }}</a> -->
-                            <p class="artminp"><span>牡羊座有天真又大膽的性格，讓他們勇敢接觸陌生的人事物，以此開創新的生活經驗，也給人活力洋溢的感覺</span> ...</p>
-                            <a href="" class="armorebtn">more</a>
-                        </li>
-                        <li class="artitem">
-                            <a class="artitle">愛就對了！牡羊座式的愛情</a>
-                            <p class="artminp">
-                                <span
-                                    >我們談談牡羊座，牡羊的愛，永遠那麼熱烈，愛就是坦誠相見、就是無怨無悔。想要靠近的時候，牡羊座才不會退讓</span
-                                >
-                                ...
-                            </p>
-                            <a href="" class="armorebtn">more</a>
-                        </li>
-                        <li class="artitem">
-                            <a class="artitle"
-                                >牡羊座有很強的自我？其實是「心直口快」</a
-                            >
-                            <p class="artminp">
-                                <span
-                                    >很多人都覺得，牡羊座有很強的自我；他們自尊心很重，脾氣不太好，又常常有心或無意地挑釁其他人</span
-                                >
-                                ...
-                            </p>
-                            <a href="" class="armorebtn">more</a>
-                        </li>
-                    </ul>
-                    <ul class="ssarti_pagination">
+                    <div class="artiwrapper">
+                        <ul class="artimenu" v-if="starart">
+
+                            <li class="artitem" v-for="(arti,key) in starart" :key="key">
+                                <a v-if="arti.ARTICLE_TITLE" class="artitle" @click="onArtiPopOpen(arti)">{{ arti.ARTICLE_TITLE }}</a>
+                                <p class="artminp" v-if="arti.ARTICLE_CONTENT">
+                                    <span>{{ arti.ARTICLE_CONTENT | ellipsis }}</span>
+                                </p>
+                                <a class="armorebtn" @click="onArtiPopOpen(arti)">more</a>
+                            </li>  
+
+                        </ul>
+                    </div>
+                    <!-- <ul class="ssarti_pagination">
                         <li><a href="#">&lt;</a></li>
                         <li><a href="#" class="-on">1</a></li>
                         <li><a href="#">2</a></li>
                         <li><a href="#">3</a></li>
                         <li><a href="#">&gt;</a></li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </section>
 
         <!-- article popup -->
-        <div class="overlayarticle">
+        <div class="overlayarticle" v-if="artipop">
             <div class="artiflex">
                 <div class="articlepop">
-                    <a class="articlosebtn" href="#">&times;</a>
-                    <h2>衝動、急躁激進！卻是牡羊對世界的挑戰</h2>
-                    <img src="/images/starsign/arti1.png" alt="" />
-                    <p>
-                        牡羊座有天真又大膽的性格，讓他們勇敢接觸陌生的人事物，以此開創新的生活經驗，也給人活力洋溢的感覺。而率真且凡事不會多想就去實行的風格，也經常做出一些讓自己事後懊悔不已的衝動行為。
-                    </p>
-                    <hr />
-                    <p>
-                        熱情奔放的他們，清楚知道自己想要什麼，他們會用盡所有努力去爭取想要的事。講白了，牡羊座大多憑個人衝動行事，想做什麼就做什麼，對於自己的所作所為不會多想，具有自我投入和自得其樂的色彩。
-                    </p>
-                    <hr />
-                    <p>
-                        也因此，牡羊座與身俱來的自信，會感染給身邊的人。牡羊座的生活充滿刺激和趣事，全然投入享受生命的他們，總是帶著一股正能量，鼓勵朋友去做自己心之所嚮的事、以及跳脫舒適圈。他們乍看之下「有勇無謀」的個性，卻能發展出隨機應變以及處理緊急狀況的臨場應變能力喔！
-                    </p>
-                    <div class="articlebtn">
+                    <a class="articlosebtn" href="#" @click="onArtiPopClose">&times;</a>
+                    
+                    <h2>{{ artipop.ARTICLE_TITLE }}</h2>
+
+                    <img :src="artipop.ARTICLE_IMG" alt="" />
+
+                    <p>{{ artipop.ARTICLE_CONTENT }}</p>
+                    
+                    <!-- <div class="articlebtn">
                         <a href="" class="prarti">＜ 上一篇</a>
                         <a href="" class="nxarti">下一篇 ＞</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -155,11 +134,12 @@ export default {
     },
     data() {
         return {
+            artipop: null,
             starinfo: [],
             starsignname: '',
             starsignbday1: '',
             starsignbday2: '',
-            // starsignpers: '',
+            starsignpers: '',
             starsignpt: '',
             pers1: '',
             pers1val: '',
@@ -167,39 +147,50 @@ export default {
             pers2val: '',
             pers3: '',
             pers3val: '',
-            starsigndaily: '',
-            // articletitle: '',
+            starsigndaily: '',        
             next:null,
             prev:null,
+            starart: [],
+            starprdt: [],
+            sspdtitle: '',
+            sspdimg: '',
+            sspdid:'',
             
         }
+    },
+    methods: {
+        onArtiPopOpen(arti) { //抓選到的arti
+            this.artipop = arti;
+        },
+        onArtiPopClose() {
+            this.artipop = null;
+        },
     },
     mounted(){
         let urlParams = new URLSearchParams(window.location.search);
         
         let id = urlParams.get("id")
+
         if(id){
             id = id -1
         }else{
             id = 0 //漢堡進入預設頁面
         }
         //左右切換id
-        this.next = id === 11 ? 1 : (id + 2)
-        this.prev = id === 0 ? 12 : (id)
+        this.next = id === 11 ? 1 : id + 2;
+        this.prev = id === 0 ? 12 : id;
 
         axios
-            .post('http://localhost:8080/php/Select.php', 
-               { id: this.$store.state.loginID },
-            )
+            .post('http://localhost:8080/php/starsign.php')
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 this.starinfo = res.data;
                 // console.log(this.starinfo);
-                
+
                 this.starsignname = this.starinfo[id].STAR_SIGN_NAME;
                 this.starsignbday1 = this.starinfo[id].STAR_SIGN_S;
                 this.starsignbday2 = this.starinfo[id].STAR_SIGN_E;
-                // this.starsignpers = this.starinfo[id].STAR_SIGN_E;
+                this.starsignpers = this.starinfo[id].STAR_SIGN_PRF;
                 this.starsignpt = this.starinfo[id].MONSTER_IMG;
                 this.pers1 = this.starinfo[id].PERSONLITY_1;
                 this.pers1val = this.starinfo[id].PERSONLITY_1_VALUE;
@@ -208,15 +199,44 @@ export default {
                 this.pers3 = this.starinfo[id].PERSONLITY_3;
                 this.pers3val = this.starinfo[id].PERSONLITY_3_VALUE;
                 this.starsigndaily = this.starinfo[id].DAILY;
-                // this.articletitle = this.starinfo[id].ARTICLE_TITLE;
-
+                
+            }),
+        axios
+            .post('http://localhost:8080/php/article.php', 
+               { id: id + 1}, //傳給php
+            )
+            .then((res) => {
+                console.log(res);
+                this.starart = res.data;
+                // console.log(this.starart);
+                
+            }),
+        axios
+            .post('http://localhost:8080/php/luckyproduct.php')
+            .then((res) => {
+                console.log(res);
+                this.starprdt = res.data;
+                // console.log(this.starprdt);
+                
+                this.sspdtitle = this.starprdt[id].PRODUCT_NAME;
+                this.sspdimg = this.starprdt[id].PRODUCT_IMG;
+                this.sspdid = this.starprdt[id].PRODUCT_ID;
                 
             });
-    
     },
+    filters: {
+        //限制顯示字數
+        ellipsis(value) {
+            const len = 55;
+            if (!value) return "";
+            if (value.length > len) {
+                return value.slice(0, len) + " ...";
+            }
+            return value;
+        }
+    },
+
 };
-
-
 </script>
 
 <style lang="scss">
@@ -361,10 +381,7 @@ export default {
             display: flex;
             justify-content: center;
             align-items: center;
-            button {
-                outline: 0;
-                border: 0;
-                background: 0;
+            a {
                 width: 45px;
                 box-sizing: content-box;
                 cursor: pointer;
@@ -649,69 +666,95 @@ export default {
                     width: 75vw;
                     height: auto;
                 }
-                .artimenu {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    .artitem {
-                        padding-left: 10px;
-                        width: 430px;
-                        color: #fff;
-                        margin-bottom: 50px;
-                        @include rwd(pad2) {
-                            width: 85%;
-                            padding-left: 0;
-                        }
-                        .artitle {
-                            font-size: $h3 - 1px;
-                            line-height: 1.4;
-                            text-decoration: none;
-                            cursor: pointer;
-                            @include rwd(pad2) {
-                                font-size: $h3 - 3px;
-                            }
-                            @include rwd(mobile) {
-                                font-size: $h3 - 7px;
-                            }
-                        }
-                        .artminp {
-                            font-size: $p2;
-                            line-height: 1.6;
-                            padding-top: 10px;
-                            font-weight: 300;
-                            @include rwd(mobile) {
-                                font-size: $p2 - 3px;
-                            }
-                        }
-                        .armorebtn {
-                            font-size: $p2;
-                            color: rgb(252, 140, 99);
-                            display: block;
-                            text-align: right;
-                            padding-right: 15px;
-                            padding-top: 10px;
-                            @include rwd(pad2) {
-                                font-size: $p2 - 3px;
-                                padding-right: 15px;
-                            }
-                        }
-                    }
-                }
-                .ssarti_pagination {
-                    @include pagination;
-                    a {
-                        color: white;
-                    }
-                    .-on {
-                        color: rgb(252, 140, 99);
-                    }
+                .artiwrapper{
+                    height: 690px;
+                    overflow: auto;
                     @include rwd(pad2) {
-                        margin-bottom: 30px;
+                    height: 560px;
                     }
+                    @include rwd(mobile) {
+                    overflow: visible;
+                    height: auto;
+                    }
+                    .artimenu {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        .artitem {
+                            padding-left: 10px;
+                            width: 430px;
+                            color: #fff;
+                            margin-bottom: 38px;
+                            @include rwd(pad2) {
+                                width: 85%;
+                                padding-left: 0;
+                            }
+                            .artitle {
+                                font-size: $h3 - 1px;
+                                line-height: 1.4;
+                                text-decoration: none;
+                                cursor: pointer;
+                                @include rwd(pad2) {
+                                    font-size: $h3 - 3px;
+                                }
+                                @include rwd(mobile) {
+                                    font-size: $h3 - 7px;
+                                }
+                            }
+                            .artminp {
+                                font-size: $p2;
+                                line-height: 1.6;
+                                padding-top: 10px;
+                                font-weight: 300;
+                                @include rwd(mobile) {
+                                    font-size: $p2 - 3px;
+                                }
+                            }
+                            .armorebtn {
+                                cursor: pointer;
+                                font-size: $p2;
+                                color: rgb(252, 140, 99);
+                                display: block;
+                                text-align: right;
+                                padding-right: 15px;
+                                padding-top: 10px;
+                                @include rwd(pad2) {
+                                    font-size: $p2 - 3px;
+                                    padding-right: 15px;
+                                }
+                            }
+                        }
+                    }
+
                 }
+                // .ssarti_pagination {
+                //     @include pagination;
+                //     a {
+                //         color: white;
+                //     }
+                //     .-on {
+                //         color: rgb(252, 140, 99);
+                //     }
+                //     @include rwd(pad2) {
+                //         margin-bottom: 30px;
+                //     }
+                // }
             }
         }
+    }
+    //scrollbar
+    ::-webkit-scrollbar {
+    width: 3.5px;
+    }
+    ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2); 
+    }
+    ::-webkit-scrollbar-thumb {
+    background: rgba(252, 140, 99, 0.8); 
+    }
+    ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.8); 
     }
 
     //article popup
@@ -722,7 +765,7 @@ export default {
         left: 0;
         right: 0;
         background: rgba(7, 7, 7, 0.6);
-        display: none;
+        // display: none;
         z-index: 1000;
         overflow: scroll;
         .artiflex {
@@ -768,7 +811,7 @@ export default {
                     }
                 }
                 img {
-                    width: 70%;
+                    width: 68%;
                     margin: 30px 0;
                     border-radius: 10px;
                     @include rwd(mobile) {
@@ -779,31 +822,31 @@ export default {
                 p {
                     color: #777;
                     font-size: $p2;
-                    margin: 10px 15% 10px;
+                    margin: 10px 15% 60px;
                     letter-spacing: $ls;
                     line-height: 1.4;
                     @include rwd(mobile) {
                         font-size: $p2 - 3px;
-                        margin: 10px 10% 10px;
+                        margin: 10px 10% 60px;
                     }
                 }
-                .articlebtn {
-                    margin: 40px 0 50px;
-                    display: flex;
-                    width: 70%;
-                    justify-content: space-between;
-                    align-items: center;
-                    @include rwd(mobile) {
-                        width: 80%;
-                    }
-                    a {
-                        color: rgb(82, 82, 121);
-                        font-size: $p2;
-                        @include rwd(mobile) {
-                            font-size: $p2 - 3px;
-                        }
-                    }
-                }
+                // .articlebtn {
+                //     margin: 40px 0 50px;
+                //     display: flex;
+                //     width: 70%;
+                //     justify-content: space-between;
+                //     align-items: center;
+                //     @include rwd(mobile) {
+                //         width: 80%;
+                //     }
+                //     a {
+                //         color: rgb(82, 82, 121);
+                //         font-size: $p2;
+                //         @include rwd(mobile) {
+                //             font-size: $p2 - 3px;
+                //         }
+                //     }
+                // }
             }
         }
     }
@@ -813,19 +856,5 @@ export default {
         margin-top: -10px;
     }
 
-    // //nav-list 所在頁面樣式
-    // .overlaymenu{
-    //     .menulist{
-    //         .nav-menu{
-    //             ul{
-    //                 li:nth-child(1){
-    //                     a{
-    //                         color: yellow;
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
 }
 </style>

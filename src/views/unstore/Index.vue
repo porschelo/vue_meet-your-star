@@ -47,13 +47,18 @@
             <!-- 商品內容 -->
             <div class="unstore_content">
                 <div class="unstore_product">
-                    <template v-for="(item, key) in dataList">
+                    <template v-for="(item, index) in dataList">
                         <div
                             class="item"
                             v-if="showProduct === item.PRODUCT_TYPE"
-                            :key="key"
+                            :key="index"
                         >
-                            <router-link to="/unstore/product_detail">
+                            <router-link
+                                :to="{
+                                    name: 'ProductDetail',
+                                    query: { id: item.PRODUCT_ID },
+                                }"
+                            >
                                 <img :src="item.PRODUCT_IMG" />
                                 <!-- <p>{{ product.imgURL }}</p> -->
                                 <h4>{{ item.PRODUCT_NAME }}</h4>
@@ -122,7 +127,7 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            showProduct: '2',
+            showProduct: this.$store.state.productType,
             dataList: [],
             products: [
                 {
@@ -251,12 +256,23 @@ export default {
     mounted() {
         axios
             .post(
-                'http://localhost/meet_ur_heart/php/product_unstore_select.php'
+                'http://localhost/vue_meet_u_heart/php/product_unstore_select.php'
             )
             .then((res) => {
                 this.dataList = res.data;
-                console.log(this.dataList);
+                // console.log(this.dataList);
             });
+    },
+    methods: {
+        sendProductId(index) {
+            this.$store.commit(
+                'sendproductId',
+                this.dataList[index].PRODUCT_ID
+            );
+            this.$router.push({
+                path: '/unstore/product_detail',
+            });
+        },
     },
 
     components: {

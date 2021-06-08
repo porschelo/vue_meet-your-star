@@ -104,6 +104,7 @@ export default {
         @include rwd(mobile) {
             background-size: 100% 50%;
             background-image: url(/images/test/bgi_phone.png);
+            padding-bottom: 0;
         }
     }
 
@@ -184,10 +185,17 @@ export default {
             &:hover {
                 opacity: 1;
             }
+            @include rwd(mobile) {
+                   margin: 10px;
+                }
 
             img {
                 width: 45px * 0.7;
                 height: 31px * 0.7;
+                @include rwd(mobile) {
+                    width: 45px * 0.5;
+                    height: 31px * 0.5;
+                }
             }
             img:nth-child(3) {
                 width: 33px * 0.7;
