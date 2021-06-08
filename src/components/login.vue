@@ -168,7 +168,7 @@ export default {
         },
 
         loginCheck(){
-            axios.post('http://localhost/vue_meet_u_heart/php/login.php', 
+            axios.post('http://localhost/meetyourstars/login.php', 
                { userAccount: this.userAccount ,
                  userPassword:this.userPassword,
                },
@@ -181,7 +181,7 @@ export default {
                         this.$store.commit('loginVisible',false);
                         this.$store.commit('loginStatus',1);
                         // console.log(res.data[0].MEMBER_icon);
-                        let str = res.data[0].MEMBER_icon;
+                        let str = res.data[0].MEMBER_ICON;
                         let loginID = res.data[0].MEMBER_ID;
                         // console.log(loginID);
                         this.$store.dispatch('setmemberIcon',str);

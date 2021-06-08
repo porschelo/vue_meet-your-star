@@ -7,7 +7,8 @@ export default new Vuex.Store({
     state: {
         //teacher
         selectteacher:'',
-
+        selectteacherprice:'',
+        setAppointed:'',
         //cart
         cartList: [],
 
@@ -22,6 +23,12 @@ export default new Vuex.Store({
         //teacher
         selectteachername(state, teachername){
             state.selectteacher = teachername; 
+        },
+        selectteacherprice(state, teacherprice){
+            state.selectteacherprice = teacherprice;
+        },
+        selectteacherdate(state, teacherdate){
+            state.setAppointed= teacherdate;
         },
         //cart
         addCart(state, obj1) {
@@ -65,6 +72,12 @@ export default new Vuex.Store({
         //teacher
         setselectteacher(context, teachername){
             context.commit('selectteachername', teachername)
+        },
+        setselectteacherprice(context, teacherprice){
+            context.commit('selectteacherprice', teacherprice)
+        },
+        setselectteacherdate(context, teacherdate){
+            context.commit('selectteacherdate', teacherdate)
         },
         //更新整個購物車
         updateCart(context, cart) {
