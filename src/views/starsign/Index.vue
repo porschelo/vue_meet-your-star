@@ -586,9 +586,10 @@ export default {
                     }
                     p {
                         font-size: $h3 - 1px;
-                        line-height: 1.6;
+                        letter-spacing: 2px;
+                        line-height: 1.7;
                         font-weight: 300;
-                        width: 380px;
+                        width: 356px;
                         color: #fff;
                         margin: auto;
                         padding-left: 15px;
