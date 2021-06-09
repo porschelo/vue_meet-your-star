@@ -273,7 +273,6 @@ export default {
             //     // count: 1,
             // },
             productData2: null,
-            likelist: [],
         };
     },
 
@@ -347,7 +346,7 @@ export default {
             newPdData.total = this.totalNum();
             // console.log(this.totalNum());
             // console.log(this.totalNum);
-            // console.log(newPdData);
+
             // this.productData.tatol=  this.totalNum
             this.$store.dispatch('addToCart', newPdData);
         },
@@ -425,7 +424,7 @@ export default {
         let id = urlParams.get('id');
         axios
             .post(
-                'http://localhost/vue_meet_u_heart/php/product_detail_select.php',
+                'http://localhost/meet_ur_heart/php/product_detail_select.php',
                 {
                     productId: id,
                     //送去php 被點擊商品的id
@@ -448,7 +447,7 @@ export default {
                 productData.productPrf = this.productsArr[0].PRODUCT_PRF;
                 productData.productId = this.productsArr[0].PRODUCT_ID;
                 productData.count = 1;
-                //把暫存資料都一次用到data2
+                //把暫存資料productData一次用到data2
                 this.productData2 = productData;
 
                 //把類型的值帶入switch轉成文字

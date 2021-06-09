@@ -37,149 +37,154 @@
                 <!-- </div> -->
                 <hr />
                 <!-- 訂單1 -->
-                <div class="firstorder">
+                <div
+                    class="firstorder"
+                    v-for="(item, index) in cartlist"
+                    :key="`${index}`"
+                >
                     <ul>
                         <li>
-                            <img
-                                src="/images/store/hPd_1.png"
-                                alt=""
-                                class="fo_img"
-                            />
+                            <img :src="item.productImg" alt="" class="fo_img" />
                         </li>
                         <li>
-                            <h4>宇宙能量水晶</h4>
+                            <h4>{{ item.productName }}</h4>
                         </li>
                         <li>
-                            <h4>3,500</h4>
+                            <h4>{{ item.productPrice }}</h4>
                         </li>
                         <li>
-                            <h4>1</h4>
-                            
+                            <h4>{{ item.count }}</h4>
                         </li>
-                        <li class="money_rwd">NT:3,500</li>
+                        <li class="money_rwd">{{ item.total }}</li>
                     </ul>
-                </div>
-                <!-- 訂單2 -->
-
-                <div class="secondorder">
-                    <ul>
-                        <li>
-                            <img
-                                src="/images/store/maylike-2.jpg"
-                                alt=""
-                                class="fo_img"
-                            />
-                        </li>
-                        <li>
-                            <h4>宇宙能量手環</h4>
-                        </li>
-                        <li>
-                            <h4>500</h4>
-                        </li>
-                        <li>
-                            <h4>1</h4>
-                            
-                        </li>
-                        <li class="money_rwd">NT:500</li>
-                    </ul>
-
-                    <hr />
                 </div>
 
                 <!-- 小計 -->
                 <div class="order_total">
-                    <h4>合計：NT:4,000</h4>
+                    <h4>合計：NT:{{ billTotal }}</h4>
                 </div>
                 <!-- 顧客資訊 -->
                 <div class="j_customer">
-                    <div class="customer_left">
-                        <div class="info_title">
-                            <h4>顧客資料</h4>
-                        </div>
-                        <div class="name">
-                            <h4>A. 姓名</h4>
-                            <input type="text" placeholder="請輸入文字" />
-                        </div>
-
-                        <div class="tel">
-                            <h4>B. 聯絡電話</h4>
-                            <input
-                                type="tel"
-                                name=""
-                                id=""
-                                placeholder="請輸入電話"
-                            />
-                        </div>
-                        <div class="email">
-                            <h4>C. 聯絡信箱</h4>
-                            <input
-                                type="email"
-                                name=""
-                                id=""
-                                placeholder="請輸入信箱"
-                            />
-                        </div>
-                        <div class="comment">
-                            <h4>D. 訂單備註(EX:建議收貨時間)</h4>
-                            <div class="comment_word">
-                                <textarea name="Content"></textarea>
+                    <!-- form表單 -->
+                    <form action="" :model="form" :rules="rules">
+                        <div class="customer_left">
+                            <div class="info_title">
+                                <h4>訂購人資料</h4>
+                                <h4>
+                                    <input
+                                        class="subTitle"
+                                        type="checkbox"
+                                        name="member"
+                                        @change="sameMember"
+                                    />同會員
+                                </h4>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="customer_right">
-                        <div class="info_title">
-                            <h4>送貨資料</h4>
-                        </div>
-                        <div class="docu_member">
-                            <h4 id="member">
-                                預約人資料
-                                <input type="checkbox" name="member" />同會員
-                            </h4>
-                        </div>
-                        <div class="name">
-                            <h4>A. 收件人名稱</h4>
-                            <input type="text" placeholder="請輸入文字" />
-                        </div>
-
-                        <div class="tel">
-                            <h4>B. 收件人電話</h4>
-                            <input
-                                type="tel"
-                                name=""
-                                id=""
-                                placeholder="請輸入電話"
-                            />
-                        </div>
-
-                        <div class="comment">
-                            <h4>D. 訂單備註(EX:建議收貨時間)</h4>
-                            <div class="comment_word">
-                                <textarea name="Content"></textarea>
+                            <div class="name">
+                                <h4>A. 姓名</h4>
+                                <input
+                                    type="text"
+                                    placeholder="請輸入文字"
+                                    v-model.trim="name"
+                                />
                             </div>
 
-                            <div class="order_pay">
-                                <label for="ammount">E. 付款方式</label><br />
-                                <select name="payment" id="payment">
-                                    <option value="credit card">
-                                        信用卡付款(經由綠世界)
-                                    </option>
-                                </select>
+                            <div class="tel">
+                                <h4>B. 聯絡電話</h4>
+                                <input
+                                    type="tel"
+                                    name=""
+                                    id=""
+                                    placeholder="請輸入電話"
+                                    v-model.number="phoneNun"
+                                />
+                            </div>
+                            <div class="email">
+                                <h4>C. 聯絡信箱</h4>
+                                <input
+                                    type="email"
+                                    name=""
+                                    id=""
+                                    placeholder="請輸入信箱"
+                                    v-model.trim="email"
+                                />
+                            </div>
+                            <div class="comment">
+                                <h4>D. 訂單備註(EX:建議收貨時間)</h4>
+                                <div class="comment_word">
+                                    <textarea
+                                        name="Content"
+                                        v-model="content"
+                                    ></textarea>
+                                </div>
                             </div>
                         </div>
-                        <div class="order_payment">
-                            <button
-                                type="button"
-                                value="page"
-                                class="order_payment"
-                            >
-                                前往結帳
-                            </button>
+
+                        <div class="customer_right">
+                            <div class="info_title">
+                                <h4>送貨資料</h4>
+                            </div>
+                            <div class="docu_member">
+                                <h4 id="member">
+                                    收貨人資料
+                                    <input
+                                        type="checkbox"
+                                        name="member"
+                                        @change="sameBuyer"
+                                    />同訂購人
+                                </h4>
+                            </div>
+                            <div class="name">
+                                <h4>A. 收件人名稱</h4>
+                                <input
+                                    type="text"
+                                    placeholder="請輸入文字"
+                                    v-model.trim="name2"
+                                />
+                            </div>
+
+                            <div class="tel">
+                                <h4>B. 收件人電話</h4>
+                                <input
+                                    type="tel"
+                                    name=""
+                                    id=""
+                                    placeholder="請輸入電話"
+                                    v-model.number="phoneNun2"
+                                />
+                            </div>
+
+                            <div class="comment">
+                                <h4>D. 訂單備註(EX:建議收貨時間)</h4>
+                                <div class="comment_word">
+                                    <textarea
+                                        name="Content"
+                                        v-model="content2"
+                                    ></textarea>
+                                </div>
+
+                                <div class="order_pay">
+                                    <label for="ammount">E. 付款方式</label
+                                    ><br />
+                                    <select name="payment" id="payment">
+                                        <option value="credit card">
+                                            信用卡付款(經由綠世界)
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="order_payment">
+                                <button
+                                    type="button"
+                                    value="page"
+                                    class="order_payment"
+                                >
+                                    前往結帳
+                                </button>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- 結帳按鈕 -->
-
+                        <!-- 結帳按鈕 -->
+                    </form>
                     <!-- <button type="button" value="page" class="order_payment">前往結帳</button> -->
                 </div>
             </div>
@@ -191,8 +196,84 @@
 
 <script>
 import myFooter from '@/components/myFooter';
+import axios from 'axios';
+// import axios from 'axios';
 
 export default {
+    data() {
+        return {
+            memberInfo: [],
+            //購買人
+            name: '',
+            phoneNun: '',
+            email: '',
+            content: '',
+            //收件人
+            name2: '',
+            phoneNun2: '',
+            content2: '',
+            form: {
+                name: '',
+                tel: '',
+                phone: '',
+                email: '',
+                url: '',
+            },
+            rules: {
+                tel: [
+                    {
+                        required: true,
+                        pattern: /\d{4}-\d{3}-\d{3}/,
+                        message: '手機號碼格式錯誤',
+                        trigger: 'blur',
+                    },
+                ],
+            },
+            isSameMember: false,
+            isSamePeopel: false,
+        };
+    },
+    methods: {
+        sameBuyer() {
+            if (this.isSamePeopel === false) {
+                this.isSameMember = !this.isSameMember;
+                this.name2 = this.name;
+                this.phoneNun2 = this.phoneNun;
+                this.content2 = this.content;
+            } else {
+                this.name2 = '';
+                this.phoneNun2 = '';
+                this.content2 = '';
+                this.isSamePeopel = !this.isSameMember;
+            }
+        },
+        sameMember() {
+            axios
+                .post('http://localhost/meet_ur_heart/php/SelectMember.php', {
+                    id: this.$store.state.loginID,
+                })
+                .then((res) => {
+                    console.log(res);
+                    this.memberInfo = res.data;
+                    this.name = this.memberInfo[0].MEMBER_NAME;
+                    this.phoneNun = this.memberInfo[0].MEMBER_PHONE;
+                    this.email = this.memberInfo[0].MEMBER_EMAIL;
+                });
+        },
+    },
+    computed: {
+        //取用vuex
+        cartlist() {
+            return this.$store.state.cartList;
+        },
+        billTotal() {
+            let sumPrice = 0;
+            this.cartlist.forEach((element) => {
+                sumPrice += element.total;
+            });
+            return sumPrice;
+        },
+    },
     components: {
         myFooter,
     },
@@ -459,6 +540,9 @@ $letter-spacing: 2.5;
 
     .info_title {
         margin-bottom: 10 * 0.7px;
+        .subTitle {
+            width: initial;
+        }
     }
     .name {
         // max-width:700*.7px ;

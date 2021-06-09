@@ -38,7 +38,7 @@
                         <tbody>
                             <tr
                                 v-for="(item, index) in cartlist"
-                                :key="`${index}`"
+                                :key="item.productId"
                             >
                                 <td>
                                     <img
@@ -126,11 +126,11 @@ export default {
             //要改newPdData.total
             if (cart[index].count > 10) {
                 cart[index].total = cart[index].productPrice * 10;
-                console.log(cart[index].total);
+                // console.log(cart[index].total);
             } else {
                 cart[index].total =
                     cart[index].productPrice * cart[index].count;
-                console.log(cart[index].total);
+                // console.log(cart[index].total);
             }
 
             this.$store.dispatch('updateCart', cart);
