@@ -116,6 +116,7 @@
                                 <!-- 用 javasript 的概念去想這邊，這邊是對 question.choices 做迴圈，choice 則是每一個值 -->
                                 <input
                                     type="radio"
+                                    name="topic"
                                     v-model="question.value"
                                     :value="choice.value"
                                 />
@@ -624,6 +625,10 @@ export default {
     methods: {
         next() {
             this.vars++;
+            // if(this.question.value = ""){
+            //         alert('選擇題不能為空白');
+            //         return false;
+            //     };
         },
         dealData() {
             // 選擇的value放入陣列

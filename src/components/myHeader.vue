@@ -150,7 +150,7 @@ header {
         align-items: center;
         padding-top: 30px;
         .mosterImg {
-            width: 55px;
+            width: 45px;
         }
         li {
             padding: 0 5px;
