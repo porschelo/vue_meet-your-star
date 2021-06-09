@@ -118,8 +118,8 @@
 
                                 <div class="j_panel_content">
                                     <p>訂單編號: 073294758302</p>
-                                    <p>預約姓名: 王小明</p>
-                                    <p>預約時段: 18:30 {{selectteacher}}</p>
+                                    <p>預約姓名: 糖老鴨</p>
+                                    <p>預約時段: {{setAppointed}}  {{selectteacher}}</p>
                                 </div>
 
                                 <div class="j_panel_notice">
@@ -144,15 +144,30 @@
 
 <script>
 import myFooter from '@/components/myFooter';
+import axios from 'axios';
 
 export default {
     components: {
         myFooter,
     },
+    mounted() {
+    
+      axios.post('http://localhost/meetyourstars/selectappointment.php',
+      
+      )
+      .then((res) => {
+        console.log(res);
+        this.teacher = res.data;
+      });
+
+    },
     computed:{
         selectteacher(){
             return this.$store.state.selectteacher;
-        }
+        },
+        setAppointed(){
+            return this.$store.state.setAppointed;
+        },
     },
 };
 </script>

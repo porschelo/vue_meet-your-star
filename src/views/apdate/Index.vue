@@ -100,7 +100,7 @@
                         <div class="j_panel">
                             <!-- <div class=".j_panel_date_inner"> -->
 
-                            <div class="j_panel_title">
+                            <div class="j_panel_title" >
                                 <h2>選擇時段</h2>
                             </div>
 
@@ -109,93 +109,102 @@
                     </div> -->
                             <!-- table -->
 
-                            <table class="rwd-table">
-                                <tbody>
+                            <table class="rwd-table" v-for="(item,index) in appointment .slice(0,1)" :key="index" >
+                                
+                                <tbody >
                                     <tr>
                                         <th>時間</th>
-                                        <th>5/9(日)</th>
-                                        <th>5/10(一)</th>
-                                        <th>5/11(二)</th>
-                                        <th>5/12(三)</th>
-                                        <th>5/13(四)</th>
-                                        <th>5/14(五)</th>
-                                        <th>5/15(六)</th>
+                                        <th>6/06(日)</th>
+                                        <th>6/07(一)</th>
+                                        <th>6/08(二)</th>
+                                        <th>6/09(三)</th>
+                                        <th>6/10(四)</th>
+                                        <th>6/11(五)</th>
+                                        <th>6/12(六)</th>
                                     </tr>
                                     <tr>
-                                        <td data-th="時間">早上</td>
-                                        <td data-th="5/9(日)" class="able">
+                                        <td data-th="時間">11:00-13:00</td>
+                                        <td data-th="6/06(日)"  @click.prevent="appointed = ''" v-if="appointed === '6/06'" class="appointed">
+                                            {{item.APPOINTMENT_DATE}}預約成功
+                                        </td>
+                                        <td data-th="6/06(日)" v-else @click.prevent="appointed = '6/06'" class="able">
                                             可預約
+                                        </td> 
+
+                                        <td data-th="6/07(一)" >
+                                            
                                         </td>
 
-                                        <td
-                                            data-th="5/10(一)"
-                                            :class="{
-                                                '-active': appointed === '5/10',
-                                            }"
-                                            class="able"
-                                        >
-                                            可預約
-                                        </td>
-                                        <td data-th="5/11(二)"></td>
+                                        <td data-th="6/08(二)" ></td>
 
-                                        <td
-                                            data-th="5/12(三)"
-                                            @click.prevent="appointed = ''"
-                                            v-if="appointed === '5/12'"
-                                            class="yes"
-                                            style="color: red"
-                                        >
-                                            預約成功
-                                        </td>
-                                        <td
-                                            data-th="5/12(三)"
-                                            v-else
-                                            @click.prevent="appointed = '5/12'"
-                                        >
+                                        <td data-th="6/09(三)" @click.prevent="setAppointed('')" v-if="appointed === '6/09'" class="appointed" >
+                                            已預約
+                                        </td> 
+                                        <td data-th="6/09(三)" v-else @click.prevent="setAppointed('6/09 11:00-13:00')" class="able">
                                             可預約
-                                        </td>
+                                        </td> 
 
-                                        <td data-th="5/13(四)" class="able">
-                                            可預約
+                                        <td data-th="6/10(四)" @click.prevent="setAppointed('')" v-if="appointed === '6/10'" class="appointed">
+                                            已預約
                                         </td>
-                                        <td data-th="5/14(五)"></td>
-                                        <td data-th="5/15(六)" class="able">
+                                        <td data-th="6/10(四)" v-else @click.prevent="setAppointed('6/10 11:00-13:00')" class="able">
                                             可預約
+                                        </td> 
+
+
+                                        <td data-th="6/11(五)"></td>
+                                        <td data-th="6/12(六)" @click.prevent="setAppointed('')" v-if="appointed === '6/12'" class="appointed">
+                                            已預約
                                         </td>
+                                        <td data-th="6/12(六)" v-else @click.prevent="setAppointed('6/12 11:00-13:00')" class="able">
+                                            可預約
+                                        </td> 
+
                                     </tr>
                                     <tr>
-                                        <td data-th="時間">中午</td>
-                                        <td data-th="5/9(日)" class="able">
+                                        <td data-th="時間">13:00~15:00</td>
+                                        <td data-th="6/06(日)">
                                             可預約
                                         </td>
-                                        <td data-th="5/10(一)"></td>
-                                        <td data-th="5/11(二)" class="able">
+                            
+
+                                        <td data-th="6/07(一)"></td>
+                                        <td data-th="6/08(二)" @click.prevent="setAppointed('')" v-if="appointed === '6/08'" class="appointed"
+                                        v-class="{active: isActive}">
                                             可預約
                                         </td>
-                                        <td data-th="5/12(三)" class="able">
+                                        <td data-th="6/08(二)" v-else @click.prevent="setAppointed('6/08 13:00~15:00')" class="able">
+                                            可預約
+                                        </td> 
+
+
+                                        <td data-th="6/09(三)" class="able">
                                             可預約
                                         </td>
-                                        <td data-th="5/13(四)"></td>
-                                        <td data-th="5/14(五)"></td>
-                                        <td data-th="5/15(六)" class="able">
-                                            可預約
+                                        <td data-th="6/10(四)"></td>
+                                        <td data-th="6/11(五)"></td>
+                                        <td data-th="6/12(六)">
                                         </td>
+
+                                         
                                     </tr>
                                     <tr>
-                                        <td data-th="時間">晚上</td>
-                                        <td data-th="5/9(日)" class="able">
+                                        <td data-th="時間">15:00~17:00</td>
+                                        <td data-th="6/06(日)" class="able">
                                             可預約
                                         </td>
-                                        <td data-th="5/10(一)"></td>
-                                        <td data-th="5/11(二)" class="able">
-                                            可預約
+                                        <td data-th="6/07(一)"></td>
+                                        <td data-th="6/08(二)">
                                         </td>
-                                        <td data-th="5/12(三)"></td>
-                                        <td data-th="5/13(四)"></td>
-                                        <td data-th="5/14(五)" class="able">
-                                            可預約
+                                        <td data-th="6/09(三)"></td>
+                                        <td data-th="6/10(四)"></td>
+                                        <td data-th="6/11(五)" @click.prevent="setAppointed('')" v-if="appointed === '6/11'" class="able">
+                                            {{status}}
                                         </td>
-                                        <td data-th="5/15(六)"></td>
+                                        <td data-th="6/11(五)" v-else @click.prevent="setAppointed('6/11 15:00~17:00')" class="appointed">
+                                            {{status}}
+                                        </td> 
+                                        <td data-th="6/12(六)"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -234,30 +243,29 @@
 <script>
 import myFooter from '@/components/myFooter';
 import axios from 'axios';
+
 export default {
     // el:".j_wrapper",
     data() {
         return {
             // isActive: true,  //出現
             // hasError: false, //不出現
-            appointed: '5/12',
-            // date:[
-            //   {
-            //     date:'05/21',
-            //     status:''
-            //   },
-            //    {
-            //     date:'05/22',
-            //     status:''
-            //   }
-            // ],
+            datestatus:0,
+            status: '可預約',
+            // isShow: false,
+            // changecolor: false,
+            appointed:'6/11',
+            
+                      
+            
+            appointment:[],
             teacher: [],
         };
     },
     mounted() {
-        axios.post('http://localhost/meetyourstars/teacher.php').then((res) => {
+        axios.post('http://localhost/meetyourstars/appointment.php').then((res) => {
             console.log(res);
-            this.teacher = res.data;
+            this.appointment = res.data;
         });
     },
 
@@ -266,11 +274,43 @@ export default {
     },
 
     methods: {
-        toggle: function () {
-            this.appointed = !this.appointed;
+        // toggle() {
+        // this.isActive = !this.isActive;
+        // },
+        setAppointed(date){
+        this.appointed = date;
+        
+        if (this.datestatus == 0) {
+            this.status = '已預約';
+        }else{
+            this.status = '可預約';
+            this.datestatus = 1;
+
+        }
+        // this.inner_text = '已預約';
+        
+
+
+
+        // console.log(date);
+        let teacherdate = this.appointed;
+            // teacherdate.push(value);
+        console.log(teacherdate);
+        
+        this.$store.dispatch('setselectteacherdate',teacherdate);
+
+        localStorage.setItem('saveteacherdate', JSON.stringify(this.$store.state.setAppointed));
+
+            
         },
+        
     },
-};
+    // computed:{
+    //     setAppointed(){
+    //         return this.$store.state.setAppointed;
+    //     },
+    // },
+}
 </script>
 
 <style lang="scss">
@@ -281,12 +321,12 @@ export default {
 @import '@/scss/rwd.scss';
 @import '@/scss/ap.scss';
 
-.appointed {
-    color: red;
+.active {
+    color:rgb(252, 80, 36);
     // pointer-events: none;
 }
-
-.error {
-    color: blue;
+.appointed{
+    color:rgb(252, 80, 36);
 }
+
 </style>

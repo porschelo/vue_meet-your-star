@@ -13,22 +13,46 @@
             </div>
         </div>
         <div class="galaxys">
-            <img class="starship" src="/images/starsign/ss_bg2.png" alt="">
-            <router-link class="galx1" :to="{ name: 'Starsign', query: { id: 10 }}"><img src="/images/starsign/galx1.png" alt="" ></router-link>
-            <router-link class="galx2" :to="{ name: 'Starsign', query: { id: 1 }}"><img src="/images/starsign/galx2.png" alt="" ></router-link>
-            <router-link class="galx3" :to="{ name: 'Starsign', query: { id: 4 }}"><img src="/images/starsign/galx3.png" alt="" ></router-link>
-            <router-link class="galx4" :to="{ name: 'Starsign', query: { id: 7 }}"><img src="/images/starsign/galx4.png" alt="" ></router-link>
-        </div> 
+            <img class="starship" src="/images/starsign/ss_bg2.png" alt="" />
+            <router-link
+                class="galx1"
+                :to="{ name: 'Starsign', query: { id: 10 } }"
+                ><img src="/images/starsign/galx1.png" alt=""
+            /></router-link>
+            <router-link
+                class="galx2"
+                :to="{ name: 'Starsign', query: { id: 1 } }"
+                ><img src="/images/starsign/galx2.png" alt=""
+            /></router-link>
+            <router-link
+                class="galx3"
+                :to="{ name: 'Starsign', query: { id: 4 } }"
+                ><img src="/images/starsign/galx3.png" alt=""
+            /></router-link>
+            <router-link
+                class="galx4"
+                :to="{ name: 'Starsign', query: { id: 7 } }"
+                ><img src="/images/starsign/galx4.png" alt=""
+            /></router-link>
+        </div>
 
         <section class="starsignsec">
             <div class="starsignswitch">
-                <router-link class="prbtn" :to="{ name: 'Starsign', query: { id: prev }}"><img src="/images/starsign/prbtn.png" alt=""></router-link>
+                <router-link
+                    class="prbtn"
+                    :to="{ name: 'Starsign', query: { id: prev } }"
+                    ><img src="/images/starsign/prbtn.png" alt=""
+                /></router-link>
                 <div class="drivingcard">
                     <h2>{{ starsignname }}</h2>
                     <div class="cardtop">
                         <img class="cardpt" :src="starsignpt" alt="" />
                         <div class="cardct">
-                            <h3 class="ssbday">生日 <span>{{ starsignbday1 }}</span><span> ～ </span><span>{{ starsignbday2 }}</span></h3>
+                            <h3 class="ssbday">
+                                生日 <span>{{ starsignbday1 }}</span
+                                ><span> ～ </span
+                                ><span>{{ starsignbday2 }}</span>
+                            </h3>
                             <p class="ssprof">{{ starsignpers }}</p>
                         </div>
                     </div>
@@ -50,7 +74,11 @@
                         </div>
                     </div>
                 </div>
-                <router-link class="nxbtn" :to="{ name: 'Starsign', query: { id: next }}"><img src="/images/starsign/nxbtn.png" alt=""></router-link>
+                <router-link
+                    class="nxbtn"
+                    :to="{ name: 'Starsign', query: { id: next } }"
+                    ><img src="/images/starsign/nxbtn.png" alt=""
+                /></router-link>
             </div>
             <div class="starsigncont">
                 <div class="starsignleft">
@@ -60,12 +88,22 @@
                     </div>
                     <div class="productforyou">
                         <h2>開運商品</h2>
-                        <router-link :to="{ name: 'ProductDetail',query: { id: sspdid }}">
+                        <router-link
+                            :to="{
+                                name: 'ProductDetail',
+                                query: { id: sspdid },
+                            }"
+                        >
                             <div class="sspd">
                                 <img :src="sspdimg" alt="" />
                             </div>
                         </router-link>
-                        <router-link :to="{ name: 'ProductDetail',query: { id: sspdid }}">
+                        <router-link
+                            :to="{
+                                name: 'ProductDetail',
+                                query: { id: sspdid },
+                            }"
+                        >
                             <h3>{{ sspdtitle }}</h3>
                         </router-link>
                     </div>
@@ -74,15 +112,28 @@
                     <h2>相關文章</h2>
                     <div class="artiwrapper">
                         <ul class="artimenu" v-if="starart">
-
-                            <li class="artitem" v-for="(arti,key) in starart" :key="key">
-                                <a v-if="arti.ARTICLE_TITLE" class="artitle" @click="onArtiPopOpen(arti)">{{ arti.ARTICLE_TITLE }}</a>
+                            <li
+                                class="artitem"
+                                v-for="(arti, key) in starart"
+                                :key="key"
+                            >
+                                <a
+                                    v-if="arti.ARTICLE_TITLE"
+                                    class="artitle"
+                                    @click="onArtiPopOpen(arti)"
+                                    >{{ arti.ARTICLE_TITLE }}</a
+                                >
                                 <p class="artminp" v-if="arti.ARTICLE_CONTENT">
-                                    <span>{{ arti.ARTICLE_CONTENT | ellipsis }}</span>
+                                    <span>{{
+                                        arti.ARTICLE_CONTENT | ellipsis
+                                    }}</span>
                                 </p>
-                                <a class="armorebtn" @click="onArtiPopOpen(arti)">more</a>
-                            </li>  
-
+                                <a
+                                    class="armorebtn"
+                                    @click="onArtiPopOpen(arti)"
+                                    >more</a
+                                >
+                            </li>
                         </ul>
                     </div>
                     <!-- <ul class="ssarti_pagination">
@@ -100,14 +151,16 @@
         <div class="overlayarticle" v-if="artipop">
             <div class="artiflex">
                 <div class="articlepop">
-                    <a class="articlosebtn" href="#" @click="onArtiPopClose">&times;</a>
-                    
+                    <a class="articlosebtn" href="#" @click="onArtiPopClose"
+                        >&times;</a
+                    >
+
                     <h2>{{ artipop.ARTICLE_TITLE }}</h2>
 
                     <img :src="artipop.ARTICLE_IMG" alt="" />
 
                     <p>{{ artipop.ARTICLE_CONTENT }}</p>
-                    
+
                     <!-- <div class="articlebtn">
                         <a href="" class="prarti">＜ 上一篇</a>
                         <a href="" class="nxarti">下一篇 ＞</a>
@@ -147,41 +200,41 @@ export default {
             pers2val: '',
             pers3: '',
             pers3val: '',
-            starsigndaily: '',        
-            next:null,
-            prev:null,
+            starsigndaily: '',
+            next: null,
+            prev: null,
             starart: [],
             starprdt: [],
             sspdtitle: '',
             sspdimg: '',
-            sspdid:'',
-            
-        }
+            sspdid: '',
+        };
     },
     methods: {
-        onArtiPopOpen(arti) { //抓選到的arti
+        onArtiPopOpen(arti) {
+            //抓選到的arti
             this.artipop = arti;
         },
         onArtiPopClose() {
             this.artipop = null;
         },
     },
-    mounted(){
+    mounted() {
         let urlParams = new URLSearchParams(window.location.search);
-        
-        let id = urlParams.get("id")
 
-        if(id){
-            id = id -1
-        }else{
-            id = 0 //漢堡進入預設頁面
+        let id = urlParams.get('id');
+
+        if (id) {
+            id = id - 1;
+        } else {
+            id = 0; //漢堡進入預設頁面
         }
         //左右切換id
         this.next = id === 11 ? 1 : id + 2;
         this.prev = id === 0 ? 12 : id;
 
         axios
-            .post('http://localhost:8080/php/starsign.php')
+            .post('http://localhost/meet_ur_heart/php/starsign.php')
             .then((res) => {
                 // console.log(res);
                 this.starinfo = res.data;
@@ -199,43 +252,40 @@ export default {
                 this.pers3 = this.starinfo[id].PERSONLITY_3;
                 this.pers3val = this.starinfo[id].PERSONLITY_3_VALUE;
                 this.starsigndaily = this.starinfo[id].DAILY;
-                
             }),
-        axios
-            .post('http://localhost:8080/php/article.php', 
-               { id: id + 1}, //傳給php
-            )
-            .then((res) => {
-                console.log(res);
-                this.starart = res.data;
-                // console.log(this.starart);
-                
-            }),
-        axios
-            .post('http://localhost:8080/php/luckyproduct.php')
-            .then((res) => {
-                console.log(res);
-                this.starprdt = res.data;
-                // console.log(this.starprdt);
-                
-                this.sspdtitle = this.starprdt[id].PRODUCT_NAME;
-                this.sspdimg = this.starprdt[id].PRODUCT_IMG;
-                this.sspdid = this.starprdt[id].PRODUCT_ID;
-                
-            });
+            axios
+                .post(
+                    'http://localhost/meet_ur_heart/php/article.php',
+                    { id: id + 1 } //傳給php
+                )
+                .then((res) => {
+                    console.log(res);
+                    this.starart = res.data;
+                    // console.log(this.starart);
+                }),
+            axios
+                .post('http://localhost/meet_ur_heart/php/luckyproduct.php')
+                .then((res) => {
+                    console.log(res);
+                    this.starprdt = res.data;
+                    // console.log(this.starprdt);
+
+                    this.sspdtitle = this.starprdt[id].PRODUCT_NAME;
+                    this.sspdimg = this.starprdt[id].PRODUCT_IMG;
+                    this.sspdid = this.starprdt[id].PRODUCT_ID;
+                });
     },
     filters: {
         //限制顯示字數
         ellipsis(value) {
             const len = 55;
-            if (!value) return "";
+            if (!value) return '';
             if (value.length > len) {
-                return value.slice(0, len) + " ...";
+                return value.slice(0, len) + ' ...';
             }
             return value;
-        }
+        },
     },
-
 };
 </script>
 
@@ -666,15 +716,15 @@ export default {
                     width: 75vw;
                     height: auto;
                 }
-                .artiwrapper{
+                .artiwrapper {
                     height: 690px;
                     overflow: auto;
                     @include rwd(pad2) {
-                    height: 560px;
+                        height: 560px;
                     }
                     @include rwd(mobile) {
-                    overflow: visible;
-                    height: auto;
+                        overflow: visible;
+                        height: auto;
                     }
                     .artimenu {
                         display: flex;
@@ -726,7 +776,6 @@ export default {
                             }
                         }
                     }
-
                 }
                 // .ssarti_pagination {
                 //     @include pagination;
@@ -745,16 +794,16 @@ export default {
     }
     //scrollbar
     ::-webkit-scrollbar {
-    width: 3.5px;
+        width: 3.5px;
     }
     ::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.2); 
+        background: rgba(255, 255, 255, 0.2);
     }
     ::-webkit-scrollbar-thumb {
-    background: rgba(252, 140, 99, 0.8); 
+        background: rgba(252, 140, 99, 0.8);
     }
     ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.8); 
+        background: rgba(255, 255, 255, 0.8);
     }
 
     //article popup
@@ -855,6 +904,5 @@ export default {
         background-color: rgb(53, 52, 67);
         margin-top: -10px;
     }
-
 }
 </style>

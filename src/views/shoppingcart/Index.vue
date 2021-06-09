@@ -53,6 +53,7 @@
                                         type="number"
                                         min="1"
                                         max="10"
+                                        oninput="if(value.length>5)value=value.slice(0,5)"
                                         v-model="item.count"
                                         class="item_count"
                                         @change="changeCount(index)"
@@ -123,8 +124,14 @@ export default {
             let cart = [];
             cart = this.$store.state.cartList;
             //要改newPdData.total
-            cart[index].total = cart[index].productPrice * cart[index].count;
-            console.log(cart[index].total);
+            if (cart[index].count > 10) {
+                cart[index].total = cart[index].productPrice * 10;
+                console.log(cart[index].total);
+            } else {
+                cart[index].total =
+                    cart[index].productPrice * cart[index].count;
+                console.log(cart[index].total);
+            }
 
             this.$store.dispatch('updateCart', cart);
         },
