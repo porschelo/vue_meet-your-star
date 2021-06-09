@@ -519,9 +519,10 @@ export default {
                 width: 150px;
                 height: 30px;
                 position: absolute;
-                right: 35%;
-                top: 70%;
+                right: 38%;
+                top: 71%;
                 z-index: 20;
+                font-size: 16px;
                 @include rwd(mobile) {
                     right: 35%;
                     top: 70%;
