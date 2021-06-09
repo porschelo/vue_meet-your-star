@@ -23,6 +23,10 @@ export default {
         let storageteachername =
             JSON.parse(localStorage.getItem('saveteacher')) || [];
         this.$store.commit('selectteachername', storageteachername);
+        let storageteacherprice = JSON.parse(localStorage.getItem('saveteacherprice')) || [];
+        this.$store.commit('selectteacherprice', storageteacherprice);
+        let storageteacherdate = JSON.parse(localStorage.getItem('saveteacherdate')) || [];
+        this.$store.commit('selectteacherdate', storageteacherdate);
 
         // loginin
         let storageLoginStatus =
