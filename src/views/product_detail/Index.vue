@@ -108,7 +108,9 @@
             <div class="product-detail_info">
                 <h2>— 商品介紹 —</h2>
                 <div class="pd-chart">
-                    <p>購買此商品的星座比例</p>
+                    <a @click="getChart">
+                        <p>購買此商品的星座比例</p>
+                    </a>
                     <canvas id="myChart1" width="400" height="400"></canvas>
                 </div>
                 <div class="pd-more">
@@ -119,6 +121,7 @@
             </div>
 
             <!-- 商品評價 -->
+
             <div class="product-detail_evaluation">
                 <h2>— 商品評價 —</h2>
                 <hr />
@@ -416,6 +419,7 @@ export default {
         },
     },
     created() {
+        //  this.getChart();
         //抓網址
         let urlParams = new URLSearchParams(window.location.search);
         let id = urlParams.get('id');
@@ -455,7 +459,7 @@ export default {
     },
 
     mounted() {
-        // this.getChart();
+        this.getChart;
         // axios
         //     .post(
         //         'http://localhost/meet_ur_heart/php/product_detail_select.php',
@@ -742,6 +746,9 @@ export default {
                 margin-bottom: 56px;
                 @include rwd(mobile) {
                     width: 100%;
+                }
+                a {
+                    cursor: pointer;
                 }
                 p {
                     margin-bottom: 20px;
