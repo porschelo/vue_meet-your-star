@@ -138,7 +138,7 @@ export default {
         // axios.get('../../php/Select.php').then(res => console.log(res.data));
 
         axios
-            .post('http://localhost/meet_ur_heart/php/SelectMember.php', {
+            .post('http://localhost/vue_meet_u_heart/php/SelectMember.php', {
                 id: this.$store.state.loginID,
             })
             .then((res) => {
