@@ -8,7 +8,7 @@
                     <img src="images/store/uv_icone.png" alt="" />
                 </div>
                 <div class="starsign_title-e">
-                    <h4>— Explore Star Sign —</h4>
+                    <p>— Explore Star Sign —</p>
                 </div>
             </div>
         </div>
@@ -127,7 +127,7 @@
         <div class="overlayarticle" v-if="artipop">
             <div class="artiflex">
                 <div class="articlepop">
-                    <a class="articlosebtn" href="#" @click="onArtiPopClose"
+                    <a class="articlosebtn" @click="onArtiPopClose"
                         >&times;</a
                     >
 
@@ -198,13 +198,18 @@ export default {
     mounted() {
         let urlParams = new URLSearchParams(window.location.search);
 
+        if(document.documentElement.scrollTop >= 800){
+            document.documentElement.scrollTop = 0;
+        }
+
         let id = urlParams.get('id');
 
         if (id) {
             id = id - 1;
         } else {
-            id = 0; //漢堡進入預設頁面
+            id = 0;
         }
+
         //左右切換id
         this.next = id === 11 ? 1 : id + 2;
         this.prev = id === 0 ? 12 : id;
@@ -232,7 +237,7 @@ export default {
                 
             }),
         axios
-            // .post('http://localhost:8080/tfd101/project/g3/php/article.php')
+            // .post('http://localhost:8080/tfd101/project/g3/php/article.php',
             .post('http://localhost/tfd101/project/g3/php/article.php', 
                { id: id + 1}, //傳給php
             )
@@ -836,6 +841,7 @@ export default {
                     margin: 60px 0;
                 }
                 .articlosebtn {
+                    cursor: pointer;
                     position: absolute;
                     top: 3px;
                     right: 25px;

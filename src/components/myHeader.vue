@@ -58,7 +58,7 @@
                     >
                     <ul>
                         <li>
-                            <router-link to="/starsign">星座探索</router-link>
+                            <router-link :to="{ name: 'Starsign', query: { id: 1 }}">星座探索</router-link>
                         </li>
                         <li>
                             <router-link to="/appointment"
