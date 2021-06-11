@@ -1,14 +1,14 @@
 <template>
     <div>
         <header>
-            <div class="navbar">
+            <div class="hnavbar">
                 <div class="logo">
                     <router-link to="/" class="logo">
                         <img src="images/header/logo.png" alt="" />
                     </router-link>
                 </div>
 
-                <div class="nav-list">
+                <div class="hnav-list">
                     <ul>
                         <li>
                             <router-link to="/shoppingcart" class="cart">
@@ -50,10 +50,10 @@
         </header>
 
         <!-- nav list -->
-        <div class="overlaymenu" v-show="menutogger">
-            <div class="menulist">
-                <div class="nav-menu">
-                    <a class="closebtn" href="#" @click="onMenuClose"
+        <div class="hoverlaymenu" v-show="menutogger">
+            <div class="hmenulist">
+                <div class="hnav-menu">
+                    <a class="hclosebtn" href="#" @click="onMenuClose"
                         >&times;</a
                     >
                     <ul>
@@ -135,7 +135,7 @@ header {
     width: 100%;
     height: 200px * 0.7;
     background: linear-gradient(to right, rgb(26, 98, 111), rgb(22, 46, 83));
-    .navbar {
+    .hnavbar {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
@@ -145,7 +145,7 @@ header {
         width: 300px * 0.7;
         padding: 17px 0 0 15px;
     }
-    .nav-list ul {
+    .hnav-list ul {
         display: flex;
         align-items: center;
         padding-top: 30px;
@@ -180,16 +180,16 @@ header {
     }
 
     @include rwd(mobile) {
-        height: 150px * 0.7;
-        .navbar {
+        height: 130px * 0.7;
+        .hnavbar {
             margin: 10px 18px 0px 0px;
         }
         .logo img {
             width: 220px * 0.7;
-            padding: 22px 0 0 27px;
+            padding: 20px 0 0 27px;
         }
-        .nav-list ul {
-            padding-top: 30px;
+        .hnav-list ul {
+            padding-top: 23px;
             li:nth-child(1) {
                 padding: 0 0 1px;
                 width: 50px;
@@ -234,7 +234,7 @@ header {
     } //mobile end
 }
 
-.overlaymenu {
+.hoverlaymenu {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -243,20 +243,20 @@ header {
     background: rgba(7, 7, 7, 0.6);
     // display: none;
     z-index: 1000;
-    .menulist {
+    .hmenulist {
         display: flex;
         justify-content: flex-end;
 
-        .nav-menu {
+        .hnav-menu {
             background-image: url(/images/header/nav.png);
             background-size: 600px 400px;
             width: 600px;
             height: 400px;
             position: relative;
             z-index: 1000;
-            .closebtn {
+            .hclosebtn {
                 position: absolute;
-                top: 25px;
+                top: 5px;
                 right: 68px;
                 color: #fff;
                 font-size: 85px;
@@ -276,7 +276,7 @@ header {
                 box-sizing: border-box;
                 li {
                     list-style: none;
-                    margin: 12px 15px;
+                    margin: 6px 15px;
                     &:nth-child(5) {
                         padding-left: 154px;
                     }
@@ -299,11 +299,11 @@ header {
     }
 
     @include header-mobile {
-        .menulist {
+        .hmenulist {
             display: flex;
             justify-content: flex-end;
 
-            .nav-menu {
+            .hnav-menu {
                 background: linear-gradient(
                     to right,
                     rgb(26, 111, 95),
@@ -314,9 +314,9 @@ header {
                 position: relative;
                 z-index: 1000;
                 border-radius: 0 0 0 160px;
-                .closebtn {
+                .hclosebtn {
                     position: absolute;
-                    top: 17px;
+                    top: 0px;
                     right: 27px;
                     color: #fff;
                     font-size: 60px;
@@ -339,7 +339,7 @@ header {
                     li {
                         text-align: right;
                         list-style: none;
-                        margin: 12px 0px;
+                        margin: 10px 0px;
                         &:nth-child(5) {
                             padding-left: 0px;
                         }

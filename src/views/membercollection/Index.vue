@@ -18,9 +18,15 @@
 
             <div class="MF_mid_block">
                 <div class="tab">
-                    <router-link to="membercentre" class="tab_btn">個人資料</router-link>
-                    <router-link to="memberorderlist" class="tab_btn">訂單資料</router-link>
-                    <router-link to="membercollection" class="tab_btn">我的收藏</router-link>
+                    <router-link to="membercentre" class="tab_btn"
+                        >個人資料</router-link
+                    >
+                    <router-link to="memberorderlist" class="tab_btn"
+                        >訂單資料</router-link
+                    >
+                    <router-link to="membercollection" class="tab_btn"
+                        >我的收藏</router-link
+                    >
                 </div>
 
                 <div class="mid">
@@ -33,18 +39,17 @@
                                 <!-- <td>
                                         <button class="canel_collection">前往付款</button>
                                     </td> -->
-                                </tr>
-                                <tr>
-                                    <td colspan="5">
-                                        <div class="line"></div>
-                                    </td>
-                                </tr>
-                            </thead>
-                        
-                            <tbody>
+                            </tr>
+                            <tr>
+                                <td colspan="5">
+                                    <div class="line"></div>
+                                </td>
+                            </tr>
+                        </thead>
 
-                                <!-- v-for 版 -->
-                                    <!-- <tr class="cn1" v-for=" (zxc,index) in collection_info " :key = zxc>
+                        <tbody>
+                            <!-- v-for 版 -->
+                            <!-- <tr class="cn1" v-for=" (zxc,index) in collection_info " :key = zxc>
                                     <td><img :src= "zxc.collection_pic" alt="" class="collection_item"></td>
                                     <td class="cn_name">{{zxc.collection_name}}</td>
                                     <td>{{zxc.collection_price}}</td>
@@ -53,28 +58,40 @@
                                     </td>
                                 </tr> -->
 
-                                <!-- 接資料版 -->
+                            <!-- 接資料版 -->
 
-                                <tr class="cn1" v-for=" (collection_item,index) in collection_data " :key = collection_item>
-
-                                    <td><img :src= "collection_item.PRODUCT_IMG" alt="" class="collection_item"></td>
-                                    <td class="cn_name">{{collection_item.PRODUCT_NAME}}</td>
-                                    <td>{{collection_item.PRODUCT_PRICE}}</td>
-                                    <td rowspan="1">
-                                        <button class="canel_collection" @click="cancel_btn(index)">取消收藏</button>
-                                    </td>
-
-                                </tr>
-         
-                            </tbody>
-                        
-                        </table>
-                    
+                            <tr
+                                class="cn1"
+                                v-for="(
+                                    collection_item, index
+                                ) in collection_data"
+                                :key="collection_item"
+                            >
+                                <td>
+                                    <img
+                                        :src="collection_item.PRODUCT_IMG"
+                                        alt=""
+                                        class="collection_item"
+                                    />
+                                </td>
+                                <td class="cn_name">
+                                    {{ collection_item.PRODUCT_NAME }}
+                                </td>
+                                <td>{{ collection_item.PRODUCT_PRICE }}</td>
+                                <td rowspan="1">
+                                    <button
+                                        class="canel_collection"
+                                        @click="cancel_btn(index)"
+                                    >
+                                        取消收藏
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                    
-                <!-- MF_mid_block END -->
 
-                
+                <!-- MF_mid_block END -->
             </div>
 
             <myFooter></myFooter>
@@ -87,31 +104,28 @@
 
 <script>
 import axios from 'axios';
-import myFooter from '@/components/myFooter'
+import myFooter from '@/components/myFooter';
 export default {
-
     mounted() {
         axios
-            .post('http://localhost/vue_meet_u_heart/php/membercollection.php', 
-                 { id:this.$store.state.loginID },
-            )
+            .post('http://localhost/vue_meet_u_heart/php/membercollection.php', {
+                id: this.$store.state.loginID,
+            })
             .then((res) => {
                 console.log(res);
                 this.collection_data = res.data;
-                
             });
     },
 
     data() {
         return {
-            collection_data:[],
-            collection_info:[
+            collection_data: [],
+            collection_info: [
                 // {
                 //     collection_pic:"/images/membercollection/collection1.png",
                 //     collection_name:"能量手環",
                 //     collection_price:600,
                 // },
-
                 // {
                 //     collection_pic:"/images/membercollection/collection2.png",
                 //     collection_name:"宇宙能量手環",
@@ -133,14 +147,14 @@ export default {
                 //     collection_price:700,
                 // },
             ],
-        }
+        };
     },
 
     methods: {
-        cancel_btn(index){
+        cancel_btn(index) {
             alert(index);
-            this.collection_data.splice(index,1)
-        }
+            this.collection_data.splice(index, 1);
+        },
     },
     components: {
         myFooter,
@@ -296,7 +310,6 @@ $color: (
                     vertical-align: middle;
                     letter-spacing: 2px;
                     // border: 1px solid green;
-
                 }
 
                 .line {

@@ -34,7 +34,7 @@
                 <div class="pd-leftblock">
                     <div class="pd-img_block">
                         <img
-                            :src="this.productData2.productImg1"
+                            :src="this.productData2.productImg"
                             v-if="showPro === 0"
                         />
                         <img
@@ -48,7 +48,7 @@
                     </div>
                     <ul class="pd-btn_block">
                         <li @click="showPro = 0">
-                            <img :src="productData2.productImg1" alt="" />
+                            <img :src="productData2.productImg" alt="" />
                         </li>
                         <li @click="showPro = 1">
                             <img :src="productData2.productImg2" alt="" />
@@ -79,7 +79,7 @@
                     </div>
 
                     <p>
-                        淨化能量、開智慧、增加記憶、平穩心態、深層的冥想、增強洞察力、舒緩情緒減少壓力
+                        {{ productData2.productPrf }}
                     </p>
 
                     <div class="pd-price">
@@ -108,20 +108,20 @@
             <div class="product-detail_info">
                 <h2>— 商品介紹 —</h2>
                 <div class="pd-chart">
-                    <p>購買此商品的星座比例</p>
+                    <a @click="getChart">
+                        <p>購買此商品的星座比例</p>
+                    </a>
                     <canvas id="myChart1" width="400" height="400"></canvas>
                 </div>
                 <div class="pd-more">
                     <p>
-                        ★宇宙之能-奧剛金字塔<br />
-                        ★尺寸：底邊 7 cm 斜邊8.5 cm <br />
-                        ★材料：黑曜石、紅瑪瑙、紅玉隨、黃水晶、橄欖石、天河石、青金石、紫水晶、白水晶柱、金箔、生命之花、生命之樹<br />
-                        ☆奧剛Orgonite通常是由水晶、礦石、金屬所組成，是用來淨化環境的能量場，越大型的奧剛適用範圍越大，可以放在比較大的商用空間或放在結帳櫃台當成藝術擺飾(開幕禮品)，中小型的可以放在房間或辦公桌也可以隨身攜帶，圓盤型的可以當杯墊，淨化水質。有關奧剛的功能可以自行搜尋。
+                        {{ productData2.productInfo }}
                     </p>
                 </div>
             </div>
 
             <!-- 商品評價 -->
+
             <div class="product-detail_evaluation">
                 <h2>— 商品評價 —</h2>
                 <hr />
@@ -273,6 +273,7 @@ export default {
             //     // count: 1,
             // },
             productData2: null,
+            likelist: [],
         };
     },
 
@@ -351,10 +352,33 @@ export default {
             this.$store.dispatch('addToCart', newPdData);
         },
         addlike() {
-            if (this.islike == 0) {
-                this.islike = 1;
+            if (this.$store.state.loginStatus == 0) {
+                this.$store.commit('loginVisible', true);
             } else {
-                this.islike = 0;
+                if (this.islike == 1) {
+                    this.islike = 0;
+
+                    axios.post(
+                        'http://localhost/meet_ur_heart/php/product_addlike_select.php',
+                        {
+                            memberId: this.$store.state.loginID,
+                            productId: this.productData2.productId,
+                        }
+                    );
+                    // .then((res) => {});
+                } else {
+                    let yes = confirm('請問是否確定取消收藏商品？');
+                    if (yes) {
+                        this.islike = 1;
+                        axios.post(
+                            'http://localhost/meet_ur_heart/php/product_addlike_delete.php',
+                            {
+                                memberId: this.$store.state.loginID,
+                                productId: this.productData2.productId,
+                            }
+                        );
+                    }
+                }
             }
         },
         typeChange(value) {
@@ -395,12 +419,13 @@ export default {
         },
     },
     created() {
+        //  this.getChart();
         //抓網址
         let urlParams = new URLSearchParams(window.location.search);
         let id = urlParams.get('id');
         axios
             .post(
-                'http://localhost/meet_ur_heart/php/product_detail_select.php',
+                'http://localhost/vue_meet_u_heart/php/product_detail_select.php',
                 {
                     productId: id,
                     //送去php 被點擊商品的id
@@ -412,7 +437,7 @@ export default {
                 const productData = {};
                 // console.log(res);
                 productData.productName = this.productsArr[0].PRODUCT_NAME;
-                productData.productImg1 = this.productsArr[0].PRODUCT_IMG;
+                productData.productImg = this.productsArr[0].PRODUCT_IMG;
                 productData.productImg2 = this.productsArr[0].PRODUCT_IMG2;
                 productData.productImg3 = this.productsArr[0].PRODUCT_IMG3;
                 productData.productType = this.productsArr[0].PRODUCT_TYPE;
@@ -420,6 +445,8 @@ export default {
                     this.productsArr[0].PRODUCT_PRICE
                 );
                 productData.productInfo = this.productsArr[0].PRODUCT_INFO;
+                productData.productPrf = this.productsArr[0].PRODUCT_PRF;
+                productData.productId = this.productsArr[0].PRODUCT_ID;
                 productData.count = 1;
                 //把暫存資料都一次用到data2
                 this.productData2 = productData;
@@ -432,7 +459,7 @@ export default {
     },
 
     mounted() {
-        // this.getChart();
+        this.getChart;
         // axios
         //     .post(
         //         'http://localhost/meet_ur_heart/php/product_detail_select.php',
@@ -719,6 +746,9 @@ export default {
                 margin-bottom: 56px;
                 @include rwd(mobile) {
                     width: 100%;
+                }
+                a {
+                    cursor: pointer;
                 }
                 p {
                     margin-bottom: 20px;

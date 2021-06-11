@@ -39,7 +39,7 @@
             </div>
             <div :class="{ isShow: showNum === 3 }" class="planet gemini">
                 <img src="/images/index/planet/風象/planet_gemini.svg" alt="" />
-                <router-link :to="{ name: 'Starsign', query: { id: 5 } }">
+                <router-link :to="{ name: 'Starsign', query: { id: 6 } }">
                     <img
                         class="planet_monst_gemini"
                         src="/images/index/planet/風象/雙子帶字.svg"

@@ -54,14 +54,7 @@
                         </li>
                         <li>
                             <h4>1</h4>
-                            <!-- <select name="amount" id="amount" >
-                            <option value="1">1</option>  
-                            <option value="2">2</option>  
-                            <option value="3">3</option>  
-                            <option value="4">4</option>  
-                            <option value="5">5</option>  
-                            <option value="6">6</option>  
-                        </select> -->
+                            
                         </li>
                         <li class="money_rwd">NT:3,500</li>
                     </ul>
@@ -85,14 +78,7 @@
                         </li>
                         <li>
                             <h4>1</h4>
-                            <!-- <select name="amount" id="amount" >
-                            <option value="1">1</option>  
-                            <option value="2">2</option>  
-                            <option value="3">3</option>  
-                            <option value="4">4</option>  
-                            <option value="5">5</option>  
-                            <option value="6">6</option>  
-                        </select> -->
+                            
                         </li>
                         <li class="money_rwd">NT:500</li>
                     </ul>

@@ -18,77 +18,117 @@
 
             <div class="MOL_midblock_out">
                 <div class="list_tab">
-                    <router-link to="membercentre" class="tab_btn">個人資料</router-link>
-                    <router-link to="memberorderlist" class="tab_btn">訂單資料</router-link>
-                    <router-link to="membercollection" class="tab_btn">我的收藏</router-link>
+                    <router-link to="membercentre" class="tab_btn"
+                        >個人資料</router-link
+                    >
+                    <router-link to="memberorderlist" class="tab_btn"
+                        >訂單資料</router-link
+                    >
+                    <router-link to="membercollection" class="tab_btn"
+                        >我的收藏</router-link
+                    >
                 </div>
 
                 <div class="list_box">
-                        <table>
-                            <thead>
-                                <tr class="list_title">
-                                    <td>訂單編號</td>
-                                    <td class="order_pic">商品圖片</td>
-                                    <td class="order_name">商品名稱</td>
-                                    <td>數量</td>
-                                    <td>金額</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="5">
-                                        <div class="line"></div>
-                                    </td>
-                                </tr>
-                            </thead>
+                    <table>
+                        <thead>
+                            <tr class="list_title">
+                                <td>訂單編號</td>
+                                <td class="order_pic">商品圖片</td>
+                                <td class="order_name">商品名稱</td>
+                                <td>數量</td>
+                                <td>金額</td>
+                            </tr>
+                            <tr>
+                                <td colspan="5">
+                                    <div class="line"></div>
+                                </td>
+                            </tr>
+                        </thead>
 
-                            <tbody class="order_table">
-                                <tr class="orderlist1">
-                                    <td rowspan="2">
-                                        <div class="numid">20210123</div>
-                                        <button class="buyagain" onclick="location.href='./order.html'">再次購買</button>
-                                    </td>
-                                    <td><img src="/images/memberorderlist/list_item1.png" alt="" class="list_pica"></td>
-                                    <td class="order_name">測試文字七個字</td>
-                                    <td>1</td>
-                                    <td>500</td>
-                                </tr>
-                                <tr>
-                                    <td><img src="/images/memberorderlist/list_item2.png" alt="" class="list_pica"></td>
-                                    <td class="order_name">宇宙能量手環</td>
-                                    <td>1</td>
-                                    <td>500</td>
-                                </tr>
+                        <tbody class="order_table">
+                            <tr class="orderlist1">
+                                <td rowspan="2">
+                                    <div class="numid">20210123</div>
+                                    <button
+                                        class="buyagain"
+                                        onclick="location.href='./order.html'"
+                                    >
+                                        再次購買
+                                    </button>
+                                </td>
+                                <td>
+                                    <img
+                                        src="/images/memberorderlist/list_item1.png"
+                                        alt=""
+                                        class="list_pica"
+                                    />
+                                </td>
+                                <td class="order_name">測試文字七個字</td>
+                                <td>1</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img
+                                        src="/images/memberorderlist/list_item2.png"
+                                        alt=""
+                                        class="list_pica"
+                                    />
+                                </td>
+                                <td class="order_name">宇宙能量手環</td>
+                                <td>1</td>
+                                <td>500</td>
+                            </tr>
 
-                                <tr class="total_price">
-                                    <td colspan="2"></td>
-                                    <td >共計 2 件</td>
-                                    <td colspan="2" class="price">1000元</td>
-                                </tr>
+                            <tr class="total_price">
+                                <td colspan="2"></td>
+                                <td>共計 2 件</td>
+                                <td colspan="2" class="price">1000元</td>
+                            </tr>
 
-                                <tr>
-                                    <td colspan="5">
-                                        <div class="line"></div>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td colspan="5">
+                                    <div class="line"></div>
+                                </td>
+                            </tr>
 
-                                <!-- v-for -1 -->
+                            <!-- v-for -1 -->
 
-                                <tr class="orderlist1" v-for="(list_info,index) in mb_list" :key="list_info">
-                                    <td rowspan="1">
-                                        <div class="numid">{{list_info.LIST_ID}}</div>
-                                        <button class="buyagain" @click="buytocart(index)">再次購買</button>
-                                    </td>
-                                    <td><img :src="list_info.PRODUCT_IMG" alt="" class="list_pica"></td>
-                                    <td class="order_name">{{list_info.PRODUCT_NAME}}</td>
-                                    <td>{{list_info.PRODUCT_COUNT}}</td>
-                                    <td>{{list_info.PRODUCT_PRICE}}</td>
-                                </tr>
+                            <tr
+                                class="orderlist1"
+                                v-for="(list_info, index) in mb_list"
+                                :key="list_info"
+                            >
+                                <td rowspan="1">
+                                    <div class="numid">
+                                        {{ list_info.LIST_ID }}
+                                    </div>
+                                    <button
+                                        class="buyagain"
+                                        @click="buytocart(index)"
+                                    >
+                                        再次購買
+                                    </button>
+                                </td>
+                                <td>
+                                    <img
+                                        :src="list_info.PRODUCT_IMG"
+                                        alt=""
+                                        class="list_pica"
+                                    />
+                                </td>
+                                <td class="order_name">
+                                    {{ list_info.PRODUCT_NAME }}
+                                </td>
+                                <td>{{ list_info.PRODUCT_COUNT }}</td>
+                                <td>{{ list_info.PRODUCT_PRICE }}</td>
+                            </tr>
 
-                                <!-- v-for end -->
+                            <!-- v-for end -->
 
-
-
-                                <!-- v-for -2 -->
-                                    <!-- <template >
+                            <!-- v-for -2 -->
+                            <!-- <template >
                                         <div v-for="zxc in mb_list" :key="zxc">
                                         
                                         <tr class="orderlist1" >
@@ -114,13 +154,9 @@
                                         
                                     </template> -->
 
-                                   
+                            <!-- v-for -2 end -->
 
-                                <!-- v-for -2 end -->
-
-
-
-                                <!-- <tr class="orderlist2">
+                            <!-- <tr class="orderlist2">
                                     <td>
                                         <div class="numid">20210124</div>
                                         <button class="buyagain">再次購買</button>
@@ -160,10 +196,8 @@
                                     <td>共計 1 件</td>
                                     <td colspan="2" class="price">700元</td>
                                 </tr> -->
-
-                            </tbody>
-                        </table>
-                    
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -177,49 +211,47 @@
 
 <script>
 import axios from 'axios';
-import myFooter from '@/components/myFooter'
+import myFooter from '@/components/myFooter';
 export default {
-
     mounted() {
-        axios.post('http://localhost/vue_meet_u_heart/php/memberlist.php',
-             { id: this.$store.state.loginID },
-        )
+        axios
+            .post('http://localhost/vue_meet_u_heart/php/memberlist.php', {
+                id: this.$store.state.loginID,
+            })
             .then((res) => {
                 console.log(res);
                 this.mb_list = res.data;
 
                 console.log(this.mb_list);
-            })
-        
+            });
     },
 
     data() {
         return {
-            mb_list:[],
-        }
-        
+            mb_list: [],
+        };
     },
 
     methods: {
-        buytocart(index){
+        buytocart(index) {
             alert(index);
             // console.log(this.mb_list[index]);
             let newBuyItem = {};
-            newBuyItem.productName =this.mb_list[index].PRODUCT_NAME;
-            newBuyItem.productImg =this.mb_list[index].PRODUCT_IMG;
-            newBuyItem.count =this.mb_list[index].PRODUCT_COUNT;
-            newBuyItem.price =this.mb_list[index].PRODUCT_PRICE;
-            newBuyItem.total =this.mb_list[index].PRODUCT_PRICE * this.mb_list[index].PRODUCT_COUNT;
+            newBuyItem.productName = this.mb_list[index].PRODUCT_NAME;
+            newBuyItem.productImg = this.mb_list[index].PRODUCT_IMG;
+            newBuyItem.count = this.mb_list[index].PRODUCT_COUNT;
+            newBuyItem.productPrice = this.mb_list[index].PRODUCT_PRICE;
+            newBuyItem.total =
+                this.mb_list[index].PRODUCT_PRICE *
+                this.mb_list[index].PRODUCT_COUNT;
 
             // console.log(newBuyItem);
             this.$store.dispatch('addToCart', newBuyItem);
             this.$router.push({
-                    path: '/shoppingcart',
-                });
-        }
+                path: '/shoppingcart',
+            });
+        },
     },
-
-
 
     components: {
         myFooter,

@@ -1,7 +1,6 @@
 <template>
     <div>
         <div class="j_wrapper">
-            <!-- @@include('layout/header.html') -->
 
             <!-- 中間背景 -->
             <div class="j_middle">
@@ -52,65 +51,77 @@
                 </div>
                 <!-- 儀錶板 -->
                 <div class="j_panel">
-                <div class="j_panel_inner">
-                    <div class="j_panel_title">
-                        <h2>星座老師</h2>
-                    </div>
-                        <div class="j_panel_img">
-                        <div class="j_panel_pic" v-for="(item,index) in teacher" :key="item">
-                    
-                            <img :src="item.TEACHER_IMG" @click="selectteacher(index)">
-                            <div class="j_panel_info" >
-                            <h4>{{item.TEACHER_NAME}}</h4>
-                            <p>{{item.TEACHER_INFO}}</p>
-
-                            </div>
-
+                    <div class="j_panel_inner">
+                        <div class="j_panel_title">
+                            <h2>星座老師</h2>
                         </div>
-
+                            <div class="j_panel_img">
+                                <div class="j_panel_pic" v-for="(item,index) in teacher" :key="item.TEACHER_ID"
+                                >
                             
-                        <!-- <div class="j_panel_pic">
-                    
-                            <img :src=teacherpic[0].img alt="">
-                            <div class="j_panel_info">
-                            <h4>{{teacherpic[0].name}}</h4>
-                            <p>{{teacherpic[0].special}}</p>
-                            
-                            </div>
+                                    <img :src="item.TEACHER_IMG" @click.prevent="selectteacher(index)"
+                                     v-bind:class="{'selected': current == item.TEACHER_ID}" 
 
-                        </div>  
+                                    >   
+                                    <!-- <img :src="item.TEACHER_IMG" @click="selectteacher(index)"
+                                    v-else @click.prevent="selectteacher(index)" class="selected"
+                                    >   -->
+                                    <!-- :class="[ isLoading ? 'is-blue' : 'is-red' ]"> -->
+                                <!-- v-bind:class="{'selected': current === item.id}" v-on:click="setCurrent(item.id)" -->
 
-                        <div class="j_panel_pic">
-                    
-                            <img :src=teacherpic[2].img alt="">
-                            <div class="j_panel_info">
-                            <h4>{{teacherpic[2].name}}</h4>
-                            <p>{{teacherpic[2].special}}</p>
-                            
-                            </div> -->
+                                    <!-- :class="{'selected': current === item.TEACHER_IMG}" 
+                                    v-on:click="setCurrent(TEACHER_IMG)"
+                                    > -->
+                                        <div class="j_panel_info" >
+                                        <h4>{{item.TEACHER_NAME}}</h4>
+                                        <p>{{item.TEACHER_INFO}}</p>
+                                        <p>{{item.TEACHER_SKILL}}</p>
+                                        <p>{{item.TEACHER_PRICE}}</p>
 
-                        </div>                     
-                        </div>
-                        <div class="button_page">
-                        <button type="button" value="page" class="j_page" onclick="location.href ='/apdate'" >下一頁
-                            <!-- <div class="dialog"
-                                v-show="show"
-                                transition="dialog-fade">
-                                <div class="dialog-content">
-                                <slot></slot>
+
+                                        </div>
+
                                 </div>
-                            </div> -->
-                        </button>
+
+                                
+                                <!-- <div class="j_panel_pic">
+                            
+                                    <img :src=teacherpic[0].img alt="">
+                                    <div class="j_panel_info">
+                                    <h4>{{teacherpic[0].name}}</h4>
+                                    <p>{{teacherpic[0].special}}</p>
+                                    
+                                    </div>
+
+                                </div>  
+
+                                <div class="j_panel_pic">
+                            
+                                    <img :src=teacherpic[2].img alt="">
+                                    <div class="j_panel_info">
+                                    <h4>{{teacherpic[2].name}}</h4>
+                                    <p>{{teacherpic[2].special}}</p>
+                                    
+                                    </div> -->
+
+                            </div>                     
+                        
+                        <div class="button_page">
+                            <button type="button" value="page" class="j_page" @click="checknext" >下一頁
+                            </button>
                         </div>
+
                     </div>
                 
                 </div>
+            </div>
             
 
           
-        <myFooter></myFooter>
+           <myFooter></myFooter>
         
-     </div>
+        </div>
+
     </div>
 </template>
 
@@ -123,24 +134,19 @@ export default {
     
     data() {
         return {
-            //  TEACHER:[
-            //     {img:'/images/appointment/dr1.png',name:'安格斯雞老師', special:'開啟財運大門',money:'1,000'},
-            //     {img:'/images/appointment/dr2.png',name:'危機老師', special:'工作危機處理',money:'1,500'},
-            //     {img:'/images/appointment/dr3.png',name:'唐揚雞老師', special:'愛情魔幻靈藥',money:'2,000'},
-            //     {img:'/images/appointment/dr2.png',name:'卡拉雞老師', special:'運動除油幫手',money:'2,500'},
-                
-
-                
-                
-            //     ],
-
+            // isLoading: true,
+            // selected:false,
+            hidden:[],
             teacher:[],
+            current:null,
+            userAccount:'',
+            userPassword:'',
         }
     },
     mounted() {
     
       axios.post('http://localhost/meetyourstars/teacher.php',
-      
+
       )
       .then((res) => {
         console.log(res);
@@ -154,13 +160,62 @@ export default {
         
     },
     methods: {
+        // toggle() {
+        // this.selected = !this.selected;
+        // },
         selectteacher(index){
+            
+
             let teachername = this.teacher[index].TEACHER_NAME;
-            // console.log(teachername);
+            // confirm('確定選擇此老師?');
+
+            let teacherprice = this.teacher[index].TEACHER_PRICE;
+            // console.log(teacherprice);
             this.$store.dispatch('setselectteacher',teachername );
+            this.$store.dispatch('setselectteacherprice',teacherprice);
+
             localStorage.setItem('saveteacher', JSON.stringify(this.$store.state.selectteacher));
-        }
+            localStorage.setItem('saveteacherprice', JSON.stringify(this.$store.state.selectteacherprice));
+        
+
+            //  this.isLoading = !this.isLoading;
+            
+            // this.$selected.focus(
+            // );
+            this.current = index + 1;
+            console.log(this.current);
+
+        },
+        checknext(){
+            if (this.$store.state.loginStatus == 0) {
+                this.$store.commit('loginVisible', true);
+                // axios.post('http://localhost/meetyourstars/login.php',
+                // {userAccount: this.userAccount,
+                // userPassword: this.userPassword,}
+                // )
+            } else {
+                this.$router.push({
+                    path: '/apdate',
+                });
+            }
+        },
+        // setCurrent(id) {
+        // this.current = id;
+        // },
+        
+        
+
+                
+        // setCurrent(){
+        //     this.current = TEACHER_IMG;
+        // },
+        
     },
+    // computed:{
+    //     teacher3(){
+    //         return this.teacher.filter(number < 4);
+    //     }
+    // },
     
 }
 
@@ -177,4 +232,15 @@ export default {
      @import '@/scss/rwd.scss';
      @import '@/scss/ap.scss'; 
 
+.selected{
+border: #4F4FFF solid 5px;
+box-shadow:4px 4px 12px;
+border-style: inset;
+}
+
+// .selecting{
+//     border: 3px solid white;
+// }
+
 </style>
+

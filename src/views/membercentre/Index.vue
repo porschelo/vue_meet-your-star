@@ -138,9 +138,9 @@ export default {
         // axios.get('../../php/Select.php').then(res => console.log(res.data));
 
         axios
-            .post('http://localhost/vue_meet_u_heart/php/SelectMember.php', 
-               { id: this.$store.state.loginID },
-            )
+            .post('http://localhost/vue_meet_u_heart/php/SelectMember.php', {
+                id: this.$store.state.loginID,
+            })
             .then((res) => {
                 console.log(res);
                 this.memberinfo = res.data;
@@ -181,7 +181,6 @@ export default {
                 this.data_info = false;
                 this.change_data_btn = '儲存資料';
                 this.change_status = 0;
-                
             } else if (btn_status == 0) {
                 this.edit_info = false;
                 this.data_info = true;
@@ -189,15 +188,16 @@ export default {
                 this.change_status = 1;
 
                 // 回存資料
-                axios.post('http://localhost/vue_meet_u_heart/php/UpdateMember.php', 
-               { updateName:this.member_name,
-                 updateBirthdate:this.member_date,
-                 updatePhone:this.member_phone,
-                 updateGender:this.member_gender,
-                 id: this.$store.state.loginID },
-                )
-
-
+                axios.post(
+                    'http://localhost/vue_meet_u_heart/php/UpdateMember.php',
+                    {
+                        updateName: this.member_name,
+                        updateBirthdate: this.member_date,
+                        updatePhone: this.member_phone,
+                        updateGender: this.member_gender,
+                        id: this.$store.state.loginID,
+                    }
+                );
             }
         },
         deleteData() {

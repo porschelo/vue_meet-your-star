@@ -4,10 +4,10 @@
             <div class="jl_top_fix">
                 <div class="jl_match_percent">
                     <h4>相配指數</h4>
-                    <h2>68%</h2>
+                    <h2>{{match_point}}</h2>
                 </div>
                 <div class="jl_pros">
-                    <h3>優點：你們都喜歡新鮮，是一起發現樂子的好夥伴!</h3>
+                    <h3>優點：{{match_good}}</h3>
                 </div>
             </div>
 
@@ -41,14 +41,14 @@
                 </div>
 
                 <div class="jl_cons">
-                    <h3>缺點：對於金錢的價值觀，可能要多多溝通唷。</h3>
+                    <h3>缺點：{{match_bad}}</h3>
                 </div>
             </div>
             <!-- end of jl_bottom -->
 
             <div class="jl_match_comments">
                 <span>
-                    解析：雙子屬於智慧型，不喜歡固定的既成關系、生活、知識，喜愛變化，也能掌握與操縱變化。像這么優質的對象，自然會使得也熱愛活潑變化的手萬分心動。但您們兩個星座恰如一個北極、一個南極，南轅北轍，在一起之後不是大好的互補...
+                    解析：{{match_article}}
                 </span>
 
                 <br />
@@ -57,12 +57,12 @@
                         付費解鎖
                     </button>
 
-                    <button type="button" class="jl_button_paymentBypoints">
-                        使用星幣解鎖
+                    <button type="button" class="jl_button_paymentBypoints" @click="useStarPoint">
+                        使用50星幣解鎖
                     </button>
                 </div>
             </div>
-
+           
             <div class="jl-footer">
                 <myFooter></myFooter>
             </div>
@@ -73,8 +73,90 @@
 
 <script>
 import myFooter from '@/components/myFooter';
-
+import axios from 'axios';
 export default {
+
+    data() {
+        return {
+            match_info:[],
+            match_point:"",
+            match_good:"",
+            match_bad:"",
+            match_article:"",
+            member_info:[],
+            member_StarPoint:0,
+            islodata:false,
+            Unlock:false,
+
+        }
+    },
+
+    mounted() {
+        axios
+            .post('http://localhost/vue_meet_u_heart/php/Match.php', {
+                Self_STAR_SIGN: this.$store.state.self_StarSign,
+                Opp_STAR_SIGN: this.$store.state.opp_StarSign,
+            })
+            .then((res) => {
+                console.log(res);
+                this.match_info = res.data;
+                // console.log(this.match_info);
+                this.match_point = this.match_info[0].MATE_POINT;
+                this.match_good = this.match_info[0].MATE_GOOD;
+                this.match_bad = this.match_info[0].MATE_BAD;
+                this.match_article = this.match_info[0].MATE_ARTICLE;
+                
+            });
+    },
+
+    methods: {
+        useStarPoint(){
+            if (this.$store.state.loginStatus == 0) {
+                this.$store.commit('loginVisible', true);
+            }else{
+                if(this.islodata == false){
+                    axios
+                    .post('http://localhost/vue_meet_u_heart/php/SelectMember.php', {
+                        id:this.$store.state.loginID,
+                    })
+                    .then((res1) => {
+                        console.log(res1);
+                        this.member_info = res1.data;
+                        // console.log(this.match_info);
+                        this.member_StarPoint = this.member_info[0].MEMBER_POINT;
+                        this.islodata = true;
+
+                        if(this.Unlock ==false){
+                            if(this.member_StarPoint>=50){
+                                this.member_StarPoint-=50;
+                                this.Unlock= true;
+                                alert("文章解鎖囉!!趕快去看看吧!")
+                                console.log(this.member_StarPoint);
+                                console.log(this.Unlock);
+                            }
+                        }
+                    }); 
+                }else{
+                    if(this.Unlock==true){
+                        alert('已經解鎖過文章囉!');
+                    }
+                }
+               
+            }
+        }
+    },
+
+
+    computed: {
+        selfStarSign(){
+            return this.$store.state.self_StarSign;
+        },
+        oppStarSign(){
+            return this.$store.state.opp_StarSign;
+        }
+    },
+
+
     components: {
         myFooter,
     },

@@ -347,7 +347,7 @@ export default {
     }
     .unstore_sort {
         .highlight {
-            background: #cccccc;
+            background: white;
         }
     }
 

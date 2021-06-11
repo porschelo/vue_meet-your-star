@@ -6,8 +6,9 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         //teacher
-        selectteacher: '',
-
+        selectteacher:'',
+        selectteacherprice:'',
+        setAppointed:'',
         //cart
         cartList: [],
 
@@ -21,11 +22,21 @@ export default new Vuex.Store({
         //product
         productId: 0,
         productType: '2',
+
+        //match
+        self_StarSign:"",
+        opp_StarSign:"",
     },
     mutations: {
         //teacher
         selectteachername(state, teachername) {
             state.selectteacher = teachername;
+        },
+        selectteacherprice(state, teacherprice){
+            state.selectteacherprice = teacherprice;
+        },
+        selectteacherdate(state, teacherdate){
+            state.setAppointed= teacherdate;
         },
         //cart
         addCart(state, obj1) {
@@ -79,11 +90,25 @@ export default new Vuex.Store({
         backtoPage(state, str) {
             state.productType = str;
         },
+
+        //match
+        self_StarSign(state,str){
+            state.self_StarSign = str;
+        },
+        opp_StarSign(state,str){
+            state.opp_StarSign = str;
+        }
     },
     actions: {
         //teacher
         setselectteacher(context, teachername) {
             context.commit('selectteachername', teachername);
+        },
+        setselectteacherprice(context, teacherprice){
+            context.commit('selectteacherprice', teacherprice)
+        },
+        setselectteacherdate(context, teacherdate){
+            context.commit('selectteacherdate', teacherdate)
         },
         //更新整個購物車
         updateCart(context, cart) {
@@ -129,5 +154,14 @@ export default new Vuex.Store({
             context.commit('updateloginID', str);
             localStorage.setItem('loginID', JSON.stringify(this.state.loginID));
         },
+
+        //match
+
+        setself_StarSign: function(context,str){
+            context.commit('self_StarSign',str);
+        },
+        setopp_StarSign: function(context,str){
+            context.commit('opp_StarSign',str);
+        }
     },
 });
