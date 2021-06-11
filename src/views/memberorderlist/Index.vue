@@ -215,7 +215,7 @@ import myFooter from '@/components/myFooter';
 export default {
     mounted() {
         axios
-            .post('http://localhost/meet_ur_heart/php/memberlist.php', {
+            .post('http://localhost/vue_meet_u_heart/php/memberlist.php', {
                 id: this.$store.state.loginID,
             })
             .then((res) => {

@@ -234,7 +234,7 @@ export default {
         this.prev = id === 0 ? 12 : id;
 
         axios
-            .post('http://localhost/meet_ur_heart/php/starsign.php')
+            .post('http://localhost/vue_meet_u_heart/php/starsign.php')
             .then((res) => {
                 // console.log(res);
                 this.starinfo = res.data;
