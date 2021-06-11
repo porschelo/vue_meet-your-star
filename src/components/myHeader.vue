@@ -339,7 +339,7 @@ header {
                     li {
                         text-align: right;
                         list-style: none;
-                        margin: 10px 0px;
+                        margin: 5px 0px;
                         &:nth-child(5) {
                             padding-left: 0px;
                         }

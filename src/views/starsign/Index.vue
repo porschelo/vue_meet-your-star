@@ -211,7 +211,7 @@ export default {
 
         axios
             // .post('http://localhost:8080/tfd101/project/g3/php/starsign.php')
-            .post('http://localhost:8080/tfd101/project/g3/php/starsign.php')
+            .post('http://localhost/tfd101/project/g3/php/starsign.php')
             .then((res) => {
                 // console.log(res);
                 this.starinfo = res.data;
@@ -233,7 +233,7 @@ export default {
             }),
         axios
             // .post('http://localhost:8080/tfd101/project/g3/php/article.php')
-            .post('http://localhost:8080/tfd101/project/g3/php/article.php', 
+            .post('http://localhost/tfd101/project/g3/php/article.php', 
                { id: id + 1}, //傳給php
             )
             .then((res) => {
@@ -244,7 +244,7 @@ export default {
             }),
         axios
             // .post('http://localhost:8080/tfd101/project/g3/php/luckyproduct.php')
-            .post('http://localhost:8080/tfd101/project/g3/php/luckyproduct.php')
+            .post('http://localhost/tfd101/project/g3/php/luckyproduct.php')
             .then((res) => {
                 console.log(res);
                 this.starprdt = res.data;
