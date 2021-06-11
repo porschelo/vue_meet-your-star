@@ -346,9 +346,10 @@ export default {
 
         samemember() {
             axios
-                .post('http://localhost/meetyourstars/SelectMember.php', {
-                    id: this.$store.state.loginID,
-                })
+                .post(
+                    'http://localhost/tfd101/project/g3/php/SelectMember.php',
+                    { id: this.$store.state.loginID }
+                )
                 .then((res) => {
                     console.log(res);
                     this.memberinfo = res.data;

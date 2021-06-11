@@ -66,125 +66,164 @@
                 <!-- 顧客資訊 -->
                 <div class="j_customer">
                     <!-- form表單 -->
-                    <form action="" :model="form" :rules="rules">
-                        <div class="customer_left">
-                            <div class="info_title">
-                                <h4>訂購人資料</h4>
-                                <h4>
-                                    <input
-                                        class="subTitle"
-                                        type="checkbox"
-                                        name="member"
-                                        @change="sameMember"
-                                    />同會員
-                                </h4>
-                            </div>
-                            <div class="name">
-                                <h4>A. 姓名</h4>
+                    <!-- <form action="" :model="form" :rules="rules"> -->
+                    <div class="customer_left">
+                        <div class="info_title">
+                            <h4>訂購人資料</h4>
+                            <h4>
                                 <input
-                                    type="text"
-                                    placeholder="請輸入文字"
-                                    v-model.trim="name"
-                                />
-                            </div>
-
-                            <div class="tel">
-                                <h4>B. 聯絡電話</h4>
-                                <input
-                                    type="tel"
-                                    name=""
-                                    id=""
-                                    placeholder="請輸入電話"
-                                    v-model.number="phoneNun"
-                                />
-                            </div>
-                            <div class="email">
-                                <h4>C. 聯絡信箱</h4>
-                                <input
-                                    type="email"
-                                    name=""
-                                    id=""
-                                    placeholder="請輸入信箱"
-                                    v-model.trim="email"
-                                />
-                            </div>
-                            <div class="comment">
-                                <h4>D. 訂單備註(EX:建議收貨時間)</h4>
-                                <div class="comment_word">
-                                    <textarea
-                                        name="Content"
-                                        v-model="content"
-                                    ></textarea>
-                                </div>
-                            </div>
+                                    class="subTitle"
+                                    type="checkbox"
+                                    name="member"
+                                    @change="sameMember"
+                                />同會員
+                            </h4>
+                        </div>
+                        <div class="name">
+                            <h4>A. 姓名</h4>
+                            <input
+                                type="text"
+                                placeholder="請輸入文字"
+                                v-model.trim="name"
+                                @blur="$v.name.$touch()"
+                            />
+                        </div>
+                        <div
+                            class="error"
+                            v-if="$v.name.$error && !$v.name.required"
+                        >
+                            必填
                         </div>
 
-                        <div class="customer_right">
-                            <div class="info_title">
-                                <h4>送貨資料</h4>
-                            </div>
-                            <div class="docu_member">
-                                <h4 id="member">
-                                    收貨人資料
-                                    <input
-                                        type="checkbox"
-                                        name="member"
-                                        @change="sameBuyer"
-                                    />同訂購人
-                                </h4>
-                            </div>
-                            <div class="name">
-                                <h4>A. 收件人名稱</h4>
-                                <input
-                                    type="text"
-                                    placeholder="請輸入文字"
-                                    v-model.trim="name2"
-                                />
-                            </div>
-
-                            <div class="tel">
-                                <h4>B. 收件人電話</h4>
-                                <input
-                                    type="tel"
-                                    name=""
-                                    id=""
-                                    placeholder="請輸入電話"
-                                    v-model.number="phoneNun2"
-                                />
-                            </div>
-
-                            <div class="comment">
-                                <h4>D. 訂單備註(EX:建議收貨時間)</h4>
-                                <div class="comment_word">
-                                    <textarea
-                                        name="Content"
-                                        v-model="content2"
-                                    ></textarea>
-                                </div>
-
-                                <div class="order_pay">
-                                    <label for="ammount">E. 付款方式</label
-                                    ><br />
-                                    <select name="payment" id="payment">
-                                        <option value="credit card">
-                                            信用卡付款(經由綠世界)
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="order_payment">
-                                <button
-                                    type="button"
-                                    value="page"
-                                    class="order_payment"
-                                >
-                                    前往結帳
-                                </button>
-                            </div>
+                        <div class="tel">
+                            <h4>B. 聯絡手機號碼</h4>
+                            <input
+                                type="tel"
+                                name="tel1"
+                                id="tel1"
+                                placeholder="09xxxxxxxx"
+                                v-model="phoneNun"
+                                @blur="isPhone()"
+                                @keyup="isPhone()"
+                            />
+                            <!-- @blur="$v.phone.$touch()"
+                             v-if="$v.phone.$error && !$v.phone.required" -->
+                        </div>
+                        <div class="error" v-if="!isOkPhone">
+                            {{ okTestPhone }}
+                        </div>
+                        <div class="email">
+                            <h4>C. 聯絡信箱</h4>
+                            <input
+                                type="email"
+                                name="email1"
+                                id="email1"
+                                placeholder="aaa@gmail.com"
+                                v-model.trim="email"
+                                @blur="$v.email.$touch()"
+                            />
                         </div>
 
-                        <!-- 結帳按鈕 -->
-                    </form>
+                        <div
+                            class="error"
+                            v-if="$v.email.$error && !$v.email.required"
+                        >
+                            必填
+                        </div>
+                        <div
+                            class="error"
+                            v-if="$v.email.$error && !$v.email.email"
+                        >
+                            Email格式錯誤
+                        </div>
+                        <div class="comment">
+                            <h4>D. 訂單備註(EX:建議收貨時間)</h4>
+                            <div class="comment_word">
+                                <textarea
+                                    name="Content"
+                                    v-model="content"
+                                ></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="customer_right">
+                        <div class="info_title">
+                            <h4>送貨資料</h4>
+                        </div>
+                        <div class="docu_member">
+                            <h4 id="member">
+                                收貨人資料
+                                <input
+                                    type="checkbox"
+                                    name="member"
+                                    @change="sameBuyer"
+                                />同訂購人
+                            </h4>
+                        </div>
+                        <div class="name">
+                            <h4>A. 收件人名稱</h4>
+                            <input
+                                type="text"
+                                placeholder="請輸入文字"
+                                v-model.trim="name2"
+                                @blur="$v.name2.$touch()"
+                            />
+                        </div>
+                        <div
+                            class="error"
+                            v-if="$v.name2.$error && !$v.name2.required"
+                        >
+                            必填
+                        </div>
+
+                        <div class="tel">
+                            <h4>B. 收件人手機號碼</h4>
+                            <input
+                                type="tel"
+                                name="tel2"
+                                id="tel2"
+                                placeholder="09xxxxxxxx"
+                                v-model="phoneNun2"
+                                @blur="isPhone2()"
+                                @keyup="isPhone2()"
+                            />
+                        </div>
+                        <div class="error" v-if="!isOkPhone2">
+                            {{ okTestPhone2 }}
+                        </div>
+
+                        <div class="comment">
+                            <h4>D. 訂單備註(EX:建議收貨時間)</h4>
+                            <div class="comment_word">
+                                <textarea
+                                    name="Content"
+                                    v-model="content2"
+                                ></textarea>
+                            </div>
+
+                            <div class="order_pay">
+                                <label for="ammount">E. 付款方式</label><br />
+                                <select name="payment" id="payment">
+                                    <option value="credit card">
+                                        信用卡付款(經由綠世界)
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="order_payment">
+                            <button
+                                type="button"
+                                value="page"
+                                class="order_payment"
+                            >
+                                <a @click.prevent="payFinish"> 前往結帳 </a>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 結帳按鈕 -->
+                    <!-- </form> -->
                     <!-- <button type="button" value="page" class="order_payment">前往結帳</button> -->
                 </div>
             </div>
@@ -197,7 +236,8 @@
 <script>
 import myFooter from '@/components/myFooter';
 import axios from 'axios';
-// import axios from 'axios';
+import { validationMixin } from 'vuelidate';
+import { required, email } from 'vuelidate/lib/validators';
 
 export default {
     data() {
@@ -212,31 +252,41 @@ export default {
             name2: '',
             phoneNun2: '',
             content2: '',
-            form: {
-                name: '',
-                tel: '',
-                phone: '',
-                email: '',
-                url: '',
-            },
-            rules: {
-                tel: [
-                    {
-                        required: true,
-                        pattern: /\d{4}-\d{3}-\d{3}/,
-                        message: '手機號碼格式錯誤',
-                        trigger: 'blur',
-                    },
-                ],
-            },
+            isOkPhone: true,
+            isOkPhone2: true,
+            okTestPhone: '必填',
+            okTestPhone2: '必填',
+
             isSameMember: false,
             isSamePeopel: false,
         };
     },
+    mixins: [validationMixin],
+
+    validations: {
+        name: {
+            required,
+        },
+        name2: {
+            required,
+        },
+        email: {
+            required,
+            email,
+        },
+        phone: {
+            required,
+            // isPhone,
+        },
+        phone2: {
+            required,
+            // isPhone,
+        },
+    },
     methods: {
         sameBuyer() {
             if (this.isSamePeopel === false) {
-                this.isSameMember = !this.isSameMember;
+                this.isSamePeopel = !this.isSamePeopel;
                 this.name2 = this.name;
                 this.phoneNun2 = this.phoneNun;
                 this.content2 = this.content;
@@ -244,22 +294,67 @@ export default {
                 this.name2 = '';
                 this.phoneNun2 = '';
                 this.content2 = '';
-                this.isSamePeopel = !this.isSameMember;
+                this.isSamePeopel = !this.isSamePeopel;
             }
         },
+
         sameMember() {
-            axios
-                .post('http://localhost/meet_ur_heart/php/SelectMember.php', {
-                    id: this.$store.state.loginID,
-                })
-                .then((res) => {
-                    console.log(res);
-                    this.memberInfo = res.data;
-                    this.name = this.memberInfo[0].MEMBER_NAME;
-                    this.phoneNun = this.memberInfo[0].MEMBER_PHONE;
-                    this.email = this.memberInfo[0].MEMBER_EMAIL;
-                });
+            if (this.isSameMember === false) {
+                this.isSameMember = !this.isSameMember;
+                this.name = this.memberInfo[0].MEMBER_NAME;
+                this.phoneNun = this.memberInfo[0].MEMBER_PHONE;
+                this.email = this.memberInfo[0].MEMBER_EMAIL;
+            } else {
+                this.name = '';
+                this.email = '';
+                this.phoneNun = '';
+                this.content = '';
+                this.isSameMember = !this.isSameMember;
+            }
         },
+        payFinish() {
+            this.$router.push({
+                path: '/product_finish',
+            });
+        },
+        isPhone() {
+            var re = /^09[0-9]{8}$/;
+            if (this.phoneNun === '') {
+                this.isOkPhone = false;
+                this.okTestPhone = '必填';
+            } else {
+                if (re.test(this.phoneNun) === false) {
+                    this.isOkPhone = false;
+                    this.okTestPhone = '格式錯誤';
+                } else {
+                    this.isOkPhone = true;
+                }
+            }
+        },
+        isPhone2() {
+            var re = /^09[0-9]{8}$/;
+            if (this.phoneNun2 === '') {
+                this.isOkPhone2 = false;
+                this.okTestPhone2 = '必填';
+            } else {
+                if (re.test(this.phoneNun2) === false) {
+                    this.isOkPhone2 = false;
+                    this.okTestPhone2 = '格式錯誤';
+                } else {
+                    this.isOkPhone2 = true;
+                }
+            }
+        },
+    },
+    mounted() {
+        axios
+            .post('http://localhost/tfd101/project/g3/php/SelectMember.php', {
+                id: this.$store.state.loginID,
+            })
+            .then((res) => {
+                this.memberInfo = res.data;
+                // console.log(res);
+            });
     },
     computed: {
         //取用vuex
@@ -306,6 +401,10 @@ $letter-spacing: 2.5;
     overflow: hidden;
     box-sizing: border-box;
     //  margin-top:100px ;
+    .error {
+        font-size: 12px;
+        color: rgb(247, 121, 121);
+    }
 
     .overlaymenu {
         .menulist {

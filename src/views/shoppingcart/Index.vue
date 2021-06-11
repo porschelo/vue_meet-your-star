@@ -134,6 +134,7 @@ export default {
             }
 
             this.$store.dispatch('updateCart', cart);
+            // console.log(this.cartlist);
         },
         deleteBtn(index) {
             let newCart = [...this.cartlist];
@@ -155,7 +156,6 @@ export default {
         //取用vuex
         cartlist() {
             return this.$store.state.cartList;
-            // console.log(cartlist);
         },
         totalPrice() {
             // var sumPrice = 0;

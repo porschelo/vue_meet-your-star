@@ -196,7 +196,7 @@ export default {
 
         loginCheck() {
             axios
-                .post('http://localhost/meet_ur_heart/php/login.php', {
+                .post('http://localhost/tfd101/project/g3/php/login.php', {
                     userAccount: this.userAccount,
                     userPassword: this.userPassword,
                 })
@@ -327,15 +327,18 @@ export default {
                 alert('生日欄位不可空白');
             } else {
                 this.CheckStarSign();
-                axios.post('http://localhost/vue_meet_u_heart/php/signup.php', {
-                    signAccount: this.signAccount,
-                    signPassword: this.signPassword,
-                    signMemberPic: this.signMemberPic,
-                    signBirthdate: this.signBirthdate,
-                    signCellphone: this.signCellphone,
-                    signMemberL_Pic: this.signMemberL_Pic,
-                    monsterName: this.monsterName,
-                });
+                axios.post(
+                    'http://localhost/tfd101/project/g3/php/signup.php',
+                    {
+                        signAccount: this.signAccount,
+                        signPassword: this.signPassword,
+                        signMemberPic: this.signMemberPic,
+                        signBirthdate: this.signBirthdate,
+                        signCellphone: this.signCellphone,
+                        signMemberL_Pic: this.signMemberL_Pic,
+                        monsterName: this.monsterName,
+                    }
+                );
                 alert('歡迎加入冒險行列');
                 this.$store.commit('signVisible', false);
                 this.$store.commit('loginVisible', true);
