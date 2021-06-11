@@ -234,10 +234,10 @@ export default {
 // .is-red{
 // border: red solid 4px;
 // }
-.is-blue{
+// .is-blue{
     
-// border: rgb(16, 240, 27) solid 3px;
-}
+// // border: rgb(16, 240, 27) solid 3px;
+// }
 .selected{
 border: #4F4FFF solid 5px;
 box-shadow:4px 4px 12px;

@@ -26,7 +26,7 @@
                     alt=""
                 />
                 <h1>後台</h1>
-                <router-link to="/backMember" class="enda">
+                <router-link to="/back_member" class="enda">
                     <img
                         class="lighthere"
                         src="/images/landing/light.png"
