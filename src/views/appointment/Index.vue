@@ -231,9 +231,6 @@ export default {
      @import '@/scss/mixins.scss';
      @import '@/scss/rwd.scss';
      @import '@/scss/ap.scss'; 
-// .is-red{
-// border: red solid 4px;
-// }
 
 .selected{
 border: #4F4FFF solid 5px;
@@ -241,8 +238,9 @@ box-shadow:4px 4px 12px;
 border-style: inset;
 }
 
-.selecting{
-    border: 3px solid white;
-}
+// .selecting{
+//     border: 3px solid white;
+// }
+
 </style>
 
