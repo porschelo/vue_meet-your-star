@@ -4,7 +4,7 @@
             <div class="navbar">
                 <div class="logo">
                     <router-link to="/" class="logo">
-                        <img src="/images/header/logo.png" alt="" />
+                        <img src="images/header/logo.png" alt="" />
                     </router-link>
                 </div>
 
@@ -12,7 +12,7 @@
                     <ul>
                         <li>
                             <router-link to="/shoppingcart" class="cart">
-                                <img src="/images/header/cart.png" />
+                                <img src="images/header/cart.png" />
                             </router-link>
                         </li>
                         <li>
@@ -21,7 +21,7 @@
                                 @click="onOpenLogin"
                                 v-if="loginStatus == 0"
                             >
-                                <img src="/images/header/member.png" />
+                                <img src="images/header/member.png" />
                             </a>
                             <!-- <a class="login" v-else>
                                 <img :src = memberIcon >
@@ -41,7 +41,7 @@
                                 class="burgerbtn"
                                 @click="onMenuOpen"
                             >
-                                <img src="/images/header/burger.png" />
+                                <img src="images/header/burger.png" />
                             </button>
                         </li>
                     </ul>
@@ -150,7 +150,7 @@ header {
         align-items: center;
         padding-top: 30px;
         .mosterImg {
-            width: 55px;
+            width: 45px;
         }
         li {
             padding: 0 5px;
@@ -205,7 +205,7 @@ header {
             }
             li:nth-child(2) {
                 padding: 0 0;
-                width: 28px;
+                width: 22px;
                 a {
                     img {
                         width: 100%;
@@ -219,6 +219,7 @@ header {
 
             li:nth-child(3) {
                 padding: 0 0;
+                margin-left: 4px;
                 width: 50px;
                 .burgerbtn {
                     img {
@@ -247,7 +248,7 @@ header {
         justify-content: flex-end;
 
         .nav-menu {
-            background-image: url('../../public/images/header/nav.png');
+            background-image: url(/images/header/nav.png);
             background-size: 600px 400px;
             width: 600px;
             height: 400px;

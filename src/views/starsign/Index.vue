@@ -3,9 +3,9 @@
         <div class="galaxys__top galaxys">
             <div class="starsign_title">
                 <div class="starsign_title-c">
-                    <img src="/images/store/uv_icone.png" alt="" />
+                    <img src="images/store/uv_icone.png" alt="" />
                     <h1>星座探索</h1>
-                    <img src="/images/store/uv_icone.png" alt="" />
+                    <img src="images/store/uv_icone.png" alt="" />
                 </div>
                 <div class="starsign_title-e">
                     <h4>— Explore Star Sign —</h4>
@@ -13,16 +13,16 @@
             </div>
         </div>
         <div class="galaxys">
-            <img class="starship" src="/images/starsign/ss_bg2.png" alt="">
-            <router-link class="galx1" :to="{ name: 'Starsign', query: { id: 10 }}"><img src="/images/starsign/galx1.png" alt="" ></router-link>
-            <router-link class="galx2" :to="{ name: 'Starsign', query: { id: 1 }}"><img src="/images/starsign/galx2.png" alt="" ></router-link>
-            <router-link class="galx3" :to="{ name: 'Starsign', query: { id: 4 }}"><img src="/images/starsign/galx3.png" alt="" ></router-link>
-            <router-link class="galx4" :to="{ name: 'Starsign', query: { id: 7 }}"><img src="/images/starsign/galx4.png" alt="" ></router-link>
+            <img class="starship" src="images/starsign/ss_bg2.png" alt="">
+            <router-link class="galx1" :to="{ name: 'Starsign', query: { id: 10 }}"><img src="images/starsign/galx1.png" alt="" ></router-link>
+            <router-link class="galx2" :to="{ name: 'Starsign', query: { id: 1 }}"><img src="images/starsign/galx2.png" alt="" ></router-link>
+            <router-link class="galx3" :to="{ name: 'Starsign', query: { id: 4 }}"><img src="images/starsign/galx3.png" alt="" ></router-link>
+            <router-link class="galx4" :to="{ name: 'Starsign', query: { id: 7 }}"><img src="images/starsign/galx4.png" alt="" ></router-link>
         </div> 
 
         <section class="starsignsec">
             <div class="starsignswitch">
-                <router-link class="prbtn" :to="{ name: 'Starsign', query: { id: prev }}"><img src="/images/starsign/prbtn.png" alt=""></router-link>
+                <router-link class="prbtn" :to="{ name: 'Starsign', query: { id: prev }}"><img src="images/starsign/prbtn.png" alt=""></router-link>
                 <div class="drivingcard">
                     <h2>{{ starsignname }}</h2>
                     <div class="cardtop">
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                 </div>
-                <router-link class="nxbtn" :to="{ name: 'Starsign', query: { id: next }}"><img src="/images/starsign/nxbtn.png" alt=""></router-link>
+                <router-link class="nxbtn" :to="{ name: 'Starsign', query: { id: next }}"><img src="images/starsign/nxbtn.png" alt=""></router-link>
             </div>
             <div class="starsigncont">
                 <div class="starsignleft">
@@ -181,7 +181,8 @@ export default {
         this.prev = id === 0 ? 12 : id;
 
         axios
-            .post('http://localhost:8080/php/starsign.php')
+            // .post('http://localhost:8080/php/starsign.php')
+            .post('http://localhost/tfd101/project/g3/php/starsign.php')
             .then((res) => {
                 // console.log(res);
                 this.starinfo = res.data;
@@ -202,7 +203,8 @@ export default {
                 
             }),
         axios
-            .post('http://localhost:8080/php/article.php', 
+            // .post('http://localhost:8080/php/article.php')
+            .post('http://localhost/tfd101/project/g3/php/article.php', 
                { id: id + 1}, //傳給php
             )
             .then((res) => {
@@ -212,7 +214,8 @@ export default {
                 
             }),
         axios
-            .post('http://localhost:8080/php/luckyproduct.php')
+            // .post('http://localhost:8080/php/luckyproduct.php')
+            .post('http://localhost/tfd101/project/g3/php/luckyproduct.php')
             .then((res) => {
                 console.log(res);
                 this.starprdt = res.data;
