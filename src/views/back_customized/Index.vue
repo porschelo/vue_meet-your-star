@@ -206,8 +206,12 @@
 </template>
 <script>
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import { BModal, VBModal } from  'bootstrap-vue';
 
-export default {};
+
+export default {
+
+};
 </script>
 <style lang="scss">
     .backend{
