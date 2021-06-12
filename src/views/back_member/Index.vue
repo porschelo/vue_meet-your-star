@@ -180,7 +180,7 @@
     </div>
 </template>
 <script>
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 export default {};
 </script>
 <style lang="scss">
