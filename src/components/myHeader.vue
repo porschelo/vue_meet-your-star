@@ -205,7 +205,7 @@ header {
             }
             li:nth-child(2) {
                 padding: 0 0;
-                width: 28px;
+                width: 22px;
                 a {
                     img {
                         width: 100%;
