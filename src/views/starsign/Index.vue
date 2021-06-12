@@ -3,9 +3,9 @@
         <div class="galaxys__top galaxys">
             <div class="starsign_title">
                 <div class="starsign_title-c">
-                    <img src="/images/store/uv_icone.png" alt="" />
+                    <img src="images/store/uv_icone.png" alt="" />
                     <h1>星座探索</h1>
-                    <img src="/images/store/uv_icone.png" alt="" />
+                    <img src="images/store/uv_icone.png" alt="" />
                 </div>
                 <div class="starsign_title-e">
                     <h4>— Explore Star Sign —</h4>
@@ -13,36 +13,16 @@
             </div>
         </div>
         <div class="galaxys">
-            <img class="starship" src="/images/starsign/ss_bg2.png" alt="" />
-            <router-link
-                class="galx1"
-                :to="{ name: 'Starsign', query: { id: 10 } }"
-                ><img src="/images/starsign/galx1.png" alt=""
-            /></router-link>
-            <router-link
-                class="galx2"
-                :to="{ name: 'Starsign', query: { id: 1 } }"
-                ><img src="/images/starsign/galx2.png" alt=""
-            /></router-link>
-            <router-link
-                class="galx3"
-                :to="{ name: 'Starsign', query: { id: 4 } }"
-                ><img src="/images/starsign/galx3.png" alt=""
-            /></router-link>
-            <router-link
-                class="galx4"
-                :to="{ name: 'Starsign', query: { id: 7 } }"
-                ><img src="/images/starsign/galx4.png" alt=""
-            /></router-link>
-        </div>
+            <img class="starship" src="images/starsign/ss_bg2.png" alt="">
+            <router-link class="galx1" :to="{ name: 'Starsign', query: { id: 10 }}"><img src="images/starsign/galx1.png" alt="" ></router-link>
+            <router-link class="galx2" :to="{ name: 'Starsign', query: { id: 1 }}"><img src="images/starsign/galx2.png" alt="" ></router-link>
+            <router-link class="galx3" :to="{ name: 'Starsign', query: { id: 4 }}"><img src="images/starsign/galx3.png" alt="" ></router-link>
+            <router-link class="galx4" :to="{ name: 'Starsign', query: { id: 7 }}"><img src="images/starsign/galx4.png" alt="" ></router-link>
+        </div> 
 
         <section class="starsignsec">
             <div class="starsignswitch">
-                <router-link
-                    class="prbtn"
-                    :to="{ name: 'Starsign', query: { id: prev } }"
-                    ><img src="/images/starsign/prbtn.png" alt=""
-                /></router-link>
+                <router-link class="prbtn" :to="{ name: 'Starsign', query: { id: prev }}"><img src="images/starsign/prbtn.png" alt=""></router-link>
                 <div class="drivingcard">
                     <h2>{{ starsignname }}</h2>
                     <div class="cardtop">
@@ -74,11 +54,7 @@
                         </div>
                     </div>
                 </div>
-                <router-link
-                    class="nxbtn"
-                    :to="{ name: 'Starsign', query: { id: next } }"
-                    ><img src="/images/starsign/nxbtn.png" alt=""
-                /></router-link>
+                <router-link class="nxbtn" :to="{ name: 'Starsign', query: { id: next }}"><img src="images/starsign/nxbtn.png" alt=""></router-link>
             </div>
             <div class="starsigncont">
                 <div class="starsignleft">
@@ -234,7 +210,8 @@ export default {
         this.prev = id === 0 ? 12 : id;
 
         axios
-            .post('http://localhost/vue_meet_u_heart/php/starsign.php')
+            // .post('http://localhost:8080/tfd101/project/g3/php/starsign.php')
+            .post('http://localhost/tfd101/project/g3/php/starsign.php')
             .then((res) => {
                 // console.log(res);
                 this.starinfo = res.data;
@@ -252,28 +229,32 @@ export default {
                 this.pers3 = this.starinfo[id].PERSONLITY_3;
                 this.pers3val = this.starinfo[id].PERSONLITY_3_VALUE;
                 this.starsigndaily = this.starinfo[id].DAILY;
+                
             }),
-            axios
-                .post(
-                    'http://localhost/meet_ur_heart/php/article.php',
-                    { id: id + 1 } //傳給php
-                )
-                .then((res) => {
-                    console.log(res);
-                    this.starart = res.data;
-                    // console.log(this.starart);
-                }),
-            axios
-                .post('http://localhost/meet_ur_heart/php/luckyproduct.php')
-                .then((res) => {
-                    console.log(res);
-                    this.starprdt = res.data;
-                    // console.log(this.starprdt);
-
-                    this.sspdtitle = this.starprdt[id].PRODUCT_NAME;
-                    this.sspdimg = this.starprdt[id].PRODUCT_IMG;
-                    this.sspdid = this.starprdt[id].PRODUCT_ID;
-                });
+        axios
+            // .post('http://localhost:8080/tfd101/project/g3/php/article.php')
+            .post('http://localhost/tfd101/project/g3/php/article.php', 
+               { id: id + 1}, //傳給php
+            )
+            .then((res) => {
+                console.log(res);
+                this.starart = res.data;
+                // console.log(this.starart);
+                
+            }),
+        axios
+            // .post('http://localhost:8080/tfd101/project/g3/php/luckyproduct.php')
+            .post('http://localhost/tfd101/project/g3/php/luckyproduct.php')
+            .then((res) => {
+                console.log(res);
+                this.starprdt = res.data;
+                // console.log(this.starprdt);
+                
+                this.sspdtitle = this.starprdt[id].PRODUCT_NAME;
+                this.sspdimg = this.starprdt[id].PRODUCT_IMG;
+                this.sspdid = this.starprdt[id].PRODUCT_ID;
+                
+            });
     },
     filters: {
         //限制顯示字數
@@ -319,7 +300,7 @@ export default {
             padding: (80px+240px) * 0.7 0 0;
             z-index: 15;
             @include rwd(mobile) {
-                padding: (220px) * 0.7 0 0;
+                padding: (200px) * 0.7 0 0;
             }
             &-c {
                 display: flex;
@@ -329,13 +310,18 @@ export default {
                     width: 63px * 0.7;
                     height: 43px * 0.7;
                     margin-bottom: 5px;
+                    @include rwd(mobile) {
+                        width: 63px * 0.5;
+                        height: 43px * 0.5;
+                    }
                 }
             }
             h1 {
                 font-size: $h1;
-                padding: 5px 20px 10px;
+                padding: 5px 20px 0px;
                 @include rwd(mobile) {
                     font-size: $h1 - 8px;
+                    padding: 5px 15px 0px;
                 }
             }
             &-e {
@@ -539,7 +525,7 @@ export default {
                         display: flex;
                         margin-top: 24px;
                         @include rwd(pad2) {
-                            margin-top: 22px;
+                            margin-top: 12px;
                             margin-bottom: 28px;
                             justify-content: center;
                         }
@@ -558,16 +544,16 @@ export default {
                                 justify-content: center;
                                 align-items: center;
                                 flex-direction: column;
-                                padding-top: 0;
+                                padding-top: 7px;
                                 padding-left: 7px;
                             }
                             h3 {
                                 font-size: $h3;
-                                line-height: 1.2;
+                                line-height: 1;
                                 text-align: center;
                                 @include rwd(mobile) {
                                     font-size: 3.5vw;
-                                    line-height: 1.1;
+                                    line-height: .8;
                                 }
                             }
                         }
@@ -607,14 +593,14 @@ export default {
             h2 {
                 font-size: $h2;
                 color: rgb(252, 140, 99);
-                padding: 70px 0 40px;
+                padding: 70px 0 30px;
                 text-align: center;
                 @include rwd(pad2) {
                     padding: 32px 0 25px;
                 }
                 @include rwd(mobile) {
                     font-size: $h2 - 6px;
-                    padding: 32px 0 25px;
+                    padding: 32px 0 20px;
                 }
             }
             .starsignleft {
@@ -636,22 +622,23 @@ export default {
                     }
                     p {
                         font-size: $h3 - 1px;
-                        line-height: 1.6;
+                        letter-spacing: 2px;
+                        line-height: 1.7;
                         font-weight: 300;
-                        width: 380px;
+                        width: 356px;
                         color: #fff;
                         margin: auto;
                         padding-left: 15px;
                         @include rwd(pad2) {
                             font-size: $h3 - 4px;
                             width: 85%;
-                            padding-left: 0;
+                            padding-left: 0px;
                             margin-bottom: 30px;
                         }
                         @include rwd(mobile) {
                             font-size: $h3 - 8px;
                             width: 85%;
-                            padding-left: 0;
+                            padding-left: 10px;
                             margin-bottom: 30px;
                         }
                     }
@@ -693,6 +680,7 @@ export default {
                         color: #fff;
                         text-align: center;
                         margin-top: 30px;
+                        font-weight: 400;
                         @include rwd(pad2) {
                             font-size: $h3 - 4px;
                             margin-bottom: 30px;
@@ -700,6 +688,9 @@ export default {
                         @include rwd(mobile) {
                             font-size: $h3 - 7px;
                             margin-bottom: 30px;
+                        }
+                        &:hover{
+                            opacity: .7;
                         }
                     }
                 }
@@ -731,25 +722,29 @@ export default {
                         flex-direction: column;
                         align-items: center;
                         justify-content: center;
+                        padding-left: 10px;
                         .artitem {
-                            padding-left: 10px;
+                            padding-left: 0px;
                             width: 430px;
                             color: #fff;
                             margin-bottom: 38px;
                             @include rwd(pad2) {
                                 width: 85%;
-                                padding-left: 0;
                             }
                             .artitle {
                                 font-size: $h3 - 1px;
                                 line-height: 1.4;
                                 text-decoration: none;
                                 cursor: pointer;
+                                color: #fff;
                                 @include rwd(pad2) {
                                     font-size: $h3 - 3px;
                                 }
                                 @include rwd(mobile) {
                                     font-size: $h3 - 7px;
+                                }
+                                &:hover{
+                                    opacity: .7;
                                 }
                             }
                             .artminp {
@@ -772,6 +767,9 @@ export default {
                                 @include rwd(pad2) {
                                     font-size: $p2 - 3px;
                                     padding-right: 15px;
+                                }
+                                &:hover{
+                                    opacity: .5;
                                 }
                             }
                         }
@@ -840,7 +838,7 @@ export default {
                 .articlosebtn {
                     position: absolute;
                     top: 3px;
-                    right: 23px;
+                    right: 25px;
                     color: #aaa;
                     font-size: 55px;
                     font-weight: 200;

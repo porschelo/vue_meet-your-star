@@ -106,7 +106,7 @@
                                             </div>
 
                                             <!-- 表單開始 -->
-                                            <form :model="form2" :rules="rules" ref="loginForm" action="" @submit.prevent="handleSubmit">
+                                            <form   action="" >
                                                 <div class="error-message">
                                                     <p>請輸入有效email</p>
                                                 </div>
@@ -147,7 +147,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form_right">
-                                                        <button class="j_right">
+                                                        <button class="j_right" type="button">
                                                             <a
                                                                 @click="pay"
                                                                 class="j_right"
@@ -180,6 +180,8 @@ export default {
         return {
             memberinfo:[],
             name: '',
+            birthday:'',
+            phone:'',
             email: {
                 value: 'jo@hnd.oe',
                 valid: true,
@@ -188,21 +190,21 @@ export default {
                 value: '09xxxxxxxx',
                 valid:true,
             },
-            form2: {
-            name: '',
-            tel: '',
-            phone: '',
-            email: '',
-            url: ''
-            },
-            rules: {
-                tel: [{
-                required: true,
-                pattern: /\d{4}-\d{3}-\d{3}/,
-                message: "手機號碼格式錯誤",
-                trigger: "blur"
-                }],
-            },
+            // form2: {
+            // name: '',
+            // tel: '',
+            // phone: '',
+            // email: '',
+            // url: ''
+            // },
+            // rules: {
+            //     tel: [{
+            //     required: true,
+            //     pattern: /\d{4}-\d{3}-\d{3}/,
+            //     message: "手機號碼格式錯誤",
+            //     trigger: "blur"
+            //     }],
+            // },
             Content:'',
             payment:'信用卡付款(經由綠世界)',
             teacherinfo :[],
@@ -255,7 +257,7 @@ export default {
             {   TEACHER_NAME : this.$store.state.selectteacher,}
             )
                 .then((res1) => {
-                    console.log(res1);
+                    // console.log('res1',res1);
                     this.teacherinfo = res1.data;
                     this.teacherid = this.teacherinfo[0].TEACHER_ID;
                                                 
@@ -275,16 +277,16 @@ export default {
                 APPOINTMENT_CONTENT:this.Content,
                 id: this.$store.state.loginID,}
             )
-            // .then((res2) => {
-            //         console.log(res2);
-            //         this.teacherinfo = res1.data;
-            //         this.teacherid = this.teacherinfo[0].TEACHER_ID;
-                                                
-
-            //      });
+            .then((res2) => {
+                    // console.log('res2',res2.data);
+                    this.teacherinfo = res1.data;
+                    this.teacherid = this.teacherinfo[0].TEACHER_ID;
             this.$router.push({
                     path: '/apfinish',
-                });
+                });                       
+
+                 });
+            
 
         },
 

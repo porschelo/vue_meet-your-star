@@ -104,6 +104,7 @@
                     <div
                         v-for="(question, index) in questions"
                         :key="question.title"
+                        
                     >
                         <template v-if="index == vars">
                             <p>{{ question.title }}</p>
@@ -116,8 +117,8 @@
                                 <!-- 用 javasript 的概念去想這邊，這邊是對 question.choices 做迴圈，choice 則是每一個值 -->
                                 <input
                                     type="radio"
-                                    name="topic"
                                     v-model="question.value"
+                                   
                                     :value="choice.value"
                                 />
                                 <p>{{ choice.content }}</p>
@@ -156,6 +157,7 @@ export default {
             is_page: true,
             vars: 0,
             final: false,
+            select:'',
             finalAnswer: [],
             test:[],
             times:[],
@@ -624,11 +626,13 @@ export default {
 
     methods: {
         next() {
+            console.log(this.questions[this.vars].value);
+            if(this.questions[this.vars].value === null){
+                    alert('題目選項不能為空白');
+                    return false;
+            };
+    
             this.vars++;
-            // if(this.question.value = ""){
-            //         alert('選擇題不能為空白');
-            //         return false;
-            //     };
         },
         dealData() {
             // 選擇的value放入陣列

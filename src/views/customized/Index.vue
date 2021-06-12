@@ -56,7 +56,7 @@
                             <img
                                 src="/images/store/cardori.png"
                                 alt=""
-                                class="cust_prod card"
+                                class="cust_prod card1"
                                 v-if="showPro == 0"
                             />
                             <!-- <img src="images/store/cardy.png" alt="" class="cust_prod card" v-if= "showPro == 1">
@@ -295,8 +295,8 @@
                         </select>個
                         共<span style="color: #4eacf2">{{ totalNum }}</span>元
                     </p>
-                    <button class="cust-add">加入購物車</button>
-                    <button class="cust-buy">立即購買</button>
+                    <button class="cust-add" >加入購物車</button>
+                    <button class="cust-buy" @click="checkMember" >立即購買</button>
                 </div>
             </div>
         </div>
@@ -328,7 +328,17 @@ export default {
         myFooter,
         toTopBtn,
     },
-    methods: {},
+    methods: {
+         checkMember(){
+            if (this.$store.state.loginStatus == 0) {
+                this.$store.commit('loginVisible', true);
+            } else {
+                this.$router.push({
+                    path: '/apdate',
+                });
+            }
+        },
+    },
 
     computed: {
         totalNum() {
@@ -547,7 +557,7 @@ export default {
                 right: 5%;
                 top: 5%;
             }
-            .card {
+            .card1 {
                 width: 100%;
                 right: 1%;
             }
