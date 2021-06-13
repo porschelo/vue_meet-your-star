@@ -1,20 +1,20 @@
 <template>
     <div class="wrapper_landing">
         <div class="landingtitle">
-            <img src="/images/header/logo.png" alt="" />
+            <img src="images/header/logo.png" alt="" />
         </div>
         <div class="choose">
             <div class="twoend">
                 <img
                     class="whichend"
-                    src="/images/landing/gofrontend.png"
+                    src="images/landing/gofrontend.png"
                     alt=""
                 />
                 <h1>前台</h1>
                 <router-link to="/" class="enda">
                     <img
                         class="lighthere"
-                        src="/images/landing/light.png"
+                        src="images/landing/light.png"
                         alt=""
                     />
                 </router-link>
@@ -22,14 +22,14 @@
             <div class="twoend">
                 <img
                     class="whichend"
-                    src="/images/landing/gobackend.png"
+                    src="images/landing/gobackend.png"
                     alt=""
                 />
                 <h1>後台</h1>
                 <router-link to="/back_member" class="enda">
                     <img
                         class="lighthere"
-                        src="/images/landing/light.png"
+                        src="images/landing/light.png"
                         alt=""
                     />
                 </router-link>
