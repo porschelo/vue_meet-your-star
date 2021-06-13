@@ -496,30 +496,6 @@ export default {
 
     updated() {
         this.getChart();
-        // axios
-        //     .post(
-        //         'http://localhost/meet_ur_heart/php/product_detail_select.php',
-        //         {
-        //             productId: this.$store.state.productId,
-        //             //送去php 被點擊商品的id
-        //         }
-        //     )
-        //     .then((res) => {
-        //         this.productsArr = res.data;
-        //         this.productData2.productName = this.productsArr[0].PRODUCT_NAME;
-        //         this.productData2.productImg1 = this.productsArr[0].PRODUCT_IMG;
-        //         this.productData2.productImg2 = this.productsArr[0].PRODUCT_IMG2;
-        //         this.productData2.productImg3 = this.productsArr[0].PRODUCT_IMG3;
-        //         this.productData2.productType = this.productsArr[0].PRODUCT_TYPE;
-        //         this.productData2.productPrice = parseInt(
-        //             this.productsArr[0].PRODUCT_PRICE
-        //         );
-        //         this.productData2.productInfo = this.productsArr[0].PRODUCT_INFO;
-        //         // this.typeChange(this.productsArr[0].PRODUCT_TYPE);
-        //         this.typeChange(this.productType); //this.productType='2'
-        //         console.log(this.productData2);
-        //         console.log(this.totalNum);
-        //     });
     },
 };
 </script>

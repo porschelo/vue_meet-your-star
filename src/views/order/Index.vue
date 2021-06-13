@@ -6,13 +6,13 @@
             <div class="j_title">
                 <div class="j_bigtitle">
                     <img
-                        src="/images/appointment/earth2.png"
+                        src="images/appointment/earth2.png"
                         alt=""
                         id="earth"
                     />
                     <h1>訂單確認</h1>
                     <img
-                        src="/images/appointment/earth2.png"
+                        src="images/appointment/earth2.png"
                         alt=""
                         id="earth"
                     />
@@ -259,6 +259,9 @@ export default {
 
             isSameMember: false,
             isSamePeopel: false,
+
+            listIdArr: [],
+            listId: 0,
         };
     },
     mixins: [validationMixin],
@@ -313,9 +316,55 @@ export default {
             }
         },
         payFinish() {
-            this.$router.push({
-                path: '/product_finish',
-            });
+            // console.log(this.$store.state.cartList);
+            //list
+            // axios
+            //     .post('http://localhost/tfd101/project/g3/php/order.php', {
+            //         memberId: this.$store.state.loginID,
+            //         listCount: this.$store.state.cartList.length,
+            //         listPrice: this.billTotal,
+            //     })
+            //     .catch((error) => console.log(error)); //失敗時候的處理函數
+            // }
+            //ajax是非同步 要確定執行完成才取得到資料，如果事情要一起處理完成就寫在一隻php依序處理
+            //或是三個ajax寫成function依序去呼叫  第三個axios的productId是因為上一個還沒完成所以取不到值
+            //取最新商品的list id
+            axios
+                .post(
+                    'http://localhost/tfd101/project/g3/php/selectListId.php',
+                    {
+                        memberId: this.$store.state.loginID,
+                        listCount: this.$store.state.cartList.length,
+                        listPrice: this.billTotal,
+                        productList: this.$store.state.cartList,
+                    }
+                )
+                .catch((error) => console.log(error));
+            // .then((res2) => {
+            //     // this.listIdArr = res2.data;
+            //     // this.listId = this.listIdArr[0].LIST_ID;
+            //     // console.log(this.listIdArr);
+            //     // console.log(this.listId);
+            // });
+
+            //listContent
+            // axios
+            //     .post(
+            //         'http://localhost/tfd101/project/g3/php/orderListContent.php',
+            //         {
+            //             listId: this.listId,
+            //             productList: this.$store.state.cartList,
+            //             // productId: this.$store.state.cartList,
+            //             // productCount: this.$store.state.cartList.count,
+            //             // productPrice: this.$store.state.cartList.total,
+            //         }
+            //     )
+            //     .catch((error) => console.log(error)); //失敗時候的處理函數
+            // // }
+
+            // this.$router.push({
+            //     path: '/product_finish',
+            // });
         },
         isPhone() {
             var re = /^09[0-9]{8}$/;

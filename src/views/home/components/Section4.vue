@@ -7,19 +7,19 @@
                 href="#1"
             >
                 <img
-                    src="/images/index/planet/土象/planet_icon_capricorn.svg"
+                    src="images/index/planet/土象/planet_icon_capricorn.svg"
                     alt=""
                 />
             </a>
             <a @click="changePlanet($event, 2)" class="icon_Taurus" href="#2">
                 <img
-                    src="/images/index/planet/土象/planet_icon_Taurus.svg"
+                    src="images/index/planet/土象/planet_icon_Taurus.svg"
                     alt=""
                 />
             </a>
             <a @click="changePlanet($event, 3)" class="icon_virgo" href="#3">
                 <img
-                    src="/images/index/planet/土象/planet_icon_virgo.svg"
+                    src="images/index/planet/土象/planet_icon_virgo.svg"
                     alt=""
                 />
             </a>
@@ -29,18 +29,18 @@
                 :style="`visibility:${showNum === 0 ? 'visible' : 'hidden'}`"
                 class="planet earth"
             >
-                <img src="/images/index/planet/土象/土象.svg" alt="" />
+                <img src="images/index/planet/土象/土象.svg" alt="" />
             </div>
             <!-- 方法二  物件-->
             <div
                 :style="{ visibility: showNum === 1 ? 'visible' : 'hidden' }"
                 class="planet capricorn"
             >
-                <img src="/images/index/planet/土象/70_1.svg" alt="" />
+                <img src="images/index/planet/土象/70_1.svg" alt="" />
                 <router-link :to="{ name: 'Starsign', query: { id: 1 } }">
                     <img
                         class="planet-monst-capricorn"
-                        src="/images/index/planet/土象/capricorn_click_me.svg"
+                        src="images/index/planet/土象/capricorn_click_me.svg"
                         alt=""
                     />
                 </router-link>
@@ -50,22 +50,22 @@
                 class="planet taurus"
                 :style="`visibility:${showNum === 2 ? 'visible' : 'hidden'}`"
             >
-                <img src="/images/index/planet/土象/70_2.svg" alt="" />
+                <img src="images/index/planet/土象/70_2.svg" alt="" />
                 <router-link :to="{ name: 'Starsign', query: { id: 2 } }">
                     <img
                         class="planet-monst-taurus"
-                        src="/images/index/planet/土象/taurus_click me.svg"
+                        src="images/index/planet/土象/taurus_click me.svg"
                         alt=""
                     />
                 </router-link>
             </div>
             <!-- 方法三 function-->
             <div class="planet virgo" :style="changeStyle(3)">
-                <img src="/images/index/planet/土象/70_3.svg" alt="" />
+                <img src="images/index/planet/土象/70_3.svg" alt="" />
                 <router-link :to="{ name: 'Starsign', query: { id: 3 } }">
                     <img
                         class="planet-monst-irgo"
-                        src="/images/index/planet/土象/virgo_click_me.svg"
+                        src="images/index/planet/土象/virgo_click_me.svg"
                         alt=""
                     />
                 </router-link>

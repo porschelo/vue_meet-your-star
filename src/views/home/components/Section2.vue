@@ -1,7 +1,7 @@
 <template>
     <div class="i-section2">
         <div class="t-text">
-            <img src="/images/index/logo.svg" alt="" />
+            <img src="images/index/logo.svg" alt="" />
             <p>
                 人不斷茫然的迷失在人生的十字路口，不停的面臨抉擇。
                 我們想幫助大家了解未來的生命趨勢，協助您解密星座命盤，了解自身盲點，
@@ -12,41 +12,41 @@
             <span class="monster-box first">
                 <img
                     class="monster-item"
-                    src="/images/index/monster/m1-pisces.svg"
+                    src="images/index/monster/m1-pisces.svg"
                     alt=""
                 />
             </span>
             <span class="monster-box">
                 <img
                     class="monster-item"
-                    src="/images/index/monster/m2-cancer.svg"
+                    src="images/index/monster/m2-cancer.svg"
                     alt=""
                 />
             </span>
             <span class="monster-box">
                 <img
                     class="monster-item"
-                    src="/images/index/monster/m3-aquarius.svg"
+                    src="images/index/monster/m3-aquarius.svg"
                     alt=""
             /></span>
             <span class="monster-box">
                 <img
                     class="monster-item"
-                    src="/images/index/monster/m4-gemini.svg"
+                    src="images/index/monster/m4-gemini.svg"
                     alt=""
             /></span>
             <span class="monster-box scorpio">
                 <img
                     class="monster-item"
-                    src="/images/index/monster/m5-scorpio.svg"
+                    src="images/index/monster/m5-scorpio.svg"
                     alt=""
             /></span>
         </div>
         <div class="left-monster">
-            <img src="/images/index/monster/m6-virgo.svg" alt="" />
+            <img src="images/index/monster/m6-virgo.svg" alt="" />
         </div>
         <div class="right-monster">
-            <img src="/images/index/monster/m7-libra.svg" alt="" />
+            <img src="images/index/monster/m7-libra.svg" alt="" />
         </div>
     </div>
 </template>

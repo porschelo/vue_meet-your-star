@@ -27,7 +27,7 @@
                 <div class="cloud">
                     <p>預約談星</p>
                 </div>
-                <img src="/images/index/ufo.svg" alt="" />
+                <img src="images/index/ufo.svg" alt="" />
             </router-link>
         </div>
     </div>

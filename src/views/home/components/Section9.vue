@@ -20,7 +20,7 @@
             <div class="index_swiper crs">
                 <div class="index_prbtn">
                     <a href="">
-                        <img src="/images/index/prbtn.png" alt="" />
+                        <img src="images/index/prbtn.png" alt="" />
                     </a>
                 </div>
                 <div class="swiper-container mySwiper gap">
@@ -42,7 +42,7 @@
                                         :src="item.DAILY_IMG"
                                         alt=""
                                     />
-                                    <!-- src="/images/index/info_Img/sing1.svg" -->
+                                    <!-- src="images/index/info_Img/sing1.svg" -->
                                     <h3 class="inner_text">
                                         {{ item.DAILY }}
                                     </h3>
@@ -55,7 +55,7 @@
                                 <div class="sing_info2">
                                     <img
                                         class="info_img"
-                                        src="/images/index/info_Img/sing2.svg"
+                                        src="images/index/info_Img/sing2.svg"
                                         alt=""
                                     />
                                     <h3 class="inner_text">
@@ -71,7 +71,7 @@
                                 <div class="product_info3">
                                     <img
                                         class="info_img"
-                                        src="/images/index/info_Img/sing3.svg"
+                                        src="images/index/info_Img/sing3.svg"
                                         alt=""
                                     />
                                     <h3 class="inner_text">
@@ -88,7 +88,7 @@
                                 <div class="product_info4">
                                     <img
                                         class="info_img"
-                                        src="/images/index/info_Img/sing1.svg"
+                                        src="images/index/info_Img/sing1.svg"
                                         alt=""
                                     />
                                     <h3 class="inner_text">
@@ -105,7 +105,7 @@
 
                 <div class="index_nextbtn">
                     <a href="">
-                        <img src="/images/index/nxbtn.png" alt="" />
+                        <img src="images/index/nxbtn.png" alt="" />
                     </a>
                 </div>
             </div>
@@ -126,7 +126,7 @@
             <div class="index_swiper crs">
                 <div class="index_prbtn2">
                     <a href="">
-                        <img src="/images/index/prbtn.png" alt="" />
+                        <img src="images/index/prbtn.png" alt="" />
                     </a>
                 </div>
                 <div class="swiper-container mySwiper gap">
@@ -160,7 +160,7 @@
 
                 <div class="index_nextbtn2">
                     <a href="">
-                        <img src="/images/index/nxbtn.png" alt="" />
+                        <img src="images/index/nxbtn.png" alt="" />
                     </a>
                 </div>
             </div>

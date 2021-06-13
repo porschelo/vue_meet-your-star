@@ -167,11 +167,6 @@ const routes = [
         component: BackCustomized,
     },
     {
-        path: '/back_customized',
-        name: 'BackCustomized',
-        component: BackCustomized,
-    },
-    {
         path: '/back_member',
         name: 'BackMember',
         component: BackMember,

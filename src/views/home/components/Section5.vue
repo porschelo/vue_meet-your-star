@@ -2,47 +2,47 @@
     <div class="i-section5">
         <div class="i-section5-wind">
             <a @click="changePlanet($event, 1)" class="icon_libra" href="">
-                <img src="/images/index/planet/風象/libra_icon.svg" alt="" />
+                <img src="images/index/planet/風象/libra_icon.svg" alt="" />
             </a>
             <a @click="changePlanet($event, 2)" class="icon_aquarius" href="">
-                <img src="/images/index/planet/風象/aquarius_icon.svg" alt="" />
+                <img src="images/index/planet/風象/aquarius_icon.svg" alt="" />
             </a>
             <a @click="changePlanet($event, 3)" class="icon_gemini" href="">
-                <img src="/images/index/planet/風象/gemini_icon.svg" alt="" />
+                <img src="images/index/planet/風象/gemini_icon.svg" alt="" />
             </a>
 
             <div :class="{ isShow: showNum === 0 }" class="planet wind">
-                <img src="/images/index/planet/風象/風向.svg" alt="" />
+                <img src="images/index/planet/風象/風向.svg" alt="" />
             </div>
             <div :class="{ isShow: showNum === 1 }" class="planet libra">
-                <img src="/images/index/planet/風象/planet_libra.svg" alt="" />
+                <img src="images/index/planet/風象/planet_libra.svg" alt="" />
                 <router-link :to="{ name: 'Starsign', query: { id: 4 } }">
                     <img
                         class="planet_monst_libra"
-                        src="/images/index/planet/風象/天秤帶字.svg"
+                        src="images/index/planet/風象/天秤帶字.svg"
                         alt=""
                     />
                 </router-link>
             </div>
             <div :class="{ isShow: showNum === 2 }" class="planet aquarius">
                 <img
-                    src="/images/index/planet/風象/planet_aquarius.svg"
+                    src="images/index/planet/風象/planet_aquarius.svg"
                     alt=""
                 />
                 <router-link :to="{ name: 'Starsign', query: { id: 5 } }">
                     <img
                         class="planet_monst_aquarius"
-                        src="/images/index/planet/風象/水瓶帶字.svg"
+                        src="images/index/planet/風象/水瓶帶字.svg"
                         alt=""
                     />
                 </router-link>
             </div>
             <div :class="{ isShow: showNum === 3 }" class="planet gemini">
-                <img src="/images/index/planet/風象/planet_gemini.svg" alt="" />
+                <img src="images/index/planet/風象/planet_gemini.svg" alt="" />
                 <router-link :to="{ name: 'Starsign', query: { id: 6 } }">
                     <img
                         class="planet_monst_gemini"
-                        src="/images/index/planet/風象/雙子帶字.svg"
+                        src="images/index/planet/風象/雙子帶字.svg"
                         alt=""
                     />
                 </router-link>

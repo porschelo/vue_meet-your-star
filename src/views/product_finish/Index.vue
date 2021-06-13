@@ -24,13 +24,13 @@
                         <div class="j_title">
                             <div class="j_bigtitle">
                                 <img
-                                    src="/images/appointment/earth2.png"
+                                    src="images/appointment/earth2.png"
                                     alt=""
                                     id="earth"
                                 />
                                 <h1>訂購完成</h1>
                                 <img
-                                    src="/images/appointment/earth2.png"
+                                    src="images/appointment/earth2.png"
                                     alt=""
                                     id="earth"
                                 />
@@ -61,8 +61,7 @@
                                 <div class="j_panel_notice">
                                     <p>
                                         欲查看訂單詳情請前往會員中心<br />
-                                        若有任何問題,歡迎來電告知<br />
-                                        電話:02-27580000
+                                        若有任何問題,歡迎來電02-27580000告知
                                     </p>
                                 </div>
                             </div>
@@ -87,7 +86,9 @@ export default {
     },
     mounted() {
         axios
-            .post('http://localhost/meetyourstars/selectappointment.php')
+            .post(
+                'http://localhost/tfd101/project/g3/php/selectappointment.php'
+            )
             .then((res) => {
                 console.log(res);
                 this.teacher = res.data;
@@ -109,5 +110,8 @@ export default {
 }
 p {
     line-height: 1.6;
+}
+.j_panel_inner {
+    height: 550px;
 }
 </style>
