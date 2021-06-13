@@ -29,7 +29,13 @@
                         </div>
                         <!-- 進度條 -->
                         <div class="j_progress">
-                            <li class="container__item">
+                            <div class="progress">
+                        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+                        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%; ">
+                            50%
+                        </div>
+                    </div>
+                            <!-- <li class="container__item">
                                 <div class="stepper">
                                     <input
                                         class="stepper__input"
@@ -93,7 +99,7 @@
                                         </p>
                                     </div>
                                 </div>
-                            </li>
+                            </li> -->
                         </div>
 
                         <!-- 儀錶板 -->
@@ -124,65 +130,51 @@
                                     </tr>
                                     <tr>
                                         <td data-th="時間">11:00-13:00</td>
-                                        <td data-th="6/06(日)"  @click.prevent="appointed = ''" v-if="appointed === '6/06'" class="appointed">
-                                            {{item.APPOINTMENT_DATE}}預約成功
+                                        <td data-th="6/06(日)" @click.prevent="checkAppointed('6/06 11:00~13:00') ? setAppointed('') : setAppointed('6/06 11:00~13:00')" :class="checkAppointed('6/06 11:00~13:00') ? 'appointed' : 'able'">
+                                            {{checkAppointed('6/06 11:00~13:00') ? '已預約' : '可預約' }}
                                         </td>
-                                        <td data-th="6/06(日)" v-else @click.prevent="appointed = '6/06'" class="able">
-                                            可預約
-                                        </td> 
 
-                                        <td data-th="6/07(一)" >
-                                            
+                                        <td data-th="6/07(一)" @click.prevent="checkAppointed('6/07 11:00~13:00') ? setAppointed('') : setAppointed('6/07 11:00~13:00')" :class="checkAppointed('6/07 11:00~13:00') ? 'appointed' : 'able'">
+                                            {{checkAppointed('6/07 11:00~13:00') ? '已預約' : '可預約' }}
                                         </td>
 
                                         <td data-th="6/08(二)" ></td>
 
-                                        <td data-th="6/09(三)" @click.prevent="setAppointed('')" v-if="appointed === '6/09'" class="appointed" >
-                                            已預約
-                                        </td> 
-                                        <td data-th="6/09(三)" v-else @click.prevent="setAppointed('6/09 11:00-13:00')" class="able">
-                                            可預約
-                                        </td> 
-
-                                        <td data-th="6/10(四)" @click.prevent="setAppointed('')" v-if="appointed === '6/10'" class="appointed">
-                                            已預約
+                                        <td data-th="6/09(三)" @click.prevent="checkAppointed('6/09 11:00~13:00') ? setAppointed('') : setAppointed('6/09 11:00~13:00')" :class="checkAppointed('6/09 11:00~13:00') ? 'appointed' : 'able'">
+                                            {{checkAppointed('6/09 11:00~13:00') ? '已預約' : '可預約' }}
                                         </td>
-                                        <td data-th="6/10(四)" v-else @click.prevent="setAppointed('6/10 11:00-13:00')" class="able">
-                                            可預約
-                                        </td> 
+
+                                        <td data-th="6/10(四)" @click.prevent="checkAppointed('6/10 11:00~13:00') ? setAppointed('') : setAppointed('6/10 11:00~13:00')" :class="checkAppointed('6/10 11:00~13:00') ? 'appointed' : 'able'">
+                                            {{checkAppointed('6/10 11:00~13:00') ? '已預約' : '可預約' }}
+                                        </td>
 
 
                                         <td data-th="6/11(五)"></td>
-                                        <td data-th="6/12(六)" @click.prevent="setAppointed('')" v-if="appointed === '6/12'" class="appointed">
-                                            已預約
+                                        <td data-th="6/12(六)" @click.prevent="checkAppointed('6/12 11:00~13:00') ? setAppointed('') : setAppointed('6/12 11:00~13:00')" :class="checkAppointed('6/12 11:00~13:00') ? 'appointed' : 'able'">
+                                            {{checkAppointed('6/12 11:00~13:00') ? '已預約' : '可預約' }}
                                         </td>
-                                        <td data-th="6/12(六)" v-else @click.prevent="setAppointed('6/12 11:00-13:00')" class="able">
-                                            可預約
-                                        </td> 
 
                                     </tr>
                                     <tr>
                                         <td data-th="時間">13:00~15:00</td>
                                         <td data-th="6/06(日)">
-                                            可預約
+                                            
                                         </td>
                             
 
                                         <td data-th="6/07(一)"></td>
-                                        <td data-th="6/08(二)" @click.prevent="setAppointed('')" v-if="appointed === '6/08'" class="appointed"
-                                        v-class="{active: isActive}">
-                                            可預約
+                                        <td data-th="6/08(二)" @click.prevent="checkAppointed('6/08 13:00~15:00') ? setAppointed('') : setAppointed('6/08 13:00~15:00')" :class="checkAppointed('6/08 13:00~15:00') ? 'appointed' : 'able'">
+                                            {{checkAppointed('6/08 13:00~15:00') ? '已預約' : '可預約' }}
                                         </td>
-                                        <td data-th="6/08(二)" v-else @click.prevent="setAppointed('6/08 13:00~15:00')" class="able">
-                                            可預約
-                                        </td> 
 
 
-                                        <td data-th="6/09(三)" class="able">
-                                            可預約
+                                        <td data-th="6/09(三)" >
+                                            
                                         </td>
                                         <td data-th="6/10(四)"></td>
-                                        <td data-th="6/11(五)"></td>
+                                        <td data-th="6/11(五)" @click.prevent="checkAppointed('6/11 13:00~15:00') ? setAppointed('') : setAppointed('6/11 13:00~15:00')" :class="checkAppointed('6/11 13:00~15:00') ? 'appointed' : 'able'">
+                                            {{checkAppointed('6/11 13:00~15:00') ? '已預約' : '可預約' }}
+                                        </td>
                                         <td data-th="6/12(六)">
                                         </td>
 
@@ -190,20 +182,18 @@
                                     </tr>
                                     <tr>
                                         <td data-th="時間">15:00~17:00</td>
-                                        <td data-th="6/06(日)" class="able">
-                                            可預約
+                                        <td data-th="6/06(日)" >
+                                            
                                         </td>
                                         <td data-th="6/07(一)"></td>
                                         <td data-th="6/08(二)">
                                         </td>
-                                        <td data-th="6/09(三)"></td>
-                                        <td data-th="6/10(四)"></td>
-                                        <td data-th="6/11(五)" @click.prevent="setAppointed('')" v-if="appointed === '6/11'" class="able">
-                                            {{status}}
+                                        <td data-th="6/09(三)" @click.prevent="checkAppointed('6/09 15:00~17:00') ? setAppointed('') : setAppointed('6/09 15:00~17:00')" :class="checkAppointed('6/09 15:00~17:00') ? 'appointed' : 'able'">
+                                            {{checkAppointed('6/09 15:00~17:00') ? '已預約' : '可預約' }}
                                         </td>
-                                        <td data-th="6/11(五)" v-else @click.prevent="setAppointed('6/11 15:00~17:00')" class="appointed">
-                                            {{status}}
-                                        </td> 
+                                        <td data-th="6/10(四)"></td>
+                                        <td data-th="6/11(五)">
+                                        </td>
                                         <td data-th="6/12(六)"></td>
                                     </tr>
                                 </tbody>
@@ -242,19 +232,19 @@
 
 <script>
 import myFooter from '@/components/myFooter';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import axios from 'axios';
 
 export default {
     // el:".j_wrapper",
     data() {
         return {
-            // isActive: true,  //出現
-            // hasError: false, //不出現
-            datestatus:0,
-            status: '可預約',
-            // isShow: false,
-            // changecolor: false,
-            appointed:'6/11',
+            
+            // datestatus:0,
+            // status: '可預約',
+            
+            appointed:'6/11 15:00~17:00', //string 單個預約日期 
             
                       
             
@@ -274,9 +264,12 @@ export default {
     },
 
     methods: {
-        // toggle() {
-        // this.isActive = !this.isActive;
-        // },
+        toggle() {
+        this.isActive = !this.isActive;
+        },
+        checkAppointed(date){
+            return this.appointed === date;
+        },
         setAppointed(date){
         this.appointed = date;
         
@@ -287,7 +280,6 @@ export default {
             this.datestatus = 1;
 
         }
-        // this.inner_text = '已預約';
         
 
 

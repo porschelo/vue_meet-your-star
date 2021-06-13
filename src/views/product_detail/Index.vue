@@ -108,9 +108,9 @@
             <div class="product-detail_info">
                 <h2>— 商品介紹 —</h2>
                 <div class="pd-chart">
-                    <a @click="getChart">
-                        <p>購買此商品的星座比例</p>
-                    </a>
+                    <!-- <a @click="getChart"> -->
+                    <p>看看購買此商品的星座比例</p>
+                    <!-- </a> -->
                     <canvas id="myChart1" width="400" height="400"></canvas>
                 </div>
                 <div class="pd-more">
@@ -273,7 +273,6 @@ export default {
             //     // count: 1,
             // },
             productData2: null,
-            likelist: [],
         };
     },
 
@@ -343,13 +342,50 @@ export default {
             });
         },
         addToCart() {
-            let newPdData = { ...this.productData2 };
-            newPdData.total = this.totalNum();
-            // console.log(this.totalNum());
-            // console.log(this.totalNum);
-            // console.log(newPdData);
-            // this.productData.tatol=  this.totalNum
-            this.$store.dispatch('addToCart', newPdData);
+            let newPdData = {};
+            if (this.$store.state.cartList.length === 0) {
+                newPdData = { ...this.productData2 };
+                newPdData.total = this.totalNum();
+                this.$store.dispatch('addToCart', newPdData);
+            } else {
+                //用於後面的判斷式
+                let idcheck = true;
+                //for loop寫法
+                // for (let i = 0; i < this.$store.state.cartList.length; i++) {
+                //     if (
+                //         this.$store.state.cartList[i].productId ===
+                //         this.productData2.productId
+                //     ) {
+                //         idcheck = false;
+                //         alert('此商品已加入購物車囉');
+                //     }
+                // }
+                this.$store.state.cartList.forEach((element) => {
+                    if (element.productId === this.productData2.productId) {
+                        idcheck = false;
+                        alert('此商品已加入購物車囉，請去購物車調整數量');
+                    }
+                });
+                if (idcheck === true) {
+                    newPdData = { ...this.productData2 };
+                    newPdData.total = this.totalNum();
+                    console.log(newPdData);
+                    this.$store.dispatch('addToCart', newPdData);
+                }
+            }
+            // this.$store.state.cartList[productId] =
+
+            // if (
+            //     this.productData2.productId ===
+            //     this.$store.state.cartList[0].productId
+            // ) {
+            //     alert('此商品已加入購物車囉！');
+            // } else {
+            //     let newPdData = {};
+            //     newPdData = { ...this.productData2 };
+            //     newPdData.total = this.totalNum();
+            //     this.$store.dispatch('addToCart', newPdData);
+            // }
         },
         addlike() {
             if (this.$store.state.loginStatus == 0) {
@@ -359,7 +395,7 @@ export default {
                     this.islike = 0;
 
                     axios.post(
-                        'http://localhost/meet_ur_heart/php/product_addlike_select.php',
+                        'http://localhost/tfd101/project/g3/php/product_addlike_select.php',
                         {
                             memberId: this.$store.state.loginID,
                             productId: this.productData2.productId,
@@ -371,7 +407,7 @@ export default {
                     if (yes) {
                         this.islike = 1;
                         axios.post(
-                            'http://localhost/meet_ur_heart/php/product_addlike_delete.php',
+                            'http://localhost/tfd101/project/g3/php/product_addlike_delete.php',
                             {
                                 memberId: this.$store.state.loginID,
                                 productId: this.productData2.productId,
@@ -419,13 +455,13 @@ export default {
         },
     },
     created() {
-        //  this.getChart();
+        // this.getChart();
         //抓網址
         let urlParams = new URLSearchParams(window.location.search);
         let id = urlParams.get('id');
         axios
             .post(
-                'http://localhost/vue_meet_u_heart/php/product_detail_select.php',
+                'http://localhost/tfd101/project/g3/php/product_detail_select.php',
                 {
                     productId: id,
                     //送去php 被點擊商品的id
@@ -448,7 +484,7 @@ export default {
                 productData.productPrf = this.productsArr[0].PRODUCT_PRF;
                 productData.productId = this.productsArr[0].PRODUCT_ID;
                 productData.count = 1;
-                //把暫存資料都一次用到data2
+                //把暫存資料productData一次用到data2
                 this.productData2 = productData;
 
                 //把類型的值帶入switch轉成文字
@@ -458,8 +494,8 @@ export default {
             });
     },
 
-    mounted() {
-        this.getChart;
+    updated() {
+        this.getChart();
         // axios
         //     .post(
         //         'http://localhost/meet_ur_heart/php/product_detail_select.php',
@@ -484,11 +520,6 @@ export default {
         //         console.log(this.productData2);
         //         console.log(this.totalNum);
         //     });
-    },
-    computed: {
-        // sendproductId() {
-        //     return this.$store.state.productId;
-        // },
     },
 };
 </script>

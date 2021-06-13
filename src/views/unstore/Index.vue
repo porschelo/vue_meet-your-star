@@ -256,7 +256,7 @@ export default {
     mounted() {
         axios
             .post(
-                'http://localhost/vue_meet_u_heart/php/product_unstore_select.php'
+                'http://localhost/tfd101/project/g3/php/product_unstore_select.php'
             )
             .then((res) => {
                 this.dataList = res.data;

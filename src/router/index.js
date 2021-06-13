@@ -22,6 +22,7 @@ import ApDate from '@/views/apdate/Index.vue';
 import ApConfirm from '@/views/apconfirm/Index.vue';
 import ApFinish from '@/views/apfinish/Index.vue';
 import Order from '@/views/order/Index.vue';
+import ProductFinish from '@/views/product_finish/Index.vue';
 import BackCustomized from '@/views/back_customized/Index.vue';
 import BackMember from '@/views/back_member/Index.vue';
 import BackMessageList from '@/views/back_message_list/Index.vue';
@@ -64,6 +65,11 @@ const routes = [
         path: '/unstore/product_detail',
         name: 'ProductDetail',
         component: ProductDetail,
+    },
+    {
+        path: '/product_finish',
+        name: 'ProductFinish',
+        component: ProductFinish,
     },
     {
         path: '/matchandtest',
