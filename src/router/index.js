@@ -35,6 +35,7 @@ import BackTeacher from '@/views/back_teacher/Index.vue';
 import BackTest from '@/views/back_test/Index.vue';
 import BackThdate from '@/views/back_thdate/Index.vue';
 import BackThorder from '@/views/back_thorder/Index.vue';
+import BackProductCreate from '@/views/back_product_create/Index.vue';
 
 // 動態載入（延遲）
 // route level code-splitting
@@ -224,6 +225,11 @@ const routes = [
         path: '/back_thorder',
         name: 'BackThorder',
         component: BackThorder,
+    },
+    {
+        path: '/back_product_create',
+        name: 'BackProductCreate',
+        component: BackProductCreate,
     },
 ];
 

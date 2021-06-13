@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <my-header v-if="$route.name !== 'Landing' && $route.name!=='BackMember'"></my-header>
+        <my-header v-if="$route.name !== 'Landing' && $route.name!=='BackMember' && $route.name!=='BackShoppingProduct' && $route.name!=='BackProductCreate'"></my-header>
 
         <!-- router渲染的標籤 -->
         <router-view :key="$route.fullPath" />

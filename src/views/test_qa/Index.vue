@@ -5,12 +5,12 @@
             <!-- 標題 -->
             <div class="tResult_title">
                 <div class="tResult_title-c">
-                    <img src="/images/store/uv_icone.png" alt="" />
+                    <img src="images/store/uv_icone.png" alt="" />
                     <h1>心理測驗結果</h1>
-                    <img src="/images/store/uv_icone.png" alt="" />
+                    <img src="images/store/uv_icone.png" alt="" />
                 </div>
                 <div class="tResult_title-e">
-                    <h4>— Personality Test Result —</h4>
+                    <p>— Personality Test Result —</p>
                 </div>
             </div>
 
@@ -40,15 +40,15 @@
                             <div class="kind_Constellations">
                                 <div class="kc_one">
                                     <img :src="results[finalAnswer].matchOne" />
-                                    <h3>
+                                    <h5>
                                         {{ results[finalAnswer].matchTitleOne }}
-                                    </h3>
+                                    </h5>
                                 </div>
                                 <div class="kc_two">
                                     <img :src="results[finalAnswer].matchTwo" />
-                                    <h3>
+                                    <h5>
                                         {{ results[finalAnswer].matchTitleTwo }}
-                                    </h3>
+                                    </h5>
                                 </div>
                             </div>
                         </div>
@@ -61,23 +61,23 @@
                                     <img
                                         :src="results[finalAnswer].distanceOne"
                                     />
-                                    <h3>
+                                    <h5>
                                         {{
                                             results[finalAnswer]
                                                 .distanceTitleOne
                                         }}
-                                    </h3>
+                                    </h5>
                                 </div>
                                 <div class="dc_two">
                                     <img
                                         :src="results[finalAnswer].distanceTwo"
                                     />
-                                    <h3>
+                                    <h5>
                                         {{
                                             results[finalAnswer]
                                                 .distanceTitleTwo
                                         }}
-                                    </h3>
+                                    </h5>
                                 </div>
                             </div>
                         </div>
@@ -90,12 +90,12 @@
         <!-- <div class="tQuestion_section"> -->
             <div class="tQuestion_title">
                 <div class="tQuestion_title-c">
-                    <img src="/images/store/uv_icone.png" alt="" />
+                    <img src="images/store/uv_icone.png" alt="" />
                     <h1>心理測驗</h1>
-                    <img src="/images/store/uv_icone.png" alt="" />
+                    <img src="images/store/uv_icone.png" alt="" />
                 </div>
                 <div class="tQuestion_title-e">
-                    <h4>— Personality Test —</h4>
+                    <p>— Personality Test —</p>
                 </div>
             </div>
 
@@ -767,7 +767,7 @@ export default {
         height: 140px;
         background-color: #023552;
         @include rwd(mobile) {
-            height: 100px;
+            height: 91px;
         }
     }
 
@@ -785,36 +785,42 @@ export default {
 
     /*===== 標題 =====*/
     .tResult_title {
-        // border: 1px solid red;
-        color: $colorT;
-        padding: 80px * 0.7 0 0;
-        &-c {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            img {
-                width: 63px * 0.7;
-                height: 43px * 0.7;
-                margin-bottom: 5px;
-            }
-        }
-
-        h1 {
-            font-size: $h1;
-            padding: 5px 20px 10px;
+        // border: 1px solid red
+       color: $colorT;
+            padding: (80px) * 0.7 0 0;
+            z-index: 15;
             @include rwd(mobile) {
-                font-size: $h1 - 8px;
+                padding: (70px) * 0.7 0 0;
             }
-        }
-
-        &-e {
-            text-align: center;
-            font-size: $p1;
-            @include rwd(mobile) {
-                font-size: $p1 - 6px;
+            &-c {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img {
+                    width: 63px * 0.7;
+                    height: 43px * 0.7;
+                    margin-bottom: 5px;
+                    @include rwd(mobile) {
+                        width: 63px * 0.5;
+                        height: 43px * 0.5;
+                    }
+                }
             }
-        }
+            h1 {
+                font-size: $h1;
+                padding: 5px 20px 0px;
+                @include rwd(mobile) {
+                    font-size: $h1 - 8px;
+                    padding: 5px 15px 0px;
+                }
+            }
+            &-e {
+                text-align: center;
+                font-size: $p1;
+                @include rwd(mobile) {
+                    font-size: $p1 - 6px;
+                }
+            }
     }
 
     .tResult_content {
@@ -844,7 +850,7 @@ export default {
             @include rwd(mobile) {
                 display: block;
                 width: 100%;
-                padding-top: 100px;
+                padding-top: 30px;
             }
         }
 
@@ -944,35 +950,41 @@ export default {
     }
 
     .tQuestion_title {
-        color: $colorT;
-        padding: (80px) * 0.7 0 0;
-        &-c {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            img {
-                width: 63px * 0.7;
-                height: 43px * 0.7;
-                margin-bottom: 5px;
-            }
-        }
-
-        h1 {
-            font-size: $h1;
-            padding: 5px 20px 10px;
+       color: $colorT;
+            padding: (80px) * 0.7 0 0;
+            z-index: 15;
             @include rwd(mobile) {
-                font-size: $h1 - 8px;
+                padding: (70px) * 0.7 0 0;
             }
-        }
-
-        &-e {
-            text-align: center;
-            font-size: $p1;
-            @include rwd(mobile) {
-                font-size: $p1 - 6px;
+            &-c {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img {
+                    width: 63px * 0.7;
+                    height: 43px * 0.7;
+                    margin-bottom: 5px;
+                    @include rwd(mobile) {
+                        width: 63px * 0.5;
+                        height: 43px * 0.5;
+                    }
+                }
             }
-        }
+            h1 {
+                font-size: $h1;
+                padding: 5px 20px 0px;
+                @include rwd(mobile) {
+                    font-size: $h1 - 8px;
+                    padding: 5px 15px 0px;
+                }
+            }
+            &-e {
+                text-align: center;
+                font-size: $p1;
+                @include rwd(mobile) {
+                    font-size: $p1 - 6px;
+                }
+            }
     }
 
     .tQuestion_content {
@@ -1003,7 +1015,7 @@ export default {
             margin-top: 240px * 0.7;
             @include rwd(mobile) {
                 width: 100%;
-                margin-top: 80px;
+                margin-top: 30px;
             }
             p {
                 margin-bottom: 20px;

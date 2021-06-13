@@ -3,12 +3,12 @@
         <div class="customized_section">
             <div class="customized_title">
                 <div class="customized_title-c">
-                    <img src="/images/store/uv_icone.png" alt="" />
+                    <img src="images/store/uv_icone.png" alt="" />
                     <h1>宇宙商城</h1>
-                    <img src="/images/store/uv_icone.png" alt="" />
+                    <img src="images/store/uv_icone.png" alt="" />
                 </div>
                 <div class="customized_title-e">
-                    <h4>— Universe Store —</h4>
+                    <p>— Universe Store —</p>
                 </div>
             </div>
 
@@ -26,19 +26,19 @@
 
                     <ul>
                         <li @click="showPro = 0">
-                            <img src="/images/store/cPd_1.jpg" alt="" />
+                            <img src="images/store/cPd_1.jpg" alt="" />
                             <h4>悠遊卡</h4>
                         </li>
                         <li @click="showPro = 4">
-                            <img src="/images/store/cPd_2.jpg" alt="" />
+                            <img src="images/store/cPd_2.jpg" alt="" />
                             <h4>Ｔ恤</h4>
                         </li>
                         <li @click="showPro = 8">
-                            <img src="/images/store/cPd_3.jpg" alt="" />
+                            <img src="images/store/cPd_3.jpg" alt="" />
                             <h4>抱枕</h4>
                         </li>
                         <li @click="showPro = 12">
-                            <img src="/images/store/cPd_4.jpg" alt="" />
+                            <img src="images/store/cPd_4.jpg" alt="" />
                             <h4>馬克杯</h4>
                         </li>
                     </ul>
@@ -54,7 +54,7 @@
                             <!-- 顯示商品 -->
                             <!-- 悠遊卡 -->
                             <img
-                                src="/images/store/cardori.png"
+                                src="images/store/cardori.png"
                                 alt=""
                                 class="cust_prod card1"
                                 v-if="showPro == 0"
@@ -64,7 +64,7 @@
                             <img src="images/store/cardp.png" alt="" class="cust_prod card" v-if= "showPro == 3"> -->
                             <!-- Ｔ恤 -->
                             <img
-                                src="/images/store/tshori.png"
+                                src="images/store/tshori.png"
                                 alt=""
                                 class="cust_prod"
                                 v-if="showPro == 4"
@@ -74,7 +74,7 @@
                             <img src="images/store/tshp.png" alt="" class="cust_prod" v-if= "showPro == 7"> -->
                             <!-- 抱枕 -->
                             <img
-                                src="/images/store/plwori.png"
+                                src="images/store/plwori.png"
                                 alt=""
                                 class="cust_prod"
                                 v-if="showPro == 8"
@@ -84,7 +84,7 @@
                             <img src="images/store/plwp.png" alt="" class="cust_prod" v-if= "showPro == 11"> -->
                             <!-- 馬克杯 -->
                             <img
-                                src="/images/store/cupori.png"
+                                src="images/store/cupori.png"
                                 alt=""
                                 class="cust_prod"
                                 v-if="showPro == 12"
@@ -95,19 +95,19 @@
 
                             <!-- 顯示身體 -->
                             <img
-                                src="/images/store/body1.png"
+                                src="images/store/body1.png"
                                 alt=""
                                 class="cust_monster"
                                 v-if="showBody == 0"
                             />
                             <img
-                                src="/images/store/body3.png"
+                                src="images/store/body3.png"
                                 alt=""
                                 class="cust_monster"
                                 v-if="showBody == 1"
                             />
                             <img
-                                src="/images/store/body2.png"
+                                src="images/store/body2.png"
                                 alt=""
                                 class="cust_monster"
                                 v-if="showBody == 2"
@@ -115,38 +115,38 @@
                             <img src="" alt="" />
                             <!-- 顯示眼睛 -->
                             <img
-                                src="/images/store/eyes3.png"
+                                src="images/store/eyes3.png"
                                 alt=""
                                 class="cust_eyes"
                                 v-if="showEyes == 1"
                             />
                             <img
-                                src="/images/store/eyes1.png"
+                                src="images/store/eyes1.png"
                                 alt=""
                                 class="cust_eyes"
                                 v-if="showEyes == 2"
                             />
                             <img
-                                src="/images/store/eyes2.png"
+                                src="images/store/eyes2.png"
                                 alt=""
                                 class="cust_eyes"
                                 v-if="showEyes == 3"
                             />
                             <!-- 顯示嘴巴 -->
                             <img
-                                src="/images/store/mouth1.png"
+                                src="images/store/mouth1.png"
                                 alt=""
                                 class="cust_mouth"
                                 v-if="showMouth == 1"
                             />
                             <img
-                                src="/images/store/mouth2.png"
+                                src="images/store/mouth2.png"
                                 alt=""
                                 class="cust_mouth"
                                 v-if="showMouth == 2"
                             />
                             <img
-                                src="/images/store/mouth3.png"
+                                src="images/store/mouth3.png"
                                 alt=""
                                 class="cust_mouth"
                                 v-if="showMouth == 3"
@@ -159,13 +159,13 @@
                                 v-if="showFitting == 1"
                             />
                             <img
-                                src="/images/store/hat2.png"
+                                src="images/store/hat2.png"
                                 alt=""
                                 class="cust_fitting"
                                 v-if="showFitting == 2"
                             />
                             <img
-                                src="/images/store/hat1.png"
+                                src="images/store/hat1.png"
                                 alt=""
                                 class="cust_fitting"
                                 v-if="showFitting == 3"
@@ -368,37 +368,41 @@ export default {
     }
 
     .customized_title {
-        color: $colorT;
-        padding: (80px + 240px) * 0.7 0 0;
-        @include rwd(mobile) {
-            padding: 220px * 0.7 0 0;
-        }
-        &-c {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            img {
-                width: 63px * 0.7;
-                height: 43px * 0.7;
-                margin-bottom: 5px;
-            }
-        }
-
-        h1 {
-            font-size: $h1;
-            padding: 5px 20px 10px;
+         color: $colorT;
+            padding: (80px+240px) * 0.7 0 0;
+            z-index: 15;
             @include rwd(mobile) {
-                font-size: $h1 - 6px;
+                padding: (200px) * 0.7 0 0;
             }
-        }
-
-        &-e {
-            text-align: center;
-            font-size: $p1;
-            @include rwd(mobile) {
-                font-size: $p1 - 8px;
+            &-c {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img {
+                    width: 63px * 0.7;
+                    height: 43px * 0.7;
+                    margin-bottom: 5px;
+                    @include rwd(mobile) {
+                        width: 63px * 0.5;
+                        height: 43px * 0.5;
+                    }
+                }
             }
-        }
+            h1 {
+                font-size: $h1;
+                padding: 5px 20px 0px;
+                @include rwd(mobile) {
+                    font-size: $h1 - 8px;
+                    padding: 5px 15px 0px;
+                }
+            }
+            &-e {
+                text-align: center;
+                font-size: $p1;
+                @include rwd(mobile) {
+                    font-size: $p1 - 6px;
+                }
+            }
     }
 
     @include bookmark('.customized_sort');

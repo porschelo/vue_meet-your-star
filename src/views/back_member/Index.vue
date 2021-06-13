@@ -91,7 +91,7 @@
                             </ul>
                         </li>
                         <li>
-                            <router-link to ="#product-list"
+                            <router-link to ="back_shopping_product"
                                 class="btn btn-warning"
                                 data-bs-toggle="collapse"
                                 role="button"
