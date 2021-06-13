@@ -25,7 +25,7 @@
                             >
                         </li>
                         <li>
-                            <router-link to ="#article-list"
+                            <router-link to ="/back_stardaily"
                                 class="btn btn-warning"
                                 data-bs-toggle="collapse"
                                 role="button"
