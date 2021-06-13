@@ -13,7 +13,7 @@
                     <img src="images/store/uv_icone.png" alt="" />
                 </div>
                 <div class="unstore_title-e">
-                    <h4>— Daily horoscope —</h4>
+                    <p>— Daily horoscope —</p>
                 </div>
             </div>
             <!-- Swiper -->
@@ -119,7 +119,7 @@
                     <img src="images/store/uv_icone.png" alt="" />
                 </div>
                 <div class="unstore_title-e">
-                    <h4>— Air Supply —</h4>
+                    <p>— Air Supply —</p>
                 </div>
             </div>
             <!-- Swiper -->
@@ -271,13 +271,19 @@ export default {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    @include index-mobile {
+        height: 1800px;
+    }
 
     .section9_boxTop {
-        padding-top: 650px;
+        padding-top: 450px;
         .unstore_title {
             // border: 1px solid red;
             color: $colorT;
-            padding: 80px * 0.7 0 80px;
+            padding: 50px 0 80px;
+            @include index-mobile {
+                padding: 70px 0 80px;
+            }
             &-c {
                 display: flex;
                 justify-content: center;
@@ -287,15 +293,16 @@ export default {
                     height: 43px * 0.7;
                     margin-bottom: 5px;
                     @include index-mobile {
-                        width: 20px;
-                        height: auto;
+                        width: 63px * 0.5;
+                        height: 43px * 0.5;
                     }
                 }
                 h1 {
                     font-size: $h1;
-                    padding: 5px 20px 10px;
+                    padding: 5px 20px 0px;
                     @include index-mobile {
-                        font-size: 8px;
+                        font-size: $h1 - 8px;
+                        padding: 5px 15px 0;
                     }
                 }
             }
@@ -303,7 +310,7 @@ export default {
                 text-align: center;
                 font-size: $p1;
                 @include index-mobile {
-                    font-size: 6px;
+                    font-size: $p1 - 6px;
                 }
             }
         }
@@ -405,6 +412,9 @@ export default {
             // border: 1px solid red;
             color: $colorT;
             padding: 80px 0;
+            @include index-mobile {
+                padding: 80px 0 70px;
+            }
             &-c {
                 display: flex;
                 justify-content: center;
@@ -414,15 +424,16 @@ export default {
                     height: 43px * 0.7;
                     margin-bottom: 5px;
                     @include index-mobile {
-                        width: 20px;
-                        height: auto;
+                        width: 63px * 0.5;
+                        height: 43px * 0.5;
                     }
                 }
                 h1 {
                     font-size: $h1;
-                    padding: 5px 20px 10px;
+                    padding: 5px 20px 0px;
                     @include index-mobile {
-                        font-size: 8px;
+                        font-size: $h1 - 8px;
+                        padding: 5px 15px 0;
                     }
                 }
             }
@@ -430,7 +441,7 @@ export default {
                 text-align: center;
                 font-size: $p1;
                 @include index-mobile {
-                    font-size: 6px;
+                    font-size: $p1 - 6px;
                 }
             }
         }
