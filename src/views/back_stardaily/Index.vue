@@ -128,34 +128,18 @@
                 </div>
             <div class="col-10">
                 <h2>每日運勢管理</h2>
-                <button type="button" class="btn btn-danger btn-sm ">新增</button>
-                <div class="back_choose">
-                    <div>
-                        <input type="checkbox" id="all">
-                        <label for="all">全選</label>
-                        <button type="button" class="btn btn-outline-warning btn-sm ">上架</button>
-                        <button type="button" class="btn btn-outline-warning btn-sm ">下架</button>
-                    </div>
-                    <select>
-                        <option value="1">上架中</option>
-                        <option value="0">下架中</option>
-
-                    </select>
-                </div>
+                
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr class="table-warning">
-                            <th></th>
-                            <th>文章編號</th>
-                            <th>文章標題</th>
-                            <th>文章圖片</th>
-                            <th>文章內容</th>
-                            <th>文章狀態</th>
+                            <th>ID</th>
+                            <th>星座名稱</th>
+                            <th>每日運勢</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <!-- <tr>
                             <td><input type="checkbox"></td>
                             <td>1</td>
                             <td></td>
@@ -163,25 +147,23 @@
                             <td></td>
                             <td></td>
                             <td><a href="###">編輯</a></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td>2</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="###">編輯</a></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td>3</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="###">編輯</a></td>
-                        </tr>
+                        </tr> -->
+                        
+                        <tr v-for="(ssbdaily,index) in ssb_info" :key="index">
+                                <td>{{ssbdaily.STAR_SIGN_ID}}</td>
+                                <td>{{ssbdaily.STAR_SIGN_NAME}}</td>
+                                <td>
+                                    <textarea cols="80" rows="3" v-model="ssbdaily.DAILY" v-show="ssbdaily.editStatus" class="border border-dark"></textarea>
+                                    <span v-show="!ssbdaily.editStatus">
+                                        {{ssbdaily.DAILY}}
+                                    </span>
+                                        
+                                    
+                                </td>
+                                <td><a href="" @click.prevent="edit_data(index,ssbdaily.editStatus)">{{ssbdaily.edit}}</a></td>
+                                
+                                
+                            </tr>
                     </tbody>
                 </table>
             </div>
@@ -191,8 +173,58 @@
 </template>
 <script>
 // import 'bootstrap/dist/css/bootstrap.min.css'; 
+import axios from 'axios';
 export default {
-    
+    data() {
+        return {
+            ssb_info: [],
+
+            
+            
+        }
+    },
+
+    mounted() {
+        axios
+            // .post('http://localhost:8080/tfd101/project/g3/php/back_daily.php'
+            .post('http://localhost/tfd101/project/g3/php/back_daily.php'
+        )
+            .then((res) => {
+                console.log(res);
+                this.ssb_info = res.data;
+                
+
+                for(let i = 0 ;i <this.ssb_info.length;i++){
+                    this.ssb_info[i].editStatus = false; 
+                    this.ssb_info[i].edit = "編輯";
+                }
+                
+            });
+    },
+    methods:{
+
+        edit_data(index,ssbdaily_editStatus){
+            if(ssbdaily_editStatus == false){
+                this.ssb_info[index].editStatus = true;
+                this.ssb_info[index].edit = "儲存";
+                this.$forceUpdate()
+                // console.log(this.ssb_info[index].editStatus);
+                // console.log(this.ssb_info[index].edit);
+
+            }else{
+                axios.post('http://localhost/tfd101/project/g3/php/back_Updatedaily.php',{
+                    STAR_SIGN_ID: this.ssb_info[index].STAR_SIGN_ID,
+                    DAILY: this.ssb_info[index].DAILY,
+                })
+                this.ssb_info[index].editStatus = false;
+                this.ssb_info[index].edit = "編輯";
+                this.$forceUpdate()
+                // console.log(this.ssb_info[index].editStatus);
+                // console.log(this.ssb_info[index].edit);
+            }
+  
+        },
+    }
 }
 </script>
 <style lang="scss">

@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="SC_title-e">
-                    <h4>一 Shopping Cart 一</h4>
+                    <p>一 Shopping Cart 一</p>
                 </div>
             </div>
 
@@ -38,7 +38,7 @@
                         <tbody>
                             <tr
                                 v-for="(item, index) in cartlist"
-                                :key="`${index}`"
+                                :key="item.productId"
                             >
                                 <td>
                                     <img
@@ -126,14 +126,15 @@ export default {
             //要改newPdData.total
             if (cart[index].count > 10) {
                 cart[index].total = cart[index].productPrice * 10;
-                console.log(cart[index].total);
+                // console.log(cart[index].total);
             } else {
                 cart[index].total =
                     cart[index].productPrice * cart[index].count;
-                console.log(cart[index].total);
+                // console.log(cart[index].total);
             }
 
             this.$store.dispatch('updateCart', cart);
+            // console.log(this.cartlist);
         },
         deleteBtn(index) {
             let newCart = [...this.cartlist];
@@ -155,7 +156,6 @@ export default {
         //取用vuex
         cartlist() {
             return this.$store.state.cartList;
-            // console.log(cartlist);
         },
         totalPrice() {
             // var sumPrice = 0;
@@ -205,38 +205,50 @@ export default {
         // margin: 320*.7px 0 550*.7px 0;
         // border: $border red;
 
-        color: $colorT;
-        padding: (80px + 200px) * 0.7 0 0;
-
-        margin-bottom: 280px * 0.7;
-
-        &-c {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            img {
-                width: 63px * 0.7;
-                height: 43px * 0.7;
-                margin-bottom: 5px;
+        position: relative;
+            margin: auto;
+            color: $colorT;
+            padding: (80px+240px) * 0.7 0 0;
+            z-index: 15;
+            @include rwd(mobile) {
+                padding: (200px) * 0.7 0 0;
             }
-        }
-
-        h1 {
-            font-size: $h1;
-            padding: 5px 20px 10px;
-        }
-
-        &-e {
-            text-align: center;
-            font-size: $p1;
-        }
+            &-c {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img {
+                    width: 63px * 0.7;
+                    height: 43px * 0.7;
+                    margin-bottom: 5px;
+                    @include rwd(mobile) {
+                        width: 63px * 0.5;
+                        height: 43px * 0.5;
+                    }
+                }
+            }
+            h1 {
+                font-size: $h1;
+                padding: 5px 20px 0px;
+                @include rwd(mobile) {
+                    font-size: $h1 - 8px;
+                    padding: 5px 15px 0px;
+                }
+            }
+            &-e {
+                text-align: center;
+                font-size: $p1;
+                @include rwd(mobile) {
+                    font-size: $p1 - 6px;
+                }
+            }
     }
 
     .SC_mid_block {
         // border: 1px solid red;
         max-width: 1300 * 0.7px;
         width: 100%;
+        padding-top: 50px;
 
         .list_info {
             border: 3px solid white;
