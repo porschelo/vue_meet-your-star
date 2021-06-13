@@ -56,7 +56,7 @@
                             <img
                                 src="/images/store/cardori.png"
                                 alt=""
-                                class="cust_prod card"
+                                class="cust_prod card1"
                                 v-if="showPro == 0"
                             />
                             <!-- <img src="images/store/cardy.png" alt="" class="cust_prod card" v-if= "showPro == 1">
@@ -557,7 +557,7 @@ export default {
                 right: 5%;
                 top: 5%;
             }
-            .card {
+            .card1 {
                 width: 100%;
                 right: 1%;
             }

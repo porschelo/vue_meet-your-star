@@ -279,7 +279,7 @@ export default {
             )
             .then((res2) => {
                     // console.log('res2',res2.data);
-                    this.teacherinfo = res1.data;
+                    this.teacherinfo = res2.data;
                     this.teacherid = this.teacherinfo[0].TEACHER_ID;
             this.$router.push({
                     path: '/apfinish',

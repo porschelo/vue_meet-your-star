@@ -129,23 +129,27 @@
                     </ul>
                 </div>
                 <div class="col-10">
-                    <h2>會員管理</h2>
-                    <input type="text" name="" id="" />
-                    <button class="btn btn-dark btn-sm">搜尋</button>
+                    <div class="member-top mb-3">
+                        <h2>會員管理</h2>
+                        <input type="text" class="me-4 border border-dark" placeholder="請輸入會員帳號" v-model="search_data" @keyup="searchMember"/>
+                        <button class="btn btn-dark btn-sm " @click="searchMember">搜尋</button>
+                    </div>
+                    
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr class="table-warning">
                                 <th>會員編號</th>
                                 <th>會員帳號</th>
                                 <th>會員姓名</th>
-                                <th>會員權限</th>
+                                <th>會員密碼</th>                       
+                                <th>星幣數量</th>
                                 <th>加入日期</th>
-                                <th>詳細資料</th>
+                                <!-- <th>詳細資料</th> -->
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <!-- <tr>
                                 <td>1</td>
                                 <td></td>
                                 <td></td>
@@ -153,8 +157,29 @@
                                 <td></td>
                                 <td></td>
                                 <td><a href="###">編輯</a></td>
+                            </tr> -->
+
+                            <tr v-for="(member,index) in member_info" :key="index">
+                                <td>{{member.MEMBER_ID}}</td>
+                                <td>{{member.MEMBER_EMAIL}}</td>
+                                <td>{{member.MEMBER_NAME}}</td>
+                                <td>{{member.MEMBER_PASSWORD}}</td>
+                                <td>
+                                    <input type="text" v-model="member.MEMBER_POINT" v-show="member.editStatus" class="border border-dark">
+                                    <span v-show="!member.editStatus">
+                                        {{member.MEMBER_POINT}}
+                                    </span>
+                                        
+                                    
+                                </td>
+                                <td>{{member.CREAT_DATE}}</td>  
+                                <td><a href="" @click.prevent="edit_data(index,member.editStatus)">{{member.edit}}</a></td>
+                                
+                                
                             </tr>
-                            <tr>
+
+
+                            <!-- <tr>
                                 <td>2</td>
                                 <td></td>
                                 <td></td>
@@ -171,7 +196,7 @@
                                 <td></td>
                                 <td></td>
                                 <td><a href="###">編輯</a></td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
@@ -180,8 +205,72 @@
     </div>
 </template>
 <script>
-import 'bootstrap/dist/css/bootstrap.min.css';
-export default {};
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
+export default {
+    data() {
+        return {
+            member_info:[],
+            search_data:"",
+            
+            
+            
+        }
+    },
+
+    mounted() {
+        axios
+            .post('http://localhost/tfd101/project/g3/php/back_Member.php'
+        )
+            .then((res) => {
+                // console.log(res);
+                this.member_info = res.data;
+
+                for(let i = 0 ;i <this.member_info.length;i++){
+                    this.member_info[i].editStatus = false; 
+                    this.member_info[i].edit = "編輯";
+                }
+                
+            });
+    },
+
+    methods: {
+        searchMember(){
+            axios
+            .post('http://localhost/tfd101/project/g3/php/back_SearchMember.php',{
+                search_data: this.search_data,
+            }
+        )
+            .then((res) => {
+                // console.log(res);
+                this.member_info = res.data;
+            });
+        },
+        edit_data(index,member_editStatus){
+            if(member_editStatus == false){
+                this.member_info[index].editStatus = true;
+                this.member_info[index].edit = "儲存";
+                this.$forceUpdate()
+                // console.log(this.member_info[index].editStatus);
+                // console.log(this.member_info[index].edit);
+
+            }else{
+                this.member_info[index].editStatus = false;
+                this.member_info[index].edit = "編輯";
+                this.$forceUpdate()
+                // console.log(this.member_info[index].editStatus);
+                // console.log(this.member_info[index].edit);
+            }
+  
+        },
+
+        
+
+    },
+
+    
+    
+};
 </script>
 <style lang="scss">
 </style>
