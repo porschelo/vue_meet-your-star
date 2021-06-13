@@ -194,21 +194,6 @@ export default {
         background-color: #44796a;
     }
 
-    //nav-list 所在頁面樣式
-    // .overlaymenu {
-    //     .menulist {
-    //         .nav-menu {
-    //             ul {
-    //                 li:nth-child(3) {
-    //                     a {
-    //                         color: yellow;
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-
     // end of jl_wrapper1
 }
 </style>
