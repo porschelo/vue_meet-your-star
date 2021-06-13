@@ -28,7 +28,7 @@
                                 data-bs-toggle="collapse"
                                 role="button"
                                 aria-expanded="false"
-                                aria-controls="order-list"
+                                aria-controls="order-list" 
                                 >星座內容</router-link
                             >
                             <ul class="collapse" id="article-list">
@@ -210,16 +210,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export default {
+    data() {
+        return {
+
+    
+            
+        };
+    },
 
 };
 </script>
 <style lang="scss">
-    .backend{
-        margin-top: 130px;
-        // .container-fluid{
-        //     background-color: white;
-        // }
-    }
+    // .backend{
+    //     margin-top: 130px;
+    //     // .container-fluid{
+    //     //     background-color: white;
+    //     // }
+    // }
 
 
 
