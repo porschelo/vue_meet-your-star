@@ -16,11 +16,11 @@
                 v-for="n in 12"
                 :key="`star-${n}`"
                 :class="`star${n} opacity`"
-                :src="`/images/index/star_hover/s${n}.svg`"
+                :src="`images/index/star_hover/s${n}.svg`"
             />
         </div>
         <div class="rocket">
-            <img src="/images/index/rocket.svg" alt="" />
+            <img src="images/index/rocket.svg" alt="" />
         </div>
         <div class="ufo">
             <router-link to="/appointment">

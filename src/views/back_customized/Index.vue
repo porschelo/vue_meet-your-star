@@ -206,16 +206,20 @@
 </template>
 <script>
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import { BModal, VBModal } from  'bootstrap-vue';
 
-export default {};
+
+export default {
+
+};
 </script>
 <style lang="scss">
-    .backend{
-        margin-top: 130px;
-        // .container-fluid{
-        //     background-color: white;
-        // }
-    }
+    // .backend{
+    //     margin-top: 130px;
+    //     // .container-fluid{
+    //     //     background-color: white;
+    //     // }
+    // }
 
 
 

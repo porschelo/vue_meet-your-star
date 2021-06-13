@@ -222,8 +222,10 @@
     </div>
 </template>
 <script>
-import 'bootstrap/dist/css/bootstrap.min.css';
-export default {};
+// import 'bootstrap/dist/css/bootstrap.min.css';
+export default {
+    
+};
 </script>
 <style lang="scss">
 </style>

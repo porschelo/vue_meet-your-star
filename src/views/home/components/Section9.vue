@@ -230,7 +230,9 @@ export default {
     },
     mounted() {
         axios
-            .post('http://localhost/meet_ur_heart/php/home_daily_select.php')
+            .post(
+                'http://localhost/tfd101/project/g3/php/home_daily_select.php'
+            )
             .then((res) => {
                 // console.log(res);
                 this.signDaily = res.data;
@@ -238,7 +240,9 @@ export default {
             });
 
         axios
-            .post('http://localhost/meet_ur_heart/php/home_product_select.php')
+            .post(
+                'http://localhost/tfd101/project/g3/php/home_product_select.php'
+            )
             .then((res) => {
                 this.signProduct = res.data;
                 // console.log(this.signProduct);
