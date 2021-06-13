@@ -198,7 +198,7 @@ export default {
     mounted() {
         let urlParams = new URLSearchParams(window.location.search);
 
-        if(document.documentElement.scrollTop >= 800){
+        if(document.documentElement.scrollTop >= 1000){
             document.documentElement.scrollTop = 0;
         }
 
