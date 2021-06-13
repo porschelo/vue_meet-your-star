@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="j_subtitle">
-                    <h4>— Order Confirm —</h4>
+                    <p>— Order Confirm —</p>
                 </div>
             </div>
 
@@ -400,25 +400,28 @@ $letter-spacing: 2.5;
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
+        .j_subtitle{
+            padding-bottom: 0;
+        }
     //  margin-top:100px ;
     .error {
         font-size: 12px;
         color: rgb(247, 121, 121);
     }
 
-    .overlaymenu {
-        .menulist {
-            .nav-menu {
-                ul {
-                    li:nth-child(2) {
-                        a {
-                            color: yellow;
-                        }
-                    }
-                }
-            }
-        }
-    }
+    // .overlaymenu {
+    //     .menulist {
+    //         .nav-menu {
+    //             ul {
+    //                 li:nth-child(2) {
+    //                     a {
+    //                         color: yellow;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 .j_order {
@@ -428,11 +431,11 @@ $letter-spacing: 2.5;
     margin: 0 auto;
     max-width: 1636 * 0.7px;
     width: 90%;
-    margin-top: 280 * 0.7px;
+    margin-top: 50px;
     padding-bottom: 100px;
     position: relative;
     @include rwd(mobile) {
-        margin-top: 150 * 0.7px;
+        margin-top: 50px;
     }
     .money_rwd {
         @media all and(max-width:450px) {

@@ -7,20 +7,20 @@
                 <div class="j_title">
                     <div class="j_bigtitle">
                         <img
-                            src="/images/appointment/earth2.png"
+                            src="images/appointment/earth2.png"
                             alt=""
                             id="earth"
                         />
                         <h1>預約談星</h1>
                         <img
-                            src="/images/appointment/earth2.png"
+                            src="images/appointment/earth2.png"
                             alt=""
                             id="earth"
                         />
                     </div>
 
                     <div class="j_subtitle">
-                        <h4>— Reservation With Experts —</h4>
+                        <p>— Reservation With Experts —</p>
                     </div>
                 </div>
                 <!-- 進度條 -->
@@ -31,69 +31,7 @@
                             75%
                         </div>
                     </div>
-                    <!-- <li class="container__item">
-                        <div class="stepper">
-                            <input
-                                class="stepper__input"
-                                id="stepper-5-0"
-                                name="stepper-5"
-                                type="radio"
-                                checked="checked"
-                            />
-                            <div class="stepper__step">
-                                <label
-                                    class="stepper__button"
-                                    for="stepper-5-0"
-                                ></label>
-                                <p class="stepper__content">step 1:選擇老師</p>
-                            </div>
-
-                            <input
-                                class="stepper__input"
-                                id="stepper-5-1"
-                                name="stepper-5"
-                                type="radio"
-                            />
-
-                            <div class="stepper__step">
-                                <label
-                                    class="stepper__button"
-                                    for="stepper-5-1"
-                                ></label>
-                                <p class="stepper__content">step 2:選擇時段</p>
-                            </div>
-
-                            <input
-                                class="stepper__input"
-                                id="stepper-5-2"
-                                name="stepper-5"
-                                type="radio"
-                            />
-
-                            <div class="stepper__step">
-                                <label
-                                    class="stepper__button"
-                                    for="stepper-5-2"
-                                ></label>
-                                <p class="stepper__content">
-                                    step 3: 確認結帳資料
-                                </p>
-                            </div>
-                            <input
-                                class="stepper__input"
-                                id="stepper-5-3"
-                                name="stepper-5"
-                                type="radio"
-                            />
-                            <div class="stepper__step">
-                                <label
-                                    class="stepper__button"
-                                    for="stepper-5-3"
-                                ></label>
-                                <p class="stepper__content">step 4: 預約完成</p>
-                            </div>
-                        </div>
-                    </li> -->
+                    
                 </div>
 
                 <!-- 儀錶板 -->
@@ -109,9 +47,8 @@
                                 <div class="docu_info">
                                     <div class="docu_img">
                                         <img
-                                            src="/images/appointment/confirm.png"
-                                            alt=""
-                                        />
+                                            src="images/appointment/confirm.png"
+                                            alt=""/>
                                     </div>
 
                                     <div class="docu_detail">
@@ -135,120 +72,65 @@
                                 <div class="docu_member">
                                     <h4 id="member">
                                         預約人資料
-                                        <input
-                                            type="checkbox"
-                                            @change="samemember"
-                                            name="member"
+                                        <input type="checkbox" @change="samemember" name="member"
                                         />同會員
                                     </h4>
                                 </div>
 
                                 <!-- 表單開始 -->
                                 <form>
-                                    <div class="error-message">
-                                        <p>請輸入有效email</p>
-                                    </div>
+                                    
+                                    <!-- <div class="error-message">
+                                         <p>請輸入有效email</p>
+                                    </div> -->
                                     <div class="form_info">
                                         <div class="form_left">
                                             <div class="name">
                                                 <h4>A. 姓名</h4>
-                                                <input
-                                                    type="text"
-                                                    placeholder="請輸入文字"
-                                                    required=""
-                                                    v-model.trim="name"
-                                                />
-                                            </div>
+                                                    <input type="text" placeholder="請輸入文字" required="" v-model.trim="name" />
+                                             </div>
                                             <div class="bd">
                                                 <h4>B. 生日</h4>
-                                                <input
-                                                    type="text"
-                                                    placeholder="請輸入文字"
-                                                    v-model="birthday"
-                                                />
+                                                    <input type="text" placeholder="請輸入文字" v-model="birthday"/>
                                             </div>
-
-                                            <!-- 表單開始 -->
-                                            <form   action="" >
-                                                <div class="error-message">
-                                                    <p>請輸入有效email</p>
+                                            <div class="tel" label="手機號碼" prop="phone">
+                                                <h4>C. 聯絡電話</h4>
+                                                    <input type="text" name="" v-model="phone" placeholder="請輸入手機號碼"/>
+                                            </div>
+                                            <div class="email">
+                                                <h4>E. 聯絡信箱</h4>
+                                                    <input type="email" name="" placeholder="請輸入信箱" v-model="email"/>
+                                            </div>
+                                            <div class="comment">
+                                                <h4>F. 預約備註</h4>
+                                                <div class="comment_word">
+                                                    <textarea name="Content" v-model="Content"></textarea>
                                                 </div>
-                                                <div class="form_info">
-                                                    <div class="form_left">
-                                                        <div class="name">
-                                                            <h4>A. 姓名</h4>
-                                                            <input type="text" placeholder="請輸入文字" required="" v-model.trim="name" />
-                                                        </div>
-                                                        <div class="bd">
-                                                            <h4>B. 生日</h4>
-                                                            <input type="text" placeholder="請輸入文字" v-model="birthday"
-                                                            />
-                                                        </div>
-                                                        <div class="tel" label="手機號碼" prop="phone">
-                                                            <h4>C. 聯絡電話</h4>
-                                                            <input type="text" name="" v-model="phone" placeholder="請輸入手機號碼"/>
-                                                        </div>
-                                                        <div class="email">
-                                                            <h4>E. 聯絡信箱</h4>
-                                                            <input type="email" name="" placeholder="請輸入信箱" v-model="email"
-                                                            />
-                                                        </div>
-                                                        <div class="comment">
-                                                            <h4>F. 預約備註</h4>
-                                                            <div class="comment_word">
-                                                                <textarea name="Content" v-model="Content"></textarea>
-                                                            </div>
-                                                            <label for="ammount">付款方式</label><br />
-                                                            <select name="payment" id="payment" v-model="payment"
-                                                            >
-                                                                <option
-                                                                    value="信用卡付款(經由綠世界)"
-                                                                >
-                                                                    {{payment}}
-                                                                </option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form_right">
-                                                        <button class="j_right" type="button">
-                                                            <a
-                                                                @click="pay"
-                                                                class="j_right"
-                                                                >結帳</a
-                                                            >
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <label for="ammount"
-                                                    >付款方式</label
-                                                ><br />
-                                                <select
-                                                    name="payment"
-                                                    id="payment"
-                                                    v-model="payment"
-                                                >
-                                                    <option
-                                                        value="信用卡付款(經由綠世界)"
-                                                    >
-                                                        {{ payment }}
+                                            </div>
+                                                        
+                                            <label for="ammount">付款方式</label><br/>
+                                                <select name="payment" id="payment" v-model="payment">
+                                                    <option value="信用卡付款(經由綠世界)">
+                                                            {{payment}}
                                                     </option>
                                                 </select>
-                                            </form>
                                         </div>
+                                                    
                                         <div class="form_right">
-                                            <button class="j_right">
-                                                <a @click="pay" class="j_right"
-                                                    >結帳</a>
+                                            <button class="j_right" type="button">
+                                                <a @click="pay" class="j_right" >結帳</a>
                                             </button>
                                         </div>
                                     </div>
-
+                                                
+                                    
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
         
-
+            </div>
             <myFooter></myFooter>
         </div>
     </div>
@@ -266,10 +148,7 @@ export default {
             name: '',
             birthday:'',
             phone:'',
-            email: {
-                value: 'jo@hnd.oe',
-                valid: true,
-            },
+            email:'',
             tel: {
                 value: '09xxxxxxxx',
                 valid: true,
@@ -289,7 +168,7 @@ export default {
         myFooter,
     },
     mounted() {
-        axios.post('http://localhost/meetyourstars/teacher.php').then((res) => {
+        axios.post('http://localhost/tfd101/project/g3/teacher.php').then((res) => {
             console.log(res);
             this.teacher = res.data;
         });
@@ -316,7 +195,7 @@ export default {
             // console.log(time);
             console.log(this.$store.state.loginID);
 
-            axios.post('http://localhost/meetyourstars/searchteacher.php',
+            axios.post('http://localhost/tfd101/project/g3/searchteacher.php',
             {   TEACHER_NAME : this.$store.state.selectteacher}
             )
                 .then((res1) => {
@@ -326,7 +205,7 @@ export default {
                 });
 
             axios.post(
-                'http://localhost/meetyourstars/appointment.php',
+                'http://localhost/tfd101/project/g3/appointment.php',
 
             {   APPOINTMENT_DATE: newsavedate,
                 APPOINTMENT_TIME: time,
