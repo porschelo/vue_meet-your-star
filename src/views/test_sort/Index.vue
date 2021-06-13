@@ -5,9 +5,9 @@
         <div class="tSort_section">
             <div class="tSort_title">
                 <div class="tSort_title-c">
-                    <img src="/images/store/uv_icone.png" alt="" />
+                    <img src="images/store/uv_icone.png" alt="" />
                     <h1>心理測驗</h1>
-                    <img src="/images/store/uv_icone.png" alt="" />
+                    <img src="images/store/uv_icone.png" alt="" />
                 </div>
                 <div class="tSort_title-e">
                     <p>— Personality Test —</p>
@@ -21,38 +21,38 @@
                             @click="showPoster = 0"
                             :class="{ highlight: showPoster == 0 }"
                         >
-                            <img src="/images/test/starball.png" alt="" />
+                            <img src="images/test/starball.png" alt="" />
                             <h2>星座</h2>
                         </li>
                         <li
                             @click="showPoster = 1"
                             :class="{ highlight: showPoster == 1 }"
                         >
-                            <img src="/images/test/love.png" alt="" />
+                            <img src="images/test/love.png" alt="" />
                             <h2>愛情</h2>
                         </li>
                         <li
                             @click="showPoster = 2"
                             :class="{ highlight: showPoster == 2 }"
                         >
-                            <img src="/images/test/bag.png" alt="" />
+                            <img src="images/test/bag.png" alt="" />
                             <h2>工作</h2>
                         </li>
                     </ul>
                 </div>
                 <div class="tSort_poster">
                     <img
-                        src="/images/test/poster1.png"
+                        src="images/test/poster1.png"
                         alt=""
                         v-if="showPoster == 0"
                     />
                     <img
-                        src="/images/test/poster2.png"
+                        src="images/test/poster2.png"
                         alt=""
                         v-if="showPoster == 1"
                     />
                     <img
-                        src="/images/test/poster3.png"
+                        src="images/test/poster3.png"
                         alt=""
                         v-if="showPoster == 2"
                     />

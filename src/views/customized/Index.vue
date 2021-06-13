@@ -179,19 +179,19 @@
                             <ul class="cust-body">
                                 <li @click="showBody = 0">
                                     <img
-                                        src="/images/store/body-one.png"
+                                        src="images/store/body-one.png"
                                         alt=""
                                     />
                                 </li>
                                 <li @click="showBody = 1">
                                     <img
-                                        src="/images/store/body-two.png"
+                                        src="images/store/body-two.png"
                                         alt=""
                                     />
                                 </li>
                                 <li @click="showBody = 2">
                                     <img
-                                        src="/images/store/body-three.png"
+                                        src="images/store/body-three.png"
                                         alt=""
                                     />
                                 </li>
@@ -200,19 +200,19 @@
                             <ul class="cust-eyes">
                                 <li @click="showEyes = 1">
                                     <img
-                                        src="/images/store/eyes-one.png"
+                                        src="images/store/eyes-one.png"
                                         alt=""
                                     />
                                 </li>
                                 <li @click="showEyes = 2">
                                     <img
-                                        src="/images/store/eyes-two.png"
+                                        src="images/store/eyes-two.png"
                                         alt=""
                                     />
                                 </li>
                                 <li @click="showEyes = 3">
                                     <img
-                                        src="/images/store/eyes-three.png"
+                                        src="images/store/eyes-three.png"
                                         alt=""
                                     />
                                 </li>
@@ -221,19 +221,19 @@
                             <ul class="cust-mouth">
                                 <li @click="showMouth = 1">
                                     <img
-                                        src="/images/store/mouth-one.png"
+                                        src="images/store/mouth-one.png"
                                         alt=""
                                     />
                                 </li>
                                 <li @click="showMouth = 2">
                                     <img
-                                        src="/images/store/mouth-two.png"
+                                        src="images/store/mouth-two.png"
                                         alt=""
                                     />
                                 </li>
                                 <li @click="showMouth = 3">
                                     <img
-                                        src="/images/store/mouth-three.png"
+                                        src="images/store/mouth-three.png"
                                         alt=""
                                     />
                                 </li>
@@ -245,19 +245,19 @@
                             <ul class="cust-fitting">
                                 <li @click="showFitting = 1">
                                     <img
-                                        src="/images/store/fitting-one.png"
+                                        src="images/store/fitting-one.png"
                                         alt=""
                                     />
                                 </li>
                                 <li @click="showFitting = 2">
                                     <img
-                                        src="/images/store/fitting-two.png"
+                                        src="images/store/fitting-two.png"
                                         alt=""
                                     />
                                 </li>
                                 <li @click="showFitting = 3">
                                     <img
-                                        src="/images/store/fitting-three.png"
+                                        src="images/store/fitting-three.png"
                                         alt=""
                                     />
                                 </li>
