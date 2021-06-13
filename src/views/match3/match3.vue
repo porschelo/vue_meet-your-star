@@ -14,14 +14,14 @@
             <div class="jl_monster_combine">
                 <div class="jl_left_monster">
                     <img
-                        src="/images/horoscope_page/monsterleft.png"
+                        src="images/horoscope_page/monsterleft.png"
                         alt="星座左"
                     />
                 </div>
 
                 <div class="jl_right_monster">
                     <img
-                        src="/images/horoscope_page/monster-right.png"
+                        src="images/horoscope_page/monster-right.png"
                         alt="星座右"
                     />
                 </div>
@@ -33,7 +33,7 @@
                     <div class="jl_lucky_charm_box">
                         <a href="/unstore.html">
                             <img
-                                src="/images/horoscope_page/removelater.png"
+                                src="images/horoscope_page/removelater.png"
                                 alt="開運小物圖"
                             />
                         </a>

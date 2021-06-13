@@ -22,8 +22,13 @@
                 </div>
                 <!-- 進度條 -->
                 <div class="j_progress">
-                    
-                    <li class="container__item">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%; ">
+                            25%
+                        </div>
+                    </div>
+                    <!-- <li class="container__item">
                         <div class="stepper">
                         <input class="stepper__input" id="stepper-5-0" name="stepper-5" type="radio" checked="checked"/>
                         <div class="stepper__step">
@@ -47,7 +52,7 @@
                         </div>
                         
                         </div>
-                    </li>
+                    </li> -->
                 </div>
                 <!-- 儀錶板 -->
                 <div class="j_panel">
@@ -56,8 +61,7 @@
                             <h2>星座老師</h2>
                         </div>
                             <div class="j_panel_img">
-                                <div class="j_panel_pic" v-for="(item,index) in teacher" :key="item.TEACHER_ID"
-                                >
+                                <div class="j_panel_pic" v-for="(item,index) in teacher" :key="item.TEACHER_ID">
                             
                                     <img :src="item.TEACHER_IMG" @click.prevent="selectteacher(index)"
                                      v-bind:class="{'selected': current == item.TEACHER_ID}" 
@@ -72,6 +76,7 @@
                                     <!-- :class="{'selected': current === item.TEACHER_IMG}" 
                                     v-on:click="setCurrent(TEACHER_IMG)"
                                     > -->
+                                    
                                         <div class="j_panel_info" >
                                         <h4>{{item.TEACHER_NAME}}</h4>
                                         <p>{{item.TEACHER_INFO}}</p>
@@ -80,6 +85,7 @@
 
 
                                         </div>
+                                    
 
                                 </div>
 
@@ -128,6 +134,8 @@
 
 <script>
 import myFooter from '@/components/myFooter'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import axios from 'axios'
 
 export default {
@@ -236,6 +244,9 @@ export default {
 border: #4F4FFF solid 5px;
 box-shadow:4px 4px 12px;
 border-style: inset;
+opacity: 1;
+    
+
 }
 
 // .selecting{

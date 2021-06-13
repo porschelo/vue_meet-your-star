@@ -13,14 +13,14 @@
                     <img src="images/store/uv_icone.png" alt="" />
                 </div>
                 <div class="unstore_title-e">
-                    <h4>— Daily horoscope —</h4>
+                    <p>— Daily horoscope —</p>
                 </div>
             </div>
             <!-- Swiper -->
             <div class="index_swiper crs">
                 <div class="index_prbtn">
                     <a href="">
-                        <img src="/images/index/prbtn.png" alt="" />
+                        <img src="images/index/prbtn.png" alt="" />
                     </a>
                 </div>
                 <div class="swiper-container mySwiper gap">
@@ -42,7 +42,7 @@
                                         :src="item.DAILY_IMG"
                                         alt=""
                                     />
-                                    <!-- src="/images/index/info_Img/sing1.svg" -->
+                                    <!-- src="images/index/info_Img/sing1.svg" -->
                                     <h3 class="inner_text">
                                         {{ item.DAILY }}
                                     </h3>
@@ -55,7 +55,7 @@
                                 <div class="sing_info2">
                                     <img
                                         class="info_img"
-                                        src="/images/index/info_Img/sing2.svg"
+                                        src="images/index/info_Img/sing2.svg"
                                         alt=""
                                     />
                                     <h3 class="inner_text">
@@ -71,7 +71,7 @@
                                 <div class="product_info3">
                                     <img
                                         class="info_img"
-                                        src="/images/index/info_Img/sing3.svg"
+                                        src="images/index/info_Img/sing3.svg"
                                         alt=""
                                     />
                                     <h3 class="inner_text">
@@ -88,7 +88,7 @@
                                 <div class="product_info4">
                                     <img
                                         class="info_img"
-                                        src="/images/index/info_Img/sing1.svg"
+                                        src="images/index/info_Img/sing1.svg"
                                         alt=""
                                     />
                                     <h3 class="inner_text">
@@ -105,7 +105,7 @@
 
                 <div class="index_nextbtn">
                     <a href="">
-                        <img src="/images/index/nxbtn.png" alt="" />
+                        <img src="images/index/nxbtn.png" alt="" />
                     </a>
                 </div>
             </div>
@@ -119,14 +119,14 @@
                     <img src="images/store/uv_icone.png" alt="" />
                 </div>
                 <div class="unstore_title-e">
-                    <h4>— Air Supply —</h4>
+                    <p>— Air Supply —</p>
                 </div>
             </div>
             <!-- Swiper -->
             <div class="index_swiper crs">
                 <div class="index_prbtn2">
                     <a href="">
-                        <img src="/images/index/prbtn.png" alt="" />
+                        <img src="images/index/prbtn.png" alt="" />
                     </a>
                 </div>
                 <div class="swiper-container mySwiper gap">
@@ -160,7 +160,7 @@
 
                 <div class="index_nextbtn2">
                     <a href="">
-                        <img src="/images/index/nxbtn.png" alt="" />
+                        <img src="images/index/nxbtn.png" alt="" />
                     </a>
                 </div>
             </div>
@@ -230,7 +230,9 @@ export default {
     },
     mounted() {
         axios
-            .post('http://localhost/meet_ur_heart/php/home_daily_select.php')
+            .post(
+                'http://localhost/tfd101/project/g3/php/home_daily_select.php'
+            )
             .then((res) => {
                 // console.log(res);
                 this.signDaily = res.data;
@@ -238,7 +240,9 @@ export default {
             });
 
         axios
-            .post('http://localhost/meet_ur_heart/php/home_product_select.php')
+            .post(
+                'http://localhost/tfd101/project/g3/php/home_product_select.php'
+            )
             .then((res) => {
                 this.signProduct = res.data;
                 // console.log(this.signProduct);
@@ -267,13 +271,19 @@ export default {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    @include index-mobile {
+        height: 1800px;
+    }
 
     .section9_boxTop {
-        padding-top: 650px;
+        padding-top: 450px;
         .unstore_title {
             // border: 1px solid red;
             color: $colorT;
-            padding: 80px * 0.7 0 80px;
+            padding: 50px 0 80px;
+            @include index-mobile {
+                padding: 70px 0 80px;
+            }
             &-c {
                 display: flex;
                 justify-content: center;
@@ -283,15 +293,16 @@ export default {
                     height: 43px * 0.7;
                     margin-bottom: 5px;
                     @include index-mobile {
-                        width: 20px;
-                        height: auto;
+                        width: 63px * 0.5;
+                        height: 43px * 0.5;
                     }
                 }
                 h1 {
                     font-size: $h1;
-                    padding: 5px 20px 10px;
+                    padding: 5px 20px 0px;
                     @include index-mobile {
-                        font-size: 8px;
+                        font-size: $h1 - 8px;
+                        padding: 5px 15px 0;
                     }
                 }
             }
@@ -299,7 +310,7 @@ export default {
                 text-align: center;
                 font-size: $p1;
                 @include index-mobile {
-                    font-size: 6px;
+                    font-size: $p1 - 6px;
                 }
             }
         }
@@ -401,6 +412,9 @@ export default {
             // border: 1px solid red;
             color: $colorT;
             padding: 80px 0;
+            @include index-mobile {
+                padding: 80px 0 70px;
+            }
             &-c {
                 display: flex;
                 justify-content: center;
@@ -410,15 +424,16 @@ export default {
                     height: 43px * 0.7;
                     margin-bottom: 5px;
                     @include index-mobile {
-                        width: 20px;
-                        height: auto;
+                        width: 63px * 0.5;
+                        height: 43px * 0.5;
                     }
                 }
                 h1 {
                     font-size: $h1;
-                    padding: 5px 20px 10px;
+                    padding: 5px 20px 0px;
                     @include index-mobile {
-                        font-size: 8px;
+                        font-size: $h1 - 8px;
+                        padding: 5px 15px 0;
                     }
                 }
             }
@@ -426,7 +441,7 @@ export default {
                 text-align: center;
                 font-size: $p1;
                 @include index-mobile {
-                    font-size: 6px;
+                    font-size: $p1 - 6px;
                 }
             }
         }

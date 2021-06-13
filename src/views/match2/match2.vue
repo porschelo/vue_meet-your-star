@@ -2,13 +2,18 @@
     <div>
         <div class="jl_wrapper2">
             <div class="jl_top_fix">
+
                 <div class="jl_match2_title">
-                    <h2>
-                        <img src="/images/store/uv_icone.png" alt="" /> 星座配對
-                        <img src="/images/store/uv_icone.png" alt="" /> <br />
-                        - Horoscope Matching -
-                    </h2>
+                    <div class="jl_match2_title-c">
+                        <img src="images/store/uv_icone.png" alt="" />
+                        <h1>星座配對</h1>
+                        <img src="images/store/uv_icone.png" alt="" />
+                    </div>
+                    <div class="jl_match2_title-e">
+                        <p>- Horoscope Matching -</p>
+                    </div>
                 </div>
+
 
                 <div class="jl_left_box">
                     <input
@@ -241,27 +246,62 @@ $hoverBorderColor: #f0dc9a;
         text-align: center;
 
         .jl_match2_title {
-            margin-top: 10%;
-            color: $textColor;
-            font-size: $h2;
-
-            img {
-                width: 63px * 0.7;
-                height: 43px * 0.7;
-            }
-
-            @include rwd(pad) {
-                margin-top: 13%;
-                font-size: $p2;
-            }
-
+            position: relative;
+            margin: auto;
+            color: $colorT;
+            padding:  150px 0 0;
+            z-index: 15;
             @include rwd(mobile) {
-                // 768px
-                // width: 130px;
-                // height: 35px;
-                font-size: $f;
-                margin-top: 30%;
+                padding: 125px 0 0;
             }
+            &-c {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img {
+                    width: 63px * 0.7;
+                    height: 43px * 0.7;
+                    margin-bottom: 5px;
+                    @include rwd(mobile) {
+                        width: 63px * 0.5;
+                        height: 43px * 0.5;
+                    }
+                }
+            }
+            h1 {
+                font-size: $h1;
+                padding: 5px 20px 0px;
+                @include rwd(mobile) {
+                    font-size: $h1 - 8px;
+                    padding: 5px 15px 0px;
+                }
+            }
+            &-e {
+                text-align: center;
+                font-size: $p1;
+                @include rwd(mobile) {
+                    font-size: $p1 - 6px;
+                }
+            }
+            // img {
+            //     width: 63px * 0.7;
+            //     height: 43px * 0.7;
+            // }
+
+            // @include rwd(pad) {
+            //     margin-top: 13%;
+            //     font-size: $p2;
+            // }
+
+            // @include rwd(mobile) {
+            //     // 768px
+            //     // width: 130px;
+            //     // height: 35px;
+            //     font-size: $f;
+            //     margin-top: 30%;
+            // }
+        
+
         }
     }
 
@@ -380,6 +420,7 @@ $hoverBorderColor: #f0dc9a;
         display: block;
         margin: 1% auto;
         border: 4px solid;
+        margin-bottom: 80px;
     }
 
     .jl_temp a {

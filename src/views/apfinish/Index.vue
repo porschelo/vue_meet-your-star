@@ -42,7 +42,13 @@
                         </div>
                         <!-- 進度條 -->
                         <div class="j_progress">
-                            <li class="container__item">
+                            <div class="progress">
+                        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%; ">
+                            100%
+                        </div>
+                    </div>
+                            <!-- <li class="container__item">
                                 <div class="stepper">
                                     <input
                                         class="stepper__input"
@@ -106,7 +112,7 @@
                                         </p>
                                     </div>
                                 </div>
-                            </li>
+                            </li> -->
                         </div>
                         <!-- 儀錶板 -->
                         <div class="j_panel">
