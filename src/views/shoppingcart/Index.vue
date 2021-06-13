@@ -38,7 +38,7 @@
                         <tbody>
                             <tr
                                 v-for="(item, index) in cartlist"
-                                :key="`${index}`"
+                                :key="item.productId"
                             >
                                 <td>
                                     <img
@@ -126,14 +126,15 @@ export default {
             //要改newPdData.total
             if (cart[index].count > 10) {
                 cart[index].total = cart[index].productPrice * 10;
-                console.log(cart[index].total);
+                // console.log(cart[index].total);
             } else {
                 cart[index].total =
                     cart[index].productPrice * cart[index].count;
-                console.log(cart[index].total);
+                // console.log(cart[index].total);
             }
 
             this.$store.dispatch('updateCart', cart);
+            // console.log(this.cartlist);
         },
         deleteBtn(index) {
             let newCart = [...this.cartlist];
@@ -155,7 +156,6 @@ export default {
         //取用vuex
         cartlist() {
             return this.$store.state.cartList;
-            // console.log(cartlist);
         },
         totalPrice() {
             // var sumPrice = 0;
