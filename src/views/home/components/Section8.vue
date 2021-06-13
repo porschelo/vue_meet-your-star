@@ -5,43 +5,43 @@
                 <img
                     class="m1"
                     ref="m1"
-                    src="/images/index/cloud/cloud1.svg"
+                    src="images/index/cloud/cloud1.svg"
                     alt=""
                 />
                 <img
                     class="m2"
                     ref="m2"
-                    src="/images/index/cloud/cloud2.svg"
+                    src="images/index/cloud/cloud2.svg"
                     alt=""
                 />
                 <img
                     class="m3"
                     ref="m3"
-                    src="/images/index/cloud/cloud3.svg"
+                    src="images/index/cloud/cloud3.svg"
                     alt=""
                 />
                 <img
                     class="m4"
                     ref="m4"
-                    src="/images/index/cloud/cloud4.svg"
+                    src="images/index/cloud/cloud4.svg"
                     alt=""
                 />
                 <img
                     class="m5"
                     ref="m5"
-                    src="/images/index/cloud/cloud5.svg"
+                    src="images/index/cloud/cloud5.svg"
                     alt=""
                 />
                 <img
                     class="m6"
                     ref="m6"
-                    src="/images/index/cloud/cloud6.svg"
+                    src="images/index/cloud/cloud6.svg"
                     alt=""
                 />
                 <img
                     class="m7"
                     ref="m7"
-                    src="/images/index/cloud/cloud7.svg"
+                    src="images/index/cloud/cloud7.svg"
                     alt=""
                 />
             </div>

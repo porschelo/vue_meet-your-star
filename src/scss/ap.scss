@@ -141,6 +141,7 @@ $letter-spacing:2.5;
 } 
 .j_panel_inner{
   // border: 2px solid salmon;
+  height: auto;
   width:85%;
   // height:80% !important;
   margin:0 auto;
@@ -209,11 +210,10 @@ $letter-spacing:2.5;
                
         }
 
-        // .j_page{
+        
 .button_page{
 width: 70%;
 
-// border:#428635 3px solid;
  margin: 0 auto;
  text-align:center;
 }

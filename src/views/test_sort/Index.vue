@@ -5,12 +5,12 @@
         <div class="tSort_section">
             <div class="tSort_title">
                 <div class="tSort_title-c">
-                    <img src="/images/store/uv_icone.png" alt="" />
+                    <img src="images/store/uv_icone.png" alt="" />
                     <h1>心理測驗</h1>
-                    <img src="/images/store/uv_icone.png" alt="" />
+                    <img src="images/store/uv_icone.png" alt="" />
                 </div>
                 <div class="tSort_title-e">
-                    <h4>— Personality Test —</h4>
+                    <p>— Personality Test —</p>
                 </div>
             </div>
 
@@ -21,38 +21,38 @@
                             @click="showPoster = 0"
                             :class="{ highlight: showPoster == 0 }"
                         >
-                            <img src="/images/test/starball.png" alt="" />
+                            <img src="images/test/starball.png" alt="" />
                             <h2>星座</h2>
                         </li>
                         <li
                             @click="showPoster = 1"
                             :class="{ highlight: showPoster == 1 }"
                         >
-                            <img src="/images/test/love.png" alt="" />
+                            <img src="images/test/love.png" alt="" />
                             <h2>愛情</h2>
                         </li>
                         <li
                             @click="showPoster = 2"
                             :class="{ highlight: showPoster == 2 }"
                         >
-                            <img src="/images/test/bag.png" alt="" />
+                            <img src="images/test/bag.png" alt="" />
                             <h2>工作</h2>
                         </li>
                     </ul>
                 </div>
                 <div class="tSort_poster">
                     <img
-                        src="/images/test/poster1.png"
+                        src="images/test/poster1.png"
                         alt=""
                         v-if="showPoster == 0"
                     />
                     <img
-                        src="/images/test/poster2.png"
+                        src="images/test/poster2.png"
                         alt=""
                         v-if="showPoster == 1"
                     />
                     <img
-                        src="/images/test/poster3.png"
+                        src="images/test/poster3.png"
                         alt=""
                         v-if="showPoster == 2"
                     />
@@ -89,10 +89,10 @@ export default {
 @import '@/scss/rwd.scss';
 .wrapper_tSort {
     .tSort_header {
-        height: 140px;
+        height: 130px;
         background-color: #023552;
         @include rwd(mobile) {
-            height: 100px;
+            height: 91px;
         }
     }
 
@@ -111,34 +111,40 @@ export default {
     .tSort_title {
         // border: 1px solid red;
         color: $colorT;
-        padding: (80px) * 0.7 0 0;
-        &-c {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            img {
-                width: 63px * 0.7;
-                height: 43px * 0.7;
-                margin-bottom: 5px;
-            }
-        }
-
-        h1 {
-            font-size: $h1;
-            padding: 5px 20px 10px;
+            padding: (80px) * 0.7 0 0;
+            z-index: 15;
             @include rwd(mobile) {
-                font-size: $h1 - 8px;
+                padding: (70px) * 0.7 0 0;
             }
-        }
-
-        &-e {
-            text-align: center;
-            font-size: $p1;
-            @include rwd(mobile) {
-                font-size: $p1 - 6px;
+            &-c {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img {
+                    width: 63px * 0.7;
+                    height: 43px * 0.7;
+                    margin-bottom: 5px;
+                    @include rwd(mobile) {
+                        width: 63px * 0.5;
+                        height: 43px * 0.5;
+                    }
+                }
             }
-        }
+            h1 {
+                font-size: $h1;
+                padding: 5px 20px 0px;
+                @include rwd(mobile) {
+                    font-size: $h1 - 8px;
+                    padding: 5px 15px 0px;
+                }
+            }
+            &-e {
+                text-align: center;
+                font-size: $p1;
+                @include rwd(mobile) {
+                    font-size: $p1 - 6px;
+                }
+            }
     }
 
     .tSort_content {
@@ -170,7 +176,7 @@ export default {
         margin-bottom: 20px;
         @include rwd(mobile) {
             width: 100%;
-            margin-top: 56px;
+            margin-top: 11px;
         }
 
         ul {
@@ -182,6 +188,7 @@ export default {
             margin: 20px;
             cursor: pointer;
             opacity: 0.5;
+            align-items: center;
             &:hover {
                 opacity: 1;
             }
@@ -202,6 +209,7 @@ export default {
                 height: 32 * 0.7;
             }
             h2 {
+                padding-top: 8px;
                 font-size: $h2;
                 margin-left: 5px;
                 @include rwd(mobile) {

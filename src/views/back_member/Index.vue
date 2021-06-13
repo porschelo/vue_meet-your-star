@@ -25,7 +25,7 @@
                             >
                         </li>
                         <li>
-                            <router-link to ="#article-list"
+                            <router-link to ="/back_stardaily"
                                 class="btn btn-warning"
                                 data-bs-toggle="collapse"
                                 role="button"
@@ -91,7 +91,7 @@
                             </ul>
                         </li>
                         <li>
-                            <router-link to ="#product-list"
+                            <router-link to ="back_shopping_product"
                                 class="btn btn-warning"
                                 data-bs-toggle="collapse"
                                 role="button"
@@ -162,8 +162,13 @@
                             <tr v-for="(member,index) in member_info" :key="index">
                                 <td>{{member.MEMBER_ID}}</td>
                                 <td>{{member.MEMBER_EMAIL}}</td>
-                                <td>{{member.MEMBER_NAME}}</td>
-                                <td>{{member.MEMBER_PASSWORD}}</td>
+                                <td>{{member.MEMBER_NAME}}</td>                     
+                                <td>
+                                    <input type="text" v-model="member.MEMBER_PASSWORD" v-show="member.editStatus" class="border border-dark">
+                                    <span v-show="!member.editStatus">
+                                        {{member.MEMBER_PASSWORD}}
+                                    </span>
+                                </td>
                                 <td>
                                     <input type="text" v-model="member.MEMBER_POINT" v-show="member.editStatus" class="border border-dark">
                                     <span v-show="!member.editStatus">
@@ -255,11 +260,27 @@ export default {
                 // console.log(this.member_info[index].edit);
 
             }else{
+
+
+                axios
+                .post('http://localhost/tfd101/project/g3/php/back_UpdateMember.php',
+                {
+                    member_ID:this.member_info[index].MEMBER_ID,
+                    member_Point: this.member_info[index].MEMBER_POINT,
+                    member_Password: this.member_info[index].MEMBER_PASSWORD,
+
+                }
+            )
+
                 this.member_info[index].editStatus = false;
                 this.member_info[index].edit = "編輯";
                 this.$forceUpdate()
+                console.log(this.member_info[index].MEMBER_PASSWORD);
+
+                // console.log(this.member_info[index].MEMBER_ID);
                 // console.log(this.member_info[index].editStatus);
                 // console.log(this.member_info[index].edit);
+
             }
   
         },
