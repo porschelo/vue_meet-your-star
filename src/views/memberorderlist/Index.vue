@@ -175,10 +175,10 @@ export default {
                 id: this.$store.state.loginID,
             })
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 this.mb_list = res.data;
 
-                console.log(this.mb_list);
+                // console.log(this.mb_list);
             });
     },
 
@@ -190,7 +190,7 @@ export default {
 
     methods: {
         buytocart(index) {
-            alert(index);
+            // alert(index);
             // console.log(this.mb_list[index]);
             let newBuyItem = {};
             newBuyItem.productName = this.mb_list[index].PRODUCT_NAME;

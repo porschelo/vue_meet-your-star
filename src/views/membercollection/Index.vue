@@ -152,7 +152,7 @@ export default {
 
     methods: {
         cancel_btn(index) {
-            alert(index);
+            // alert(index);
             this.collection_data.splice(index, 1);
         },
     },

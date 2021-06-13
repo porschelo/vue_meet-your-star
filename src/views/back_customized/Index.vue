@@ -214,12 +214,12 @@ export default {
 };
 </script>
 <style lang="scss">
-    .backend{
-        margin-top: 130px;
-        // .container-fluid{
-        //     background-color: white;
-        // }
-    }
+    // .backend{
+    //     margin-top: 130px;
+    //     // .container-fluid{
+    //     //     background-color: white;
+    //     // }
+    // }
 
 
 
