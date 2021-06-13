@@ -6,9 +6,10 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         //teacher
-        selectteacher:'',
-        selectteacherprice:'',
-        setAppointed:'',
+        selectteacher: '',
+        selectteacherprice: '',
+        setAppointed: '',
+
         //cart
         cartList: [],
 
@@ -32,12 +33,13 @@ export default new Vuex.Store({
         selectteachername(state, teachername) {
             state.selectteacher = teachername;
         },
-        selectteacherprice(state, teacherprice){
+        selectteacherprice(state, teacherprice) {
             state.selectteacherprice = teacherprice;
         },
-        selectteacherdate(state, teacherdate){
-            state.setAppointed= teacherdate;
+        selectteacherdate(state, teacherdate) {
+            state.setAppointed = teacherdate;
         },
+
         //cart
         addCart(state, obj1) {
             state.cartList.push(obj1);
@@ -46,6 +48,7 @@ export default new Vuex.Store({
         addCartUpdate(state, cart) {
             state.cartList = cart;
         },
+
         //login
         loginVisible(state, bol) {
             state.loginBol = bol;
@@ -104,12 +107,13 @@ export default new Vuex.Store({
         setselectteacher(context, teachername) {
             context.commit('selectteachername', teachername);
         },
-        setselectteacherprice(context, teacherprice){
-            context.commit('selectteacherprice', teacherprice)
+        setselectteacherprice(context, teacherprice) {
+            context.commit('selectteacherprice', teacherprice);
         },
-        setselectteacherdate(context, teacherdate){
-            context.commit('selectteacherdate', teacherdate)
+        setselectteacherdate(context, teacherdate) {
+            context.commit('selectteacherdate', teacherdate);
         },
+
         //更新整個購物車
         updateCart(context, cart) {
             context.commit('addCartUpdate', cart);
@@ -122,7 +126,6 @@ export default new Vuex.Store({
         addToCart(context, obj) {
             context.commit('addCart', obj);
 
-            // localStorage.setItem('aaa', '123');
             localStorage.setItem(
                 'storageCart',
                 JSON.stringify(this.state.cartList)
