@@ -25,7 +25,13 @@
                 </div>
                 <!-- 進度條 -->
                 <div class="j_progress">
-                    <li class="container__item">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+                        aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:75%; ">
+                            75%
+                        </div>
+                    </div>
+                    <!-- <li class="container__item">
                         <div class="stepper">
                             <input
                                 class="stepper__input"
@@ -87,7 +93,7 @@
                                 <p class="stepper__content">step 4: 預約完成</p>
                             </div>
                         </div>
-                    </li>
+                    </li> -->
                 </div>
 
                 <!-- 儀錶板 -->
@@ -138,13 +144,7 @@
                                 </div>
 
                                 <!-- 表單開始 -->
-                                <form
-                                    :model="form2"
-                                    :rules="rules"
-                                    ref="loginForm"
-                                    action=""
-                                    @submit.prevent="handleSubmit"
-                                >
+                                <form>
                                     <div class="error-message">
                                         <p>請輸入有效email</p>
                                     </div>
@@ -233,22 +233,21 @@
                                                         {{ payment }}
                                                     </option>
                                                 </select>
-                                            </div>
+                                            </form>
                                         </div>
                                         <div class="form_right">
                                             <button class="j_right">
                                                 <a @click="pay" class="j_right"
-                                                    >結帳</a
-                                                >
+                                                    >結帳</a>
                                             </button>
                                         </div>
                                     </div>
-                                </form>
+
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+        
 
             <myFooter></myFooter>
         </div>
@@ -256,8 +255,9 @@
 </template>
 
 <script>
-import myFooter from '@/components/myFooter';
-import axios from 'axios';
+import myFooter from '@/components/myFooter'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import axios from 'axios'
 
 export default {
     data() {
@@ -274,21 +274,7 @@ export default {
                 value: '09xxxxxxxx',
                 valid: true,
             },
-            // form2: {
-            // name: '',
-            // tel: '',
-            // phone: '',
-            // email: '',
-            // url: ''
-            // },
-            // rules: {
-            //     tel: [{
-            //     required: true,
-            //     pattern: /\d{4}-\d{3}-\d{3}/,
-            //     message: "手機號碼格式錯誤",
-            //     trigger: "blur"
-            //     }],
-            // },
+            
             Content:'',
             payment:'信用卡付款(經由綠世界)',
             teacherinfo :[],
@@ -330,12 +316,11 @@ export default {
             // console.log(time);
             console.log(this.$store.state.loginID);
 
-            axios
-                .post('http://localhost/meetyourstars/searchteacher.php', {
-                    TEACHER_NAME: this.$store.state.selectteacher,
-                })
+            axios.post('http://localhost/meetyourstars/searchteacher.php',
+            {   TEACHER_NAME : this.$store.state.selectteacher}
+            )
                 .then((res1) => {
-                    // console.log('res1',res1);
+                    console.log('res1',res1);
                     this.teacherinfo = res1.data;
                     this.teacherid = this.teacherinfo[0].TEACHER_ID;
                 });
@@ -354,16 +339,19 @@ export default {
                 APPOINTMENT_CONTENT:this.Content,
                 id: this.$store.state.loginID,}
             )
-            .then((res2) => {
+            .then(() => {
                     // console.log('res2',res2.data);
-                    this.teacherinfo = res2.data;
-                    this.teacherid = this.teacherinfo[0].TEACHER_ID;
-            this.$router.push({
+                    // this.teacherinfo = res2.data;
+                    // this.teacherid = this.teacherinfo[0].TEACHER_ID;
+                    
+                    this.$router.push({
                     path: '/apfinish',
-                });                       
+                    });                       
 
                  });
-            
+                    // this.$router.push({
+                    // path: '/apfinish',
+                    // }); 
 
         },
 
