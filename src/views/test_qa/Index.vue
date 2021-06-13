@@ -104,6 +104,7 @@
                     <div
                         v-for="(question, index) in questions"
                         :key="question.title"
+                        
                     >
                         <template v-if="index == vars">
                             <p>{{ question.title }}</p>
@@ -117,6 +118,7 @@
                                 <input
                                     type="radio"
                                     v-model="question.value"
+                                   
                                     :value="choice.value"
                                 />
                                 <p>{{ choice.content }}</p>
@@ -155,6 +157,7 @@ export default {
             is_page: true,
             vars: 0,
             final: false,
+            select:'',
             finalAnswer: [],
             test:[],
             times:[],
@@ -623,6 +626,12 @@ export default {
 
     methods: {
         next() {
+            console.log(this.questions[this.vars].value);
+            if(this.questions[this.vars].value === null){
+                    alert('題目選項不能為空白');
+                    return false;
+            };
+    
             this.vars++;
         },
         dealData() {

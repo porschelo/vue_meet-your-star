@@ -167,35 +167,57 @@
                                                     v-model="birthday"
                                                 />
                                             </div>
-                                            <div
-                                                class="tel"
-                                                label="手機號碼"
-                                                prop="phone"
-                                            >
-                                                <h4>C. 聯絡電話</h4>
-                                                <input
-                                                    type="text"
-                                                    name=""
-                                                    v-model="phone"
-                                                    placeholder="請輸入手機號碼"
-                                                />
-                                            </div>
-                                            <div class="email">
-                                                <h4>E. 聯絡信箱</h4>
-                                                <input
-                                                    type="email"
-                                                    name=""
-                                                    placeholder="請輸入信箱"
-                                                    v-model="email"
-                                                />
-                                            </div>
-                                            <div class="comment">
-                                                <h4>F. 預約備註</h4>
-                                                <div class="comment_word">
-                                                    <textarea
-                                                        name="Content"
-                                                        v-model="Content"
-                                                    ></textarea>
+
+                                            <!-- 表單開始 -->
+                                            <form   action="" >
+                                                <div class="error-message">
+                                                    <p>請輸入有效email</p>
+                                                </div>
+                                                <div class="form_info">
+                                                    <div class="form_left">
+                                                        <div class="name">
+                                                            <h4>A. 姓名</h4>
+                                                            <input type="text" placeholder="請輸入文字" required="" v-model.trim="name" />
+                                                        </div>
+                                                        <div class="bd">
+                                                            <h4>B. 生日</h4>
+                                                            <input type="text" placeholder="請輸入文字" v-model="birthday"
+                                                            />
+                                                        </div>
+                                                        <div class="tel" label="手機號碼" prop="phone">
+                                                            <h4>C. 聯絡電話</h4>
+                                                            <input type="text" name="" v-model="phone" placeholder="請輸入手機號碼"/>
+                                                        </div>
+                                                        <div class="email">
+                                                            <h4>E. 聯絡信箱</h4>
+                                                            <input type="email" name="" placeholder="請輸入信箱" v-model="email"
+                                                            />
+                                                        </div>
+                                                        <div class="comment">
+                                                            <h4>F. 預約備註</h4>
+                                                            <div class="comment_word">
+                                                                <textarea name="Content" v-model="Content"></textarea>
+                                                            </div>
+                                                            <label for="ammount">付款方式</label><br />
+                                                            <select name="payment" id="payment" v-model="payment"
+                                                            >
+                                                                <option
+                                                                    value="信用卡付款(經由綠世界)"
+                                                                >
+                                                                    {{payment}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form_right">
+                                                        <button class="j_right" type="button">
+                                                            <a
+                                                                @click="pay"
+                                                                class="j_right"
+                                                                >結帳</a
+                                                            >
+                                                        </button>
+                                                    </div>
                                                 </div>
                                                 <label for="ammount"
                                                     >付款方式</label
@@ -242,6 +264,8 @@ export default {
         return {
             memberinfo: [],
             name: '',
+            birthday:'',
+            phone:'',
             email: {
                 value: 'jo@hnd.oe',
                 valid: true,
@@ -250,27 +274,26 @@ export default {
                 value: '09xxxxxxxx',
                 valid: true,
             },
-            form2: {
-                name: '',
-                tel: '',
-                phone: '',
-                email: '',
-                url: '',
-            },
-            rules: {
-                tel: [
-                    {
-                        required: true,
-                        pattern: /\d{4}-\d{3}-\d{3}/,
-                        message: '手機號碼格式錯誤',
-                        trigger: 'blur',
-                    },
-                ],
-            },
-            Content: '',
-            payment: '信用卡付款(經由綠世界)',
-            teacherinfo: [],
-            teacherid: '',
+            // form2: {
+            // name: '',
+            // tel: '',
+            // phone: '',
+            // email: '',
+            // url: ''
+            // },
+            // rules: {
+            //     tel: [{
+            //     required: true,
+            //     pattern: /\d{4}-\d{3}-\d{3}/,
+            //     message: "手機號碼格式錯誤",
+            //     trigger: "blur"
+            //     }],
+            // },
+            Content:'',
+            payment:'信用卡付款(經由綠世界)',
+            teacherinfo :[],
+            teacherid:'', 
+
 
             teacher: [],
         };
@@ -312,7 +335,7 @@ export default {
                     TEACHER_NAME: this.$store.state.selectteacher,
                 })
                 .then((res1) => {
-                    console.log(res1);
+                    // console.log('res1',res1);
                     this.teacherinfo = res1.data;
                     this.teacherid = this.teacherinfo[0].TEACHER_ID;
                 });
@@ -320,28 +343,28 @@ export default {
             axios.post(
                 'http://localhost/meetyourstars/appointment.php',
 
-                {
-                    APPOINTMENT_DATE: newsavedate,
-                    APPOINTMENT_TIME: time,
-                    TEACHER_ID: this.teacherid,
-                    APPOINTMENT_NAME: this.name,
-                    APPOINTMENT_PRICE: this.$store.state.selectteacherprice,
-                    APPOINTMENT_BIRTHDAY: this.birthday,
-                    APPOINTMENT_PHONE: this.phone,
-                    APPOINTMENT_EMAIL: this.email,
-                    APPOINTMENT_CONTENT: this.Content,
-                    id: this.$store.state.loginID,
-                }
-            );
-            // .then((res2) => {
-            //         console.log(res2);
-            //         this.teacherinfo = res1.data;
-            //         this.teacherid = this.teacherinfo[0].TEACHER_ID;
-
-            //      });
+            {   APPOINTMENT_DATE: newsavedate,
+                APPOINTMENT_TIME: time,
+                TEACHER_ID:this.teacherid,
+                APPOINTMENT_NAME:this.name,
+                APPOINTMENT_PRICE:this.$store.state.selectteacherprice,
+                APPOINTMENT_BIRTHDAY:this.birthday,
+                APPOINTMENT_PHONE:this.phone,
+                APPOINTMENT_EMAIL:this.email,
+                APPOINTMENT_CONTENT:this.Content,
+                id: this.$store.state.loginID,}
+            )
+            .then((res2) => {
+                    // console.log('res2',res2.data);
+                    this.teacherinfo = res2.data;
+                    this.teacherid = this.teacherinfo[0].TEACHER_ID;
             this.$router.push({
-                path: '/apfinish',
-            });
+                    path: '/apfinish',
+                });                       
+
+                 });
+            
+
         },
 
         samemember() {

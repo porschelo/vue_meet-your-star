@@ -108,7 +108,7 @@ import myFooter from '@/components/myFooter';
 export default {
     mounted() {
         axios
-            .post('http://localhost/meet_ur_heart/php/membercollection.php', {
+            .post('http://localhost/tfd101/project/g3/php/membercollection.php', {
                 id: this.$store.state.loginID,
             })
             .then((res) => {
@@ -152,7 +152,7 @@ export default {
 
     methods: {
         cancel_btn(index) {
-            alert(index);
+            // alert(index);
             this.collection_data.splice(index, 1);
         },
     },

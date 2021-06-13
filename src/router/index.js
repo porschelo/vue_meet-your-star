@@ -23,6 +23,19 @@ import ApConfirm from '@/views/apconfirm/Index.vue';
 import ApFinish from '@/views/apfinish/Index.vue';
 import Order from '@/views/order/Index.vue';
 import ProductFinish from '@/views/product_finish/Index.vue';
+import BackCustomized from '@/views/back_customized/Index.vue';
+import BackMember from '@/views/back_member/Index.vue';
+import BackMessageList from '@/views/back_message_list/Index.vue';
+import BackOrder from '@/views/back_order/Index.vue';
+import BackShoppingProduct from '@/views/back_shopping_product/Index.vue';
+import BackStarArticle from '@/views/back_stararticle/Index.vue';
+import BackStarDaily from '@/views/back_stardaily/Index.vue';
+import BackStarIntro from '@/views/back_starintro/Index.vue';
+import BackStarMatch from '@/views/back_starmatch/Index.vue';
+import BackTeacher from '@/views/back_teacher/Index.vue';
+import BackTest from '@/views/back_test/Index.vue';
+import BackThdate from '@/views/back_thdate/Index.vue';
+import BackThorder from '@/views/back_thorder/Index.vue';
 
 // 動態載入（延遲）
 // route level code-splitting
@@ -147,6 +160,76 @@ const routes = [
         path: '/order',
         name: 'Order',
         component: Order,
+    },
+    {
+        path: '/back_customized',
+        name: 'BackCustomized',
+        component: BackCustomized,
+    },
+    {
+        path: '/back_customized',
+        name: 'BackCustomized',
+        component: BackCustomized,
+    },
+    {
+        path: '/back_member',
+        name: 'BackMember',
+        component: BackMember,
+    },
+    {
+        path: '/back_message_list',
+        name: 'BackMessageList',
+        component: BackMessageList,
+    },
+    {
+        path: '/back_order',
+        name: 'BackOrder',
+        component: BackOrder,
+    },
+    {
+        path: '/back_shopping_product',
+        name: 'BackShoppingProduct',
+        component: BackShoppingProduct,
+    },
+    {
+        path: '/back_stararticle',
+        name: 'BackStarArticle',
+        component: BackStarArticle,
+    },
+    {
+        path: '/back_stardaily',
+        name: 'BackStarDaily',
+        component: BackStarDaily,
+    },
+    {
+        path: '/back_starintro',
+        name: 'BackStarIntro',
+        component: BackStarIntro,
+    },
+    {
+        path: '/back_starmatch',
+        name: 'BackStarMatch',
+        component: BackStarMatch,
+    },
+    {
+        path: '/back_teacher',
+        name: 'BackTeacher',
+        component: BackTeacher,
+    },
+    {
+        path: '/back_test',
+        name: 'BackTest',
+        component: BackTest,
+    },
+    {
+        path: '/back_thdate',
+        name: 'BackThdate',
+        component: BackThdate,
+    },
+    {
+        path: '/back_thorder',
+        name: 'BackThorder',
+        component: BackThorder,
     },
 ];
 

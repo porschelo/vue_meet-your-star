@@ -5,9 +5,9 @@
             <!-- Title -->
             <div class="MC_title">
                 <div class="MC_title-c">
-                    <img src="/images/membercentre/earth.png" alt="" />
+                    <img src="images/membercentre/earth.png" alt="" />
                     <h1>會員中心</h1>
-                    <img src="/images/membercentre/earth.png" alt="" />
+                    <img src="images/membercentre/earth.png" alt="" />
                 </div>
 
                 <div class="MC_title-e">
@@ -138,7 +138,7 @@ export default {
         // axios.get('../../php/Select.php').then(res => console.log(res.data));
 
         axios
-            .post('http://localhost/meet_ur_heart/php/SelectMember.php', {
+            .post('http://localhost/tfd101/project/g3/php/SelectMember.php', {
                 id: this.$store.state.loginID,
             })
             .then((res) => {
@@ -159,14 +159,14 @@ export default {
     data() {
         return {
             memberinfo: [],
-            star_sign_pic: '/images/membercentre/fakedata.png',
+            star_sign_pic: 'images/membercentre/fakedata.png',
             star_sign_name: '水瓶座',
             member_name: '王曉明',
             member_date: '1991/01/23',
             member_gender: '男',
             member_phone: '0987-654-321',
             star_points: 987,
-            star_points_pic: '/images/membercentre/star_coin.png',
+            star_points_pic: 'images/membercentre/star_coin.png',
 
             change_data_btn: '修改資料',
             change_status: 1,
@@ -189,7 +189,7 @@ export default {
 
                 // 回存資料
                 axios.post(
-                    'http://localhost/vue_meet_u_heart/php/UpdateMember.php',
+                    'http://localhost/tfd101/project/g3/php/UpdateMember.php',
                     {
                         updateName: this.member_name,
                         updateBirthdate: this.member_date,
@@ -384,8 +384,8 @@ $border: 1px solid;
                 }
 
                 img {
-                    // width: 226 * 0.7px;
-                    // height: 252 * 0.7px;
+                    width: 331 * 0.5px;
+                    height: 312 * 0.5px;
                     display: block;
                     margin: 0 auto;
                     // margin-bottom: 16*.7px;

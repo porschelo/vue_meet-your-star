@@ -47,51 +47,7 @@
                         </thead>
 
                         <tbody class="order_table">
-                            <tr class="orderlist1">
-                                <td rowspan="2">
-                                    <div class="numid">20210123</div>
-                                    <button
-                                        class="buyagain"
-                                        onclick="location.href='./order.html'"
-                                    >
-                                        再次購買
-                                    </button>
-                                </td>
-                                <td>
-                                    <img
-                                        src="/images/memberorderlist/list_item1.png"
-                                        alt=""
-                                        class="list_pica"
-                                    />
-                                </td>
-                                <td class="order_name">測試文字七個字</td>
-                                <td>1</td>
-                                <td>500</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img
-                                        src="/images/memberorderlist/list_item2.png"
-                                        alt=""
-                                        class="list_pica"
-                                    />
-                                </td>
-                                <td class="order_name">宇宙能量手環</td>
-                                <td>1</td>
-                                <td>500</td>
-                            </tr>
-
-                            <tr class="total_price">
-                                <td colspan="2"></td>
-                                <td>共計 2 件</td>
-                                <td colspan="2" class="price">1000元</td>
-                            </tr>
-
-                            <tr>
-                                <td colspan="5">
-                                    <div class="line"></div>
-                                </td>
-                            </tr>
+                            
 
                             <!-- v-for -1 -->
 
@@ -143,16 +99,16 @@
                                         </tr>
 
                                          <tr class="total_price">
-                                    <td colspan="2"></td>
-                                    <td >共計 2 件</td>
-                                    <td colspan="2" class="price">1000元</td>
-                                    </tr>
+                                            <td colspan="2"></td>
+                                            <td >共計 2 件</td>
+                                            <td colspan="2" class="price">1000元</td>
+                                        </tr>
 
 
                                         
                                         </div>
                                         
-                                    </template> -->
+                            </template> -->
 
                             <!-- v-for -2 end -->
 
@@ -215,14 +171,14 @@ import myFooter from '@/components/myFooter';
 export default {
     mounted() {
         axios
-            .post('http://localhost/meet_ur_heart/php/memberlist.php', {
+            .post('http://localhost/tfd101/project/g3/php/memberlist.php', {
                 id: this.$store.state.loginID,
             })
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 this.mb_list = res.data;
 
-                console.log(this.mb_list);
+                // console.log(this.mb_list);
             });
     },
 
@@ -234,7 +190,7 @@ export default {
 
     methods: {
         buytocart(index) {
-            alert(index);
+            // alert(index);
             // console.log(this.mb_list[index]);
             let newBuyItem = {};
             newBuyItem.productName = this.mb_list[index].PRODUCT_NAME;
