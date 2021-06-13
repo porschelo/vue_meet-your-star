@@ -20,23 +20,9 @@ $letter-spacing:2.5;
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
-    // *{
-    //   outline: 1px solid yellow;
-    // }
+    
         //nav-list 所在頁面樣式
-    .overlaymenu{
-      .menulist{
-          .nav-menu{
-              ul{
-                  li:nth-child(2){
-                      a{
-                          color: yellow;
-                      }
-                  }
-              }
-          }
-      }
-  }
+
      @include rwd(pad){
         // border: 3px solid red; 
         
@@ -105,7 +91,7 @@ $letter-spacing:2.5;
 
       }
       @include rwd(mobile){
-        padding: 220px  * .7 0 0;
+        padding: 200px  * .7 0 0;
       }
 
 
@@ -514,9 +500,11 @@ width: 70%;
             height: 350*.7px;
             // height:60%;
             border-radius: 39px;
-            // :hover{
-            //   border: rgb(16, 240, 27) solid 3px;
-      
+            opacity: .8;
+            // :hover  {
+            //   opacity: 0.5;
+            //   -webkit-transform: scale3d(1.1,1.1,1);
+            //   transform: scale3d(1.1,1.1,1);
             // }
             
               @include rwd(pad){
@@ -547,6 +535,11 @@ width: 70%;
       align-items: center;
         :hover{
           cursor: pointer;
+          
+          opacity: 1;
+            -webkit-transform: scale3d(1.1,1.1,1);
+            transform: scale3d(1.1,1.1,1);
+          
         }
     }
     .j_panel_info{
@@ -557,7 +550,11 @@ width: 70%;
       color:$color;
       text-align:center;
       align-items: center;
-      // margin-bottom: 20*.7px;
+      margin-bottom: 20*.7px;
+      margin-left: 20*.7px;
+      margin-top: 30*.7px;
+
+
 
       // font:map-get($h4);
 
@@ -572,7 +569,8 @@ width: 70%;
       p{
         font-size:25*.7px;
         letter-spacing:$letter-spacing;
-        line-height: 2;
+        // margin-top: 30*.7px;
+        // line-height: 2;
         @include rwd(mobile){
           font-size:25*.7 - 6px ;
         }
@@ -891,9 +889,20 @@ body {
 
 // progress bar
 .j_progress{
-  width:80%;
+  width:60%;
   margin: 0 auto;
+  margin-top: 30 *.7px;
+  margin-bottom: 50 *.7px;
+   .progress{
+     background-color:#71a1d1;
+
+     border-radius: 20px;
+        .progress-bar{
+          // background-color:#5CB85B;
+        }
+   }
 }
+
 :root {
     
     --c-background: rgb(0, 0, 0);

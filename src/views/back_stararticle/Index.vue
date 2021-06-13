@@ -27,7 +27,9 @@
                             >
                         </li>
                         <li>
-                            <router-link
+                            <a class="btn btn-warning" data-bs-toggle="collapse" @click="next" role="button" aria-expanded="false" aria-controls="order-list">星座內容</a>
+
+                            <!-- <router-link
                                 to="#article-list"
                                 class="btn btn-warning"
                                 data-bs-toggle="collapse"
@@ -35,8 +37,9 @@
                                 aria-expanded="false"
                                 aria-controls="order-list"
                                 >星座內容</router-link
-                            >
-                            <ul class="collapse" id="article-list">
+                            > -->
+                            <ul class="collapse" id="article-list" >
+                                
                                 <li>
                                     <router-link
                                         to="back_stararticle"
@@ -219,7 +222,16 @@
 </template>
 <script>
 import 'bootstrap/dist/css/bootstrap.min.css';
-export default {};
+export default {
+
+    methods: {
+        next(){
+            this.$router.push({
+                path: '/#article-list'
+            });
+        }
+    }
+};
 </script>
 <style lang="scss">
 </style>
