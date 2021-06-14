@@ -7,13 +7,13 @@
                     <div class="j_title">
                         <div class="j_bigtitle">
                             <img
-                                src="/images/appointment/earth2.png"
+                                src="images/appointment/earth2.png"
                                 alt=""
                                 id="earth"
                             />
                             <h1>預約談星</h1>
                             <img
-                                src="/images/appointment/earth2.png"
+                                src="images/appointment/earth2.png"
                                 alt=""
                                 id="earth"
                             />
@@ -54,7 +54,7 @@
                                     <div class="docu_info">
                                         <div class="docu_img">
                                             <img
-                                                src="/images/appointment/confirm.png"
+                                                src="images/appointment/confirm.png"
                                                 alt=""
                                             />
                                         </div>
@@ -217,7 +217,7 @@ export default {
         myFooter,
     },
     mounted() {
-        axios.post('http://localhost/meetyourstars/teacher.php').then((res) => {
+        axios.post('php/teacher.php').then((res) => {
             console.log(res);
             this.teacher = res.data;
         });
@@ -244,7 +244,7 @@ export default {
             // console.log(time);
             console.log(this.$store.state.loginID);
 
-            axios.post('http://localhost/meetyourstars/searchteacher.php',
+            axios.post('php/searchteacher.php',
             {   TEACHER_NAME : this.$store.state.selectteacher}
             )
                 .then((res1) => {
@@ -254,7 +254,7 @@ export default {
                 });
 
             axios.post(
-                'http://localhost/meetyourstars/appointment.php',
+                'php/appointment.php',
 
                     {
                         APPOINTMENT_DATE: newsavedate,
@@ -286,7 +286,7 @@ export default {
         samemember() {
             axios
                 .post(
-                    'http://localhost/meetyourstars/SelectMember.php',
+                    'php/SelectMember.php',
                     { id: this.$store.state.loginID }
                 )
                 .then((res) => {

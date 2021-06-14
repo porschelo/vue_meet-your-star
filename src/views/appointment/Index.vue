@@ -8,9 +8,9 @@
                 <div class="j_title">
 
                     <div class="j_bigtitle">
-                        <img src="/images/appointment/earth2.png" alt="" id="earth">
+                        <img src="images/appointment/earth2.png" alt="" id="earth">
                         <h1>預約談星</h1>
-                        <img src="/images/appointment/earth2.png" alt="" id="earth">
+                        <img src="images/appointment/earth2.png" alt="" id="earth">
                     </div>
                     
                     <div class="j_subtitle">
@@ -132,7 +132,7 @@ export default {
     },
     mounted() {
     
-      axios.post('http://localhost/meetyourstars/teacher.php',
+      axios.post('php/teacher.php',
 
       )
       .then((res) => {
@@ -176,7 +176,7 @@ export default {
         checknext(){
             if (this.$store.state.loginStatus == 0) {
                 this.$store.commit('loginVisible', true);
-                axios.post('http://localhost/meetyourstars/login.php',
+                axios.post('php/login.php',
                 {userAccount: this.userAccount,
                 userPassword: this.userPassword,}
                 )

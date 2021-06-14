@@ -11,13 +11,13 @@
                         <div class="j_title">
                             <div class="j_bigtitle">
                                 <img
-                                    src="/images/appointment/earth2.png"
+                                    src="images/appointment/earth2.png"
                                     alt=""
                                     id="earth"
                                 />
                                 <h1>預約談星</h1>
                                 <img
-                                    src="/images/appointment/earth2.png"
+                                    src="images/appointment/earth2.png"
                                     alt=""
                                     id="earth"
                                 />
@@ -187,7 +187,7 @@ export default {
         };
     },
     mounted() {
-        axios.post('http://localhost/meetyourstars/appointment.php').then((res) => {
+        axios.post('php/appointment.php').then((res) => {
             console.log(res);
             this.appointment = res.data;
         });
