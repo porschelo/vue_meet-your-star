@@ -808,10 +808,10 @@ export default {
             }
             h1 {
                 font-size: $h1;
-                padding: 5px 20px 0px;
+                padding: 5px 20px 5px;
                 @include rwd(mobile) {
                     font-size: $h1 - 8px;
-                    padding: 5px 15px 0px;
+                    padding: 5px 15px 5px;
                 }
             }
             &-e {
@@ -1048,18 +1048,6 @@ export default {
         background-color: #44796a;
     }
 
-    // .overlaymenu{
-    //     .menulist{
-    //         .nav-menu{
-    //             ul{
-    //                 li:nth-child(3){
-    //                     a{
-    //                         color: yellow;
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+  
 }
 </style>
