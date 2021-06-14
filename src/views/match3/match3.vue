@@ -62,7 +62,7 @@
                     </button>
                 </div>
             </div>
-           
+            
             <div class="jl-footer">
                 <myFooter></myFooter>
             </div>

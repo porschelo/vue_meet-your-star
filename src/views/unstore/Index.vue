@@ -129,134 +129,12 @@ export default {
         return {
             showProduct: this.$store.state.productType,
             dataList: [],
-            products: [
-                {
-                    imgURL: 'images/store/hPd_1.png',
-                    name: '七星陣水晶原石能量陣',
-                    category: '2',
-                },
-                {
-                    imgURL: 'images/store/hPd_2.png',
-                    name: '水向魔法石融蠟燈',
-                    category: '2',
-                },
-                {
-                    imgURL: 'images/store/hPd_3.png',
-                    name: '生命之花奧剛金字塔',
-                    category: '2',
-                },
-                {
-                    imgURL: 'images/store/hPd_4.png',
-                    name: '天然擴香健康石',
-                    category: '2',
-                },
-                {
-                    imgURL: 'images/store/hPd_5.png',
-                    name: '冥王星晶石手鍊',
-                    category: '2',
-                },
-                {
-                    imgURL: 'images/store/hPd_6.png',
-                    name: '德國花果茶與乾燥花盒',
-                    category: '2',
-                },
-                {
-                    imgURL: 'images/store/hPd_2.png',
-                    name: '七星陣水晶原石能量陣',
-                    category: '3',
-                },
-                {
-                    imgURL: 'images/store/hPd_2.png',
-                    name: '水向魔法石融蠟燈',
-                    category: '3',
-                },
-                {
-                    imgURL: 'images/store/hPd_2.png',
-                    name: '生命之花奧剛金字塔',
-                    category: 3,
-                },
-                {
-                    imgURL: 'images/store/hPd_2.png',
-                    name: '天然擴香健康石',
-                    category: 3,
-                },
-                {
-                    imgURL: 'images/store/hPd_2.png',
-                    name: '冥王星晶石手鍊',
-                    category: 3,
-                },
-                {
-                    imgURL: 'images/store/hPd_2.png',
-                    name: '德國花果茶與乾燥花盒',
-                    category: 3,
-                },
-                {
-                    imgURL: 'images/store/hPd_3.png',
-                    name: '生命之花奧剛金字塔',
-                    category: 3,
-                },
-                {
-                    imgURL: 'images/store/hPd_3.png',
-                    name: '生命之花奧剛金字塔',
-                    category: 3,
-                },
-                {
-                    imgURL: 'images/store/hPd_3.png',
-                    name: '生命之花奧剛金字塔',
-                    category: 3,
-                },
-                {
-                    imgURL: 'images/store/hPd_3.png',
-                    name: '生命之花奧剛金字塔',
-                    category: 3,
-                },
-                {
-                    imgURL: 'images/store/hPd_3.png',
-                    name: '生命之花奧剛金字塔',
-                    category: 3,
-                },
-                {
-                    imgURL: 'images/store/hPd_3.png',
-                    name: '生命之花奧剛金字塔',
-                    category: 3,
-                },
-                {
-                    imgURL: 'images/store/hPd_4.png',
-                    name: '生命之花奧剛金字塔',
-                    category: 'study',
-                },
-                {
-                    imgURL: 'images/store/hPd_4.png',
-                    name: '生命之花奧剛金字塔',
-                    category: 'study',
-                },
-                {
-                    imgURL: 'images/store/hPd_4.png',
-                    name: '生命之花奧剛金字塔',
-                    category: 'study',
-                },
-                {
-                    imgURL: 'images/store/hPd_4.png',
-                    name: '生命之花奧剛金字塔',
-                    category: 'study',
-                },
-                {
-                    imgURL: 'images/store/hPd_4.png',
-                    name: '生命之花奧剛金字塔',
-                    category: 'study',
-                },
-                {
-                    imgURL: 'images/store/hPd_4.png',
-                    name: '生命之花奧剛金字塔',
-                    category: 'study',
-                },
-            ],
         };
     },
     mounted() {
         axios
             .post(
-                'http://localhost/tfd101/project/g3/php/product_unstore_select.php'
+                'php/product_unstore_select.php'
             )
             .then((res) => {
                 this.dataList = res.data;
@@ -326,10 +204,10 @@ export default {
             }
             h1 {
                 font-size: $h1;
-                padding: 5px 20px 0px;
+                padding: 5px 20px 5px;
                 @include rwd(mobile) {
                     font-size: $h1 - 8px;
-                    padding: 5px 15px 0px;
+                    padding: 5px 15px 5px;
                 }
             }
             &-e {
