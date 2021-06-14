@@ -9,7 +9,7 @@
                     <img src="images/store/uv_icone.png" alt="" />
                 </div>
                 <div class="unstore_title-e">
-                    <h4>— Universe Store —</h4>
+                    <p>— Universe Store —</p>
                 </div>
             </div>
 
@@ -304,38 +304,41 @@ export default {
 
     /*===== 標題 =====*/
     .unstore_title {
-        color: $colorT;
-        padding: (80px + 240px) * 0.7 0 0;
-        @include rwd(mobile) {
-            padding: 220px * 0.7 0 0;
-        }
-        &-c {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            img {
-                width: 63px * 0.7;
-                height: 43px * 0.7;
-                margin-bottom: 5px;
-            }
-        }
-
-        h1 {
-            font-size: $h1;
-            padding: 5px 20px 10px;
+         color: $colorT;
+            padding: (80px+240px) * 0.7 0 0;
+            z-index: 15;
             @include rwd(mobile) {
-                font-size: $h1 - 8px;
+                padding: (200px) * 0.7 0 0;
             }
-        }
-
-        &-e {
-            text-align: center;
-            font-size: $p1;
-            @include rwd(mobile) {
-                font-size: $p1 - 6px;
+            &-c {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img {
+                    width: 63px * 0.7;
+                    height: 43px * 0.7;
+                    margin-bottom: 5px;
+                    @include rwd(mobile) {
+                        width: 63px * 0.5;
+                        height: 43px * 0.5;
+                    }
+                }
             }
-        }
+            h1 {
+                font-size: $h1;
+                padding: 5px 20px 0px;
+                @include rwd(mobile) {
+                    font-size: $h1 - 8px;
+                    padding: 5px 15px 0px;
+                }
+            }
+            &-e {
+                text-align: center;
+                font-size: $p1;
+                @include rwd(mobile) {
+                    font-size: $p1 - 6px;
+                }
+            }
     }
 
     /*===== 頁籤 =====*/

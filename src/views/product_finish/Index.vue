@@ -43,19 +43,16 @@
 
                         <!-- 儀錶板 -->
                         <div class="j_panel">
-                            <div class="j_panel_inner">
+                            <div class="j_panel_inner2">
                                 <div class="j_panel_title">
                                     <h2>購買完成</h2>
                                     <h4>恭喜您,您購買的商品已經準備出貨中!</h4>
                                 </div>
 
                                 <div class="j_panel_content">
-                                    <p>訂單編號: 073294758302</p>
-                                    <p>訂購姓名: 糖老鴨</p>
-                                    <p>
-                                        預約商品: 七星招財手環
-                                        <!-- {{ selectteacher }} -->
-                                    </p>
+                                    <p>訂單編號: {{ listId }}</p>
+                                    <p>訂單日期:{{ listdate }}</p>
+                                    <p>訂單金額:${{ listPrice }}</p>
                                 </div>
 
                                 <div class="j_panel_notice">
@@ -81,18 +78,35 @@ import myFooter from '@/components/myFooter';
 import axios from 'axios';
 
 export default {
+    data() {
+        return {
+            list: [],
+            listdate: '',
+            listId: '',
+            listPrice: 0,
+        };
+    },
     components: {
         myFooter,
     },
     mounted() {
         axios
             .post(
-                'http://localhost/tfd101/project/g3/php/selectappointment.php'
+                'http://localhost/tfd101/project/g3/php/selectListFinished.php',
+                {
+                    memberId: this.$store.state.loginID,
+                }
             )
             .then((res) => {
-                console.log(res);
-                this.teacher = res.data;
+                this.list = res.data;
+                console.log(this.list);
+                this.listId = this.list[0].LIST_ID;
+                this.listPrice = this.list[0].LIST_PRICE;
+                this.listdate = this.list[0].LIST_CREATDATE;
             });
+
+        //清空購物車
+        localStorage.removeItem('storageCart');
     },
     computed: {},
 };
@@ -111,7 +125,7 @@ export default {
 p {
     line-height: 1.6;
 }
-.j_panel_inner {
+.j_panel_inner2 {
     height: 550px;
 }
 </style>

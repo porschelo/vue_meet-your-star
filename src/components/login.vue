@@ -158,8 +158,8 @@ export default {
             signMonth: 0,
             signDay: 0,
             monsterName: '',
-            testValue: '',
-            qwe: ',',
+            
+            
         };
     },
 
@@ -185,11 +185,18 @@ export default {
         },
 
         goSignup() {
+            this.signAccount= '',
+            this.signPassword= '',
+            this.signPasswordCheck= '',
+            this.signCellphone= '',
+            this.signBirthdate= '',
             this.$store.commit('signVisible', true);
             this.$store.commit('loginVisible', false);
         },
 
         gologin() {
+             this.userAccount = '',
+            this.userPassword ='',
             this.$store.commit('loginVisible', true);
             this.$store.commit('signVisible', false);
         },
@@ -228,76 +235,76 @@ export default {
             console.log(this.signStarsign);
 
             if (this.signStarsign == '水瓶') {
-                alert('水瓶座 Aquarius');
-                this.signMemberPic = '/images/membercentre/Aquarius.png';
-                this.signMemberL_Pic = '/images/membercentre/L_Aquarius.png';
+                // alert('水瓶座 Aquarius');
+                this.signMemberPic = 'images/membercentre/Aquarius.png';
+                this.signMemberL_Pic = 'images/membercentre/L_Aquarius.png';
                 this.monsterName = '水瓶座';
             }
             if (this.signStarsign == '雙魚') {
-                alert('雙魚座 Pisces');
-                this.signMemberPic = '/images/membercentre/Pisces.png';
-                this.signMemberL_Pic = '/images/membercentre/L_Pisces.png';
+                // alert('雙魚座 Pisces');
+                this.signMemberPic = 'images/membercentre/Pisces.png';
+                this.signMemberL_Pic = 'images/membercentre/L_Pisces.png';
                 this.monsterName = '雙魚座';
             }
             if (this.signStarsign == '牧羊') {
-                alert('牧羊座 Aries');
-                this.signMemberPic = '/images/membercentre/Aries.png';
-                this.signMemberL_Pic = '/images/membercentre/L_Aries.png';
+                // alert('牧羊座 Aries');
+                this.signMemberPic = 'images/membercentre/Aries.png';
+                this.signMemberL_Pic = 'images/membercentre/L_Aries.png';
                 this.monsterName = '牡羊座';
             }
             if (this.signStarsign == '金牛') {
-                alert('金牛座 Taurus');
-                this.signMemberPic = '/images/membercentre/Taurus.png';
-                this.signMemberL_Pic = '/images/membercentre/L_Taurus.png';
+                // alert('金牛座 Taurus');
+                this.signMemberPic = 'images/membercentre/Taurus.png';
+                this.signMemberL_Pic = 'images/membercentre/L_Taurus.png';
                 this.monsterName = '金牛座';
             }
             if (this.signStarsign == '雙子') {
-                alert('雙子座 Gemini');
-                this.signMemberPic = '/images/membercentre/Gemini.png';
-                this.signMemberL_Pic = '/images/membercentre/L_Gemini.png';
+                // alert('雙子座 Gemini');
+                this.signMemberPic = 'images/membercentre/Gemini.png';
+                this.signMemberL_Pic = 'images/membercentre/L_Gemini.png';
                 this.monsterName = '雙子座';
             }
             if (this.signStarsign == '巨蟹') {
-                alert('巨蟹座 Cancer');
-                this.signMemberPic = '/images/membercentre/Cancer.png';
-                this.signMemberL_Pic = '/images/membercentre/L_Cancer.png';
+                // alert('巨蟹座 Cancer');
+                this.signMemberPic = 'images/membercentre/Cancer.png';
+                this.signMemberL_Pic = 'images/membercentre/L_Cancer.png';
                 this.monsterName = '巨蟹座';
             }
             if (this.signStarsign == '獅子') {
-                alert('獅子座 Leo');
-                this.signMemberPic = '/images/membercentre/Leo.png';
-                this.signMemberL_Pic = '/images/membercentre/L_Leo.png';
+                // alert('獅子座 Leo');
+                this.signMemberPic = 'images/membercentre/Leo.png';
+                this.signMemberL_Pic = 'images/membercentre/L_Leo.png';
                 this.monsterName = '獅子座';
             }
             if (this.signStarsign == '處女') {
-                alert('處女座 Virgo');
-                this.signMemberPic = '/images/membercentre/Virgo.png';
-                this.signMemberL_Pic = '/images/membercentre/L_Virgo.png';
+                // alert('處女座 Virgo');
+                this.signMemberPic = 'images/membercentre/Virgo.png';
+                this.signMemberL_Pic = 'images/membercentre/L_Virgo.png';
                 this.monsterName = '處女座';
             }
 
             if (this.signStarsign == '天秤') {
-                alert('天秤座 Libra');
-                this.signMemberPic = '/images/membercentre/Libra.png';
-                this.signMemberL_Pic = '/images/membercentre/L_Libra.png';
+                // alert('天秤座 Libra');
+                this.signMemberPic = 'images/membercentre/Libra.png';
+                this.signMemberL_Pic = 'images/membercentre/L_Libra.png';
                 this.monsterName = '天秤座';
             }
             if (this.signStarsign == '天蠍') {
-                alert('天蠍座 Scorpio');
-                this.signMemberPic = '/images/membercentre/Scorpio.png';
-                this.signMemberL_Pic = '/images/membercentre/L_Scorpio.png';
+                // alert('天蠍座 Scorpio');
+                this.signMemberPic = 'images/membercentre/Scorpio.png';
+                this.signMemberL_Pic = 'images/membercentre/L_Scorpio.png';
                 this.monsterName = '天蠍座';
             }
             if (this.signStarsign == '射手') {
-                alert('射手座 Sagittarius');
-                this.signMemberPic = '/images/membercentre/Sagittarius.png';
-                this.signMemberL_Pic = '/images/membercentre/L_Sagittarius.png';
+                // alert('射手座 Sagittarius');
+                this.signMemberPic = 'images/membercentre/Sagittarius.png';
+                this.signMemberL_Pic = 'images/membercentre/L_Sagittarius.png';
                 this.monsterName = '射手座';
             }
             if (this.signStarsign == '魔羯') {
-                alert('魔羯座 Capricorn');
-                this.signMemberPic = '/images/membercentre/Capricorn.png';
-                this.signMemberL_Pic = '/images/membercentre/L_Capricorn.png';
+                // alert('魔羯座 Capricorn');
+                this.signMemberPic = 'images/membercentre/Capricorn.png';
+                this.signMemberL_Pic = 'images/membercentre/L_Capricorn.png';
                 this.monsterName = '魔羯座';
             }
         },
@@ -327,19 +334,16 @@ export default {
                 alert('生日欄位不可空白');
             } else {
                 this.CheckStarSign();
-                axios.post(
-                    'http://localhost/tfd101/project/g3/php/signup.php',
-                    {
-                        signAccount: this.signAccount,
-                        signPassword: this.signPassword,
-                        signMemberPic: this.signMemberPic,
-                        signBirthdate: this.signBirthdate,
-                        signCellphone: this.signCellphone,
-                        signMemberL_Pic: this.signMemberL_Pic,
-                        monsterName: this.monsterName,
-                    }
-                );
-                alert('歡迎加入冒險行列');
+                axios.post('http://localhost/vue_meet_u_heart/php/signup.php', {
+                    signAccount: this.signAccount,
+                    signPassword: this.signPassword,
+                    signMemberPic: this.signMemberPic,
+                    signBirthdate: this.signBirthdate,
+                    signCellphone: this.signCellphone,
+                    signMemberL_Pic: this.signMemberL_Pic,
+                    monsterName: this.monsterName,
+                });
+                alert('歡迎新探險者一起加入冒險行列');
                 this.$store.commit('signVisible', false);
                 this.$store.commit('loginVisible', true);
             }

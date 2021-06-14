@@ -11,7 +11,7 @@
                 </div>
 
                 <div class="MC_title-e">
-                    <h4>一 Member Centre 一</h4>
+                    <p>一 Member Centre 一</p>
                 </div>
             </div>
             <!-- Title END-->
@@ -291,36 +291,43 @@ $border: 1px solid;
 
     // Title star
     .MC_title {
-        color: $colorT;
-        padding: (80px + 240px) * 0.7 0 0;
-
-        margin-bottom: 280px * 0.7;
-
-        &-c {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            img {
-                width: 63px * 0.7;
-                height: 43px * 0.7;
-                margin-bottom: 5px;
+        position: relative;
+            margin: auto;
+            color: $colorT;
+            padding: (80px+240px) * 0.7 0 0;
+            z-index: 15;
+            @include rwd(mobile) {
+                padding: (200px) * 0.7 0 0;
             }
-        }
-
-        h1 {
-            font-size: $h1;
-            padding: 5px 20px 10px;
-
-            // @include rwd("mobile"){
-            //     font-size: $h1 - 8px;
-            // }
-        }
-
-        &-e {
-            text-align: center;
-            font-size: $p1;
-        }
+            &-c {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img {
+                    width: 63px * 0.7;
+                    height: 43px * 0.7;
+                    margin-bottom: 5px;
+                    @include rwd(mobile) {
+                        width: 63px * 0.5;
+                        height: 43px * 0.5;
+                    }
+                }
+            }
+            h1 {
+                font-size: $h1;
+                padding: 5px 20px 0px;
+                @include rwd(mobile) {
+                    font-size: $h1 - 8px;
+                    padding: 5px 15px 0px;
+                }
+            }
+            &-e {
+                text-align: center;
+                font-size: $p1;
+                @include rwd(mobile) {
+                    font-size: $p1 - 6px;
+                }
+            }
     }
 
     // Title END
@@ -330,6 +337,7 @@ $border: 1px solid;
     .mid_block {
         // border: 1px solid red;
         max-width: 1300 * 0.7px;
+         padding-top: 50px;
         width: 100%;
 
         .tab {

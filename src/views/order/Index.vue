@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="j_subtitle">
-                    <h4>— Order Confirm —</h4>
+                    <p>— Order Confirm —</p>
                 </div>
             </div>
 
@@ -66,7 +66,7 @@
                 <!-- 顧客資訊 -->
                 <div class="j_customer">
                     <!-- form表單 -->
-                    <!-- <form action="" :model="form" :rules="rules"> -->
+                    <!-- <form @click="submitForm"> -->
                     <div class="customer_left">
                         <div class="info_title">
                             <h4>訂購人資料</h4>
@@ -217,7 +217,11 @@
                                 value="page"
                                 class="order_payment"
                             >
-                                <a @click.prevent="payFinish"> 前往結帳 </a>
+                                <a @click.prevent="payFinish">
+                                    <!-- <button type="submit"> -->
+                                    前往結帳 {{ submitstatus }}
+                                    <!-- </button> -->
+                                </a>
                             </button>
                         </div>
                     </div>
@@ -262,6 +266,7 @@ export default {
 
             listIdArr: [],
             listId: 0,
+            submitstatus: '',
         };
     },
     mixins: [validationMixin],
@@ -361,6 +366,27 @@ export default {
             //     )
             //     .catch((error) => console.log(error)); //失敗時候的處理函數
             // // }
+            if (this.name === '') {
+                alert('請填寫購買人姓名');
+            } else if (this.phoneNun === '') {
+                alert('請填寫購買人手機');
+            } else if (this.email === '') {
+                alert('請填寫購買人email');
+            } else if (this.name2 === '') {
+                alert('請填寫收件人姓名');
+            } else if (this.phoneNun2 === '') {
+                alert('請填寫收件人手機');
+            } else if (
+                this.name !== '' &&
+                this.phoneNun !== '' &&
+                this.name2 !== '' &&
+                this.phoneNun2 !== '' &&
+                this.email !== ''
+            ) {
+                this.$router.push({
+                    path: '/product_finish',
+                });
+            }
 
             // this.$router.push({
             //     path: '/product_finish',
@@ -394,6 +420,14 @@ export default {
                 }
             }
         },
+        // submitForm() {
+        //     this.$v.$touch();
+        //     if (this.$v.$invalid) {
+        //         this.submitstatus = 'FALT';
+        //     } else {
+        //         this.submitstatus = 'SUCCESS';
+        //     }
+        // },
     },
     mounted() {
         axios
@@ -449,25 +483,28 @@ $letter-spacing: 2.5;
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
+        .j_subtitle{
+            padding-bottom: 0;
+        }
     //  margin-top:100px ;
     .error {
         font-size: 12px;
         color: rgb(247, 121, 121);
     }
 
-    .overlaymenu {
-        .menulist {
-            .nav-menu {
-                ul {
-                    li:nth-child(2) {
-                        a {
-                            color: yellow;
-                        }
-                    }
-                }
-            }
-        }
-    }
+    // .overlaymenu {
+    //     .menulist {
+    //         .nav-menu {
+    //             ul {
+    //                 li:nth-child(2) {
+    //                     a {
+    //                         color: yellow;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 .j_order {
@@ -477,11 +514,11 @@ $letter-spacing: 2.5;
     margin: 0 auto;
     max-width: 1636 * 0.7px;
     width: 90%;
-    margin-top: 280 * 0.7px;
+    margin-top: 50px;
     padding-bottom: 100px;
     position: relative;
     @include rwd(mobile) {
-        margin-top: 150 * 0.7px;
+        margin-top: 50px;
     }
     .money_rwd {
         @media all and(max-width:450px) {

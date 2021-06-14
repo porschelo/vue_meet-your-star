@@ -3,12 +3,12 @@
         <!-- 標題 -->
         <div class="unstore_title">
             <div class="unstore_title-c">
-                <img src="/images/store/uv_icone.png" alt="" />
+                <img src="images/store/uv_icone.png" alt="" />
                 <h1>宇宙商城</h1>
-                <img src="/images/store/uv_icone.png" alt="" />
+                <img src="images/store/uv_icone.png" alt="" />
             </div>
             <div class="unstore_title-e">
-                <h4>— Universe Store —</h4>
+                <p>— Universe Store —</p>
             </div>
         </div>
 
@@ -67,12 +67,12 @@
                         <a class="addlick" @click.prevent="addlike">
                             <img
                                 v-if="islike"
-                                src="/images/store/loveicone.png"
+                                src="images/store/loveicone.png"
                                 alt=""
                             />
                             <img
                                 v-else
-                                src="/images/store/loveicone_click.png"
+                                src="images/store/loveicone_click.png"
                                 alt=""
                             />
                         </a>
@@ -127,7 +127,7 @@
                 <hr />
                 <div class="pd-member">
                     <div class="pd-photo">
-                        <img src="/images/store/member_pc.jpg" alt="" />
+                        <img src="images/store/member_pc.jpg" alt="" />
                     </div>
                     <div class="pd-name">
                         <p>applebirdcat</p>
@@ -158,7 +158,7 @@
                 <div class="pd_swiper" crs>
                     <div class="index_prbtn pd_prbtn">
                         <a href="">
-                            <img src="/images/index/prbtn.png" alt="" />
+                            <img src="images/index/prbtn.png" alt="" />
                         </a>
                     </div>
                     <div class="swiper-container mySwiper gap">
@@ -166,7 +166,7 @@
                             <swiper-slide class="swiper-slide">
                                 <div class="pd_product1">
                                     <img
-                                        src="/images/store/maylike-1.jpg"
+                                        src="images/store/maylike-1.jpg"
                                         alt=""
                                     />
                                     <h4>天然擴香健康石</h4>
@@ -176,7 +176,7 @@
                             <swiper-slide class="swiper-slide">
                                 <div class="pd_product2">
                                     <img
-                                        src="/images/store/maylike-2.jpg"
+                                        src="images/store/maylike-2.jpg"
                                         alt=""
                                     />
                                     <h4>冥王星晶石手鍊</h4>
@@ -186,7 +186,7 @@
                             <swiper-slide class="swiper-slide">
                                 <div class="pd_product3">
                                     <img
-                                        src="/images/store/maylike-3.jpg"
+                                        src="images/store/maylike-3.jpg"
                                         alt=""
                                     />
                                     <h4>德國花果茶與乾燥花盒</h4>
@@ -196,7 +196,7 @@
                             <swiper-slide class="swiper-slide">
                                 <div class="pd_product4">
                                     <img
-                                        src="/images/store/maylike-4.jpg"
+                                        src="images/store/maylike-4.jpg"
                                         alt=""
                                     />
                                 </div>
@@ -206,7 +206,7 @@
                             <swiper-slide class="swiper-slide">
                                 <div class="pd_product5">
                                     <img
-                                        src="/images/store/maylike-5.jpg"
+                                        src="images/store/maylike-5.jpg"
                                         alt=""
                                     />
                                 </div>
@@ -217,7 +217,7 @@
 
                     <div class="index_nextbtn pd_nextbtn">
                         <a href="">
-                            <img src="/images/index/nxbtn.png" alt="" />
+                            <img src="images/index/nxbtn.png" alt="" />
                         </a>
                     </div>
                 </div>
@@ -514,38 +514,41 @@ export default {
     /*===== 標題 =====*/
     .unstore_title {
         // border: 1px solid red;
-        color: $colorT;
-        padding: (80px + 240px) * 0.7 0 0;
-        @include rwd(mobile) {
-            padding: 220px * 0.7 0 0;
-        }
-        &-c {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            img {
-                width: 63px * 0.7;
-                height: 43px * 0.7;
-                margin-bottom: 5px;
-            }
-        }
-
-        h1 {
-            font-size: $h1;
-            padding: 5px 20px 10px;
+         color: $colorT;
+            padding: (80px+240px) * 0.7 0 0;
+            z-index: 15;
             @include rwd(mobile) {
-                font-size: $h1 - 6px;
+                padding: (200px) * 0.7 0 0;
             }
-        }
-
-        &-e {
-            text-align: center;
-            font-size: $p1;
-            @include rwd(mobile) {
-                font-size: $p1 - 8px;
+            &-c {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img {
+                    width: 63px * 0.7;
+                    height: 43px * 0.7;
+                    margin-bottom: 5px;
+                    @include rwd(mobile) {
+                        width: 63px * 0.5;
+                        height: 43px * 0.5;
+                    }
+                }
             }
-        }
+            h1 {
+                font-size: $h1;
+                padding: 5px 20px 0px;
+                @include rwd(mobile) {
+                    font-size: $h1 - 8px;
+                    padding: 5px 15px 0px;
+                }
+            }
+            &-e {
+                text-align: center;
+                font-size: $p1;
+                @include rwd(mobile) {
+                    font-size: $p1 - 6px;
+                }
+            }
     }
 
     .product-detail {
@@ -881,21 +884,6 @@ export default {
     .pd-footer {
         height: 200px;
         background-color: #302b23;
-    }
-
-    /*===== header 所在頁面 =====*/
-    .overlaymenu {
-        .menulist {
-            .nav-menu {
-                ul {
-                    li:nth-child(4) {
-                        a {
-                            color: yellow;
-                        }
-                    }
-                }
-            }
-        }
     }
 }
 </style>
