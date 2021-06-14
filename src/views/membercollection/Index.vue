@@ -5,9 +5,9 @@
 
             <div class="MF_title">
                 <div class="MF_title-c">
-                    <img src="images/membercollection/earth.png" alt="" />
+                    <img src="/images/membercollection/earth.png" alt="" />
                     <h1>會員中心</h1>
-                    <img src="images/membercollection/earth.png" alt="" />
+                    <img src="/images/membercollection/earth.png" alt="" />
                 </div>
 
                 <div class="MF_title-e">

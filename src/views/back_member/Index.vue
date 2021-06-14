@@ -225,7 +225,7 @@ export default {
 
     mounted() {
         axios
-            .post('http://localhost/tfd101/project/g3/php/back_Member.php'
+            .post('php/back_Member.php'
         )
             .then((res) => {
                 // console.log(res);

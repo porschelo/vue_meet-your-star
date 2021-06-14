@@ -14,14 +14,14 @@
             <div class="jl_monster_combine">
                 <div class="jl_left_monster">
                     <img
-                        src="images/horoscope_page/monsterleft.png"
+                        :src="monster_L"
                         alt="星座左"
                     />
                 </div>
 
                 <div class="jl_right_monster">
                     <img
-                        src="images/horoscope_page/monster-right.png"
+                        :src="monster_R"
                         alt="星座右"
                     />
                 </div>
@@ -83,6 +83,8 @@ export default {
             match_good:"",
             match_bad:"",
             match_article:"",
+            monster_L:"",
+            monster_R:"",
             member_info:[],
             member_StarPoint:0,
             islodata:false,
@@ -93,7 +95,7 @@ export default {
 
     mounted() {
         axios
-            .post('http://localhost/vue_meet_u_heart/php/Match.php', {
+            .post('http://localhost/tfd101/project/g3/php/Match.php', {
                 Self_STAR_SIGN: this.$store.state.self_StarSign,
                 Opp_STAR_SIGN: this.$store.state.opp_StarSign,
             })
@@ -105,6 +107,11 @@ export default {
                 this.match_good = this.match_info[0].MATE_GOOD;
                 this.match_bad = this.match_info[0].MATE_BAD;
                 this.match_article = this.match_info[0].MATE_ARTICLE;
+                this.monster_L = this.match_info[0].MONSTER_LEFT;
+                this.monster_R = this.match_info[0].MONSTER_RIGHT;
+
+                console.log(this.monster_L);
+                console.log(this.monster_R);
                 
             });
     },

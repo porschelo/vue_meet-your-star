@@ -5,9 +5,9 @@
             <!-- Title -->
             <div class="MOL_title">
                 <div class="MOL_title-c">
-                    <img src="images/memberorderlist/earth.png" alt="" />
+                    <img src="/images/memberorderlist/earth.png" alt="" />
                     <h1>會員中心</h1>
-                    <img src="images/memberorderlist/earth.png" alt="" />
+                    <img src="/images/memberorderlist/earth.png" alt="" />
                 </div>
 
                 <div class="MOL_title-e">
