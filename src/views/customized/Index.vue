@@ -153,7 +153,7 @@
                             />
                             <!-- 顯示配件 -->
                             <img
-                                src="/images/store/hat3.png"
+                                src="images/store/hat3.png"
                                 alt=""
                                 class="cust_fitting"
                                 v-if="showFitting == 1"
@@ -390,10 +390,10 @@ export default {
             }
             h1 {
                 font-size: $h1;
-                padding: 5px 20px 0px;
+                padding: 5px 20px 5px;
                 @include rwd(mobile) {
                     font-size: $h1 - 8px;
-                    padding: 5px 15px 0px;
+                    padding: 5px 15px 5px;
                 }
             }
             &-e {
@@ -646,12 +646,12 @@ export default {
 
             .cust_select-first {
                 @include rwd(mobile) {
-                    width: 48%;
+                    width: 100%;
                 }
             }
             .cust_select-second {
                 @include rwd(mobile) {
-                    width: 47%;
+                    width: 100%;
                     margin-left: 5%;
                 }
             }
@@ -753,19 +753,6 @@ export default {
         }
     }
 
-    // .overlaymenu {
-    //     .menulist {
-    //         .nav-menu {
-    //             ul {
-    //                 li:nth-child(4) {
-    //                     a {
-    //                         color: yellow;
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
 }
 
 .cls-2:hover {

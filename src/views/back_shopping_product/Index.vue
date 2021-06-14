@@ -259,7 +259,7 @@ export default {
     },
     mounted() {
         axios
-            .post('http://localhost/tfd101/project/g3/php/back_shopping_product.php'
+            .post('php/back_shopping_product.php'
         )
             .then((res) => {
                 // console.log(res);

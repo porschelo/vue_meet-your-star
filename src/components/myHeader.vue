@@ -4,7 +4,7 @@
             <div class="hnavbar">
                 <div class="logo">
                     <router-link to="/" class="logo">
-                        <img src="images/header/logo.png" alt="" />
+                        <img src="/images/header/logo.png" alt="" />
                     </router-link>
                 </div>
 
@@ -12,7 +12,7 @@
                     <ul>
                         <li>
                             <router-link to="/shoppingcart" class="cart">
-                                <img src="images/header/cart.png" />
+                                <img src="/images/header/cart.png" />
                             </router-link>
                         </li>
                         <li>
@@ -21,7 +21,7 @@
                                 @click="onOpenLogin"
                                 v-if="loginStatus == 0"
                             >
-                                <img src="images/header/member.png" />
+                                <img src="/images/header/member.png" />
                             </a>
                             <!-- <a class="login" v-else>
                                 <img :src = memberIcon >
@@ -41,7 +41,7 @@
                                 class="burgerbtn"
                                 @click="onMenuOpen"
                             >
-                                <img src="images/header/burger.png" />
+                                <img src="/images/header/burger.png" />
                             </button>
                         </li>
                     </ul>

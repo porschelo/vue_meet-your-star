@@ -395,7 +395,7 @@ export default {
                     this.islike = 0;
 
                     axios.post(
-                        'http://localhost/tfd101/project/g3/php/product_addlike_select.php',
+                        'php/product_addlike_select.php',
                         {
                             memberId: this.$store.state.loginID,
                             productId: this.productData2.productId,
@@ -407,7 +407,7 @@ export default {
                     if (yes) {
                         this.islike = 1;
                         axios.post(
-                            'http://localhost/tfd101/project/g3/php/product_addlike_delete.php',
+                            'php/product_addlike_delete.php',
                             {
                                 memberId: this.$store.state.loginID,
                                 productId: this.productData2.productId,
@@ -461,7 +461,7 @@ export default {
         let id = urlParams.get('id');
         axios
             .post(
-                'http://localhost/tfd101/project/g3/php/product_detail_select.php',
+                'php/product_detail_select.php',
                 {
                     productId: id,
                     //送去php 被點擊商品的id
@@ -536,10 +536,10 @@ export default {
             }
             h1 {
                 font-size: $h1;
-                padding: 5px 20px 0px;
+                padding: 5px 20px 5px;
                 @include rwd(mobile) {
                     font-size: $h1 - 8px;
-                    padding: 5px 15px 0px;
+                    padding: 5px 15px 5px;
                 }
             }
             &-e {
