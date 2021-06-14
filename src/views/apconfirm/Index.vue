@@ -7,13 +7,13 @@
                     <div class="j_title">
                         <div class="j_bigtitle">
                             <img
-                                src="images/appointment/earth2.png"
+                                src="/images/appointment/earth2.png"
                                 alt=""
                                 id="earth"
                             />
                             <h1>預約談星</h1>
                             <img
-                                src="images/appointment/earth2.png"
+                                src="/images/appointment/earth2.png"
                                 alt=""
                                 id="earth"
                             />
@@ -217,7 +217,7 @@ export default {
         myFooter,
     },
     mounted() {
-        axios.post('http://localhost/tfd101/project/g3/teacher.php').then((res) => {
+        axios.post('http://localhost/meetyourstars/teacher.php').then((res) => {
             console.log(res);
             this.teacher = res.data;
         });
@@ -244,7 +244,7 @@ export default {
             // console.log(time);
             console.log(this.$store.state.loginID);
 
-            axios.post('http://localhost/tfd101/project/g3/searchteacher.php',
+            axios.post('http://localhost/meetyourstars/searchteacher.php',
             {   TEACHER_NAME : this.$store.state.selectteacher}
             )
                 .then((res1) => {
@@ -254,7 +254,7 @@ export default {
                 });
 
             axios.post(
-                'http://localhost/tfd101/project/g3/appointment.php',
+                'http://localhost/meetyourstars/appointment.php',
 
                     {
                         APPOINTMENT_DATE: newsavedate,
@@ -286,7 +286,7 @@ export default {
         samemember() {
             axios
                 .post(
-                    'http://localhost/tfd101/project/g3/php/SelectMember.php',
+                    'http://localhost/meetyourstars/SelectMember.php',
                     { id: this.$store.state.loginID }
                 )
                 .then((res) => {

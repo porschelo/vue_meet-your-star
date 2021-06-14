@@ -203,7 +203,7 @@ export default {
 
         loginCheck() {
             axios
-                .post('http://localhost/tfd101/project/g3/php/login.php', {
+                .post('http://localhost/meetyourstars/login.php', {
                     userAccount: this.userAccount,
                     userPassword: this.userPassword,
                 })
@@ -334,7 +334,7 @@ export default {
                 alert('生日欄位不可空白');
             } else {
                 this.CheckStarSign();
-                axios.post('http://localhost/vue_meet_u_heart/php/signup.php', {
+                axios.post('http://localhost/meetyourstars/signup.php', {
                     signAccount: this.signAccount,
                     signPassword: this.signPassword,
                     signMemberPic: this.signMemberPic,

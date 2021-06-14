@@ -24,13 +24,13 @@
                         <div class="j_title">
                             <div class="j_bigtitle">
                                 <img
-                                    src="images/appointment/earth2.png"
+                                    src="/images/appointment/earth2.png"
                                     alt=""
                                     id="earth"
                                 />
                                 <h1>預約談星</h1>
                                 <img
-                                    src="images/appointment/earth2.png"
+                                    src="/images/appointment/earth2.png"
                                     alt=""
                                     id="earth"
                                 />
