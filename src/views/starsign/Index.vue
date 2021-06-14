@@ -216,7 +216,7 @@ export default {
 
         axios
             // .post('http://localhost:8080/tfd101/project/g3/php/starsign.php')
-            .post('http://localhost/tfd101/project/g3/php/starsign.php')
+            .post('php/starsign.php')
             .then((res) => {
                 // console.log(res);
                 this.starinfo = res.data;
@@ -238,7 +238,7 @@ export default {
             }),
         axios
             // .post('http://localhost:8080/tfd101/project/g3/php/article.php',
-            .post('http://localhost/tfd101/project/g3/php/article.php', 
+            .post('php/article.php', 
                { id: id + 1}, //傳給php
             )
             .then((res) => {
@@ -249,7 +249,7 @@ export default {
             }),
         axios
             // .post('http://localhost:8080/tfd101/project/g3/php/luckyproduct.php')
-            .post('http://localhost/tfd101/project/g3/php/luckyproduct.php')
+            .post('php/luckyproduct.php')
             .then((res) => {
                 console.log(res);
                 this.starprdt = res.data;
@@ -323,10 +323,10 @@ export default {
             }
             h1 {
                 font-size: $h1;
-                padding: 5px 20px 0px;
+                padding: 5px 20px 5px;
                 @include rwd(mobile) {
                     font-size: $h1 - 8px;
-                    padding: 5px 15px 0px;
+                    padding: 5px 15px 5px;
                 }
             }
             &-e {
