@@ -259,7 +259,8 @@ header {
             z-index: 1000;
             .hclosebtn {
                 position: absolute;
-                top: 5px;
+                // top: 5px;
+                top: 25px;
                 right: 68px;
                 color: #fff;
                 font-size: 85px;
@@ -279,7 +280,8 @@ header {
                 box-sizing: border-box;
                 li {
                     list-style: none;
-                    margin: 6px 15px;
+                    // margin: 6px 15px;
+                    margin: 12px 15px;
                     &:nth-child(5) {
                         padding-left: 154px;
                     }
@@ -319,7 +321,8 @@ header {
                 border-radius: 0 0 0 160px;
                 .hclosebtn {
                     position: absolute;
-                    top: 0px;
+                    // top: 0px;
+                    top: 10px;
                     right: 27px;
                     color: #fff;
                     font-size: 60px;
@@ -342,7 +345,8 @@ header {
                     li {
                         text-align: right;
                         list-style: none;
-                        margin: 5px 0px;
+                        // margin: 5px 0px;
+                        margin: 10px 0px;
                         &:nth-child(5) {
                             padding-left: 0px;
                         }

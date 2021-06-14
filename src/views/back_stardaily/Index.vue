@@ -186,8 +186,8 @@ export default {
 
     mounted() {
         axios
-            // .post('http://localhost:8080/tfd101/project/g3/php/back_daily.php'
-            .post('http://localhost/tfd101/project/g3/php/back_daily.php'
+            .post('php/back_daily.php'
+            // .post('http://localhost/tfd101/project/g3/php/back_daily.php'
         )
             .then((res) => {
                 console.log(res);
@@ -212,7 +212,7 @@ export default {
                 // console.log(this.ssb_info[index].edit);
 
             }else{
-                axios.post('http://localhost/tfd101/project/g3/php/back_Updatedaily.php',{
+                axios.post('php/back_Updatedaily.php',{
                     STAR_SIGN_ID: this.ssb_info[index].STAR_SIGN_ID,
                     DAILY: this.ssb_info[index].DAILY,
                 })
