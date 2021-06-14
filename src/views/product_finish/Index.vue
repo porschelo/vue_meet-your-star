@@ -52,7 +52,7 @@
                                 <div class="j_panel_content">
                                     <p>訂單編號: {{ listId }}</p>
                                     <p>訂單日期:{{ listdate }}</p>
-                                    <p>訂單金額:${{ listPrice }}</p>
+                                    <!-- <p>訂單金額:${{ listPrice }}</p> -->
                                 </div>
 
                                 <div class="j_panel_notice">
@@ -83,7 +83,7 @@ export default {
             list: [],
             listdate: '',
             listId: '',
-            listPrice: 0,
+            // listPrice: 0,
         };
     },
     components: {
@@ -91,17 +91,14 @@ export default {
     },
     mounted() {
         axios
-            .post(
-                'http://localhost/tfd101/project/g3/php/selectListFinished.php',
-                {
-                    memberId: this.$store.state.loginID,
-                }
-            )
+            .post('php/selectListFinished.php', {
+                memberId: this.$store.state.loginID,
+            })
             .then((res) => {
                 this.list = res.data;
                 console.log(this.list);
                 this.listId = this.list[0].LIST_ID;
-                this.listPrice = this.list[0].LIST_PRICE;
+                // this.listPrice = this.list[0].LIST_PRICE;
                 this.listdate = this.list[0].LIST_CREATDATE;
             });
 

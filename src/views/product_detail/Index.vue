@@ -394,25 +394,19 @@ export default {
                 if (this.islike == 1) {
                     this.islike = 0;
 
-                    axios.post(
-                        'http://localhost/tfd101/project/g3/php/product_addlike_select.php',
-                        {
-                            memberId: this.$store.state.loginID,
-                            productId: this.productData2.productId,
-                        }
-                    );
+                    axios.post('php/product_addlike_select.php', {
+                        memberId: this.$store.state.loginID,
+                        productId: this.productData2.productId,
+                    });
                     // .then((res) => {});
                 } else {
                     let yes = confirm('請問是否確定取消收藏商品？');
                     if (yes) {
                         this.islike = 1;
-                        axios.post(
-                            'http://localhost/tfd101/project/g3/php/product_addlike_delete.php',
-                            {
-                                memberId: this.$store.state.loginID,
-                                productId: this.productData2.productId,
-                            }
-                        );
+                        axios.post('php/product_addlike_delete.php', {
+                            memberId: this.$store.state.loginID,
+                            productId: this.productData2.productId,
+                        });
                     }
                 }
             }
@@ -460,13 +454,10 @@ export default {
         let urlParams = new URLSearchParams(window.location.search);
         let id = urlParams.get('id');
         axios
-            .post(
-                'http://localhost/tfd101/project/g3/php/product_detail_select.php',
-                {
-                    productId: id,
-                    //送去php 被點擊商品的id
-                }
-            )
+            .post('php/product_detail_select.php', {
+                productId: id,
+                //送去php 被點擊商品的id
+            })
             .then((res) => {
                 this.productsArr = res.data;
                 //productData先暫存
@@ -514,41 +505,41 @@ export default {
     /*===== 標題 =====*/
     .unstore_title {
         // border: 1px solid red;
-         color: $colorT;
-            padding: (80px+240px) * 0.7 0 0;
-            z-index: 15;
+        color: $colorT;
+        padding: (80px+240px) * 0.7 0 0;
+        z-index: 15;
+        @include rwd(mobile) {
+            padding: (200px) * 0.7 0 0;
+        }
+        &-c {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 63px * 0.7;
+                height: 43px * 0.7;
+                margin-bottom: 5px;
+                @include rwd(mobile) {
+                    width: 63px * 0.5;
+                    height: 43px * 0.5;
+                }
+            }
+        }
+        h1 {
+            font-size: $h1;
+            padding: 5px 20px 0px;
             @include rwd(mobile) {
-                padding: (200px) * 0.7 0 0;
+                font-size: $h1 - 8px;
+                padding: 5px 15px 0px;
             }
-            &-c {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                img {
-                    width: 63px * 0.7;
-                    height: 43px * 0.7;
-                    margin-bottom: 5px;
-                    @include rwd(mobile) {
-                        width: 63px * 0.5;
-                        height: 43px * 0.5;
-                    }
-                }
+        }
+        &-e {
+            text-align: center;
+            font-size: $p1;
+            @include rwd(mobile) {
+                font-size: $p1 - 6px;
             }
-            h1 {
-                font-size: $h1;
-                padding: 5px 20px 0px;
-                @include rwd(mobile) {
-                    font-size: $h1 - 8px;
-                    padding: 5px 15px 0px;
-                }
-            }
-            &-e {
-                text-align: center;
-                font-size: $p1;
-                @include rwd(mobile) {
-                    font-size: $p1 - 6px;
-                }
-            }
+        }
     }
 
     .product-detail {
