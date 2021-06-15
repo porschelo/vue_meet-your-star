@@ -187,7 +187,7 @@ export default {
         };
     },
     mounted() {
-        axios.post('http://localhost/tfd101/project/g3/appointment.php').then((res) => {
+        axios.post('php/appointment.php').then((res) => {
             console.log(res);
             this.appointment = res.data;
         });

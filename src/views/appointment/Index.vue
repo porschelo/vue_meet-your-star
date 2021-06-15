@@ -132,7 +132,7 @@ export default {
     },
     mounted() {
     
-      axios.post('http://localhost/tfd101/project/g3/teacher.php',
+      axios.post('php/teacher.php',
 
       )
       .then((res) => {
@@ -176,10 +176,10 @@ export default {
         checknext(){
             if (this.$store.state.loginStatus == 0) {
                 this.$store.commit('loginVisible', true);
-                // axios.post('http://localhost/meetyourstars/login.php',
-                // {userAccount: this.userAccount,
-                // userPassword: this.userPassword,}
-                // )
+                axios.post('php/login.php',
+                {userAccount: this.userAccount,
+                userPassword: this.userPassword,}
+                )
             } else {
                 this.$router.push({
                     path: '/apdate',

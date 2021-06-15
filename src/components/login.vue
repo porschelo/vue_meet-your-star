@@ -158,8 +158,6 @@ export default {
             signMonth: 0,
             signDay: 0,
             monsterName: '',
-            
-            
         };
     },
 
@@ -185,19 +183,19 @@ export default {
         },
 
         goSignup() {
-            this.signAccount= '',
-            this.signPassword= '',
-            this.signPasswordCheck= '',
-            this.signCellphone= '',
-            this.signBirthdate= '',
-            this.$store.commit('signVisible', true);
+            (this.signAccount = ''),
+                (this.signPassword = ''),
+                (this.signPasswordCheck = ''),
+                (this.signCellphone = ''),
+                (this.signBirthdate = ''),
+                this.$store.commit('signVisible', true);
             this.$store.commit('loginVisible', false);
         },
 
         gologin() {
-             this.userAccount = '',
-            this.userPassword ='',
-            this.$store.commit('loginVisible', true);
+            (this.userAccount = ''),
+                (this.userPassword = ''),
+                this.$store.commit('loginVisible', true);
             this.$store.commit('signVisible', false);
         },
 
@@ -209,8 +207,10 @@ export default {
                 })
                 .then((res) => {
                     if (res.data.length == 1) {
-                        alert('登入成功');
-                        // console.log(res);
+                        alert(
+                            `登入成功,歡迎冒險者 ${res.data[0].MEMBER_NAME} 繼續冒險`
+                        );
+                        console.log(res);
                         this.$store.commit('loginVisible', false);
                         this.$store.commit('loginStatus', 1);
                         // console.log(res.data[0].MEMBER_icon);

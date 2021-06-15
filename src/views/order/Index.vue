@@ -335,15 +335,12 @@ export default {
             //或是三個ajax寫成function依序去呼叫  第三個axios的productId是因為上一個還沒完成所以取不到值
             //取最新商品的list id
             axios
-                .post(
-                    'http://localhost/tfd101/project/g3/php/selectListId.php',
-                    {
-                        memberId: this.$store.state.loginID,
-                        listCount: this.$store.state.cartList.length,
-                        listPrice: this.billTotal,
-                        productList: this.$store.state.cartList,
-                    }
-                )
+                .post('php/selectListId.php', {
+                    memberId: this.$store.state.loginID,
+                    listCount: this.$store.state.cartList.length,
+                    listPrice: this.billTotal,
+                    productList: this.$store.state.cartList,
+                })
                 .catch((error) => console.log(error));
             // .then((res2) => {
             //     // this.listIdArr = res2.data;
@@ -431,7 +428,7 @@ export default {
     },
     mounted() {
         axios
-            .post('http://localhost/tfd101/project/g3/php/SelectMember.php', {
+            .post('php/SelectMember.php', {
                 id: this.$store.state.loginID,
             })
             .then((res) => {

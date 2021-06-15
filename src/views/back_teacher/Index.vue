@@ -206,7 +206,7 @@ export default {
         }
     },
     mounted() {
-        axios.post('http://localhost/tfd101/project/g3/backteacher.php').then((res) => {
+        axios.post('http://localhost/meetyourstars/backteacher.php').then((res) => {
             console.log(res);
             this.teacher = res.data;
         });

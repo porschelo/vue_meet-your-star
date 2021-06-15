@@ -94,7 +94,7 @@ export default {
     },
     mounted() {
     
-      axios.post('http://localhost/meetyourstars/selectappointment.php',
+      axios.post('php/selectappointment.php',
       
       )
       .then((res) => {
