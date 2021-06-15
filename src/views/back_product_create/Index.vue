@@ -153,19 +153,19 @@
                             <tbody>
                                 <tr>
                                     <td>商品名稱</td>
-                                    <td><input type="text" id="ProductName" name="ProductName"></td>
+                                    <td><input type="text" id="ProductName" name="ProductName" v-model="ProductName"></td>
                                 </tr>
                                 <tr>
                                     <td>商品圖片</td>
-                                    <td><input type="file" id="ProductImage" name="ProductImage"></td>
+                                    <td><input type="file" id="ProductImage" :name="ProductImage" @change="aa"></td>
                                 </tr>
                                 <tr>
                                     <td>商品分類</td>
-                                     <td><input type="text" id="Category" name="Category"></td>
+                                     <td><input type="text" id="Category" name="Category" v-model="Category"></td>
                                 </tr>
                                 <tr>
                                     <td>商品價格</td>
-                                     <td><input type="text" id="Price" name="Price" ></td>
+                                     <td><input type="text" id="Price" name="Price" v-model="Price"></td>
                                 </tr>
                                 <tr>
                                     <td>商品狀態</td>
@@ -180,7 +180,7 @@
                         </table>
                         <div class="d-flex justify-content-center">
                             <button type="reset" class="btn btn-outline-success" id="cancel" value="取消" onclick="javascript: history.go(-1);">取消</button>
-                            <button type="submit" class="btn btn-success ms-3" @click="dosubmit">新增</button>
+                            <button type="button" class="btn btn-success ms-3" @click="dosubmit">新增</button>
                         </div>
                     <!-- </form> -->
                 </div>
@@ -194,26 +194,31 @@ import axios from 'axios';
 export default {
      data() {
         return {
-            
-            
+            ProductName:"",
+            ProductImage:"",
+            Category:1,
+            Price:0,            
         }
     },
 
     mounted() {
-        axios
-            .post('http://localhost/tfd101/project/g3/php/back_CreateProduct.php')
-            .then((res) => {
-                // console.log(res);
-                this.product_info = res.data;
+        // axios
+        //     .post('http://localhost/tfd101/project/g3/php/back_CreateProduct.php')
+        //     .then((res) => {
+        //         // console.log(res);
+        //         this.product_info = res.data;
 
 
-            });
+        //     });
     },
 
     methods: {
-        
+        aa(e){
+            this.ProductImage = e.target.files[0].name
+            console.log(this.ProductImage);
+        },
         dosubmit(){
-        
+            
             if (document.getElementById('ProductName').value == '') {
                 alert("請填寫[商品名稱]");
                 return false;
@@ -240,6 +245,21 @@ export default {
                 alert("請選擇[商品圖片]");
                 return false;
             }
+                
+            axios
+            .post('php/back_CreateProduct.php',
+                {
+                    ProductName:this.ProductName,
+                    ProductImage:this.ProductImage,
+                    Category:this.Category,
+                    Price:this.Price, 
+                },
+
+                
+
+            )
+            
+            alert("商品新增完成");
         }
 
         

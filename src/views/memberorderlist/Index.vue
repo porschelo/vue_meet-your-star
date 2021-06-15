@@ -5,9 +5,9 @@
             <!-- Title -->
             <div class="MOL_title">
                 <div class="MOL_title-c">
-                    <img src="/images/memberorderlist/earth.png" alt="" />
+                    <img src="images/memberorderlist/earth.png" alt="" />
                     <h1>會員中心</h1>
-                    <img src="/images/memberorderlist/earth.png" alt="" />
+                    <img src="images/memberorderlist/earth.png" alt="" />
                 </div>
 
                 <div class="MOL_title-e">
@@ -171,7 +171,7 @@ import myFooter from '@/components/myFooter';
 export default {
     mounted() {
         axios
-            .post('http://localhost/tfd101/project/g3/php/memberlist.php', {
+            .post('php/memberlist.php', {
                 id: this.$store.state.loginID,
             })
             .then((res) => {

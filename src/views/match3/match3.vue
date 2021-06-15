@@ -10,20 +10,21 @@
                     <h3>優點：{{match_good}}</h3>
                 </div>
             </div>
+            <div class="monster_flex">
+                <div class="jl_monster_combine">
+                    <div class="jl_left_monster">
+                        <img
+                            :src="monster_L"
+                            alt="星座左"
+                        />
+                    </div>
 
-            <div class="jl_monster_combine">
-                <div class="jl_left_monster">
-                    <img
-                        :src="monster_L"
-                        alt="星座左"
-                    />
-                </div>
-
-                <div class="jl_right_monster">
-                    <img
-                        :src="monster_R"
-                        alt="星座右"
-                    />
+                    <div class="jl_right_monster">
+                        <img
+                            :src="monster_R"
+                            alt="星座右"
+                        />
+                    </div>
                 </div>
             </div>
 
@@ -97,6 +98,7 @@ export default {
     mounted() {
         axios
             .post('php/Match.php', {
+            // .post('http://localhost/tfd101/project/g3/php/Match.php', {
                 Self_STAR_SIGN: this.$store.state.self_StarSign,
                 Opp_STAR_SIGN: this.$store.state.opp_StarSign,
             })
@@ -190,7 +192,7 @@ export default {
 
     @include rwd(mobile) {
         // 768px
-        margin-top: 105px;
+        margin-top: 91px;
     }
 
     // border: 1px transparent solid;
@@ -264,21 +266,32 @@ export default {
             // border: 1px solid red;
         }
     }
-
-    .jl_monster_combine {
-        margin: 0 5% 0;
+    .monster_flex{
         display: flex;
         justify-content: center;
         align-items: center;
-        // border: 2px solid red;
+    }
+    .jl_monster_combine {
+        margin: 0 0 0 -22%;
+        position: relative;
+        height: 480px;
+        @include rwd(mobile) {
+            // 768px
+            height: 230px;
+           margin: 0 0 0 -36%;
+        }
     }
 
     .jl_left_monster img {
         // border: 5px solid green;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 400px;
 
         @include rwd(pad) {
             // 1199px
-            height: 550px;
+            // height: 550px;
         }
         @include rwd(mobile) {
             // 768px
@@ -289,10 +302,14 @@ export default {
     .jl_right_monster img {
         // display: inline-block;
         // border: 1px solid yellow;
+        position: absolute;
+        top: 0;
+        left: 31px;
+        height: 400px;
 
         @include rwd(pad) {
             // 1199px
-            height: 550px;
+            // height: 550px;
         }
         @include rwd(mobile) {
             // 768px
