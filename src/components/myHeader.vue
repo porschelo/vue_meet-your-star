@@ -4,7 +4,7 @@
             <div class="hnavbar">
                 <div class="logo">
                     <router-link to="/" class="logo">
-                        <img src="images/header/logo.png" alt="" />
+                        <img src="/images/header/logo.png" alt="" />
                     </router-link>
                 </div>
 
@@ -12,7 +12,7 @@
                     <ul>
                         <li>
                             <router-link to="/shoppingcart" class="cart">
-                                <img src="images/header/cart.png" />
+                                <img src="/images/header/cart.png" />
                             </router-link>
                         </li>
                         <li>
@@ -21,7 +21,7 @@
                                 @click="onOpenLogin"
                                 v-if="loginStatus == 0"
                             >
-                                <img src="images/header/member.png" />
+                                <img src="/images/header/member.png" />
                             </a>
                             <!-- <a class="login" v-else>
                                 <img :src = memberIcon >
@@ -41,7 +41,7 @@
                                 class="burgerbtn"
                                 @click="onMenuOpen"
                             >
-                                <img src="images/header/burger.png" />
+                                <img src="/images/header/burger.png" />
                             </button>
                         </li>
                     </ul>
@@ -259,7 +259,8 @@ header {
             z-index: 1000;
             .hclosebtn {
                 position: absolute;
-                top: 5px;
+                // top: 5px;
+                top: 25px;
                 right: 68px;
                 color: #fff;
                 font-size: 85px;
@@ -279,7 +280,8 @@ header {
                 box-sizing: border-box;
                 li {
                     list-style: none;
-                    margin: 6px 15px;
+                    // margin: 6px 15px;
+                    margin: 12px 15px;
                     &:nth-child(5) {
                         padding-left: 154px;
                     }
@@ -319,7 +321,8 @@ header {
                 border-radius: 0 0 0 160px;
                 .hclosebtn {
                     position: absolute;
-                    top: 0px;
+                    // top: 0px;
+                    top: 10px;
                     right: 27px;
                     color: #fff;
                     font-size: 60px;
@@ -342,7 +345,8 @@ header {
                     li {
                         text-align: right;
                         list-style: none;
-                        margin: 5px 0px;
+                        // margin: 5px 0px;
+                        margin: 10px 0px;
                         &:nth-child(5) {
                             padding-left: 0px;
                         }

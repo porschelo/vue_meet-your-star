@@ -155,9 +155,19 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr v-for="(item,index) in teacher" :key="index">
+                            <td><input type="checkbox"></td>
+                            <td>{{item.TEACHER_ID}}</td>
+                            <td>{{item.TEACHER_NAME}}</td>
+                            <td>{{item.TEACHER_INFO}}</td>
+                            <td>{{item.TEACHER_IMG}}</td>
+                            <td>{{item.TEACHER_PRICE}}</td>
+                            <td></td>
+                            <td><a href="###">編輯</a></td>
+                        </tr>
                         <tr>
                             <td><input type="checkbox"></td>
-                            <td>1</td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -167,17 +177,7 @@
                         </tr>
                         <tr>
                             <td><input type="checkbox"></td>
-                            <td>2</td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="###">編輯</a></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td>3</td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -195,9 +195,22 @@
 
 </template>
 <script>
+import axios from 'axios'
+
 // import 'bootstrap/dist/css/bootstrap.min.css'; 
 export default {
-    
+    data() {
+        return{
+            teacher: [],
+
+        }
+    },
+    mounted() {
+        axios.post('http://localhost/meetyourstars/backteacher.php').then((res) => {
+            console.log(res);
+            this.teacher = res.data;
+        });
+    },
 }
 </script>
 <style lang="scss">

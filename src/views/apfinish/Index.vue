@@ -24,95 +24,31 @@
                         <div class="j_title">
                             <div class="j_bigtitle">
                                 <img
-                                    src="/images/appointment/earth2.png"
+                                    src="images/appointment/earth2.png"
                                     alt=""
                                     id="earth"
                                 />
                                 <h1>預約談星</h1>
                                 <img
-                                    src="/images/appointment/earth2.png"
+                                    src="images/appointment/earth2.png"
                                     alt=""
                                     id="earth"
                                 />
                             </div>
 
                             <div class="j_subtitle">
-                                <h4>— Reservation With Experts —</h4>
+                                <p>— Reservation With Experts —</p>
                             </div>
                         </div>
                         <!-- 進度條 -->
                         <div class="j_progress">
                             <div class="progress">
-                        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
-                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%; ">
-                            100%
-                        </div>
-                    </div>
-                            <!-- <li class="container__item">
-                                <div class="stepper">
-                                    <input
-                                        class="stepper__input"
-                                        id="stepper-5-0"
-                                        name="stepper-5"
-                                        type="radio"
-                                        checked="checked"
-                                    />
-                                    <div class="stepper__step">
-                                        <label
-                                            class="stepper__button"
-                                            for="stepper-5-0"
-                                        ></label>
-                                        <p class="stepper__content">
-                                            step 1:選擇老師
-                                        </p>
-                                    </div>
-                                    <input
-                                        class="stepper__input"
-                                        id="stepper-5-1"
-                                        name="stepper-5"
-                                        type="radio"
-                                    />
-                                    <div class="stepper__step">
-                                        <label
-                                            class="stepper__button"
-                                            for="stepper-5-1"
-                                        ></label>
-                                        <p class="stepper__content">
-                                            step 2:選擇時段
-                                        </p>
-                                    </div>
-                                    <input
-                                        class="stepper__input"
-                                        id="stepper-5-2"
-                                        name="stepper-5"
-                                        type="radio"
-                                    />
-                                    <div class="stepper__step">
-                                        <label
-                                            class="stepper__button"
-                                            for="stepper-5-2"
-                                        ></label>
-                                        <p class="stepper__content">
-                                            step 3: 確認結帳資料
-                                        </p>
-                                    </div>
-                                    <input
-                                        class="stepper__input"
-                                        id="stepper-5-3"
-                                        name="stepper-5"
-                                        type="radio"
-                                    />
-                                    <div class="stepper__step">
-                                        <label
-                                            class="stepper__button"
-                                            for="stepper-5-3"
-                                        ></label>
-                                        <p class="stepper__content">
-                                            step 4: 預約完成
-                                        </p>
-                                    </div>
+                                <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+                                aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%; ">
+                                    100%
                                 </div>
-                            </li> -->
+                            </div>
+                            
                         </div>
                         <!-- 儀錶板 -->
                         <div class="j_panel">
@@ -125,7 +61,7 @@
                                 <div class="j_panel_content">
                                     <p>訂單編號: 073294758302</p>
                                     <p>預約姓名: 糖老鴨</p>
-                                    <p>預約時段: {{setAppointed}}  {{selectteacher}}</p>
+                                    <p>預約時段: {{setAppointed}} <br> {{selectteacher}}</p>
                                 </div>
 
                                 <div class="j_panel_notice">
@@ -158,7 +94,7 @@ export default {
     },
     mounted() {
     
-      axios.post('http://localhost/meetyourstars/selectappointment.php',
+      axios.post('php/selectappointment.php',
       
       )
       .then((res) => {

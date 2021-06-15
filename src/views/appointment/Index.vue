@@ -8,15 +8,15 @@
                 <div class="j_title">
 
                     <div class="j_bigtitle">
-                        <img src="/images/appointment/earth2.png" alt="" id="earth">
+                        <img src="images/appointment/earth2.png" alt="" id="earth">
                         <h1>預約談星</h1>
-                        <img src="/images/appointment/earth2.png" alt="" id="earth">
+                        <img src="images/appointment/earth2.png" alt="" id="earth">
                     </div>
                     
                     <div class="j_subtitle">
-                        <h4>
+                        <p>
                         — Reservation With Experts — 
-                        </h4>
+                        </p>
                     </div>
                     
                 </div>
@@ -28,31 +28,7 @@
                             25%
                         </div>
                     </div>
-                    <!-- <li class="container__item">
-                        <div class="stepper">
-                        <input class="stepper__input" id="stepper-5-0" name="stepper-5" type="radio" checked="checked"/>
-                        <div class="stepper__step">
-                            <label class="stepper__button" for="stepper-5-0"></label>
-                            <p class="stepper__content">step 1:選擇老師</p>
-                        </div>
-                        <input class="stepper__input" id="stepper-5-1" name="stepper-5" type="radio"/>
-                        <div class="stepper__step">
-                            <label class="stepper__button" for="stepper-5-1"></label>
-                            <p class="stepper__content">step 2:選擇時段</p>
-                        </div>
-                        <input class="stepper__input" id="stepper-5-2" name="stepper-5" type="radio"/>
-                        <div class="stepper__step">
-                            <label class="stepper__button" for="stepper-5-2"></label>
-                            <p class="stepper__content">step 3: 確認結帳資料</p>
-                        </div>
-                        <input class="stepper__input" id="stepper-5-3" name="stepper-5" type="radio"/>
-                        <div class="stepper__step">
-                            <label class="stepper__button" for="stepper-5-3"></label>
-                            <p class="stepper__content">step 4: 預約完成</p>
-                        </div>
-                        
-                        </div>
-                    </li> -->
+                    
                 </div>
                 <!-- 儀錶板 -->
                 <div class="j_panel">
@@ -113,7 +89,10 @@
                             </div>                     
                         
                         <div class="button_page">
-                            <button type="button" value="page" class="j_page" @click="checknext" >下一頁
+                            <button type="button" value="page" class="j_page" @click="checknext" >
+                                <h2>
+                                下一頁
+                                </h2>
                             </button>
                         </div>
 
@@ -153,7 +132,7 @@ export default {
     },
     mounted() {
     
-      axios.post('http://localhost/meetyourstars/teacher.php',
+      axios.post('php/teacher.php',
 
       )
       .then((res) => {
@@ -197,26 +176,16 @@ export default {
         checknext(){
             if (this.$store.state.loginStatus == 0) {
                 this.$store.commit('loginVisible', true);
-                // axios.post('http://localhost/meetyourstars/login.php',
-                // {userAccount: this.userAccount,
-                // userPassword: this.userPassword,}
-                // )
+                axios.post('php/login.php',
+                {userAccount: this.userAccount,
+                userPassword: this.userPassword,}
+                )
             } else {
                 this.$router.push({
                     path: '/apdate',
                 });
             }
         },
-        // setCurrent(id) {
-        // this.current = id;
-        // },
-        
-        
-
-                
-        // setCurrent(){
-        //     this.current = TEACHER_IMG;
-        // },
         
     },
     // computed:{

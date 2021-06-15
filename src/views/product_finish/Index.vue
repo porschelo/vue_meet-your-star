@@ -43,7 +43,7 @@
 
                         <!-- 儀錶板 -->
                         <div class="j_panel">
-                            <div class="j_panel_inner">
+                            <div class="j_panel_inner2">
                                 <div class="j_panel_title">
                                     <h2>購買完成</h2>
                                     <h4>恭喜您,您購買的商品已經準備出貨中!</h4>
@@ -122,7 +122,7 @@ export default {
 p {
     line-height: 1.6;
 }
-.j_panel_inner {
+.j_panel_inner2 {
     height: 550px;
 }
 </style>

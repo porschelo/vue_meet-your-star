@@ -216,7 +216,7 @@ export default {
 
         axios
             // .post('http://localhost:8080/tfd101/project/g3/php/starsign.php')
-            .post('http://localhost/tfd101/project/g3/php/starsign.php')
+            .post('php/starsign.php')
             .then((res) => {
                 // console.log(res);
                 this.starinfo = res.data;
@@ -238,7 +238,7 @@ export default {
             }),
         axios
             // .post('http://localhost:8080/tfd101/project/g3/php/article.php',
-            .post('http://localhost/tfd101/project/g3/php/article.php', 
+            .post('php/article.php', 
                { id: id + 1}, //傳給php
             )
             .then((res) => {
@@ -249,7 +249,7 @@ export default {
             }),
         axios
             // .post('http://localhost:8080/tfd101/project/g3/php/luckyproduct.php')
-            .post('http://localhost/tfd101/project/g3/php/luckyproduct.php')
+            .post('php/luckyproduct.php')
             .then((res) => {
                 console.log(res);
                 this.starprdt = res.data;
@@ -323,10 +323,10 @@ export default {
             }
             h1 {
                 font-size: $h1;
-                padding: 5px 20px 0px;
+                padding: 5px 20px 5px;
                 @include rwd(mobile) {
                     font-size: $h1 - 8px;
-                    padding: 5px 15px 0px;
+                    padding: 5px 15px 5px;
                 }
             }
             &-e {
@@ -530,7 +530,7 @@ export default {
                         display: flex;
                         margin-top: 24px;
                         @include rwd(pad2) {
-                            margin-top: 12px;
+                            margin-top: 17px;
                             margin-bottom: 28px;
                             justify-content: center;
                         }
@@ -549,16 +549,16 @@ export default {
                                 justify-content: center;
                                 align-items: center;
                                 flex-direction: column;
-                                padding-top: 7px;
+                                padding-top: 0px;
                                 padding-left: 7px;
                             }
                             h3 {
                                 font-size: $h3;
-                                line-height: 1;
+                                line-height: 1.2;
                                 text-align: center;
                                 @include rwd(mobile) {
                                     font-size: 3.5vw;
-                                    line-height: .8;
+                                    line-height: 1.1;
                                 }
                             }
                         }
@@ -598,7 +598,7 @@ export default {
             h2 {
                 font-size: $h2;
                 color: rgb(252, 140, 99);
-                padding: 70px 0 30px;
+                padding: 70px 0 35px;
                 text-align: center;
                 @include rwd(pad2) {
                     padding: 32px 0 25px;
@@ -643,7 +643,7 @@ export default {
                         @include rwd(mobile) {
                             font-size: $h3 - 8px;
                             width: 85%;
-                            padding-left: 10px;
+                            padding-left: 7px;
                             margin-bottom: 30px;
                         }
                     }
@@ -727,7 +727,10 @@ export default {
                         flex-direction: column;
                         align-items: center;
                         justify-content: center;
-                        padding-left: 10px;
+                        padding-left: 20px;
+                        @include rwd(pad2) {
+                                padding-left: 7px;
+                        }
                         .artitem {
                             padding-left: 0px;
                             width: 430px;
