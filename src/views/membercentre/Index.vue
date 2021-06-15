@@ -5,9 +5,9 @@
             <!-- Title -->
             <div class="MC_title">
                 <div class="MC_title-c">
-                    <img src="/images/membercentre/earth.png" alt="" />
+                    <img src="images/membercentre/earth.png" alt="" />
                     <h1>會員中心</h1>
-                    <img src="/images/membercentre/earth.png" alt="" />
+                    <img src="images/membercentre/earth.png" alt="" />
                 </div>
 
                 <div class="MC_title-e">

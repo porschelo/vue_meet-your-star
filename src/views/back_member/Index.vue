@@ -247,7 +247,7 @@ export default {
     methods: {
         searchMember(){
             axios
-            .post('http://localhost/tfd101/project/g3/php/back_SearchMember.php',{
+            .post('php/back_SearchMember.php',{
                 search_data: this.search_data,
             }
         )
@@ -268,7 +268,7 @@ export default {
 
 
                 axios
-                .post('http://localhost/tfd101/project/g3/php/back_UpdateMember.php',
+                .post('php/back_UpdateMember.php',
                 {
                     member_ID:this.member_info[index].MEMBER_ID,
                     member_Point: this.member_info[index].MEMBER_POINT,

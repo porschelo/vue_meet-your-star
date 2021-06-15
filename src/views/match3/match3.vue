@@ -31,12 +31,13 @@
                 <div class="jl_buy">
                     <h2>推薦開運小物</h2>
                     <div class="jl_lucky_charm_box">
-                        <a href="/unstore.html">
+
+                        <router-link to="/unstore">
                             <img
-                                src="images/horoscope_page/removelater.png"
-                                alt="開運小物圖"
+                                    src="images/horoscope_page/removelater.png"
+                                    alt="開運小物圖"
                             />
-                        </a>
+                        </router-link>
                     </div>
                 </div>
 
@@ -53,9 +54,9 @@
 
                 <br />
                 <div class="jl_unlock_buttons">
-                    <button type="button" class="jl_button_money_payment">
+                    <!-- <button type="button" class="jl_button_money_payment">
                         付費解鎖
-                    </button>
+                    </button> -->
 
                     <button type="button" class="jl_button_paymentBypoints" @click="useStarPoint">
                         使用50星幣解鎖
@@ -95,7 +96,7 @@ export default {
 
     mounted() {
         axios
-            .post('http://localhost/tfd101/project/g3/php/Match.php', {
+            .post('php/Match.php', {
                 Self_STAR_SIGN: this.$store.state.self_StarSign,
                 Opp_STAR_SIGN: this.$store.state.opp_StarSign,
             })
@@ -123,7 +124,7 @@ export default {
             }else{
                 if(this.islodata == false){
                     axios
-                    .post('http://localhost/vue_meet_u_heart/php/SelectMember.php', {
+                    .post('php/SelectMember.php', {
                         id:this.$store.state.loginID,
                     })
                     .then((res1) => {

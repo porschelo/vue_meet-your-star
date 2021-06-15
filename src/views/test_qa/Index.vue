@@ -787,7 +787,7 @@ export default {
     .tResult_title {
         // border: 1px solid red
        color: $colorT;
-            padding: (80px) * 0.7 0 0;
+            padding: 90px 0 0;
             z-index: 15;
             @include rwd(mobile) {
                 padding: (70px) * 0.7 0 0;
@@ -951,7 +951,7 @@ export default {
 
     .tQuestion_title {
        color: $colorT;
-            padding: (80px) * 0.7 0 0;
+           padding: 90px 0 0;
             z-index: 15;
             @include rwd(mobile) {
                 padding: (70px) * 0.7 0 0;
