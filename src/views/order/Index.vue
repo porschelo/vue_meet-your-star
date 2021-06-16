@@ -352,6 +352,7 @@ export default {
                 this.phoneNun2 !== '' &&
                 this.email !== ''
             ) {
+<<<<<<< HEAD
                 axios
                     .post('php/selectListId.php', {
                         memberId: this.$store.state.loginID,
@@ -364,6 +365,10 @@ export default {
                 this.$router.push({
                     path: '/product_finish',
                 });
+=======
+                this.sendInfo();
+                this.next_page();
+>>>>>>> development
             }
 
             // .then((res2) => {
@@ -421,14 +426,24 @@ export default {
                 }
             }
         },
-        // submitForm() {
-        //     this.$v.$touch();
-        //     if (this.$v.$invalid) {
-        //         this.submitstatus = 'FALT';
-        //     } else {
-        //         this.submitstatus = 'SUCCESS';
-        //     }
-        // },
+        
+        sendInfo(){
+            axios
+                .post('php/selectListId.php', {
+                    memberId: this.$store.state.loginID,
+                    listCount: this.$store.state.cartList.length,
+                    listPrice: this.billTotal,
+                    productList: this.$store.state.cartList,
+                })
+                .catch((error) => console.log(error));
+        },
+
+        next_page(){
+            this.$router.push({
+                    path: '/product_finish',
+                });
+        },
+        
     },
     mounted() {
         axios

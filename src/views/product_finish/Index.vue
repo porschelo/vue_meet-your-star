@@ -83,12 +83,16 @@ export default {
             list: [],
             listdate: '',
             listId: '',
-            // listPrice: 0,
+            listPrice: 0,
         };
     },
     components: {
         myFooter,
     },
+<<<<<<< HEAD
+=======
+
+>>>>>>> development
     created() {
         axios
             .post('php/selectListFinished.php', {
@@ -98,10 +102,11 @@ export default {
                 this.list = res.data;
                 console.log(this.list);
                 this.listId = this.list[0].LIST_ID;
-                // this.listPrice = this.list[0].LIST_PRICE;
+                this.listPrice = this.list[0].LIST_PRICE;
                 this.listdate = this.list[0].LIST_CREATDATE;
             });
     },
+<<<<<<< HEAD
     mounted() {
         //清空購物車
         // localStorage.removeItem('storageCart');
@@ -109,6 +114,17 @@ export default {
         localStorage.setItem('storageCart', JSON.stringify(emptyArr));
 
         this.$store.dispatch('updateCart', emptyArr);
+=======
+
+    mounted() {
+        //清空購物車
+        // localStorage.removeItem('storageCart');
+         let emptyArr = [];
+        localStorage.setItem('storageCart', JSON.stringify(emptyArr));
+
+        this.$store.dispatch('updateCart', emptyArr);
+    
+>>>>>>> development
     },
     computed: {},
 };
