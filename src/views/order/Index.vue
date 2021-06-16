@@ -356,7 +356,6 @@ export default {
                 this.next_page();
             }
 
-            
             // .then((res2) => {
             //     // this.listIdArr = res2.data;
             //     // this.listId = this.listIdArr[0].LIST_ID;
@@ -378,8 +377,8 @@ export default {
             //     )
             //     .catch((error) => console.log(error)); //失敗時候的處理函數
             // // }
-            
 
+            // localStorage.removeItem('storageCart');
             // this.$router.push({
             //     path: '/product_finish',
             // });
@@ -485,9 +484,9 @@ $letter-spacing: 2.5;
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
-        .j_subtitle{
-            padding-bottom: 0;
-        }
+    .j_subtitle {
+        padding-bottom: 0;
+    }
     //  margin-top:100px ;
     .error {
         font-size: 12px;
