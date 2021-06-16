@@ -334,14 +334,7 @@ export default {
             //ajax是非同步 要確定執行完成才取得到資料，如果事情要一起處理完成就寫在一隻php依序處理
             //或是三個ajax寫成function依序去呼叫  第三個axios的productId是因為上一個還沒完成所以取不到值
             //取最新商品的list id
-            axios
-                .post('php/selectListId.php', {
-                    memberId: this.$store.state.loginID,
-                    listCount: this.$store.state.cartList.length,
-                    listPrice: this.billTotal,
-                    productList: this.$store.state.cartList,
-                })
-                .catch((error) => console.log(error));
+
             // .then((res2) => {
             //     // this.listIdArr = res2.data;
             //     // this.listId = this.listIdArr[0].LIST_ID;
@@ -380,11 +373,22 @@ export default {
                 this.phoneNun2 !== '' &&
                 this.email !== ''
             ) {
+                axios
+                    .post('php/selectListId.php', {
+                        memberId: this.$store.state.loginID,
+                        listCount: this.$store.state.cartList.length,
+                        listPrice: this.billTotal,
+                        productList: this.$store.state.cartList,
+                    })
+                    .catch((error) => console.log(error));
+
                 this.$router.push({
                     path: '/product_finish',
                 });
-            }
 
+                localStorage.removeItem('storageCart');
+            }
+            // localStorage.removeItem('storageCart');
             // this.$router.push({
             //     path: '/product_finish',
             // });
@@ -480,9 +484,9 @@ $letter-spacing: 2.5;
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
-        .j_subtitle{
-            padding-bottom: 0;
-        }
+    .j_subtitle {
+        padding-bottom: 0;
+    }
     //  margin-top:100px ;
     .error {
         font-size: 12px;
