@@ -37,7 +37,7 @@
                                 <td class="order_pic">商品圖片</td>
                                 <td class="order_name">商品名稱</td>
                                 <td>數量</td>
-                                <td>金額</td>
+                                <td>單價</td>
                             </tr>
                             <tr>
                                 <td colspan="5">

@@ -352,19 +352,8 @@ export default {
                 this.phoneNun2 !== '' &&
                 this.email !== ''
             ) {
-                axios
-                .post('php/selectListId.php', {
-                    memberId: this.$store.state.loginID,
-                    listCount: this.$store.state.cartList.length,
-                    listPrice: this.billTotal,
-                    productList: this.$store.state.cartList,
-                })
-                .catch((error) => console.log(error));
-                this.$router.push({
-                    path: '/product_finish',
-                });
-                localStorage.removeItem('storageCart');
-                this.$store.commit('addCartUpdate', localStorage.storageCart);
+                this.sendInfo();
+                this.next_page();
             }
 
             
@@ -423,14 +412,24 @@ export default {
                 }
             }
         },
-        // submitForm() {
-        //     this.$v.$touch();
-        //     if (this.$v.$invalid) {
-        //         this.submitstatus = 'FALT';
-        //     } else {
-        //         this.submitstatus = 'SUCCESS';
-        //     }
-        // },
+        
+        sendInfo(){
+            axios
+                .post('php/selectListId.php', {
+                    memberId: this.$store.state.loginID,
+                    listCount: this.$store.state.cartList.length,
+                    listPrice: this.billTotal,
+                    productList: this.$store.state.cartList,
+                })
+                .catch((error) => console.log(error));
+        },
+
+        next_page(){
+            this.$router.push({
+                    path: '/product_finish',
+                });
+        },
+        
     },
     mounted() {
         axios
