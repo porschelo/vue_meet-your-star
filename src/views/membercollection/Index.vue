@@ -108,7 +108,7 @@ import myFooter from '@/components/myFooter';
 export default {
     mounted() {
         axios
-            .post('http://localhost/tfd101/project/g3/php/membercollection.php', {
+            .post('php/membercollection.php', {
                 id: this.$store.state.loginID,
             })
             .then((res) => {
@@ -250,10 +250,10 @@ $color: (
             }
             h1 {
                 font-size: $h1;
-                padding: 5px 20px 0px;
+                padding: 5px 20px 5px;
                 @include rwd(mobile) {
                     font-size: $h1 - 8px;
-                    padding: 5px 15px 0px;
+                    padding: 5px 15px 5px;
                 }
             }
             &-e {

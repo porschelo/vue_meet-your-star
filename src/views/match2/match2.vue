@@ -207,7 +207,7 @@ export default {
             this.$store.dispatch('setopp_StarSign',this.opp_StarSign);
 
             this.$router.push({
-                path: '/matchandtest/match3',
+                path: '/match3',
             });
         }
     },

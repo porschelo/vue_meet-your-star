@@ -58,7 +58,7 @@
                     />
                 </div>
                 <button class="tSort_start">
-                    <router-link to="test_qa">START</router-link>
+                    <router-link to="/test_qa">START</router-link>
                 </button>
             </div>
         </div>
@@ -111,7 +111,7 @@ export default {
     .tSort_title {
         // border: 1px solid red;
         color: $colorT;
-            padding: (80px) * 0.7 0 0;
+            padding: 90px 0 0;
             z-index: 15;
             @include rwd(mobile) {
                 padding: (70px) * 0.7 0 0;

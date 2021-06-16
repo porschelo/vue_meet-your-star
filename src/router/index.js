@@ -63,7 +63,7 @@ const routes = [
         component: Landing,
     },
     {
-        path: '/unstore/product_detail',
+        path: '/product_detail',
         name: 'ProductDetail',
         component: ProductDetail,
     },
@@ -78,12 +78,12 @@ const routes = [
         component: Match1,
     },
     {
-        path: '/matchandtest/match3',
+        path: '/match3',
         name: 'Match3',
         component: Match3,
     },
     {
-        path: '/matchandtest/match2',
+        path: '/match2',
         name: 'Match2',
         component: Match2,
     },
@@ -93,22 +93,22 @@ const routes = [
         component: UnStore,
     },
     {
-        path: '/unstore/customized',
+        path: '/customized',
         name: 'Customized',
         component: Customized,
     },
     {
-        path: '/matchandtest/test_sort',
+        path: '/test_sort',
         name: 'TestSort',
         component: TestSort,
     },
     {
-        path: '/matchandtest/test_result',
+        path: '/test_result',
         name: 'TestResult',
         component: TestResult,
     },
     {
-        path: '/matchandtest/test_qa',
+        path: '/test_qa',
         name: 'TestQa',
         component: TestQa,
     },

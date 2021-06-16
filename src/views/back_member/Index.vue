@@ -141,7 +141,10 @@
                                 <th>會員編號</th>
                                 <th>會員帳號</th>
                                 <th>會員姓名</th>
-                                <th>會員密碼</th>                       
+                                <th>會員密碼</th>
+                                <th>會員生日</th>                       
+                                <th>會員性別</th>
+                                <th>會員電話</th>                       
                                 <th>星幣數量</th>
                                 <th>加入日期</th>
                                 <!-- <th>詳細資料</th> -->
@@ -169,6 +172,9 @@
                                         {{member.MEMBER_PASSWORD}}
                                     </span>
                                 </td>
+                                <td>{{member.MEMBER_BIRTHDAY}}</td>
+                                <td>{{member.MEMBER_GENDER}}</td> 
+                                <td>{{member.MEMBER_PHONE}}</td>  
                                 <td>
                                     <input type="text" v-model="member.MEMBER_POINT" v-show="member.editStatus" class="border border-dark">
                                     <span v-show="!member.editStatus">
@@ -225,8 +231,7 @@ export default {
 
     mounted() {
         axios
-            .post('http://localhost/tfd101/project/g3/php/back_Member.php'
-        )
+            .post('php/back_Member.php')
             .then((res) => {
                 // console.log(res);
                 this.member_info = res.data;
@@ -242,7 +247,7 @@ export default {
     methods: {
         searchMember(){
             axios
-            .post('http://localhost/tfd101/project/g3/php/back_SearchMember.php',{
+            .post('php/back_SearchMember.php',{
                 search_data: this.search_data,
             }
         )
@@ -263,7 +268,7 @@ export default {
 
 
                 axios
-                .post('http://localhost/tfd101/project/g3/php/back_UpdateMember.php',
+                .post('php/back_UpdateMember.php',
                 {
                     member_ID:this.member_info[index].MEMBER_ID,
                     member_Point: this.member_info[index].MEMBER_POINT,

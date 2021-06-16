@@ -138,7 +138,7 @@ export default {
         // axios.get('../../php/Select.php').then(res => console.log(res.data));
 
         axios
-            .post('http://localhost/tfd101/project/g3/php/SelectMember.php', {
+            .post('php/SelectMember.php', {
                 id: this.$store.state.loginID,
             })
             .then((res) => {
@@ -189,7 +189,7 @@ export default {
 
                 // 回存資料
                 axios.post(
-                    'http://localhost/tfd101/project/g3/php/UpdateMember.php',
+                    'php/UpdateMember.php',
                     {
                         updateName: this.member_name,
                         updateBirthdate: this.member_date,
@@ -315,10 +315,10 @@ $border: 1px solid;
             }
             h1 {
                 font-size: $h1;
-                padding: 5px 20px 0px;
+                padding: 5px 20px 5px;
                 @include rwd(mobile) {
                     font-size: $h1 - 8px;
-                    padding: 5px 15px 0px;
+                    padding: 5px 15px 5px;
                 }
             }
             &-e {

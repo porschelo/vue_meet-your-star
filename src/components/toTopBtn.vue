@@ -3,7 +3,7 @@
         <div class="to_top_btn" v-if="btnVisible">
             <img
                 class="arrowTop"
-                src="/images/index/arrow-up.svg"
+                src="images/index/arrow-up.svg"
                 alt=""
                 @click="toTop"
             />

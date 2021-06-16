@@ -335,27 +335,6 @@ export default {
             //或是三個ajax寫成function依序去呼叫  第三個axios的productId是因為上一個還沒完成所以取不到值
             //取最新商品的list id
 
-            // .then((res2) => {
-            //     // this.listIdArr = res2.data;
-            //     // this.listId = this.listIdArr[0].LIST_ID;
-            //     // console.log(this.listIdArr);
-            //     // console.log(this.listId);
-            // });
-
-            //listContent
-            // axios
-            //     .post(
-            //         'http://localhost/tfd101/project/g3/php/orderListContent.php',
-            //         {
-            //             listId: this.listId,
-            //             productList: this.$store.state.cartList,
-            //             // productId: this.$store.state.cartList,
-            //             // productCount: this.$store.state.cartList.count,
-            //             // productPrice: this.$store.state.cartList.total,
-            //         }
-            //     )
-            //     .catch((error) => console.log(error)); //失敗時候的處理函數
-            // // }
             if (this.name === '') {
                 alert('請填寫購買人姓名');
             } else if (this.phoneNun === '') {
@@ -381,13 +360,35 @@ export default {
                         productList: this.$store.state.cartList,
                     })
                     .catch((error) => console.log(error));
-
                 this.$router.push({
                     path: '/product_finish',
                 });
-
                 localStorage.removeItem('storageCart');
+                this.$store.commit('addCartUpdate', localStorage.storageCart);
             }
+
+            // .then((res2) => {
+            //     // this.listIdArr = res2.data;
+            //     // this.listId = this.listIdArr[0].LIST_ID;
+            //     // console.log(this.listIdArr);
+            //     // console.log(this.listId);
+            // });
+
+            //listContent
+            // axios
+            //     .post(
+            //         'http://localhost/tfd101/project/g3/php/orderListContent.php',
+            //         {
+            //             listId: this.listId,
+            //             productList: this.$store.state.cartList,
+            //             // productId: this.$store.state.cartList,
+            //             // productCount: this.$store.state.cartList.count,
+            //             // productPrice: this.$store.state.cartList.total,
+            //         }
+            //     )
+            //     .catch((error) => console.log(error)); //失敗時候的處理函數
+            // // }
+
             // localStorage.removeItem('storageCart');
             // this.$router.push({
             //     path: '/product_finish',

@@ -136,23 +136,17 @@
                             </table>
 
                             <!-- button -->
-                            <form action="" class="j_btn">
-                                <button
-                                    type="button"
-                                    value="page"
-                                    class="j_btn2"
-                                    onclick="location.href='/appointment'"
-                                >
+                            <div class="j_btn">
+
+                                <router-link to="/appointment" class="j_btn2">
                                     回上頁
-                                </button>
-                                <button
-                                    type="button"
-                                    value="page"
-                                    class="j_btn2"
-                                    onclick="location.href ='/apconfirm'">
+                                </router-link>
+
+                                 <router-link to="/apconfirm" class="j_btn2">
                                     下一頁
-                                </button>
-                            </form>
+                                </router-link>
+                                
+                            </div>
                             <!-- </div>             -->
                         </div>
                     </div>

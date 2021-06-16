@@ -222,7 +222,8 @@
                             <tr v-for="(product,index) in product_info" :key="index">
                                 <td>{{product.PRODUCT_ID}}</td>
                                 <td>{{product.PRODUCT_NAME}}</td>
-                                <td>{{product.PRODUCT_IMG}}</td> 
+                                <td>
+                                    <img :src="product.PRODUCT_IMG" alt=""></td> 
                                 <!-- <td>{{product.PRODUCT_INFO}}</td> -->
                                 <td>{{product.PRODUCT_TYPE}}</td>
                                 <td>{{product.PRODUCT_STATUS}}</td>

@@ -40,7 +40,7 @@
                     學業
                 </li>
                 <li>
-                    <router-link to="/unstore/customized">客製化</router-link>
+                    <router-link to="/customized">客製化</router-link>
                 </li>
             </ul>
 
@@ -113,7 +113,7 @@
             </div>
 
             <div class="unstore_monster">
-                <router-link to="/unstore/customized"
+                <router-link to="/customized"
                     ><img src="images/store/unstore-monster.png" alt=""
                 /></router-link>
             </div>
