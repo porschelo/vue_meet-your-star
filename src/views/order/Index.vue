@@ -352,23 +352,8 @@ export default {
                 this.phoneNun2 !== '' &&
                 this.email !== ''
             ) {
-<<<<<<< HEAD
-                axios
-                    .post('php/selectListId.php', {
-                        memberId: this.$store.state.loginID,
-                        listCount: this.$store.state.cartList.length,
-                        listPrice: this.billTotal,
-                        productList: this.$store.state.cartList,
-                    })
-                    .catch((error) => console.log(error));
-
-                this.$router.push({
-                    path: '/product_finish',
-                });
-=======
                 this.sendInfo();
                 this.next_page();
->>>>>>> development
             }
 
             // .then((res2) => {
@@ -426,8 +411,8 @@ export default {
                 }
             }
         },
-        
-        sendInfo(){
+
+        sendInfo() {
             axios
                 .post('php/selectListId.php', {
                     memberId: this.$store.state.loginID,
@@ -438,12 +423,11 @@ export default {
                 .catch((error) => console.log(error));
         },
 
-        next_page(){
+        next_page() {
             this.$router.push({
-                    path: '/product_finish',
-                });
+                path: '/product_finish',
+            });
         },
-        
     },
     mounted() {
         axios
