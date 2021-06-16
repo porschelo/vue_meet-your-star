@@ -364,7 +364,7 @@ export default {
                     path: '/product_finish',
                 });
                 localStorage.removeItem('storageCart');
-                this.$store.commit('addCartUpdate', localStorage.storageCart);
+                this.$store.dispatch('updateCart', cart);
             }
 
             // .then((res2) => {
