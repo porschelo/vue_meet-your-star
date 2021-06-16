@@ -229,24 +229,16 @@ export default {
         };
     },
     mounted() {
-        axios
-            .post(
-                'php/home_daily_select.php'
-            )
-            .then((res) => {
-                // console.log(res);
-                this.signDaily = res.data;
-                // console.log(this.signDaily);
-            });
+        axios.post('php/home_daily_select.php').then((res) => {
+            // console.log(res);
+            this.signDaily = res.data;
+            // console.log(this.signDaily);
+        });
 
-        axios
-            .post(
-                'php/home_product_select.php'
-            )
-            .then((res) => {
-                this.signProduct = res.data;
-                // console.log(this.signProduct);
-            });
+        axios.post('php/home_product_select.php').then((res) => {
+            this.signProduct = res.data;
+            // console.log(this.signProduct);
+        });
     },
 
     components: {

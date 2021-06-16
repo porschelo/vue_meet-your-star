@@ -360,11 +360,10 @@ export default {
                         productList: this.$store.state.cartList,
                     })
                     .catch((error) => console.log(error));
+
                 this.$router.push({
                     path: '/product_finish',
                 });
-                localStorage.removeItem('storageCart');
-                this.$store.dispatch('updateCart', cart);
             }
 
             // .then((res2) => {
