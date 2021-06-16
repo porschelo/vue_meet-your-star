@@ -334,7 +334,25 @@ export default {
             //ajax是非同步 要確定執行完成才取得到資料，如果事情要一起處理完成就寫在一隻php依序處理
             //或是三個ajax寫成function依序去呼叫  第三個axios的productId是因為上一個還沒完成所以取不到值
             //取最新商品的list id
-            axios
+
+            if (this.name === '') {
+                alert('請填寫購買人姓名');
+            } else if (this.phoneNun === '') {
+                alert('請填寫購買人手機');
+            } else if (this.email === '') {
+                alert('請填寫購買人email');
+            } else if (this.name2 === '') {
+                alert('請填寫收件人姓名');
+            } else if (this.phoneNun2 === '') {
+                alert('請填寫收件人手機');
+            } else if (
+                this.name !== '' &&
+                this.phoneNun !== '' &&
+                this.name2 !== '' &&
+                this.phoneNun2 !== '' &&
+                this.email !== ''
+            ) {
+                axios
                 .post('php/selectListId.php', {
                     memberId: this.$store.state.loginID,
                     listCount: this.$store.state.cartList.length,
@@ -342,6 +360,14 @@ export default {
                     productList: this.$store.state.cartList,
                 })
                 .catch((error) => console.log(error));
+                this.$router.push({
+                    path: '/product_finish',
+                });
+                localStorage.removeItem('storageCart');
+                this.$store.commit('addCartUpdate', localStorage.storageCart);
+            }
+
+            
             // .then((res2) => {
             //     // this.listIdArr = res2.data;
             //     // this.listId = this.listIdArr[0].LIST_ID;
@@ -363,27 +389,7 @@ export default {
             //     )
             //     .catch((error) => console.log(error)); //失敗時候的處理函數
             // // }
-            if (this.name === '') {
-                alert('請填寫購買人姓名');
-            } else if (this.phoneNun === '') {
-                alert('請填寫購買人手機');
-            } else if (this.email === '') {
-                alert('請填寫購買人email');
-            } else if (this.name2 === '') {
-                alert('請填寫收件人姓名');
-            } else if (this.phoneNun2 === '') {
-                alert('請填寫收件人手機');
-            } else if (
-                this.name !== '' &&
-                this.phoneNun !== '' &&
-                this.name2 !== '' &&
-                this.phoneNun2 !== '' &&
-                this.email !== ''
-            ) {
-                this.$router.push({
-                    path: '/product_finish',
-                });
-            }
+            
 
             // this.$router.push({
             //     path: '/product_finish',
